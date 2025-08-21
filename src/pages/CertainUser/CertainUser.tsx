@@ -1,11 +1,14 @@
 import { Layout } from '../../components/Layout/Layout';
 import { ServiceCards } from '../../components/ServiceCards/ServiceCards';
+import { motion } from 'framer-motion';
+import { MLButton, MLCard, MLText, MLHeading } from '../../components/ML';
+import { useNavigate } from 'react-router-dom';
 
 const certainUserServices = [
   {
     title: 'Discover',
     description: 'Fast research and validation to confirm your direction',
-    icon: '🔍',
+    icon: '',
     color: 'blue',
     items: [
       'Market and competitor scans to reduce risk',
@@ -17,7 +20,7 @@ const certainUserServices = [
   {
     title: 'Design',
     description: 'UX/UI tailored to your audience with proven efficiency',
-    icon: '🎨',
+    icon: '',
     color: 'purple',
     items: [
       'UX/UI tailored to your audience',
@@ -29,7 +32,7 @@ const certainUserServices = [
   {
     title: 'Build',
     description: 'Full-stack development with modern technologies',
-    icon: '⚡',
+    icon: '',
     color: 'green',
     items: [
       'Web and mobile app development (Android; iOS soon)',
@@ -40,20 +43,20 @@ const certainUserServices = [
   },
   {
     title: 'AI Applied',
-    description: 'Intelligent automation and AI features integrated seamlessly',
-    icon: '🤖',
+    description: 'Intelligent automation and AI features',
+    icon: '',
     color: 'orange',
     items: [
       'Automation of defined workflows',
       'AI features integrated into your product (recommendations, search, copilots)',
-      'Business process transformation where you already see the need',
+      'Business process improvements where you already see the need',
       'Custom AI model training and deployment'
     ]
   },
   {
     title: 'Support & Scale',
-    description: 'Ongoing maintenance and growth-driven optimization',
-    icon: '📈',
+    description: 'Ongoing maintenance and growth support',
+    icon: '',
     color: 'indigo',
     items: [
       'Maintenance, uptime, and performance management',
@@ -65,72 +68,142 @@ const certainUserServices = [
 ];
 
 export const CertainUser = () => {
+  const navigate = useNavigate();
+  
   return (
     <Layout>
-      <div className="relative">
-        {/* Hero Section */}
-        <section className="py-16 lg:py-24 bg-gradient-to-br from-green-50 to-blue-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-4xl mx-auto">
-              <div className="inline-flex items-center px-4 py-2 bg-green-100 rounded-full text-green-800 font-medium text-sm mb-6">
-                <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                </svg>
-                For the Certain User
-              </div>
-              
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight">
-                You Know What You Need.
-                <span className="block text-primary-600">We'll Help You Build It.</span>
-              </h1>
-              
-              <p className="text-xl text-slate-600 mb-8 leading-relaxed max-w-3xl mx-auto">
-                Fast, reliable, and ready to scale. Our structured approach takes your clear vision 
-                and transforms it into a production-ready AI product.
-              </p>
+      <div className="relative overflow-hidden bg-bg min-h-screen">
+        {/* Background Effects */}
+        <div className="absolute inset-0 -z-10">
+          <motion.div
+            className="absolute top-20 left-1/4 w-64 h-64 bg-gradient-to-r from-coral/20 to-success/20 rounded-full blur-3xl"
+            animate={{ scale: [1, 1.2, 1], rotate: [0, 180, 360] }}
+            transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+          />
+          <motion.div
+            className="absolute bottom-20 right-1/4 w-48 h-48 bg-gradient-to-r from-success/15 to-coral/15 rounded-full blur-3xl"
+            animate={{ scale: [1.2, 1, 1.2], rotate: [360, 0, 360] }}
+            transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
+          />
+        </div>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="btn-primary text-lg px-8 py-4">
+        {/* Hero Section */}
+        <section className="py-24 px-4 sm:px-6 lg:px-8 relative">
+          <div className="max-w-5xl mx-auto text-center">
+            <motion.div
+              className="inline-flex items-center px-4 py-2 bg-success/20 border border-success/30 rounded-full text-success font-medium text-sm mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+              </svg>
+              For the Certain User
+            </motion.div>
+              
+              <motion.h1
+                className="text-h1 font-bold font-display mb-8 leading-tight text-text"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
+                You Know What You Need.
+                <span className="block bg-gradient-to-r from-coral to-success bg-clip-text text-transparent">We'll Help You Build It.</span>
+              </motion.h1>
+              
+              <motion.p 
+                className="text-body-l text-text-weak mb-16 max-w-3xl mx-auto leading-relaxed"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
+                Fast, reliable, and ready to scale. Our structured approach takes your clear vision 
+                and builds it into a production-ready AI product.
+              </motion.p>
+
+              <motion.div 
+                className="flex flex-col sm:flex-row gap-4 justify-center"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+              >
+                <MLButton
+                  variant="filled"
+                  size="lg"
+                  onClick={() => navigate('/contact', { state: { projectType: 'certain' } })}
+                  iconRight={
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  }
+                >
                   Start Your Project
-                </button>
-                <button className="btn-secondary text-lg px-8 py-4">
+                </MLButton>
+                <MLButton
+                  variant="outlined"
+                  size="lg"
+                  onClick={() => navigate('/work')}
+                >
                   View Case Studies
-                </button>
-              </div>
-            </div>
+                </MLButton>
+              </motion.div>
           </div>
         </section>
 
         {/* Services Section */}
-        <section className="py-20">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
+        <section className="py-24 px-4 sm:px-6 lg:px-8 relative">
+          <div className="max-w-6xl mx-auto">
+            <motion.div 
+              className="text-center mb-16"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <MLHeading level={2} className="mb-6">
                 Our Proven Process
-              </h2>
-              <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+              </MLHeading>
+              <MLText variant="bodyL" color="weak" className="max-w-3xl mx-auto">
                 A systematic approach that takes you from concept to scale, 
                 with clear milestones and measurable outcomes at every step.
-              </p>
-            </div>
+              </MLText>
+            </motion.div>
 
             <ServiceCards services={certainUserServices} variant="certain" />
           </div>
         </section>
 
         {/* Closing CTA */}
-        <section className="py-20 bg-slate-900">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
-              You know what you need. We'll help you build it—fast, reliable, and ready to scale.
-            </h2>
-            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-              Let's turn your clear vision into reality with our proven development process.
-            </p>
-            <button className="btn-primary text-lg px-8 py-4 bg-white text-slate-900 hover:bg-gray-100">
-              Get Started Today
-            </button>
-          </div>
+        <section className="py-24 px-4 sm:px-6 lg:px-8 relative">
+          <motion.div 
+            className="max-w-4xl mx-auto text-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <MLCard className="p-12 bg-gradient-to-br from-coral/10 to-success/10 border-coral/20">
+              <MLHeading level={2} className="mb-6">
+                You know what you need. We'll help you build it—fast, reliable, and ready to scale.
+              </MLHeading>
+              <MLText variant="bodyL" color="weak" className="mb-8 max-w-2xl mx-auto">
+                Let's turn your clear vision into reality with our proven development process.
+              </MLText>
+              <MLButton
+                variant="filled"
+                size="lg"
+                onClick={() => navigate('/contact', { state: { projectType: 'certain' } })}
+                iconRight={
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                }
+              >
+                Get Started Today
+              </MLButton>
+            </MLCard>
+          </motion.div>
         </section>
       </div>
     </Layout>

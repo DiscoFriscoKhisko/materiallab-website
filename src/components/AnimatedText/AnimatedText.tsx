@@ -1,11 +1,10 @@
 import { motion } from 'framer-motion';
-import { type ReactNode } from 'react';
 import { usePrefersReducedMotion } from '../../utils/hooks';
 
 interface AnimatedTextProps {
   children: string;
   className?: string;
-  variant?: 'fadeUp' | 'stagger' | 'typewriter' | 'gradient' | 'glitch';
+  variant?: 'fadeUp' | 'stagger' | 'typewriter' | 'gradient';
   delay?: number;
   duration?: number;
 }
@@ -42,22 +41,20 @@ export const AnimatedText = ({
       visible: { 
         opacity: 1, 
         y: 0, 
-        transition: { duration, ease: 'easeOut' } 
+        transition: { duration } 
       },
     },
     stagger: {
       hidden: { opacity: 0, y: 20 },
       visible: { 
         opacity: 1, 
-        y: 0, 
-        transition: { duration: 0.5, ease: 'easeOut' } 
+        y: 0
       },
     },
     typewriter: {
       hidden: { opacity: 0 },
       visible: { 
-        opacity: 1,
-        transition: { duration: 0.1, ease: 'easeOut' } 
+        opacity: 1
       },
     },
   };
@@ -68,40 +65,13 @@ export const AnimatedText = ({
         className={`${className} text-gradient`}
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration, delay, ease: 'easeOut' }}
+        transition={{ duration, delay }}
       >
         {children}
       </motion.div>
     );
   }
 
-  if (variant === 'glitch') {
-    return (
-      <motion.div
-        className={className}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration, delay }}
-      >
-        <motion.span
-          animate={{
-            x: [0, -2, 2, 0],
-            textShadow: [
-              '0 0 0 transparent',
-              '2px 0 0 #ff0000, -2px 0 0 #00ffff',
-              '0 0 0 transparent'
-            ]
-          }}
-          transition={{
-            x: { duration: 0.1, repeat: 3, delay: delay + duration },
-            textShadow: { duration: 0.1, repeat: 3, delay: delay + duration }
-          }}
-        >
-          {children}
-        </motion.span>
-      </motion.div>
-    );
-  }
 
   if (variant === 'stagger') {
     return (

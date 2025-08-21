@@ -1,0 +1,523 @@
+/* MaterialLab Design Tokens - Dark Theme Primary */
+@import '@fontsource-variable/playfair-display';
+@import '@fontsource-variable/sora';
+@import '@fontsource-variable/inter';
+@import '@fontsource/jetbrains-mono';
+@import '@fontsource/noto-sans-devanagari/400.css';
+@import '@fontsource/noto-sans-devanagari/500.css';
+@import '@fontsource/noto-sans-devanagari/700.css';
+@import '@fontsource/noto-sans-kannada/400.css';
+@import '@fontsource/noto-sans-kannada/500.css';
+@import '@fontsource/noto-sans-kannada/700.css';
+
+:root {
+  /* === THEME SWITCHING SYSTEM === */
+  /* Default: Professional Dark Theme (Primary) */
+  
+  /* Sophisticated Dark Palette */
+  --primary: #8A63D2;               /* Confident purple accent */
+  --on-primary: #FFFFFF;            /* Text/icons on primary */
+  --primary-container: #2A1D4A;     /* Dark primary backgrounds */
+  --on-primary-container: #E8DFFF;  /* Text on primary container */
+  
+  /* Light theme overrides (applied via .light-theme class) */
+  --light-primary: #6750A4;
+  --light-primary-container: #EADDFF;
+  --light-on-primary: #FFFFFF;
+  --light-on-primary-container: #21005D;
+  --light-secondary: #625B71;
+  --light-secondary-container: #E8DEF8;
+  --light-on-secondary: #FFFFFF;
+  --light-on-secondary-container: #1D192B;
+  --light-background: #FFFBFE;
+  --light-on-background: #1D1B20;
+  --light-surface: #FFFBFE;
+  --light-surface-1: #F4EFFA;
+  --light-surface-2: #F1ECF6;
+  --light-surface-3: #ECDFF1;
+  --light-surface-4: #EAE1EC;
+  --light-surface-5: #E6DDE8;
+  --light-on-surface: #1D1B20;
+  --light-on-surface-variant: #49454F;
+  --light-outline: #79747E;
+  --light-outline-variant: #CAC4D0;
+  
+  /* Primary tonal variations */
+  --primary-hover: #9B7AE0;         /* Lighter on hover */
+  --primary-active: #7B54C4;        /* Darker on press */
+  --primary-subtle: rgba(138, 99, 210, 0.08); /* Transparent overlay */
+  
+  /* Secondary accent colors */
+  --secondary: #64FFDA;             /* Bright teal for highlights */
+  --on-secondary: #003D33;          /* Dark text on secondary */
+  --secondary-container: #1F3F3A;   /* Dark secondary backgrounds */
+  --on-secondary-container: #B3FFE6; /* Light text on secondary container */
+  
+  /* Tertiary support colors */
+  --tertiary: #FFB74D;              /* Warm orange for warnings/highlights */
+  --on-tertiary: #2D1B00;           /* Dark text on tertiary */
+  --tertiary-container: #3D2800;    /* Dark tertiary backgrounds */
+  --on-tertiary-container: #FFE0B3; /* Light text on tertiary container */
+  
+  /* Dark Surface System */
+  --background: #121212;            /* Near-black, easier on eyes */
+  --on-background: rgba(255, 255, 255, 0.87); /* 87% white for primary text */
+  
+  --surface: #1E1E1E;               /* Elevated elements */
+  --surface-1: #252525;             /* Slightly elevated */
+  --surface-2: #2C2C2C;             /* More elevated */
+  --surface-3: #333333;             /* High elevation */
+  --surface-4: #3A3A3A;             /* Highest elevation */
+  --surface-5: #424242;             /* Maximum elevation */
+  
+  --on-surface: rgba(255, 255, 255, 0.87);     /* Primary text - 87% opacity */
+  --on-surface-variant: rgba(255, 255, 255, 0.60); /* Secondary text - 60% opacity */
+  --on-surface-disabled: rgba(255, 255, 255, 0.38); /* Disabled text - 38% opacity */
+  
+  /* Outline and borders */
+  --outline: rgba(255, 255, 255, 0.12);        /* Subtle borders */
+  --outline-variant: rgba(255, 255, 255, 0.08); /* Very subtle borders */
+  
+  /* Text Hierarchy (mapped from surface colors) */
+  --text: var(--on-surface);           /* Primary text */
+  --text-weak: var(--on-surface-variant); /* Secondary text */
+  --text-weaker: #64748B;              /* Tertiary text - WCAG AA compliant */
+  --text-inverse: var(--on-primary);   /* Text on dark backgrounds */
+  
+  /* Semantic Colors - Dark Theme */
+  --error: #FF6B6B;                 /* Softer red for dark theme */
+  --on-error: #FFFFFF;              /* Text on error */
+  --error-container: #3D1A1A;       /* Dark error background */
+  --on-error-container: #FFCCCC;    /* Light text on error container */
+  
+  --success: #4AE54A;               /* Bright green for success */
+  --on-success: #003300;            /* Dark text on success */
+  --success-container: #1A3D1A;     /* Dark success background */
+  --on-success-container: #CCFFCC;  /* Light text on success container */
+  
+  --warning: var(--tertiary);       /* Uses tertiary orange */
+  --on-warning: var(--on-tertiary); /* Dark text on warning */
+  --warning-container: var(--tertiary-container); /* Dark warning background */
+  --on-warning-container: var(--on-tertiary-container); /* Light text on warning container */
+  
+  --info: var(--secondary);         /* Info uses secondary teal */
+  --link: #BB86FC;                  /* Purple-pink for links */
+  
+  /* === TYPOGRAPHY === */
+  
+  /* Font Stacks with Multilingual Support */
+  --font-display: 'Playfair Display Variable', 'Noto Sans Devanagari', 'Noto Sans Kannada', serif;
+  --font-headline: 'Sora Variable', 'Noto Sans Devanagari', 'Noto Sans Kannada', system-ui, sans-serif;
+  --font-body: 'Inter Variable', 'Noto Sans Devanagari', 'Noto Sans Kannada', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+  
+  /* Font Weights */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  /* === ENHANCED TYPOGRAPHIC SCALE === */
+  /* Sophisticated dual-typeface system with precise specifications */
+  
+  /* H1 (Display Headlines) - Playfair Display, 600 weight */
+  --text-h1: clamp(2.5rem, 6vw, 4.5rem);  /* 40px - 72px */
+  --text-h1-lh: 1.1;  /* Tight for impact */
+  --text-h1-tracking: -0.02em;
+  --text-h1-weight: 600;
+  
+  /* H2 (Section Titles) - Playfair Display, 500 weight */
+  --text-h2: clamp(1.8rem, 4vw, 2.8rem);  /* 29px - 45px */
+  --text-h2-lh: 1.2;  /* Slightly more breathing room */
+  --text-h2-tracking: -0.015em;
+  --text-h2-weight: 500;
+  
+  /* H3 (Sub-sections) - Playfair Display, 500 weight */
+  --text-h3: clamp(1.5rem, 3vw, 2.25rem);  /* 24px - 36px */
+  --text-h3-lh: 1.25;
+  --text-h3-tracking: -0.01em;
+  --text-h3-weight: 500;
+  
+  /* Body Text - Inter, 400 weight, optimized for readability */
+  --text-body: clamp(1rem, 2.5vw, 1.125rem);  /* 16px - 18px */
+  --text-body-lh: 1.6;  /* Perfect for body text */
+  --text-body-lh-indic: 1.7;  /* Extra space for Hindi/Kannada */
+  --text-body-tracking: 0;
+  --text-body-weight: 400;
+  
+  /* Button/CTA Text - Inter, 500 weight */
+  --text-button: 1rem;  /* Fixed 16px for buttons */
+  --text-button-lh: 1.2;
+  --text-button-tracking: 0.5px;  /* Increased letter spacing for clarity */
+  --text-button-weight: 500;
+  
+  /* Supporting text sizes */
+  --text-small: clamp(0.875rem, 1.5vw, 1rem);  /* 14px - 16px */
+  --text-small-lh: 1.5;
+  --text-small-tracking: 0;
+  
+  --text-caption: clamp(0.75rem, 1vw, 0.875rem);  /* 12px - 14px */
+  --text-caption-lh: 1.4;
+  --text-caption-tracking: 0.025em;
+  
+  /* Legacy mappings for backward compatibility */
+  --text-display: var(--text-h1);
+  --text-display-lh: var(--text-h1-lh);
+  --text-display-tracking: var(--text-h1-tracking);
+  
+  --text-headline: var(--text-h2);
+  --text-headline-lh: var(--text-h2-lh);
+  --text-headline-tracking: var(--text-h2-tracking);
+  
+  --text-title: var(--text-h3);
+  --text-title-lh: var(--text-h3-lh);
+  --text-title-tracking: var(--text-h3-tracking);
+  
+  --text-label: var(--text-button);
+  --text-label-lh: var(--text-button-lh);
+  --text-label-tracking: var(--text-button-tracking);
+  
+  /* H4 and H5 for smaller headings */
+  --text-h4: clamp(1.25rem, 2vw, 1.75rem);  /* 20px - 28px */
+  --text-h4-lh: 1.3;
+  --text-h4-tracking: 0;
+  --text-h4-weight: 500;
+  
+  --text-h5: clamp(1.125rem, 1.5vw, 1.5rem);  /* 18px - 24px */
+  --text-h5-lh: 1.35;
+  --text-h5-tracking: 0;
+  --text-h5-weight: 500;
+  
+  --text-body-l: var(--text-body);
+  --text-body-l-lh: var(--text-body-lh);
+  --text-body-m: var(--text-body);
+  --text-body-m-lh: var(--text-body-lh);
+  --text-body-s: var(--text-label);
+  --text-body-s-lh: var(--text-label-lh);
+  --text-caption: var(--text-label);
+  --text-caption-lh: var(--text-label-lh);
+  
+  /* === SOPHISTICATED 8PX GRID SPACING SYSTEM === */
+  /* Consistent spacing based on 8px increments for visual harmony */
+  
+  /* Core spacing scale - strict 8px grid */
+  --space-1: 0.5rem;       /* 8px */
+  --space-2: 1rem;         /* 16px */
+  --space-3: 1.5rem;       /* 24px */
+  --space-4: 2rem;         /* 32px */
+  --space-5: 2.5rem;       /* 40px */
+  --space-6: 3rem;         /* 48px */
+  --space-7: 3.5rem;       /* 56px */
+  --space-8: 4rem;         /* 64px */
+  --space-9: 4.5rem;       /* 72px */
+  --space-10: 5rem;        /* 80px */
+  --space-12: 6rem;        /* 96px */
+  --space-16: 8rem;        /* 128px */
+  --space-20: 10rem;       /* 160px */
+  
+  /* Legacy spacing mapped to 8px grid */
+  --space-xs: var(--space-1);     /* 8px */
+  --space-sm: var(--space-2);     /* 16px */
+  --space-md: var(--space-3);     /* 24px */
+  --space-lg: var(--space-4);     /* 32px */
+  --space-xl: var(--space-6);     /* 48px */
+  --space-2xl: var(--space-8);    /* 64px */
+  --space-3xl: var(--space-10);   /* 80px */
+  --space-4xl: var(--space-12);   /* 96px */
+  --space-5xl: var(--space-16);   /* 128px */
+  
+  /* Layout-specific spacing */
+  --section-padding-y: var(--space-16);    /* 128px vertical sections */
+  --section-padding-x: var(--space-6);     /* 48px horizontal sections */
+  --container-padding: var(--space-6);     /* 48px container padding */
+  --component-gap: var(--space-4);         /* 32px between components */
+  --content-gap: var(--space-3);           /* 24px within content */
+  
+  /* === GRID SYSTEM === */
+  /* 12-column responsive grid with max-width 1440px */
+  --grid-max-width: 90rem;         /* 1440px */
+  --grid-columns: 12;
+  --grid-gap: var(--space-6);      /* 48px gutters */
+  --grid-margin: var(--space-6);   /* 48px side margins */
+  
+  /* === MODERN BORDER RADIUS === */
+  /* Refined radius scale for contemporary feel */
+  
+  --radius-sm: 0.5rem;     /* 8px - inputs, small elements */
+  --radius-md: 0.75rem;    /* 12px - cards, containers */
+  --radius-lg: 1rem;       /* 16px - primary CTAs, larger elements */
+  --radius-xl: 1.5rem;     /* 24px - hero sections, prominent cards */
+  --radius-pill: 62.4375rem; /* 999px - pill buttons */
+  
+  /* === SOPHISTICATED ELEVATION SYSTEM === */
+  
+  /* Enhanced shadows for dark theme with subtle glows */
+  --elevation-1: 0px 1px 3px 0px rgba(0, 0, 0, 0.5), 0px 0px 0px 1px rgba(255, 255, 255, 0.05);
+  --elevation-2: 0px 2px 6px 0px rgba(0, 0, 0, 0.6), 0px 0px 0px 1px rgba(255, 255, 255, 0.08), 0px 0px 16px 0px rgba(138, 99, 210, 0.1);
+  --elevation-3: 0px 4px 12px 0px rgba(0, 0, 0, 0.7), 0px 0px 0px 1px rgba(255, 255, 255, 0.1), 0px 0px 24px 0px rgba(138, 99, 210, 0.15);
+  --elevation-4: 0px 8px 24px 0px rgba(0, 0, 0, 0.8), 0px 0px 0px 1px rgba(255, 255, 255, 0.12), 0px 0px 32px 0px rgba(138, 99, 210, 0.2);
+  --elevation-5: 0px 16px 48px 0px rgba(0, 0, 0, 0.9), 0px 0px 0px 1px rgba(255, 255, 255, 0.15), 0px 0px 48px 0px rgba(138, 99, 210, 0.25);
+  
+  /* Glassmorphism effects */
+  --glass-light: rgba(255, 255, 255, 0.05);
+  --glass-medium: rgba(255, 255, 255, 0.08);
+  --glass-strong: rgba(255, 255, 255, 0.12);
+  --glass-backdrop: blur(16px) saturate(120%);
+  
+  /* Legacy elevation mappings for compatibility */
+  --elev-1-shadow: var(--elevation-1);
+  --elev-2-shadow: var(--elevation-2);
+  --elev-3-shadow: var(--elevation-3);
+}
+
+/* Light Theme Overrides */
+.light-theme {
+  --primary: var(--light-primary);
+  --primary-container: var(--light-primary-container);
+  --on-primary: var(--light-on-primary);
+  --on-primary-container: var(--light-on-primary-container);
+  --secondary: var(--light-secondary);
+  --secondary-container: var(--light-secondary-container);
+  --on-secondary: var(--light-on-secondary);
+  --on-secondary-container: var(--light-on-secondary-container);
+  --background: var(--light-background);
+  --on-background: var(--light-on-background);
+  --surface: var(--light-surface);
+  --surface-1: var(--light-surface-1);
+  --surface-2: var(--light-surface-2);
+  --surface-3: var(--light-surface-3);
+  --surface-4: var(--light-surface-4);
+  --surface-5: var(--light-surface-5);
+  --on-surface: var(--light-on-surface);
+  --on-surface-variant: var(--light-on-surface-variant);
+  --outline: var(--light-outline);
+  --outline-variant: var(--light-outline-variant);
+  
+  /* Update dependent variables */
+  --text: var(--on-surface);
+  --text-weak: var(--on-surface-variant);
+  --text-weaker: #64748B;
+  
+  /* Light theme glassmorphism */
+  --glass-light: rgba(255, 255, 255, 0.1);
+  --glass-medium: rgba(255, 255, 255, 0.2);
+  --glass-strong: rgba(255, 255, 255, 0.3);
+  --border-color: rgba(0, 0, 0, 0.08);
+  --border-color-strong: rgba(0, 0, 0, 0.12);
+  
+  /* Light theme state layers */
+  --state-hover: rgba(0, 0, 0, 0.04);
+  --state-focus: rgba(0, 0, 0, 0.08);
+  --state-pressed: rgba(0, 0, 0, 0.12);
+}
+
+:root {
+  /* === SOPHISTICATED MOTION SYSTEM === */
+  /* Google Gemini-inspired refined motion for MaterialLab */
+  
+  /* Duration Tokens - refined for Gemini-style subtlety */
+  --duration-fast: 120ms;      /* Quick feedback */
+  --duration-base: 200ms;      /* Standard transitions */
+  --duration-slow: 300ms;      /* Deliberate movements */
+  --duration-scroll: 600ms;    /* Scroll-triggered animations */
+  --duration-modal: 350ms;     /* Modal/overlay animations */
+  
+  /* Google-inspired Easing Curves */
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);        /* Material standard */
+  --ease-enter: cubic-bezier(0, 0, 0.2, 1);           /* Incoming elements */
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);            /* Outgoing elements */
+  --ease-scroll: cubic-bezier(0.2, 0.8, 0.2, 1);      /* Scroll animations */
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Playful interactions */
+  
+  /* Gemini-style Refined Easing */
+  --ease-button: cubic-bezier(0.2, 0, 0, 1);          /* Smooth button interactions */
+  --ease-gentle: cubic-bezier(0.25, 0.1, 0.25, 1);    /* Gentle, natural feel */
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);   /* Subtle spring effect */
+  
+  /* Refined Microinteraction Values */
+  --hover-scale: 1.01;         /* Minimal hover scale */
+  --hover-lift: -1px;          /* Subtle hover lift */
+  --active-scale: 0.97;        /* Click feedback scale */
+  --scroll-offset: 20px;       /* Initial scroll animation offset */
+  
+  /* === BORDERS & FOCUS === */
+  
+  --border-width: 1px;
+  --border-width-thick: 2px;
+  --border-color: var(--outline-variant);
+  --border-color-strong: var(--outline);
+  
+  /* Focus Rings - Material 3 Style */
+  --focus-ring: 2px solid var(--primary);
+  --focus-glow: 0 0 0 4px rgba(255, 122, 89, 0.12);
+  
+  /* State Layers - Material 3 Interaction States */
+  --state-hover: rgba(15, 23, 42, 0.08);        /* 8% overlay for hover */
+  --state-focus: rgba(15, 23, 42, 0.12);        /* 12% overlay for focus */
+  --state-pressed: rgba(15, 23, 42, 0.16);      /* 16% overlay for pressed */
+  --state-selected: rgba(255, 122, 89, 0.08);   /* Primary color overlay */
+  
+  /* Material 3 Surface Tints */
+  --surface-tint: var(--primary);               /* Primary color for surface tints */
+  
+  /* === BREAKPOINTS === */
+  
+  --bp-xs: 30rem;    /* 480px */
+  --bp-sm: 48rem;    /* 768px */
+  --bp-md: 64rem;    /* 1024px */
+  --bp-lg: 80rem;    /* 1280px */
+  --bp-xl: 90rem;    /* 1440px */
+  --bp-2xl: 120rem;  /* 1920px */
+  
+  /* === GRID === */
+  
+  --grid-cols-mobile: 4;
+  --grid-cols-tablet: 8;
+  --grid-cols-desktop: 12;
+  --grid-gutter: var(--space-xl);
+  --grid-margin: var(--space-lg);
+  --container-max-width: 90rem; /* 1440px */
+}
+
+/* === RESPONSIVE TYPE SCALE === */
+
+@media (max-width: 768px) {
+  :root {
+    /* Mobile Typography */
+    --text-h1: 2.5rem;      /* 40px */
+    --text-h1-lh: 3rem;     /* 48px */
+    --text-h2: 2rem;        /* 32px */
+    --text-h2-lh: 2.5rem;   /* 40px */
+    --text-h3: 1.5rem;      /* 24px */
+    --text-h3-lh: 2rem;     /* 32px */
+    
+    /* Adjusted spacing for mobile */
+    --section-padding: var(--space-3xl);
+    --container-padding: var(--space-lg);
+    --grid-gutter: var(--space-lg);
+    --grid-margin: var(--space-md);
+  }
+}
+
+/* === UTILITY CLASSES === */
+
+/* Layout Utilities */
+.container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+
+.section {
+  padding-top: var(--section-padding);
+  padding-bottom: var(--section-padding);
+}
+
+/* Typography Utilities */
+.heading-1 {
+  font-family: var(--font-display);
+  font-size: var(--text-h1);
+  line-height: var(--text-h1-lh);
+  font-weight: 700;
+  color: var(--text);
+}
+
+.heading-2 {
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  line-height: var(--text-h2-lh);
+  font-weight: 600;
+  color: var(--text);
+}
+
+.heading-3 {
+  font-family: var(--font-display);
+  font-size: var(--text-h3);
+  line-height: var(--text-h3-lh);
+  font-weight: 600;
+  color: var(--text);
+}
+
+.body-large {
+  font-family: var(--font-body);
+  font-size: var(--text-body-l);
+  line-height: var(--text-body-l-lh);
+  color: var(--text-weak);
+}
+
+.body-medium {
+  font-family: var(--font-body);
+  font-size: var(--text-body-m);
+  line-height: var(--text-body-m-lh);
+  color: var(--text-weak);
+}
+
+/* Material 3 Surface Effects */
+.surface {
+  background: var(--surface);
+  color: var(--on-surface);
+}
+
+.surface-1 {
+  background: var(--surface-1);
+  color: var(--on-surface);
+}
+
+.surface-2 {
+  background: var(--surface-2);
+  color: var(--on-surface);
+}
+
+/* Material 3 Elevation Effects */
+.elevation-1 {
+  box-shadow: var(--elevation-1);
+}
+
+.elevation-2 {
+  box-shadow: var(--elevation-2);
+}
+
+.elevation-3 {
+  box-shadow: var(--elevation-3);
+}
+
+.elevation-4 {
+  box-shadow: var(--elevation-4);
+}
+
+.elevation-5 {
+  box-shadow: var(--elevation-5);
+}
+
+/* Material 3 State Layers */
+.state-layer-hover:hover {
+  background: var(--state-hover);
+}
+
+.state-layer-focus:focus {
+  background: var(--state-focus);
+}
+
+.state-layer-pressed:active {
+  background: var(--state-pressed);
+}
+
+/* Motion Utilities */
+.motion-reduce {
+  transition-duration: 0.01ms !important;
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  scroll-behavior: auto !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,217 +1,337 @@
 import { Layout } from '../../components/Layout/Layout';
-import { PathSelector } from '../../components/PathSelector/PathSelector';
-import { AnimatedText } from '../../components/AnimatedText/AnimatedText';
+import { ProofStrip } from '../../components/ProofStrip/ProofStrip';
+import { WhatWeDo } from '../../components/WhatWeDo/WhatWeDo';
+import { AudienceSelector } from '../../components/AudienceSelector/AudienceSelector';
+import { OffersPanel } from '../../components/OffersPanel/OffersPanel';
+import { MediaPlaceholder } from '../../components/MediaPlaceholder/MediaPlaceholder';
+import { LabBlocksAssembly } from '../../components/LabBlocks/LabBlocks';
+import { TuningKnobsAssembly } from '../../components/TuningKnobs/TuningKnobs';
+import { HeroVideoSystem } from '../../components/Hero3D/Hero3D';
+import { LanguageAdaptation } from '../../components/FeatureDiscovery/LanguageAdaptation';
 import { motion } from 'framer-motion';
-import { useScrollReveal, useCountUp } from '../../utils/hooks';
+import { MLHeading, MLText, MLButton } from '../../components/ML';
+import { useNavigate } from 'react-router-dom';
+import { useScrollAnimation, useStaggeredAnimation } from '../../hooks/useScrollAnimation';
+import { useLanguage } from '../../contexts/LanguageContext';
+import { useState } from 'react';
 
 export const Landing = () => {
+  const navigate = useNavigate();
+  const { t } = useLanguage();
+  const [selectedPersona, setSelectedPersona] = useState<'smb' | 'creator' | 'ai'>('smb');
+  const heroRef = useScrollAnimation({ threshold: 0.2 });
+  const foundersRef = useScrollAnimation({ threshold: 0.3 });
+  const workPrinciplesRef = useStaggeredAnimation(4, 0.15);
+  
   return (
     <Layout>
-      <div className="relative overflow-hidden">
+      <div className="relative overflow-hidden bg-background">
         {/* Hero Section */}
-        <section className="relative py-20 lg:py-32">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-4xl mx-auto">
-              <AnimatedText
-                variant="stagger"
-                className="text-5xl sm:text-6xl lg:text-7xl font-bold text-slate-900 mb-4 leading-tight"
-                delay={0.2}
-              >
-                Build AI Products
-              </AnimatedText>
+        <section ref={heroRef.ref} className="relative py-24 lg:py-32">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={heroRef.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              transition={{ duration: 0.8 }}
+            >
+              <MLText variant="display" as="h1" className="mb-6 heading-spacing-tight">
+                {t('hero.title')}
+              </MLText>
               
-              <AnimatedText
-                variant="glitch"
-                className="text-5xl sm:text-6xl lg:text-7xl font-bold text-primary-600 mb-8 leading-tight block"
-                delay={1}
-              >
-                That Actually Work
-              </AnimatedText>
-              
-              <motion.p 
-                className="text-xl sm:text-2xl text-slate-600 mb-12 leading-relaxed max-w-3xl mx-auto"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 1.8, ease: 'easeOut' }}
-              >
-                From concept to scale, we help you discover, design, and build AI-powered products 
-                that solve real problems and drive real results.
-              </motion.p>
+              <MLText variant="body" color="weak" className="mb-12 max-line-length mx-auto paragraph-spacing">
+                {t('hero.subtitle')}
+              </MLText>
 
+              {/* Hero Video System */}
               <motion.div 
-                className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 2.2 }}
+                className="mb-12"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={heroRef.isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+                transition={{ duration: 1, delay: 0.3 }}
               >
-                {[
-                  'AI-Native Development',
-                  'Proven Results', 
-                  'End-to-End Support'
-                ].map((text, index) => (
-                  <motion.div 
-                    key={text}
-                    className="flex items-center space-x-2 text-slate-700"
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: 2.4 + index * 0.1 }}
-                    whileHover={{ scale: 1.05, color: '#22c55e' }}
-                  >
-                    <motion.svg 
-                      className="w-5 h-5 text-green-500" 
-                      fill="currentColor" 
-                      viewBox="0 0 20 20"
-                      initial={{ scale: 0, rotate: -180 }}
-                      animate={{ scale: 1, rotate: 0 }}
-                      transition={{ duration: 0.5, delay: 2.4 + index * 0.1 + 0.2, type: 'spring', stiffness: 300 }}
-                    >
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </motion.svg>
-                    <span>{text}</span>
-                  </motion.div>
-                ))}
+                <HeroVideoSystem className="max-w-4xl mx-auto" />
               </motion.div>
-            </div>
+
+              {/* Visual Metaphors Row */}
+              <div className="mb-12 grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <motion.div 
+                  className="flex justify-center"
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={heroRef.isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
+                  transition={{ duration: 0.8, delay: 0.5 }}
+                >
+                  <LabBlocksAssembly className="max-w-md" />
+                </motion.div>
+                <motion.div 
+                  className="flex justify-center"
+                  initial={{ opacity: 0, x: 30 }}
+                  animate={heroRef.isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
+                  transition={{ duration: 0.8, delay: 0.7 }}
+                >
+                  <TuningKnobsAssembly className="max-w-md" />
+                </motion.div>
+              </div>
+
+              <MLButton
+                variant="filled"
+                size="lg"
+                onClick={() => navigate('/contact')}
+                iconRight={
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                }
+              >
+                {t('hero.cta')}
+              </MLButton>
+            </motion.div>
           </div>
           
-          {/* Enhanced Background decoration */}
-          <div className="absolute inset-0 -z-10 overflow-hidden">
-            <motion.div 
-              className="absolute top-40 left-10 w-72 h-72 bg-primary-200 rounded-full mix-blend-multiply filter blur-xl opacity-20"
-              animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.2, 0.4, 0.2],
-                x: [0, 50, 0],
-              }}
-              transition={{
-                duration: 8,
-                repeat: Infinity,
-                ease: 'easeInOut'
-              }}
-            />
-            <motion.div 
-              className="absolute bottom-40 right-10 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-20"
-              animate={{
-                scale: [1, 1.1, 1],
-                opacity: [0.2, 0.3, 0.2],
-                x: [0, -30, 0],
-              }}
-              transition={{
-                duration: 6,
-                repeat: Infinity,
-                ease: 'easeInOut',
-                delay: 1
-              }}
-            />
-            {/* New floating geometric shapes */}
+          {/* Light Theme Background decoration */}
+          <div className="absolute inset-0 -z-10">
             <motion.div
-              className="absolute top-1/4 right-1/4 w-16 h-16 border-2 border-primary-300/30 rotate-45"
-              animate={{ rotate: [45, 225, 45] }}
-              transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
+              className="absolute top-20 left-1/4 w-64 h-64 bg-gradient-to-r from-primary/5 to-secondary/5 rounded-full blur-3xl"
+              animate={{ scale: [1, 1.2, 1], rotate: [0, 180, 360] }}
+              transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
             />
             <motion.div
-              className="absolute bottom-1/3 left-1/4 w-8 h-8 bg-purple-300/20 rounded-full"
-              animate={{ y: [0, -20, 0], scale: [1, 1.2, 1] }}
-              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+              className="absolute bottom-20 right-1/4 w-48 h-48 bg-gradient-to-r from-tertiary/5 to-primary/5 rounded-full blur-3xl"
+              animate={{ scale: [1.2, 1, 1.2], rotate: [360, 0, 360] }}
+              transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
             />
           </div>
         </section>
 
-        {/* Path Selection */}
-        <PathSelector />
+        {/* Proof Strip */}
+        <ProofStrip />
 
-        {/* Trust Indicators & Stats */}
-        <section className="py-20 bg-gradient-to-br from-slate-50 to-blue-50/30">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <AnimatedText
-                variant="fadeUp"
-                className="text-3xl sm:text-4xl font-bold text-slate-900 mb-6"
-                delay={0.2}
-              >
-                Trusted by Forward-Thinking Companies
-              </AnimatedText>
-              <motion.p 
-                className="text-slate-600 max-w-2xl mx-auto text-lg"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-              >
-                From startups to enterprises, we've helped dozens of companies successfully 
-                integrate AI into their products and workflows.
-              </motion.p>
-            </div>
+        {/* What We Do */}
+        <WhatWeDo />
 
-            {/* Animated Stats */}
-            <motion.div 
-              className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16"
+        {/* Language Adaptation Discovery Card */}
+        <LanguageAdaptation />
+
+        {/* Audience Selector */}
+        <AudienceSelector 
+          selected={selectedPersona} 
+          onChange={setSelectedPersona} 
+        />
+
+        {/* Offers Panel */}
+        <OffersPanel persona={selectedPersona} />
+
+        {/* Founders Section */}
+        <section ref={foundersRef.ref} className="py-16 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto">
+            <motion.div
+              className="text-center mb-12"
               initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.6 }}
+              animate={foundersRef.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              transition={{ duration: 0.8 }}
             >
-              {[
-                { number: 50, label: 'AI Products Built', suffix: '+' },
-                { number: 2, label: 'Years Experience', suffix: '+' },
-                { number: 99, label: 'Client Satisfaction', suffix: '%' },
-                { number: 24, label: 'Response Time', suffix: 'h' }
-              ].map((stat, index) => {
-                const CountUpComponent = () => {
-                  const { ref, count } = useCountUp(stat.number, 2000);
-                  return (
-                    <motion.div
-                      ref={ref}
-                      className="text-center p-6 rounded-xl bg-white/80 backdrop-blur-sm border border-white/50 shadow-lg"
-                      whileHover={{ scale: 1.05, y: -5 }}
-                      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                    >
-                      <motion.div
-                        className="text-4xl font-bold text-primary-600 mb-2"
-                        initial={{ scale: 0 }}
-                        whileInView={{ scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.8 + index * 0.1, type: 'spring', stiffness: 200 }}
-                      >
-                        {count}{stat.suffix}
-                      </motion.div>
-                      <div className="text-slate-600 font-medium">{stat.label}</div>
-                    </motion.div>
-                  );
-                };
-                return <CountUpComponent key={index} />;
-              })}
+              <MLText variant="headline" as="h3" className="mb-4 heading-spacing-tight">
+                {t('founders.title')}
+              </MLText>
+              <MLText variant="body" color="weak" className="max-line-length mx-auto">
+                {t('founders.subtitle')}
+              </MLText>
             </motion.div>
-            
-            {/* Enhanced Client Logos */}
-            <motion.div 
-              className="grid grid-cols-2 md:grid-cols-4 gap-8"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 1 }}
-            >
-              {['TechCorp', 'InnovateLab', 'AI Dynamics', 'FutureScale'].map((company, i) => (
-                <motion.div 
-                  key={i} 
-                  className="h-16 glass rounded-xl flex items-center justify-center group cursor-pointer"
-                  initial={{ opacity: 0, y: 20 }}
+
+            <div className="grid md:grid-cols-2 gap-8">
+              {[
+                {
+                  name: t('founders.kaushik.name'),
+                  title: t('founders.kaushik.title'),
+                  bio: t('founders.kaushik.bio'),
+                  placeholder: 'Founder photo + LinkedIn'
+                },
+                {
+                  name: t('founders.damini.name'),
+                  title: t('founders.damini.title'),
+                  bio: t('founders.damini.bio'),
+                  placeholder: 'Founder photo + LinkedIn'
+                }
+              ].map((founder, index) => (
+                <motion.div
+                  key={index}
+                  className="text-center"
+                  initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 1.2 + i * 0.1 }}
-                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.6, delay: index * 0.2 }}
                 >
-                  <motion.span 
-                    className="text-slate-500 group-hover:text-slate-700 font-semibold text-lg transition-colors"
-                    initial={{ opacity: 0.6 }}
-                    whileHover={{ opacity: 1 }}
+                  <div className="mb-4">
+                    <MediaPlaceholder
+                      type="image"
+                      title={founder.name}
+                      description={founder.placeholder}
+                      aspectRatio="square"
+                      className="max-w-32 mx-auto"
+                    />
+                  </div>
+                  <MLHeading level={5} className="mb-1">
+                    {founder.name}
+                  </MLHeading>
+                  <MLText variant="bodyS" className="mb-3 font-medium text-primary">
+                    {founder.title}
+                  </MLText>
+                  <MLText variant="bodyS" color="weak" className="mb-4">
+                    {founder.bio}
+                  </MLText>
+                  <MLButton
+                    variant="text"
+                    size="sm"
+                    iconLeft={
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                      </svg>
+                    }
                   >
-                    {company}
-                  </motion.span>
+                    LinkedIn
+                  </MLButton>
                 </motion.div>
               ))}
-            </motion.div>
+            </div>
           </div>
+        </section>
+
+        {/* How We Work */}
+        <section ref={workPrinciplesRef.ref} className="py-16 px-4 sm:px-6 lg:px-8 bg-surface-1">
+          <div className="max-w-6xl mx-auto">
+            <motion.div
+              className="text-center mb-12"
+              initial={{ opacity: 0, y: 30 }}
+              animate={workPrinciplesRef.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              transition={{ duration: 0.8 }}
+            >
+              <MLHeading level={3} className="mb-4">
+                {t('howWeWork.title')}
+              </MLHeading>
+              <MLText variant="bodyL" color="weak">
+                {t('howWeWork.subtitle')}
+              </MLText>
+            </motion.div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                {
+                  title: t('howWeWork.smallTeams.title'),
+                  description: t('howWeWork.smallTeams.description'),
+                  icon: (
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                  )
+                },
+                {
+                  title: t('howWeWork.weeklyDemos.title'),
+                  description: t('howWeWork.weeklyDemos.description'),
+                  icon: (
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                    </svg>
+                  )
+                },
+                {
+                  title: t('howWeWork.transparentCosts.title'),
+                  description: t('howWeWork.transparentCosts.description'),
+                  icon: (
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  )
+                },
+                {
+                  title: t('howWeWork.outcomesFirst.title'),
+                  description: t('howWeWork.outcomesFirst.description'),
+                  icon: (
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                    </svg>
+                  )
+                }
+              ].map((principle, index) => (
+                <motion.div
+                  key={index}
+                  className="text-center"
+                  variants={{
+                    hidden: { opacity: 0, y: 30, scale: 0.9 },
+                    visible: { opacity: 1, y: 0, scale: 1 }
+                  }}
+                  {...workPrinciplesRef.getItemProps(index)}
+                  transition={{ 
+                    duration: 0.6,
+                    type: "spring",
+                    stiffness: 100,
+                    damping: 20
+                  }}
+                >
+                  <div className="w-12 h-12 bg-coral/20 rounded-lg flex items-center justify-center mx-auto mb-4 text-coral">
+                    {principle.icon}
+                  </div>
+                  <MLHeading level={5} className="mb-3">
+                    {principle.title}
+                  </MLHeading>
+                  <MLText variant="bodyS" color="weak">
+                    {principle.description}
+                  </MLText>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Trust Elements Placeholder */}
+        <section className="py-16 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid gap-8">
+              <MediaPlaceholder
+                type="carousel"
+                title="Client Testimonials"
+                description="Rotating testimonials from satisfied clients (3-4 testimonials). Include client photos, quotes highlighting results, and company details."
+                specs="Auto-rotating carousel with manual controls, smooth transitions"
+                aspectRatio="wide"
+              />
+              
+              <MediaPlaceholder
+                type="image"
+                title="Client Logos Bar"
+                description="Thin horizontal strip of client company logos in grayscale. Provides social proof and credibility."
+                specs="Responsive grid/strip, subtle hover effects"
+                aspectRatio="wide"
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* Final CTA */}
+        <section className="py-16 px-4 sm:px-6 lg:px-8">
+          <motion.div
+            className="max-w-2xl mx-auto text-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <MLHeading level={3} className="mb-6">
+              {t('finalCta.title')}
+            </MLHeading>
+            <MLText variant="bodyL" color="weak" className="mb-8">
+              {t('finalCta.subtitle')}
+            </MLText>
+            <MLButton
+              variant="filled"
+              size="lg"
+              onClick={() => navigate('/contact')}
+              iconRight={
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              }
+            >
+              {t('finalCta.cta')}
+            </MLButton>
+          </motion.div>
         </section>
       </div>
     </Layout>

@@ -1,97 +1,181 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Sans+Kannada:wght@400;500;600;700&display=swap');
+@import './styles/tokens.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   html {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: var(--font-body);
   }
   
   body {
-    @apply antialiased;
+    @apply antialiased bg-background text-on-surface;
   }
-}
 
-@layer components {
-  .btn-primary {
-    @apply bg-primary-600 hover:bg-primary-700 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl;
-  }
-  
-  .btn-secondary {
-    @apply bg-white hover:bg-gray-50 text-slate-700 font-medium py-3 px-6 rounded-lg border border-gray-200 transition-all duration-200 shadow-sm hover:shadow-md;
+  /* Language-specific font adjustments */
+  html[lang="hi"] {
+    font-family: 'Noto Sans Devanagari', var(--font-body);
   }
   
-  .card {
-    @apply bg-white rounded-xl shadow-sm hover:shadow-lg transition-shadow duration-300 border border-gray-100;
+  html[lang="kn"] {
+    font-family: 'Noto Sans Kannada', var(--font-body);
+  }
+  
+  /* Enhanced multilingual typography */
+  html[lang="hi"] .font-headline,
+  html[lang="hi"] .font-display {
+    font-family: 'Noto Sans Devanagari', var(--font-headline);
+  }
+  
+  html[lang="kn"] .font-headline,
+  html[lang="kn"] .font-display {
+    font-family: 'Noto Sans Kannada', var(--font-headline);
   }
 }
 
-/* Enhanced Keyframes */
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
-}
-
-@keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-
+/* Keyframes */
 @keyframes gradient-shift {
   0%, 100% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
 }
 
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
-  50% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.6); }
-}
-
-@keyframes magnetic-pull {
-  0% { transform: scale(1) rotate(0deg); }
-  50% { transform: scale(1.05) rotate(2deg); }
-  100% { transform: scale(1) rotate(0deg); }
-}
-
-/* Advanced Animation Classes */
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-.animate-shimmer {
-  animation: shimmer 2s ease-in-out infinite;
-}
-
+/* Animation Classes */
 .animate-gradient {
   background-size: 200% 200%;
   animation: gradient-shift 4s ease-in-out infinite;
 }
 
-.animate-pulse-glow {
-  animation: pulse-glow 3s ease-in-out infinite;
+/* === SOPHISTICATED SCROLL ANIMATIONS === */
+/* Elegant fade-in and slide-up animations with proper timing */
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(var(--scroll-offset));
+  transition: all var(--duration-scroll) var(--ease-scroll);
 }
 
-.animate-magnetic {
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+.animate-on-scroll.in-view {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.animate-magnetic:hover {
-  animation: magnetic-pull 0.6s ease-in-out;
+/* Staggered animations for lists and grids */
+.animate-stagger {
+  opacity: 0;
+  transform: translateY(var(--scroll-offset));
+  transition: all var(--duration-scroll) var(--ease-scroll);
+}
+
+.animate-stagger.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fade-in animation (no movement) */
+.animate-fade {
+  opacity: 0;
+  transition: opacity var(--duration-scroll) var(--ease-scroll);
+}
+
+.animate-fade.in-view {
+  opacity: 1;
+}
+
+/* Scale animation for images and cards */
+.animate-scale {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: all var(--duration-scroll) var(--ease-scroll);
+}
+
+.animate-scale.in-view {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* === SOPHISTICATED MICROINTERACTIONS === */
+/* Subtle interactions that provide delightful feedback */
+
+.interactive-hover {
+  transition: all var(--duration-base) var(--ease-standard);
+}
+
+.interactive-hover:hover {
+  transform: scale(var(--hover-scale)) translateY(var(--hover-lift));
+}
+
+.interactive-hover:active {
+  transform: scale(var(--active-scale));
+  transition-duration: var(--duration-fast);
+}
+
+/* Button glow effect on hover */
+.button-glow {
+  position: relative;
+  overflow: hidden;
+  transition: all var(--duration-base) var(--ease-standard);
+}
+
+.button-glow::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, var(--primary)/20, transparent 70%);
+  opacity: 0;
+  transition: opacity var(--duration-base) var(--ease-standard);
+}
+
+.button-glow:hover::before {
+  opacity: 1;
+}
+
+/* Magnetic effect for interactive elements */
+.magnetic {
+  transition: transform var(--duration-base) var(--ease-standard);
+}
+
+/* Card hover states */
+.card-interactive {
+  transition: all var(--duration-base) var(--ease-standard);
+}
+
+.card-interactive:hover {
+  transform: translateY(var(--hover-lift));
+  box-shadow: var(--elevation-3);
 }
 
 /* Glassmorphism Utilities */
 .glass {
   backdrop-filter: blur(16px) saturate(200%);
-  background-color: rgba(255, 255, 255, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.125);
+  background-color: var(--glass-medium);
+  border: 1px solid var(--outline-variant);
 }
 
 .glass-dark {
-  backdrop-filter: blur(16px) saturate(200%);
-  background-color: rgba(17, 25, 40, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.125);
+  backdrop-filter: blur(24px) saturate(200%);
+  background-color: var(--glass-strong);
+  border: 1px solid var(--outline);
+}
+
+.glass-card {
+  backdrop-filter: blur(16px) saturate(120%);
+  background: linear-gradient(135deg, 
+    var(--glass-light) 0%, 
+    var(--glass-medium) 50%, 
+    var(--glass-strong) 100%);
+  border: 1px solid var(--outline-variant);
+  box-shadow: var(--elevation-2), inset 0 1px 0 rgba(255,255,255,0.1);
+  transition: all var(--duration-base) var(--ease-standard);
+}
+
+.glass-card:hover {
+  backdrop-filter: blur(20px) saturate(140%);
+  border-color: var(--primary);
+  box-shadow: var(--elevation-3), 
+              inset 0 1px 0 rgba(255,255,255,0.2),
+              0 0 24px var(--primary)/20;
+  transform: translateY(-2px);
 }
 
 /* 3D Transform Utilities */
@@ -103,73 +187,286 @@
   perspective: 1000px;
 }
 
-/* Gradient Mesh Backgrounds */
-.gradient-mesh {
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
-  animation: gradient-shift 15s ease infinite;
+/* Typography Utilities */
+.text-display { 
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-bold);
 }
 
-.gradient-mesh-subtle {
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(147, 51, 234, 0.1) 100%);
+.text-headline { 
+  font-family: var(--font-headline);
+  font-weight: var(--font-weight-semibold);
 }
 
-/* Scroll-based Animation Support */
-.scroll-reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+.text-title { 
+  font-family: var(--font-headline);
+  font-weight: var(--font-weight-semibold);
 }
 
-.scroll-reveal.revealed {
-  opacity: 1;
-  transform: translateY(0);
+.text-body { 
+  font-family: var(--font-body);
+  font-weight: var(--font-weight-normal);
 }
 
-/* Typography Enhancements */
-.text-gradient {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  background-size: 200% 200%;
-  animation: gradient-shift 3s ease-in-out infinite;
+.text-label { 
+  font-family: var(--font-body);
+  font-weight: var(--font-weight-medium);
 }
 
-.text-glow {
-  text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+/* === TYPOGRAPHY & READABILITY UTILITIES === */
+/* Enhanced readability and typographic refinement */
+
+.max-line-length {
+  max-width: 75ch; /* Optimal 75 characters max line length for readability */
 }
 
-/* Button Enhancement */
-.btn-magnetic {
-  position: relative;
+.content-width {
+  max-width: 65ch; /* Narrower for focused content */
+}
+
+.wide-content {
+  max-width: 85ch; /* Wider for less dense content */
+}
+
+/* Refined spacing for typography hierarchy */
+.heading-spacing-tight {
+  margin-bottom: 0.5em;
+}
+
+.heading-spacing-normal {
+  margin-bottom: 0.75em;
+}
+
+.paragraph-spacing {
+  margin-bottom: 1.5em;
+}
+
+.prose-spacing {
+  margin-bottom: var(--space-4); /* 32px between prose elements */
+}
+
+/* Font weight utilities for refined typography */
+.font-weight-display {
+  font-weight: var(--text-h1-weight); /* 600 for display text */
+}
+
+.font-weight-heading {
+  font-weight: var(--text-h2-weight); /* 500 for headings */
+}
+
+.font-weight-body {
+  font-weight: var(--text-body-weight); /* 400 for body text */
+}
+
+.font-weight-button {
+  font-weight: var(--text-button-weight); /* 500 for buttons */
+}
+
+/* Letter spacing utilities */
+.tracking-tight {
+  letter-spacing: -0.02em;
+}
+
+.tracking-normal {
+  letter-spacing: 0;
+}
+
+.tracking-wide {
+  letter-spacing: 0.025em;
+}
+
+.tracking-button {
+  letter-spacing: var(--text-button-tracking); /* 0.5px for buttons */
+}
+
+/* === ACCESSIBILITY ENHANCEMENTS === */
+
+/* === ENHANCED ACCESSIBILITY FEATURES === */
+/* Superior focus states and keyboard navigation */
+
+.focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 0 0 4px rgba(138, 99, 210, 0.2); /* Subtle glow */
+}
+
+.focus-visible-inset {
+  box-shadow: inset 0 0 0 2px var(--primary), 0 0 0 4px rgba(138, 99, 210, 0.2);
+  outline: none;
+}
+
+/* Enhanced button focus states */
+.button-focus:focus-visible {
+  outline: 2px solid var(--on-primary);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--primary)/30;
+}
+
+/* Interactive element minimum touch targets (44px) */
+@media (pointer: coarse) {
+  button,
+  [role="button"],
+  input[type="button"],
+  input[type="submit"],
+  input[type="reset"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Screen reader only content */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
-.btn-magnetic::before {
+/* Focus trap for modals */
+.focus-trap {
+  position: relative;
+}
+
+.focus-trap:focus {
+  outline: none;
+}
+
+/* High contrast mode enhancements */
+@media (prefers-contrast: high) {
+  .focus-visible,
+  .focus-visible-inset,
+  .button-focus:focus-visible {
+    outline-width: 3px;
+    outline-style: solid;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --outline: rgba(255, 255, 255, 0.6);
+    --outline-variant: rgba(255, 255, 255, 0.4);
+    --text-weaker: #A0A9BA;
+  }
+  
+  .light-theme {
+    --outline: rgba(0, 0, 0, 0.6);
+    --outline-variant: rgba(0, 0, 0, 0.4);
+    --text-weaker: #495057;
+  }
+}
+
+/* === MOTION ACCESSIBILITY === */
+/* Respect user preferences for reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  /* Disable specific animations */
+  .animate-gradient,
+  .animate-on-scroll,
+  .animate-stagger,
+  .animate-fade,
+  .animate-scale {
+    animation: none;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+  
+  /* Keep essential interactions but reduce motion */
+  .interactive-hover:hover,
+  .card-interactive:hover {
+    transform: none !important;
+  }
+  
+  .magnetic {
+    transform: none !important;
+  }
+}
+
+/* Progressive enhancement for motion */
+@media (prefers-reduced-motion: no-preference) {
+  /* All our animation classes work normally */
+  .animate-on-scroll {
+    /* Animation properties already defined above */
+  }
+}
+
+/* Skip to content link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--primary);
+  color: var(--on-primary);
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  z-index: 9999;
+  transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+  top: 6px;
+  outline: 2px solid var(--on-primary);
+  outline-offset: 2px;
+}
+
+/* Interactive element sizing for touch */
+@media (pointer: coarse) {
+  button,
+  [role="button"],
+  a,
+  input,
+  select,
+  textarea {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Enhanced keyboard navigation */
+.keyboard-navigation {
+  position: relative;
+}
+
+.keyboard-navigation::after {
   content: '';
   position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.5s ease;
+  inset: -2px;
+  border: 2px solid transparent;
+  border-radius: var(--radius-md);
+  transition: border-color var(--duration-fast) var(--ease-standard);
+  pointer-events: none;
 }
 
-.btn-magnetic:hover::before {
-  left: 100%;
+.keyboard-navigation:focus-visible::after {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 1px var(--background);
 }
 
-.btn-magnetic:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-}
-
-/* Loading States */
-.skeleton {
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-  background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
+/* Screen reader only content */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }

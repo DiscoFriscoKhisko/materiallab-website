@@ -1,5 +1,8 @@
 import { Layout } from '../../components/Layout/Layout';
 import { ServiceCards } from '../../components/ServiceCards/ServiceCards';
+import { motion } from 'framer-motion';
+import { MLButton, MLCard, MLText, MLHeading } from '../../components/ML';
+import { useNavigate } from 'react-router-dom';
 
 const explorativeUserServices = [
   {
@@ -65,79 +68,142 @@ const explorativeUserServices = [
 ];
 
 export const ExplorativeUser = () => {
+  const navigate = useNavigate();
+  
   return (
     <Layout>
-      <div className="relative">
+      <div className="relative overflow-hidden bg-bg min-h-screen">
+        {/* Background Effects */}
+        <div className="absolute inset-0 -z-10">
+          <motion.div
+            className="absolute top-20 left-1/4 w-64 h-64 bg-gradient-to-r from-ion/20 to-coral/20 rounded-full blur-3xl"
+            animate={{ scale: [1, 1.2, 1], rotate: [0, 180, 360] }}
+            transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+          />
+          <motion.div
+            className="absolute bottom-20 right-1/4 w-48 h-48 bg-gradient-to-r from-coral/15 to-ion/15 rounded-full blur-3xl"
+            animate={{ scale: [1.2, 1, 1.2], rotate: [360, 0, 360] }}
+            transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
+          />
+          <motion.div
+            className="absolute top-1/2 left-1/3 w-32 h-32 bg-gradient-to-r from-ion/10 to-coral/10 rounded-full blur-2xl"
+            animate={{ scale: [1, 1.3, 1], x: [0, 50, 0], y: [0, -30, 0] }}
+            transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}
+          />
+        </div>
+
         {/* Hero Section */}
-        <section className="py-16 lg:py-24 bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-4xl mx-auto">
-              <div className="inline-flex items-center px-4 py-2 bg-purple-100 rounded-full text-purple-800 font-medium text-sm mb-6">
-                <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M13 10V3L4 14h7v7l9-11h-7z" clipRule="evenodd" />
-                </svg>
-                For the Explorative User
-              </div>
+        <section className="py-24 px-4 sm:px-6 lg:px-8 relative">
+          <div className="max-w-5xl mx-auto text-center">
+            <motion.div
+              className="inline-flex items-center px-4 py-2 bg-ion/20 border border-ion/30 rounded-full text-ion font-medium text-sm mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M13 10V3L4 14h7v7l9-11h-7z" clipRule="evenodd" />
+              </svg>
+              For the Explorative User
+            </motion.div>
               
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight">
+              <motion.h1
+                className="text-h1 font-bold font-display mb-8 leading-tight text-text"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
                 Not Sure What's Next?
-                <span className="block text-purple-600">Let's Explore Together.</span>
-              </h1>
+                <span className="block bg-gradient-to-r from-ion to-coral bg-clip-text text-transparent">Let's Explore Together.</span>
+              </motion.h1>
               
-              <p className="text-xl text-slate-600 mb-8 leading-relaxed max-w-3xl mx-auto">
+              <motion.p 
+                className="text-body-l text-text-weak mb-16 max-w-3xl mx-auto leading-relaxed"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
                 Sometimes the best innovations come from curiosity and experimentation. 
                 Let's co-create the right path forward and discover what's possible.
-              </p>
+              </motion.p>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="btn-primary text-lg px-8 py-4 bg-purple-600 hover:bg-purple-700">
+              <motion.div 
+                className="flex flex-col sm:flex-row gap-4 justify-center"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+              >
+                <MLButton
+                  variant="filled"
+                  size="lg"
+                  onClick={() => navigate('/contact', { state: { projectType: 'explorative' } })}
+                  iconRight={
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  }
+                >
                   Start Exploring
-                </button>
-                <button className="btn-secondary text-lg px-8 py-4 border-purple-200 hover:bg-purple-50">
+                </MLButton>
+                <MLButton
+                  variant="outlined"
+                  size="lg"
+                  onClick={() => navigate('/contact', { state: { projectType: 'explorative' } })}
+                >
                   Book a Discovery Call
-                </button>
-              </div>
-            </div>
-          </div>
-          
-          {/* Floating elements */}
-          <div className="absolute inset-0 -z-10 overflow-hidden">
-            <div className="absolute top-20 left-10 w-32 h-32 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-float"></div>
-            <div className="absolute bottom-32 right-20 w-40 h-40 bg-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-float" style={{animationDelay: '2s'}}></div>
-            <div className="absolute top-1/2 left-1/2 w-24 h-24 bg-orange-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-float" style={{animationDelay: '4s'}}></div>
+                </MLButton>
+              </motion.div>
           </div>
         </section>
 
         {/* Services Section */}
-        <section className="py-20">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
+        <section className="py-24 px-4 sm:px-6 lg:px-8 relative">
+          <div className="max-w-6xl mx-auto">
+            <motion.div 
+              className="text-center mb-16"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <MLHeading level={2} className="mb-6">
                 Our Discovery Journey
-              </h2>
-              <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+              </MLHeading>
+              <MLText variant="bodyL" color="weak" className="max-w-3xl mx-auto">
                 An open-ended, creative process that adapts to your needs and 
                 helps you discover breakthrough opportunities.
-              </p>
-            </div>
+              </MLText>
+            </motion.div>
 
             <ServiceCards services={explorativeUserServices} variant="explorative" />
           </div>
         </section>
 
         {/* Innovation Showcase */}
-        <section className="py-20 bg-gradient-to-r from-purple-900 to-indigo-900">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+        <section className="py-24 px-4 sm:px-6 lg:px-8 relative">
+          <div className="max-w-6xl mx-auto">
+            <motion.div 
+              className="text-center mb-12"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <MLHeading level={2} className="mb-6">
                 Where Exploration Leads
-              </h2>
-              <p className="text-xl text-purple-200 max-w-2xl mx-auto">
+              </MLHeading>
+              <MLText variant="bodyL" color="weak" className="max-w-2xl mx-auto">
                 See what happens when curiosity meets expertise
-              </p>
-            </div>
+              </MLText>
+            </motion.div>
             
-            <div className="grid md:grid-cols-3 gap-6">
+            <motion.div 
+              className="grid md:grid-cols-3 gap-6"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
               {[
                 {
                   title: "AI-Powered Analytics",
@@ -155,29 +221,46 @@ export const ExplorativeUser = () => {
                   icon: "💡"
                 }
               ].map((example, index) => (
-                <div key={index} className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+                <MLCard key={index} className="p-6 bg-gradient-to-br from-ion/10 to-coral/10 border-ion/20" hover={true}>
                   <div className="text-4xl mb-4">{example.icon}</div>
-                  <h3 className="text-xl font-bold text-white mb-2">{example.title}</h3>
-                  <p className="text-purple-200">{example.description}</p>
-                </div>
+                  <MLHeading level={4} className="mb-2">{example.title}</MLHeading>
+                  <MLText color="weak">{example.description}</MLText>
+                </MLCard>
               ))}
-            </div>
+            </motion.div>
           </div>
         </section>
 
         {/* Closing CTA */}
-        <section className="py-20 bg-slate-50">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-6">
-              Not sure what's next? We'll explore the possibilities with you and co-create the right path forward.
-            </h2>
-            <p className="text-xl text-slate-600 mb-8 max-w-2xl mx-auto">
-              Let's start with curiosity and see where it takes us.
-            </p>
-            <button className="btn-primary text-lg px-8 py-4 bg-purple-600 hover:bg-purple-700">
-              Begin the Journey
-            </button>
-          </div>
+        <section className="py-24 px-4 sm:px-6 lg:px-8 relative">
+          <motion.div 
+            className="max-w-4xl mx-auto text-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <MLCard className="p-12 bg-gradient-to-br from-ion/10 to-coral/10 border-ion/20">
+              <MLHeading level={2} className="mb-6">
+                Not sure what's next? We'll explore the possibilities with you and co-create the right path forward.
+              </MLHeading>
+              <MLText variant="bodyL" color="weak" className="mb-8 max-w-2xl mx-auto">
+                Let's start with curiosity and see where it takes us.
+              </MLText>
+              <MLButton
+                variant="filled"
+                size="lg"
+                onClick={() => navigate('/contact', { state: { projectType: 'explorative' } })}
+                iconRight={
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                }
+              >
+                Begin the Journey
+              </MLButton>
+            </MLCard>
+          </motion.div>
         </section>
       </div>
     </Layout>

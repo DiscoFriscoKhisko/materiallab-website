@@ -1,23 +1,55 @@
-import { type ReactNode } from 'react';
+import { type ReactNode, useEffect } from 'react';
 import { Navigation } from '../Navigation/Navigation';
-import { FloatingElements } from '../FloatingElements/FloatingElements';
+import { useAccessibilityPreferences, useAnnouncer } from '../../hooks/useAccessibility';
 
 interface LayoutProps {
   children: ReactNode;
   showNavigation?: boolean;
-  showFloatingElements?: boolean;
 }
 
 export const Layout = ({ 
   children, 
-  showNavigation = true, 
-  showFloatingElements = true 
+  showNavigation = true
 }: LayoutProps) => {
+  const { prefersReducedMotion, prefersHighContrast } = useAccessibilityPreferences();
+  const { announce } = useAnnouncer();
+
+  // Apply accessibility classes to root element
+  useEffect(() => {
+    const root = document.documentElement;
+    
+    if (prefersReducedMotion) {
+      root.classList.add('prefers-reduced-motion');
+    } else {
+      root.classList.remove('prefers-reduced-motion');
+    }
+    
+    if (prefersHighContrast) {
+      root.classList.add('prefers-high-contrast');
+    } else {
+      root.classList.remove('prefers-high-contrast');
+    }
+  }, [prefersReducedMotion, prefersHighContrast]);
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30 relative overflow-hidden">
-      {showFloatingElements && <FloatingElements count={8} />}
+    <div className="min-h-screen bg-bg relative overflow-hidden">
+      {/* Skip to main content link for screen readers */}
+      <a 
+        href="#main-content" 
+        className="skip-link"
+        tabIndex={1}
+        onClick={() => announce('Navigating to main content')}
+      >
+        Skip to main content
+      </a>
+
       {showNavigation && <Navigation />}
-      <main className="relative z-10">
+      
+      <main 
+        id="main-content" 
+        className="relative z-10" 
+        role="main"
+        aria-label="Main content"
+      >
         {children}
       </main>
     </div>

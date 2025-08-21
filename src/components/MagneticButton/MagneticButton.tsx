@@ -17,20 +17,20 @@ export const MagneticButton = ({
   variant = 'primary',
   size = 'md',
   magneticStrength = 0.3,
-  rippleColor = 'rgba(255, 255, 255, 0.3)',
+  rippleColor = 'rgba(85, 194, 255, 0.3)',
   showArrow = false,
   onClick,
   ...props
 }: MagneticButtonProps) => {
   const magneticRef = useMagneticEffect(magneticStrength);
 
-  const baseClasses = 'relative overflow-hidden font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 transform-gpu';
+  const baseClasses = 'relative overflow-hidden font-medium font-body rounded-lg transition-all duration-base focus:outline-none focus:ring-2 focus:ring-offset-2 transform-gpu';
 
   const variantClasses = {
-    primary: 'bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500 btn-magnetic',
-    secondary: 'bg-white text-slate-700 border border-gray-200 hover:bg-gray-50 focus:ring-primary-500 btn-magnetic',
-    ghost: 'text-primary-600 hover:bg-primary-50 focus:ring-primary-500',
-    gradient: 'bg-gradient-to-r from-primary-600 to-purple-600 text-white hover:from-primary-700 hover:to-purple-700 focus:ring-primary-500 animate-gradient btn-magnetic'
+    primary: 'bg-coral text-text-inverse hover:bg-coral-strong focus:ring-ion btn-magnetic shadow-elevation-1 hover:shadow-elevation-2',
+    secondary: 'bg-surface text-text border border-glass-light hover:bg-surface-2 focus:ring-ion btn-magnetic shadow-elevation-1 hover:shadow-elevation-2',
+    ghost: 'text-ion hover:bg-ion-subtle focus:ring-ion',
+    gradient: 'bg-gradient-to-r from-coral to-ion text-text-inverse hover:from-coral-strong hover:to-ion-strong focus:ring-ion animate-gradient btn-magnetic shadow-elevation-1 hover:shadow-elevation-2'
   };
 
   const sizeClasses = {
@@ -88,7 +88,7 @@ export const MagneticButton = ({
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
         onClick={handleClick}
-        {...props}
+        {...(props as any)}
       >
         <span className="relative z-20 flex items-center justify-center gap-2">
           {children}
