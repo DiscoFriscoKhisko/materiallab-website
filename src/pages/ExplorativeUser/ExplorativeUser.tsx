@@ -79,12 +79,12 @@ export const ExplorativeUser = () => {
                 For the Explorative User
               </div>
               
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-secondary-900 mb-6 leading-tight">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight">
                 Not Sure What's Next?
                 <span className="block text-purple-600">Let's Explore Together.</span>
               </h1>
               
-              <p className="text-xl text-secondary-600 mb-8 leading-relaxed max-w-3xl mx-auto">
+              <p className="text-xl text-slate-600 mb-8 leading-relaxed max-w-3xl mx-auto">
                 Sometimes the best innovations come from curiosity and experimentation. 
                 Let's co-create the right path forward and discover what's possible.
               </p>
@@ -112,10 +112,10 @@ export const ExplorativeUser = () => {
         <section className="py-20">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-3xl sm:text-4xl font-bold text-secondary-900 mb-4">
+              <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
                 Our Discovery Journey
               </h2>
-              <p className="text-xl text-secondary-600 max-w-3xl mx-auto">
+              <p className="text-xl text-slate-600 max-w-3xl mx-auto">
                 An open-ended, creative process that adapts to your needs and 
                 helps you discover breakthrough opportunities.
               </p>
@@ -166,12 +166,12 @@ export const ExplorativeUser = () => {
         </section>
 
         {/* Closing CTA */}
-        <section className="py-20 bg-secondary-50">
+        <section className="py-20 bg-slate-50">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl sm:text-4xl font-bold text-secondary-900 mb-6">
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-6">
               Not sure what's next? We'll explore the possibilities with you and co-create the right path forward.
             </h2>
-            <p className="text-xl text-secondary-600 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-slate-600 mb-8 max-w-2xl mx-auto">
               Let's start with curiosity and see where it takes us.
             </p>
             <button className="btn-primary text-lg px-8 py-4 bg-purple-600 hover:bg-purple-700">

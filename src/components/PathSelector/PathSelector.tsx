@@ -6,10 +6,10 @@ export const PathSelector = () => {
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-4xl sm:text-5xl font-bold text-secondary-900 mb-6">
+        <h2 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-6">
           Do you already know what you need?
         </h2>
-        <p className="text-xl text-secondary-600 mb-12 max-w-2xl mx-auto">
+        <p className="text-xl text-slate-600 mb-12 max-w-2xl mx-auto">
           Choose your path to discover how MaterialLab can help bring your AI product vision to life.
         </p>
         
@@ -23,8 +23,8 @@ export const PathSelector = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <h3 className="text-2xl font-bold text-secondary-900 mb-4">Yes, I know what I want</h3>
-            <p className="text-secondary-600 mb-6">
+            <h3 className="text-2xl font-bold text-slate-900 mb-4">Yes, I know what I want</h3>
+            <p className="text-slate-600 mb-6">
               You have a clear vision and specific requirements. Let's build it fast, reliable, and ready to scale.
             </p>
             <div className="btn-primary inline-flex items-center group-hover:bg-green-600">
@@ -44,8 +44,8 @@ export const PathSelector = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
             </div>
-            <h3 className="text-2xl font-bold text-secondary-900 mb-4">I'm exploring possibilities</h3>
-            <p className="text-secondary-600 mb-6">
+            <h3 className="text-2xl font-bold text-slate-900 mb-4">I'm exploring possibilities</h3>
+            <p className="text-slate-600 mb-6">
               You're curious about what's possible and want to discover new opportunities. Let's explore together.
             </p>
             <div className="btn-secondary inline-flex items-center group-hover:bg-purple-50">

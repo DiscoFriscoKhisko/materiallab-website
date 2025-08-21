@@ -9,30 +9,30 @@ export const Landing = () => {
         <section className="relative py-20 lg:py-32">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-4xl mx-auto">
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-secondary-900 mb-8 leading-tight">
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-slate-900 mb-8 leading-tight">
                 Build AI Products
                 <span className="block text-primary-600">That Actually Work</span>
               </h1>
               
-              <p className="text-xl sm:text-2xl text-secondary-600 mb-12 leading-relaxed max-w-3xl mx-auto">
+              <p className="text-xl sm:text-2xl text-slate-600 mb-12 leading-relaxed max-w-3xl mx-auto">
                 From concept to scale, we help you discover, design, and build AI-powered products 
                 that solve real problems and drive real results.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-                <div className="flex items-center space-x-2 text-secondary-700">
+                <div className="flex items-center space-x-2 text-slate-700">
                   <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
                   <span>AI-Native Development</span>
                 </div>
-                <div className="flex items-center space-x-2 text-secondary-700">
+                <div className="flex items-center space-x-2 text-slate-700">
                   <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
                   <span>Proven Results</span>
                 </div>
-                <div className="flex items-center space-x-2 text-secondary-700">
+                <div className="flex items-center space-x-2 text-slate-700">
                   <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
@@ -53,13 +53,13 @@ export const Landing = () => {
         <PathSelector />
 
         {/* Trust Indicators */}
-        <section className="py-16 bg-secondary-50/50">
+        <section className="py-16 bg-slate-50/50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h3 className="text-2xl font-bold text-secondary-900 mb-4">
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">
                 Trusted by Forward-Thinking Companies
               </h3>
-              <p className="text-secondary-600 max-w-2xl mx-auto">
+              <p className="text-slate-600 max-w-2xl mx-auto">
                 From startups to enterprises, we've helped dozens of companies successfully 
                 integrate AI into their products and workflows.
               </p>

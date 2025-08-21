@@ -9,17 +9,17 @@ export const Navigation = () => {
             <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-sm">ML</span>
             </div>
-            <span className="text-xl font-bold text-secondary-900">MaterialLab</span>
+            <span className="text-xl font-bold text-slate-900">MaterialLab</span>
           </Link>
           
           <div className="hidden md:flex items-center space-x-8">
-            <Link to="/services" className="text-secondary-600 hover:text-secondary-900 font-medium transition-colors">
+            <Link to="/services" className="text-slate-600 hover:text-slate-900 font-medium transition-colors">
               Services
             </Link>
-            <Link to="/about" className="text-secondary-600 hover:text-secondary-900 font-medium transition-colors">
+            <Link to="/about" className="text-slate-600 hover:text-slate-900 font-medium transition-colors">
               About
             </Link>
-            <Link to="/contact" className="text-secondary-600 hover:text-secondary-900 font-medium transition-colors">
+            <Link to="/contact" className="text-slate-600 hover:text-slate-900 font-medium transition-colors">
               Contact
             </Link>
             <button className="btn-primary">

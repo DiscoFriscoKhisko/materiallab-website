@@ -47,10 +47,10 @@ export const ServiceCards = ({ services, variant = 'certain' }: ServiceCardsProp
             </div>
             
             <div className="flex-1">
-              <h3 className="text-xl md:text-2xl font-bold text-secondary-900 mb-3">
+              <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-3">
                 {service.title}
               </h3>
-              <p className="text-secondary-600 mb-4 leading-relaxed">
+              <p className="text-slate-600 mb-4 leading-relaxed">
                 {service.description}
               </p>
               
@@ -66,7 +66,7 @@ export const ServiceCards = ({ services, variant = 'certain' }: ServiceCardsProp
                     >
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
-                    <span className="text-secondary-700">{item}</span>
+                    <span className="text-slate-700">{item}</span>
                   </li>
                 ))}
               </ul>

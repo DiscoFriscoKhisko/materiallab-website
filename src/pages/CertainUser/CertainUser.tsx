@@ -79,12 +79,12 @@ export const CertainUser = () => {
                 For the Certain User
               </div>
               
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-secondary-900 mb-6 leading-tight">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight">
                 You Know What You Need.
                 <span className="block text-primary-600">We'll Help You Build It.</span>
               </h1>
               
-              <p className="text-xl text-secondary-600 mb-8 leading-relaxed max-w-3xl mx-auto">
+              <p className="text-xl text-slate-600 mb-8 leading-relaxed max-w-3xl mx-auto">
                 Fast, reliable, and ready to scale. Our structured approach takes your clear vision 
                 and transforms it into a production-ready AI product.
               </p>
@@ -105,10 +105,10 @@ export const CertainUser = () => {
         <section className="py-20">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-3xl sm:text-4xl font-bold text-secondary-900 mb-4">
+              <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
                 Our Proven Process
               </h2>
-              <p className="text-xl text-secondary-600 max-w-3xl mx-auto">
+              <p className="text-xl text-slate-600 max-w-3xl mx-auto">
                 A systematic approach that takes you from concept to scale, 
                 with clear milestones and measurable outcomes at every step.
               </p>
@@ -119,7 +119,7 @@ export const CertainUser = () => {
         </section>
 
         {/* Closing CTA */}
-        <section className="py-20 bg-secondary-900">
+        <section className="py-20 bg-slate-900">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
               You know what you need. We'll help you build it—fast, reliable, and ready to scale.
@@ -127,7 +127,7 @@ export const CertainUser = () => {
             <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
               Let's turn your clear vision into reality with our proven development process.
             </p>
-            <button className="btn-primary text-lg px-8 py-4 bg-white text-secondary-900 hover:bg-gray-100">
+            <button className="btn-primary text-lg px-8 py-4 bg-white text-slate-900 hover:bg-gray-100">
               Get Started Today
             </button>
           </div>
