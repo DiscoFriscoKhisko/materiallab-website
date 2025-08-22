@@ -6,6 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MaterialLab - AI Product Studio</title>
     <meta name="description" content="Build AI Products That Actually Work. From concept to scale, we help you discover, design, and build AI-powered products that solve real problems." />
+    
+    <!-- GitHub Pages SPA redirect script -->
+    <script>
+      // Handle GitHub Pages SPA routing
+      (function() {
+        const searchParams = new URLSearchParams(window.location.search);
+        const redirect = searchParams.get('p');
+        if (redirect) {
+          history.replaceState(null, null, redirect + window.location.search.replace('?p=' + redirect, '').replace('&p=' + redirect, ''));
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
