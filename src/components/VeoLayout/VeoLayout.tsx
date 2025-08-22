@@ -170,15 +170,15 @@ interface VeoContentBlockProps {
 export const VeoContentBlock = ({ 
   children, 
   reverse = false,
-  imageRatio = '16:9',
+  // imageRatio = '16:9',
   className = '' 
 }: VeoContentBlockProps) => {
-  const ratioClasses = {
-    '1:1': 'aspect-square',
-    '4:3': 'aspect-[4/3]',
-    '16:9': 'aspect-video',
-    '3:2': 'aspect-[3/2]'
-  };
+  // const ratioClasses = {
+  //   '1:1': 'aspect-square',
+  //   '4:3': 'aspect-[4/3]',
+  //   '16:9': 'aspect-video',
+  //   '3:2': 'aspect-[3/2]'
+  // };
 
   return (
     <div className={`

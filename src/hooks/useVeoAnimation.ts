@@ -15,7 +15,7 @@ export const useVeoScroll = (options: UseVeoScrollOptions = {}) => {
     rootMargin = '0px 0px -10% 0px',
     triggerOnce = true,
     delay = 0,
-    stagger = 100
+    // stagger = 100
   } = options;
 
   const [isVisible, setIsVisible] = useState(false);
@@ -121,7 +121,7 @@ export const useVeoParallax = (speed: number = 0.5) => {
       const element = elementRef.current;
       if (!element) return;
 
-      const rect = element.getBoundingClientRect();
+      // const rect = element.getBoundingClientRect();
       const scrolled = window.pageYOffset;
       const parallax = scrolled * speed;
 
