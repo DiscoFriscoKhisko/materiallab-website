@@ -1,6 +1,6 @@
 import { Component, ReactNode, ErrorInfo } from 'react';
-import { MLHeading, MLText } from '../ML';
-import { Button } from '../UI';
+import { MLHeading, MLText } from './ML';
+import { Button } from './UI';
 
 interface Props {
   children: ReactNode;

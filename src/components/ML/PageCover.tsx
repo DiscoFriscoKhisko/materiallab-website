@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useInView } from '../../hooks/useInView';
-import { MLButton } from './Button';
+import { Button as MLButton } from '../UI';
 import { MLText } from './Typography';
 import { type ReactNode } from 'react';
 

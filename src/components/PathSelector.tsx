@@ -1,7 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { AnimatedText } from '../AnimatedText/AnimatedText';
-import { VeoButton, VeoArrowIcon } from '../VeoButton';
+import { Button as VeoButton } from './UI';
+import { VeoArrowRightIcon } from './VeoIcon';
 import { MLCard, MLText, MLHeading } from '../ML';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
 
@@ -105,7 +106,7 @@ export const PathSelector = () => {
                   variant="primary"
                   size="lg"
                   fullWidth
-                  icon={<VeoArrowIcon />}
+                  icon={<VeoArrowRightIcon />}
                   iconPosition="right"
                   onClick={(e) => {
                     e.stopPropagation();
@@ -164,7 +165,7 @@ export const PathSelector = () => {
                   variant="outline"
                   size="lg"
                   fullWidth
-                  icon={<VeoArrowIcon />}
+                  icon={<VeoArrowRightIcon />}
                   iconPosition="right"
                   onClick={(e) => {
                     e.stopPropagation();
@@ -184,7 +185,7 @@ export const PathSelector = () => {
           <VeoButton
             variant="ghost"
             size="md"
-            icon={<VeoArrowIcon />}
+            icon={<VeoArrowRightIcon />}
             iconPosition="right"
             onClick={() => navigate('/contact')}
           >

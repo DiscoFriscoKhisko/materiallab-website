@@ -41,15 +41,19 @@ src/
 │   ├── Layout/         # Main app wrapper with navigation
 │   ├── VeoLayout/      # Veo-specific layout components
 │   ├── Navigation/     # Site navigation
-│   ├── PathSelector/   # User journey selection interface
 │   ├── Hero3D/         # 3D hero section with Three.js
-│   ├── AnimatedText/   # Text animations (stagger, glitch variants)
-│   ├── Veo*/          # Veo design system components (Button, Card, Carousel, etc.)
+│   ├── UI/            # Unified UI components (Button, Input, etc.)
 │   ├── ML/            # MaterialLab design system components
 │   ├── ServiceCards/  # Service display components
 │   ├── ContactCTA/    # Contact call-to-action components
-│   ├── TestimonialCarousel/ # Customer testimonials
-│   └── [other components]/ # Feature-specific components
+│   ├── ContactForm/   # Contact form components
+│   ├── MediaPlaceholder/ # Media placeholder components
+│   ├── OffersPanel/   # Service offers panel
+│   ├── VeoIcon.tsx    # Veo icon components
+│   ├── PathSelector.tsx # User journey selection interface
+│   ├── AnimatedText.tsx # Text animations (stagger, glitch variants)
+│   ├── ThemeToggle.tsx # Dark/light theme toggle
+│   └── ErrorBoundary.tsx # Error boundary component
 ├── pages/              # Route-level components
 │   ├── Landing/        # Home page with path selection
 │   ├── About/          # Company overview
@@ -74,13 +78,15 @@ The project features two complementary design systems:
 - **Brand Colors**: Sunset Coral (#FF6F61) for brand, Ion Blue (#55C2FF) for interactions
 - **Typography**: Space Grotesk (display), Inter (body), JetBrains Mono (code)
 - **Glass Effects**: Layered backdrop blur with rim lighting
-- **Components**: Button, Card, Input, Typography, SectionTitle, etc.
+- **Components**: Card, Typography, SectionTitle, Video, Accordion, etc.
+- **Unified Components**: Button and Input components moved to UI/ for consistency
 
-#### Veo Design System (`src/components/Veo*/` & `src/styles/veo-system.css`)
+#### Veo Design System (`src/components/VeoIcon.tsx` & `src/styles/veo-system.css`)
 - **Google-inspired**: Clean, modern aesthetic for Veo product demos
 - **Typography**: Multiple font families including Inter, Playfair Display, Sora
 - **Internationalization**: Supports Devanagari and Kannada scripts
-- **Components**: VeoButton, VeoCard, VeoCarousel, VeoForm, VeoImage, etc.
+- **Components**: VeoIcon system with various icons (arrow, check, mail, etc.)
+- **Unified Components**: Button and Input components moved to UI/ for consistency
 
 #### Shared Design Tokens (`src/styles/tokens.css`)
 - CSS custom properties for consistency across both systems
@@ -94,13 +100,13 @@ The codebase extensively uses motion libraries:
 - **React Spring**: Physics-based animations
 - **Three.js**: 3D elements in Hero3D component
 - **Lottie**: Vector animations via lottie-react
-- **Custom Hooks**: Animation utilities in `src/hooks/` (useVeoAnimation, useScrollAnimation, useInView, etc.)
+- **Custom Hooks**: Animation utilities in `src/hooks/` (useAnimation, useInView, etc.)
 - **CSS Animations**: Custom animations in `src/styles/` with motion tokens
 
 ### Key Development Notes
 - **Development Server**: Runs on port 3000 (configured in vite.config.ts)
 - **Production Base Path**: Uses `/materiallab-website/` in production builds
-- **Dual Design Systems**: MaterialLab (ML/) and Veo (Veo*/) component libraries
+- **Unified Design System**: MaterialLab (ML/) with unified UI components and Veo icons
 - **Context Management**: LanguageContext for internationalization support
 - **Custom Hooks**: Extensive collection in `src/hooks/` for animations and interactions
 - **Accessibility**: Respects `prefers-reduced-motion` and includes accessibility utilities

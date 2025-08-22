@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { MLText, MLHeading } from '../ML';
-import { VeoButton, VeoArrowIcon } from '../VeoButton';
-import { VeoInput, VeoTextarea } from '../VeoForm';
+import { Button as VeoButton } from '../UI';
+import { VeoArrowRightIcon } from '../VeoIcon';
+import { Input as VeoInput, Textarea as VeoTextarea } from '../UI';
 
 interface ContactFormData {
   name: string;
@@ -210,7 +211,7 @@ export const ContactForm = ({ defaultProjectType = 'certain', onClose }: Contact
           loading={isSubmitting}
           className="flex-1"
           disabled={isSubmitting}
-          icon={<VeoArrowIcon />}
+          icon={<VeoArrowRightIcon />}
           iconPosition="right"
         >
           {isSubmitting ? 'Sending...' : 'Send Message'}

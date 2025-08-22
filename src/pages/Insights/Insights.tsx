@@ -1,13 +1,14 @@
 import { Layout } from '../../components/Layout/Layout';
 import { MLText, MLHeading } from '../../components/ML';
-import { VeoButton, VeoArrowIcon } from '../../components/VeoButton';
+import { Button as VeoButton } from '../../components/UI';
+import { VeoArrowRightIcon } from '../../components/VeoIcon';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { useScrollAnimation } from '../../hooks/useScrollAnimation';
+import { useAnimation } from '../../hooks/useAnimation';
 
 export const Insights = () => {
   const navigate = useNavigate();
-  const heroRef = useScrollAnimation({ threshold: 0.2 });
+  const heroRef = useAnimation({ threshold: 0.2 });
 
   return (
     <Layout>
@@ -42,7 +43,7 @@ export const Insights = () => {
                     <VeoButton
                       variant="primary"
                       onClick={() => navigate('/contact')}
-                      icon={<VeoArrowIcon />}
+                      icon={<VeoArrowRightIcon />}
                       iconPosition="right"
                     >
                       Get in touch
@@ -50,7 +51,7 @@ export const Insights = () => {
                     <VeoButton
                       variant="outline"
                       onClick={() => navigate('/work')}
-                      icon={<VeoArrowIcon />}
+                      icon={<VeoArrowRightIcon />}
                       iconPosition="right"
                     >
                       View our work

@@ -1,6 +1,6 @@
 import { Layout } from '../../components/Layout/Layout';
 import { MLHeading, MLText } from '../../components/ML';
-import { VeoButton } from '../../components/VeoButton';
+import { Button as VeoButton } from '../../components/UI';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 

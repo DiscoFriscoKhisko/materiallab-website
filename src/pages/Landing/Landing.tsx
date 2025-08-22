@@ -1,6 +1,7 @@
 import { Layout } from '../../components/Layout/Layout';
 import { MLText, MLHeading } from '../../components/ML';
-import { VeoButton, VeoArrowIcon } from '../../components/VeoButton';
+import { Button as VeoButton } from '../../components/UI';
+import { VeoArrowRightIcon } from '../../components/VeoIcon';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 
@@ -118,7 +119,7 @@ export const Landing = () => {
               variant="primary"
               size="lg"
               onClick={() => navigate('/contact')}
-              icon={<VeoArrowIcon />}
+              icon={<VeoArrowRightIcon />}
               iconPosition="right"
               className="px-8 py-4 text-lg"
             >

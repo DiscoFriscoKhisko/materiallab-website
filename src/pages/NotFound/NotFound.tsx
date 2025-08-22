@@ -1,7 +1,7 @@
 import { Layout } from '../../components/Layout/Layout';
 import { motion } from 'framer-motion';
 import { MLText, MLHeading } from '../../components/ML';
-import { VeoButton } from '../../components/VeoButton';
+import { Button as VeoButton } from '../../components/UI';
 import { VeoIcon } from '../../components/VeoIcon';
 import { useNavigate } from 'react-router-dom';
 

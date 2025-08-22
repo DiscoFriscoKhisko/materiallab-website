@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { MLCard, MLText, MLHeading } from '../ML';
-import { VeoButton, VeoArrowIcon } from '../VeoButton';
+import { Button as VeoButton } from '../UI';
+import { VeoArrowRightIcon } from '../VeoIcon';
 import { useNavigate } from 'react-router-dom';
 
 interface OffersPanelProps {
@@ -105,7 +106,7 @@ export const OffersPanel = ({ persona }: OffersPanelProps) => {
                     size="lg"
                     className="mb-veo-4"
                     onClick={() => navigate('/contact', { state: { projectType: persona } })}
-                    icon={<VeoArrowIcon />}
+                    icon={<VeoArrowRightIcon />}
                     iconPosition="right"
                   >
                     {currentOffer.cta}

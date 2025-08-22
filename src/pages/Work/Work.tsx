@@ -1,6 +1,7 @@
 import { Layout } from '../../components/Layout/Layout';
 import { MLHeading, MLText, MLCard } from '../../components/ML';
-import { VeoButton, VeoArrowIcon } from '../../components/VeoButton';
+import { Button as VeoButton } from '../../components/UI';
+import { VeoArrowRightIcon } from '../../components/VeoIcon';
 import { MediaPlaceholder } from '../../components/MediaPlaceholder/MediaPlaceholder';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
@@ -204,7 +205,7 @@ export const Work = () => {
                 variant="ghost"
                 size="lg"
                 onClick={() => navigate('/approach')}
-                icon={<VeoArrowIcon />}
+                icon={<VeoArrowRightIcon />}
                 iconPosition="right"
               >
                 Learn about our approach
@@ -232,7 +233,7 @@ export const Work = () => {
               variant="primary"
               size="lg"
               onClick={() => navigate('/contact')}
-              icon={<VeoArrowIcon />}
+              icon={<VeoArrowRightIcon />}
               iconPosition="right"
             >
               Book a call
