@@ -1,147 +1,118 @@
 import { Layout } from '../../components/Layout/Layout';
-import { MLSectionTitle, MLText, MLHeading } from '../../components/ML';
+import { MLText, MLHeading } from '../../components/ML';
 import { VeoButton, VeoArrowIcon } from '../../components/VeoButton';
-import { ContactSplit } from '../../components/ContactCTA';
-import { TestimonialCarousel } from '../../components/TestimonialCarousel';
-import { VideoHero } from '../../components/VideoHero/VideoHero';
-import { HeroVideoSystem } from '../../components/Hero3D/Hero3D';
-import { ProofStrip } from '../../components/ProofStrip/ProofStrip';
-import { AudienceSelector } from '../../components/AudienceSelector/AudienceSelector';
-import { OffersPanel } from '../../components/OffersPanel/OffersPanel';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { useScrollAnimation } from '../../hooks/useScrollAnimation';
-import { useState } from 'react';
 
 export const Landing = () => {
   const navigate = useNavigate();
-  const servicesRef = useScrollAnimation({ threshold: 0.3 });
-  const testimonialsRef = useScrollAnimation({ threshold: 0.3 });
-  const [selectedPersona, setSelectedPersona] = useState<'smb' | 'creator' | 'ai'>('smb');
-  
-  // Client testimonials data
-  const testimonials = [
-    {
-      id: 'wellness-ceo',
-      quote: 'Game changer. We went from drowning in admin work to focusing on what we do best - creating great products.',
-      author: 'Sarah Chen',
-      role: 'CEO',
-      company: 'Wellness Brand',
-      rating: 5,
-    },
-    {
-      id: 'tech-head',
-      quote: 'The pilot was so successful, we immediately expanded it company-wide. ROI was clear from week 2.',
-      author: 'Michael Rodriguez',
-      role: 'Head of People',
-      company: 'Tech Company',
-      rating: 5,
-    },
-    {
-      id: 'creator-founder',
-      quote: 'MaterialLab helped us launch our MVP in 3 weeks. Now we\'re processing $50K+ monthly with the same small team.',
-      author: 'Emma Thompson',
-      role: 'Founder',
-      company: 'Creative Studio',
-      rating: 5,
-    },
-    {
-      id: 'startup-cto',
-      quote: 'The automation they built saves us 15 hours weekly. Our team can finally focus on product innovation.',
-      author: 'Alex Kim',
-      role: 'CTO',
-      company: 'FinTech Startup',
-      rating: 5,
-    },
-  ];
   
   return (
     <Layout>
-      <div className="relative overflow-hidden bg-background">
-        {/* Video Hero Section */}
-        <VideoHero />
-        
-        {/* Secondary Hero Video System - Edge to Edge */}
-        <section className="scene-module">
-          <motion.div 
-            className="mb-12 -mx-6 sm:-mx-12 lg:-mx-16"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.3 }}
+      {/* Hero Section - Clean & Focused */}
+      <section className="min-h-screen flex items-center justify-center px-6 py-24">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
           >
-            <HeroVideoSystem className="w-full" />
-          </motion.div>
-        </section>
-
-        {/* Proof Strip */}
-        <ProofStrip />
-
-        {/* What We Do Section */}
-        <section ref={servicesRef.ref} className="scene-module bg-surface/30">
-          <div className="max-w-6xl mx-auto px-6">
-            <motion.div
-              className="text-center mb-12"
-              initial={{ opacity: 0, y: 30 }}
-              animate={servicesRef.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-              transition={{ duration: 0.8 }}
+            <MLHeading 
+              level={1} 
+              className="text-5xl md:text-6xl lg:text-7xl font-display font-bold mb-8 tracking-tight"
             >
-              <MLSectionTitle
-                variant="headline"
-                align="center"
-                animate={true}
-                subtitle="Select your focus to see how we can help."
-                className="mb-8"
-              >
-                A dedicated partner for every ambition.
-              </MLSectionTitle>
-            </motion.div>
-
-            <AudienceSelector 
-              selected={selectedPersona}
-              onChange={setSelectedPersona}
-            />
-          </div>
-        </section>
-
-        {/* Offers Panel */}
-        <OffersPanel persona={selectedPersona} />
-
-        {/* Client Testimonials */}
-        <section ref={testimonialsRef.ref} className="scene-module">
-          <div className="max-w-6xl mx-auto px-6">
-            <motion.div
-              className="text-center mb-12"
-              initial={{ opacity: 0, y: 30 }}
-              animate={testimonialsRef.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-              transition={{ duration: 0.8 }}
-            >
-              <MLSectionTitle
-                variant="headline"
-                align="center"
-                animate={true}
-                subtitle="Hear from companies who've built successful products with MaterialLab"
-                className="mb-8"
-              >
-                Trusted by teams worldwide
-              </MLSectionTitle>
-            </motion.div>
-
-            <TestimonialCarousel 
-              testimonials={testimonials}
-              autoRotate={true}
-              autoRotateInterval={6000}
-            />
-          </div>
-        </section>
-
-        {/* Final CTA */}
-        <section className="scene-module bg-surface-1">
-          <div className="max-w-4xl mx-auto px-6 py-16 text-center">
-            <MLHeading level={2} className="mb-6">
-              Let's shape what you're building.
+              AI Product Studio
             </MLHeading>
-            <MLText variant="bodyL" color="weak" className="mb-8 max-line-length mx-auto">
-              Your next step is a no-obligation call to see if we're the right partner to bring your vision to life.
+            <MLText 
+              variant="bodyL" 
+              className="text-xl md:text-2xl text-text-weak mb-12 max-w-3xl mx-auto leading-relaxed"
+            >
+              We build AI-powered products that solve real problems. 
+              From concept to deployment, we're your technical partner.
+            </MLText>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <VeoButton
+                variant="primary"
+                size="lg"
+                onClick={() => navigate('/what-we-do')}
+                className="px-8 py-4 text-lg"
+              >
+                Explore Our Work
+              </VeoButton>
+              <VeoButton
+                variant="outline"
+                size="lg"
+                onClick={() => navigate('/contact')}
+                className="px-8 py-4 text-lg"
+              >
+                Start a Project
+              </VeoButton>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Services Overview - Minimal Cards */}
+      <section className="py-32 bg-surface-1">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-20">
+            <MLHeading level={2} className="text-4xl md:text-5xl font-display font-semibold mb-6">
+              What We Do
+            </MLHeading>
+            <MLText variant="bodyL" className="text-xl text-text-weak max-w-2xl mx-auto">
+              End-to-end AI product development with a focus on user experience and business impact.
+            </MLText>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-12">
+            {[
+              {
+                title: "AI Strategy",
+                description: "Define your AI roadmap and identify the highest-impact opportunities for your business."
+              },
+              {
+                title: "Product Development", 
+                description: "Build production-ready AI applications with modern frameworks and best practices."
+              },
+              {
+                title: "Team Augmentation",
+                description: "Scale your team with experienced AI engineers and product specialists."
+              }
+            ].map((service, index) => (
+              <motion.div
+                key={service.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="text-center p-8"
+              >
+                <MLHeading level={3} className="text-2xl font-semibold mb-4">
+                  {service.title}
+                </MLHeading>
+                <MLText variant="body" className="text-text-weak leading-relaxed">
+                  {service.description}
+                </MLText>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Call to Action - Simple & Direct */}
+      <section className="py-32">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <MLHeading level={2} className="text-4xl md:text-5xl font-display font-semibold mb-8">
+              Ready to build something great?
+            </MLHeading>
+            <MLText variant="bodyL" className="text-xl text-text-weak mb-12 max-w-2xl mx-auto">
+              Let's discuss your project and explore how we can help bring your AI vision to life.
             </MLText>
             <VeoButton
               variant="primary"
@@ -149,21 +120,13 @@ export const Landing = () => {
               onClick={() => navigate('/contact')}
               icon={<VeoArrowIcon />}
               iconPosition="right"
+              className="px-8 py-4 text-lg"
             >
-              Book a Discovery Call
+              Start the Conversation
             </VeoButton>
-          </div>
-        </section>
-
-        {/* Contact Journey */}
-        <ContactSplit
-          whatsappNumber="+14155551234"
-          onFormSubmit={(data) => {
-            console.log('Form submitted:', data);
-          }}
-          className="bg-surface/30"
-        />
-      </div>
+          </motion.div>
+        </div>
+      </section>
     </Layout>
   );
 };

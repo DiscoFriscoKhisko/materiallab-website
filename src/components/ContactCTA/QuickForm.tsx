@@ -110,7 +110,7 @@ export const QuickForm = ({ onSubmit, className = '' }: QuickFormProps) => {
     if (saved) {
       try {
         setFormData(JSON.parse(saved));
-      } catch (e) {
+      } catch {
         // Invalid saved data, ignore
       }
     }
@@ -125,12 +125,13 @@ export const QuickForm = ({ onSubmit, className = '' }: QuickFormProps) => {
     switch (name) {
       case 'name':
         return val.length < 2 ? 'Name must be at least 2 characters' : '';
-      case 'contact':
+      case 'contact': {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        const phoneRegex = /^[\+]?[\d\s\-\(\)]{10,}$/;
+        const phoneRegex = /^[+]?[\d\s\-()]{10,}$/;
         return !emailRegex.test(val) && !phoneRegex.test(val) 
           ? 'Please enter a valid email or phone number' 
           : '';
+      }
       case 'description':
         return val.length < 10 ? 'Please provide more details (at least 10 characters)' : '';
       case 'projectType':

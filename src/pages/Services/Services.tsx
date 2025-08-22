@@ -1,37 +1,45 @@
 import { Layout } from '../../components/Layout/Layout';
-import { MLSectionTitle, MLText, MLHeading } from '../../components/ML';
+import { MLText, MLHeading } from '../../components/ML';
 import { VeoButton, VeoArrowIcon } from '../../components/VeoButton';
-import { ContactSplit } from '../../components/ContactCTA';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 
 export const Services = () => {
   const navigate = useNavigate();
-  const heroRef = useScrollAnimation({ threshold: 0.2 });
-  const processRef = useScrollAnimation({ threshold: 0.3 });
-  const capabilitiesRef = useScrollAnimation({ threshold: 0.3 });
 
-  const capabilities = [
+  const services = [
     {
-      title: "Product Strategy",
-      description: "We help define your product vision, identify market opportunities, and create roadmaps that align with your business goals.",
-      features: ["Market research", "User journey mapping", "Feature prioritization", "MVP planning"]
+      title: "AI Strategy & Consulting",
+      description: "Define your AI roadmap and identify the highest-impact opportunities for your business.",
+      features: [
+        "AI opportunity assessment",
+        "Technical feasibility analysis", 
+        "ROI modeling and planning",
+        "Implementation roadmap"
+      ],
+      price: "Starting at $15k"
     },
     {
-      title: "Design & Development",
-      description: "From wireframes to fully functional products, we build with modern technologies and design principles.",
-      features: ["UI/UX design", "Frontend development", "Backend systems", "API integration"]
+      title: "AI Product Development",
+      description: "Build production-ready AI applications with modern frameworks and best practices.",
+      features: [
+        "Full-stack AI applications",
+        "Machine learning model development",
+        "API design and integration", 
+        "Cloud deployment and scaling"
+      ],
+      price: "Starting at $50k"
     },
     {
-      title: "Automation Solutions",
-      description: "Custom tools and workflows that eliminate repetitive tasks and streamline your operations.",
-      features: ["Process automation", "Custom integrations", "Data processing", "Workflow optimization"]
-    },
-    {
-      title: "Launch Support",
-      description: "We don't just build and disappear. We support your product launch and help you scale successfully.",
-      features: ["Testing & QA", "Deployment", "Performance monitoring", "User feedback analysis"]
+      title: "Team Augmentation",
+      description: "Scale your team with experienced AI engineers and product specialists.",
+      features: [
+        "Senior ML engineers",
+        "AI product managers",
+        "Technical leadership",
+        "Knowledge transfer"
+      ],
+      price: "From $8k/month"
     }
   ];
 
@@ -39,186 +47,171 @@ export const Services = () => {
     {
       step: "01",
       title: "Discovery",
-      description: "We start by understanding your business, users, and goals through detailed discovery sessions."
+      description: "We understand your business goals, technical constraints, and success criteria."
     },
     {
       step: "02", 
       title: "Strategy",
-      description: "Based on our findings, we create a clear product strategy and development roadmap."
+      description: "Define the AI solution architecture and implementation approach that fits your needs."
     },
     {
       step: "03",
-      title: "Build",
-      description: "Our team designs and develops your product with regular check-ins and feedback cycles."
+      title: "Development",
+      description: "Build and iterate on your AI product with regular feedback and transparent progress."
     },
     {
       step: "04",
-      title: "Launch",
-      description: "We support you through launch and provide ongoing optimization based on real user data."
+      title: "Deployment",
+      description: "Launch your AI product with proper monitoring, documentation, and team training."
     }
   ];
 
   return (
     <Layout>
-      <div className="relative overflow-hidden bg-background">
-        {/* Hero Section */}
-        <section ref={heroRef.ref} className="scene-module">
-          <div className="max-w-4xl mx-auto px-6 text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={heroRef.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-              transition={{ duration: 0.8 }}
-            >
-              <MLText variant="display" as="h1" className="mb-6 heading-spacing-tight">
-                What We Do
-              </MLText>
-              
-              <MLText variant="body" color="weak" className="mb-12 max-line-length mx-auto paragraph-spacing">
-                We transform ambitious ideas into market-leading products through strategic thinking, 
-                cutting-edge design, and robust development. Your vision, our execution.
-              </MLText>
+      {/* Hero Section */}
+      <section className="py-24 px-6">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <MLHeading level={1} className="text-5xl md:text-6xl font-display font-bold mb-8">
+              AI Development Services
+            </MLHeading>
+            <MLText variant="bodyL" className="text-xl text-text-weak max-w-2xl mx-auto leading-relaxed">
+              End-to-end AI product development with a focus on business impact and user experience.
+            </MLText>
+          </motion.div>
+        </div>
+      </section>
 
-              <VeoButton
-                variant="primary"
-                size="lg"
-                onClick={() => navigate('/contact')}
-                icon={<VeoArrowIcon />}
-                iconPosition="right"
-              >
-                Start Your Journey
-              </VeoButton>
-            </motion.div>
+      {/* Services Grid */}
+      <section className="py-20 bg-surface-1">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <MLHeading level={2} className="text-4xl font-semibold mb-6">
+              Our Services
+            </MLHeading>
+            <MLText variant="bodyL" className="text-xl text-text-weak max-w-2xl mx-auto">
+              From strategy to deployment, we handle every aspect of AI product development
+            </MLText>
           </div>
-        </section>
 
-        {/* Our Process */}
-        <section ref={processRef.ref} className="scene-module bg-surface/30">
-          <div className="max-w-6xl mx-auto px-6">
-            <motion.div
-              className="text-center mb-16"
-              initial={{ opacity: 0, y: 30 }}
-              animate={processRef.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-              transition={{ duration: 0.8 }}
-            >
-              <MLSectionTitle
-                variant="headline"
-                align="center"
-                animate={true}
-                subtitle="A proven approach that gets results"
-                className="mb-8"
+          <div className="grid lg:grid-cols-3 gap-8">
+            {services.map((service, index) => (
+              <motion.div
+                key={service.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-background rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow"
               >
-                How we work
-              </MLSectionTitle>
-            </motion.div>
+                <MLHeading level={3} className="text-2xl font-semibold mb-4">
+                  {service.title}
+                </MLHeading>
+                <MLText variant="body" className="text-text-weak leading-relaxed mb-6">
+                  {service.description}
+                </MLText>
+                
+                <div className="mb-8">
+                  {service.features.map((feature, idx) => (
+                    <div key={idx} className="flex items-center mb-3">
+                      <div className="w-2 h-2 bg-primary rounded-full mr-3" />
+                      <MLText variant="body" className="text-text">
+                        {feature}
+                      </MLText>
+                    </div>
+                  ))}
+                </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-              {process.map((item, index) => (
-                <motion.div
-                  key={item.step}
-                  className="text-center"
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                >
-                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center mx-auto mb-6">
-                    <MLText variant="bodyM" className="text-text-inverse font-bold">
-                      {item.step}
-                    </MLText>
-                  </div>
-                  <MLHeading level={4} className="mb-4">
-                    {item.title}
-                  </MLHeading>
-                  <MLText variant="bodyS" color="weak">
-                    {item.description}
+                <div className="border-t border-outline pt-6">
+                  <MLText variant="body" className="text-text-weak mb-4">
+                    {service.price}
                   </MLText>
-                </motion.div>
-              ))}
-            </div>
+                  <VeoButton
+                    variant="outline"
+                    onClick={() => navigate('/contact')}
+                    className="w-full"
+                  >
+                    Get Started
+                  </VeoButton>
+                </div>
+              </motion.div>
+            ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Capabilities */}
-        <section ref={capabilitiesRef.ref} className="scene-module">
-          <div className="max-w-6xl mx-auto px-6">
-            <motion.div
-              className="text-center mb-16"
-              initial={{ opacity: 0, y: 30 }}
-              animate={capabilitiesRef.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-              transition={{ duration: 0.8 }}
-            >
-              <MLSectionTitle
-                variant="headline"
-                align="center"
-                animate={true}
-                subtitle="Everything you need to build successful products"
-                className="mb-8"
-              >
-                What we deliver
-              </MLSectionTitle>
-            </motion.div>
-
-            <div className="grid md:grid-cols-2 gap-8 mb-16">
-              {capabilities.map((capability, index) => (
-                <motion.div
-                  key={capability.title}
-                  className="p-veo-6 rounded-veo-2xl bg-surface-1 border border-outline-variant hover:border-primary/20 transition-colors duration-veo-300"
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  whileHover={{ y: -4 }}
-                >
-                  <MLHeading level={3} className="mb-4">
-                    {capability.title}
-                  </MLHeading>
-                  <MLText variant="body" color="weak" className="mb-6">
-                    {capability.description}
-                  </MLText>
-                  <div className="grid grid-cols-2 gap-3">
-                    {capability.features.map((feature) => (
-                      <div key={feature} className="flex items-center space-x-2">
-                        <svg className="w-4 h-4 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                        <MLText variant="bodyS" color="text">
-                          {feature}
-                        </MLText>
-                      </div>
-                    ))}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            <motion.div
-              className="text-center"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-            >
-              <VeoButton
-                variant="outline"
-                onClick={() => navigate('/work')}
-                icon={<VeoArrowIcon />}
-                iconPosition="right"
-              >
-                See our work
-              </VeoButton>
-            </motion.div>
+      {/* Process Section */}
+      <section className="py-20">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <MLHeading level={2} className="text-4xl font-semibold mb-6">
+              How We Work
+            </MLHeading>
+            <MLText variant="bodyL" className="text-xl text-text-weak max-w-2xl mx-auto">
+              Our proven process for delivering successful AI products
+            </MLText>
           </div>
-        </section>
 
-        {/* Contact */}
-        <ContactSplit
-          whatsappNumber="+14155551234"
-          onFormSubmit={(data) => {
-            console.log('Form submitted:', data);
-          }}
-          className="bg-surface-1"
-        />
-      </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {process.map((step, index) => (
+              <motion.div
+                key={step.step}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="text-center"
+              >
+                <div className="w-12 h-12 bg-primary text-on-primary rounded-full flex items-center justify-center text-lg font-bold mb-6 mx-auto">
+                  {step.step}
+                </div>
+                <MLHeading level={3} className="text-xl font-semibold mb-4">
+                  {step.title}
+                </MLHeading>
+                <MLText variant="body" className="text-text-weak leading-relaxed">
+                  {step.description}
+                </MLText>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-surface-1">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <MLHeading level={2} className="text-4xl font-semibold mb-8">
+            Ready to start your AI project?
+          </MLHeading>
+          <MLText variant="bodyL" className="text-xl text-text-weak mb-12 max-w-2xl mx-auto">
+            Let's discuss your goals and explore how we can help bring your AI vision to life.
+          </MLText>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <VeoButton
+              variant="primary"
+              size="lg"
+              onClick={() => navigate('/contact')}
+              icon={<VeoArrowIcon />}
+              iconPosition="right"
+              className="px-8 py-4 text-lg"
+            >
+              Start a Project
+            </VeoButton>
+            <VeoButton
+              variant="outline"
+              size="lg"
+              onClick={() => navigate('/work')}
+              className="px-8 py-4 text-lg"
+            >
+              View Our Work
+            </VeoButton>
+          </div>
+        </div>
+      </section>
     </Layout>
   );
 };

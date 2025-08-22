@@ -71,7 +71,7 @@ export const MLButton = forwardRef<HTMLButtonElement, MLButtonProps>(({
       whileTap={!isDisabled ? { scale: 0.98 } : {}}
       transition={{ type: "spring", stiffness: 400, damping: 17 }}
       disabled={isDisabled}
-      {...(props as any)}
+      {...props}
     >
       {/* Loading spinner */}
       {state === 'loading' && (

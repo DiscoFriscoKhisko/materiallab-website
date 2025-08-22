@@ -15,7 +15,7 @@ export const MLInput = forwardRef<HTMLInputElement, MLInputProps>(({
   label,
   error,
   helper,
-  size = 'md',
+  // size = 'md', // Removed unused variable
   variant = 'default',
   iconLeft,
   iconRight,

@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { MLText, MLHeading } from '../ML';
+import { ThemeToggle } from '../ThemeToggle';
 import { useState, useEffect } from 'react';
 
 export const Navigation = () => {
@@ -18,16 +19,18 @@ export const Navigation = () => {
   }, []);
 
   const navItems = [
-    { path: '/offers', label: 'Offers' },
-    { path: '/methodology', label: 'Methodology' },
-    { path: '/ai-lab', label: 'AI Lab' }
+    { path: '/what-we-do', label: 'Services' },
+    { path: '/approach', label: 'Approach' },
+    { path: '/work', label: 'Work' },
+    { path: '/about', label: 'About' },
+    { path: '/contact', label: 'Contact' }
   ];
 
 
   return (
     <>
       <nav 
-        className={`sticky top-0 z-50 bg-bg transition-all duration-300 ease-out ${
+        className={`sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-outline-variant transition-all duration-300 ease-out ${
           isScrolled ? 'py-3' : 'py-6'
         }`}
         role="navigation"
@@ -48,25 +51,12 @@ export const Navigation = () => {
                 : 'opacity-100 scale-100'
             }`}
           >
-            <motion.div 
-              className="relative w-10 h-10 bg-gradient-to-br from-primary to-ion rounded-lg flex items-center justify-center shadow-elevation-1"
-              whileHover={{ scale: 1.1, rotate: 5 }}
-              transition={{ type: 'spring', stiffness: 300 }}
-            >
-              <MLText variant="caption" className="text-text-inverse font-bold font-primary">ML</MLText>
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-br from-primary-weak to-ion-weak rounded-lg opacity-0 group-hover:opacity-100"
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-              />
-            </motion.div>
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-            >
-              <MLHeading level={4} className="bg-gradient-to-r from-text to-text-weak bg-clip-text text-transparent">
-                MaterialLab
-              </MLHeading>
-            </motion.div>
+            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+              <MLText variant="caption" className="text-on-primary font-bold font-primary">ML</MLText>
+            </div>
+            <MLHeading level={4} className="text-text font-display font-semibold">
+              MaterialLab
+            </MLHeading>
           </Link>
 
           {/* Navigation Links - Centered when scrolled */}
@@ -84,16 +74,21 @@ export const Navigation = () => {
               >
                 <Link 
                   to={item.path}
-                  className={`px-3 py-2 rounded-full text-sm font-normal font-primary transition-all duration-200 ease-out ${
+                  className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ease-out ${
                     location.pathname === item.path 
-                      ? 'text-on-surface bg-white bg-opacity-20' 
-                      : 'text-on-surface-variant hover:text-on-surface hover:bg-white hover:bg-opacity-10'
+                      ? 'text-primary bg-primary-container' 
+                      : 'text-text-weak hover:text-text hover:bg-surface-1'
                   }`}
                 >
                   {item.label}
                 </Link>
               </motion.div>
             ))}
+            
+            {/* Theme Toggle */}
+            <div className="ml-4">
+              <ThemeToggle />
+            </div>
           </div>
         </div>
       </div>

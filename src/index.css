@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Sans+Kannada:wght@400;500;600;700&display=swap');
 @import './styles/tokens.css';
-@import './styles/veo-system.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -14,25 +12,6 @@
     @apply antialiased bg-background text-on-surface;
   }
 
-  /* Language-specific font adjustments */
-  html[lang="hi"] {
-    font-family: 'Noto Sans Devanagari', var(--font-body);
-  }
-  
-  html[lang="kn"] {
-    font-family: 'Noto Sans Kannada', var(--font-body);
-  }
-  
-  /* Enhanced multilingual typography */
-  html[lang="hi"] .font-headline,
-  html[lang="hi"] .font-primary {
-    font-family: 'Noto Sans Devanagari', var(--font-headline);
-  }
-  
-  html[lang="kn"] .font-headline,
-  html[lang="kn"] .font-primary {
-    font-family: 'Noto Sans Kannada', var(--font-headline);
-  }
 }
 
 /* Keyframes */
