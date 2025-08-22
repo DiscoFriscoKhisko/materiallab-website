@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { MLCard, MLText, MLHeading } from '../ML';
+import { useStaggeredIntersectionObserver } from '../../hooks/useIntersectionObserver';
 
 interface Service {
   title: string;
@@ -15,6 +16,7 @@ interface ServiceCardsProps {
 }
 
 export const ServiceCards = ({ services, variant = 'certain' }: ServiceCardsProps) => {
+  const { setElementRef, visibleItems } = useStaggeredIntersectionObserver(services.length, { threshold: 0.2 });
   const getIconBg = (color: string) => {
     const colorMap: Record<string, string> = {
       blue: 'from-ion/20 to-ion/40',
@@ -38,23 +40,21 @@ export const ServiceCards = ({ services, variant = 'certain' }: ServiceCardsProp
   };
 
   return (
-    <div className="grid gap-6 md:gap-8">
+    <div className="grid gap-veo-6 md:gap-veo-6">
       {services.map((service, index) => (
-        <motion.div 
+        <div 
           key={index}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: index * 0.1 }}
+          ref={setElementRef(index)}
+          className={`fade-in ${index > 0 ? `stagger-${Math.min(index, 5)}` : ''} ${visibleItems[index] ? 'is-visible' : ''}`}
         >
           <MLCard 
-            className="p-6 md:p-8" 
+            className="p-veo-6 md:p-veo-6" 
             variant={service.color === 'orange' || service.color === 'blue' ? 'glow-primary' : 'glow-ion'}
             hover={true}
           >
-            <div className="flex items-start space-x-6">
+            <div className="flex items-start space-x-veo-6">
               <motion.div 
-                className={`w-12 h-12 bg-gradient-to-br ${getIconBg(service.color)} rounded-xl flex items-center justify-center flex-shrink-0 shadow-elevation-1 relative overflow-hidden`}
+                className={`w-veo-8 h-veo-8 bg-gradient-to-br ${getIconBg(service.color)} rounded-veo-lg flex items-center justify-center flex-shrink-0 shadow-elevation-1 relative overflow-hidden`}
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 transition={{ type: 'spring', stiffness: 300 }}
               >
@@ -62,16 +62,16 @@ export const ServiceCards = ({ services, variant = 'certain' }: ServiceCardsProp
               </motion.div>
               
               <div className="flex-1">
-                <MLHeading level={3} className="mb-3">
+                <MLHeading level={3} className="mb-veo-3">
                   {service.title}
                 </MLHeading>
-                <MLText variant="bodyL" color="weak" className="mb-4 leading-relaxed">
+                <MLText variant="bodyL" color="weak" className="mb-veo-4 leading-relaxed">
                   {service.description}
                 </MLText>
                 
-                <ul className="space-y-2">
+                <ul className="space-y-veo-2">
                   {service.items.map((item, itemIndex) => (
-                    <li key={itemIndex} className="flex items-start space-x-3">
+                    <li key={itemIndex} className="flex items-start space-x-veo-3">
                       <svg 
                         className={`w-5 h-5 mt-0.5 flex-shrink-0 ${
                           variant === 'certain' ? 'text-success' : 'text-ion'
@@ -88,7 +88,7 @@ export const ServiceCards = ({ services, variant = 'certain' }: ServiceCardsProp
               </div>
             </div>
           </MLCard>
-        </motion.div>
+        </div>
       ))}
     </div>
   );

@@ -1,5 +1,6 @@
 import { Layout } from '../../components/Layout/Layout';
-import { MLSectionTitle, MLText, MLButton, MLHeading } from '../../components/ML';
+import { MLSectionTitle, MLText, MLHeading } from '../../components/ML';
+import { VeoButton, VeoArrowIcon } from '../../components/VeoButton';
 import { ContactSplit } from '../../components/ContactCTA';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
@@ -128,21 +129,21 @@ export const Approach = () => {
               {processSteps.map((step, index) => (
                 <motion.div
                   key={step.number}
-                  className="p-8 rounded-2xl bg-surface-1 border border-outline-variant"
+                  className="p-veo-6 rounded-veo-2xl bg-surface-1 border border-outline-variant"
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   whileHover={{ y: -4 }}
                 >
-                  <div className="flex items-start space-x-6">
-                    <div className="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center flex-shrink-0">
+                  <div className="flex items-start space-x-veo-6">
+                    <div className="w-veo-8 h-veo-8 bg-gradient-to-br from-primary to-secondary rounded-veo-lg flex items-center justify-center flex-shrink-0">
                       <MLText variant="bodyM" className="text-text-inverse font-bold">
                         {step.number}
                       </MLText>
                     </div>
                     <div className="flex-1">
-                      <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center justify-between mb-veo-4">
                         <MLHeading level={3}>
                           {step.title}
                         </MLHeading>
@@ -150,12 +151,12 @@ export const Approach = () => {
                           {step.duration}
                         </MLText>
                       </div>
-                      <MLText variant="body" color="weak" className="mb-6">
+                      <MLText variant="body" color="weak" className="mb-veo-6">
                         {step.description}
                       </MLText>
-                      <div className="space-y-2">
+                      <div className="space-y-veo-2">
                         {step.activities.map((activity) => (
-                          <div key={activity} className="flex items-center space-x-2">
+                          <div key={activity} className="flex items-center space-x-veo-2">
                             <svg className="w-4 h-4 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
@@ -197,17 +198,17 @@ export const Approach = () => {
               {principles.map((principle, index) => (
                 <motion.div
                   key={principle.title}
-                  className="text-center p-8 rounded-2xl bg-surface-1 border border-outline-variant hover:border-primary/20 transition-colors duration-300"
+                  className="text-center p-veo-6 rounded-veo-2xl bg-surface-1 border border-outline-variant hover:border-primary/20 transition-colors duration-veo-300"
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   whileHover={{ y: -4 }}
                 >
-                  <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6 text-primary">
+                  <div className="w-veo-12 h-veo-12 bg-primary/10 rounded-veo-2xl flex items-center justify-center mx-auto mb-veo-6 text-primary">
                     {principle.icon}
                   </div>
-                  <MLHeading level={4} className="mb-4">
+                  <MLHeading level={4} className="mb-veo-4">
                     {principle.title}
                   </MLHeading>
                   <MLText variant="bodyS" color="weak">
@@ -224,17 +225,14 @@ export const Approach = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <MLButton
-                variant="outlined"
+              <VeoButton
+                variant="outline"
                 onClick={() => navigate('/work')}
-                iconRight={
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                }
+                icon={<VeoArrowIcon />}
+                iconPosition="right"
               >
                 See this approach in action
-              </MLButton>
+              </VeoButton>
             </motion.div>
           </div>
         </section>

@@ -1,14 +1,33 @@
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { AnimatedText } from '../AnimatedText/AnimatedText';
-import { MLButton, MLCard, MLText, MLHeading } from '../ML';
+import { VeoButton, VeoArrowIcon } from '../VeoButton';
+import { MLCard, MLText, MLHeading } from '../ML';
+import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
 
 export const PathSelector = () => {
   const navigate = useNavigate();
+  const { elementRef, isVisible } = useIntersectionObserver({ threshold: 0.2 });
 
   return (
     <section className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-bg">
-      {/* Background Elements */}
+      {/* Background Media Layer */}
+      <div className="background-media">
+        <picture>
+          <source 
+            srcSet="/images/path-selector-bg.webp" 
+            type="image/webp" 
+          />
+          <img 
+            src="/images/path-selector-bg.jpg" 
+            alt="Abstract data visualization background" 
+            loading="lazy"
+            className="w-full h-full object-cover"
+          />
+        </picture>
+      </div>
+      
+      {/* Animated Background Elements (Fallback) */}
       <div className="absolute inset-0 -z-10">
         <motion.div
           className="absolute top-20 left-1/4 w-64 h-64 bg-gradient-to-r from-primary/20 to-ion/20 rounded-full blur-3xl"
@@ -22,32 +41,24 @@ export const PathSelector = () => {
         />
       </div>
       
-      <div className="max-w-5xl mx-auto text-center">
-        <AnimatedText
-          variant="gradient"
-          className="text-h1 font-bold font-primary mb-8 leading-tight text-text"
-          delay={0.2}
-        >
-          Do you already know what you need?
-        </AnimatedText>
+      <div ref={elementRef} className="max-w-5xl mx-auto text-center">
+        <div className={`fade-in ${isVisible ? 'is-visible' : ''}`}>
+          <AnimatedText
+            variant="gradient"
+            className="text-h1 font-bold font-primary mb-8 leading-tight text-text"
+            delay={0.2}
+          >
+            Do you already know what you need?
+          </AnimatedText>
+        </div>
         
-        <motion.p 
-          className="text-body-l text-text-weak mb-16 max-w-3xl mx-auto leading-relaxed"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
-          Choose your path to discover how MaterialLab can help bring your AI product vision to life.
-        </motion.p>
+        <div className={`fade-in stagger-1 ${isVisible ? 'is-visible' : ''}`}>
+          <MLText variant="bodyL" color="weak" className="mb-16 max-w-3xl mx-auto leading-relaxed">
+            Choose your path to discover how MaterialLab can help bring your AI product vision to life.
+          </MLText>
+        </div>
         
-        <motion.div 
-          className="grid lg:grid-cols-2 gap-10 max-w-6xl mx-auto"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-        >
+        <div className={`grid lg:grid-cols-2 gap-10 max-w-6xl mx-auto fade-in stagger-2 ${isVisible ? 'is-visible' : ''}`}>
           {/* Certain User Card */}
           <motion.div 
             className="group perspective cursor-pointer"
@@ -90,22 +101,19 @@ export const PathSelector = () => {
                   You have a clear vision and specific requirements. Let's build it fast, reliable, and ready to scale.
                 </MLText>
                 
-                <MLButton
-                  variant="filled"
+                <VeoButton
+                  variant="primary"
                   size="lg"
                   fullWidth
-                  iconRight={
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  }
+                  icon={<VeoArrowIcon />}
+                  iconPosition="right"
                   onClick={(e) => {
                     e.stopPropagation();
                     navigate('/contact', { state: { projectType: 'certain' } });
                   }}
                 >
                   Get Started
-                </MLButton>
+                </VeoButton>
               </motion.div>
             </MLCard>
           </motion.div>
@@ -152,44 +160,37 @@ export const PathSelector = () => {
                   You're curious about what's possible and want to discover new opportunities. Let's explore together.
                 </MLText>
                 
-                <MLButton
-                  variant="outlined"
+                <VeoButton
+                  variant="outline"
                   size="lg"
                   fullWidth
-                  iconRight={
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  }
+                  icon={<VeoArrowIcon />}
+                  iconPosition="right"
                   onClick={(e) => {
                     e.stopPropagation();
                     navigate('/contact', { state: { projectType: 'explorative' } });
                   }}
                 >
                   Explore With Us
-                </MLButton>
+                </VeoButton>
               </motion.div>
             </MLCard>
           </motion.div>
-        </motion.div>
+        </div>
         
         {/* Additional CTA */}
-        <motion.div 
-          className="mt-16 text-center"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 1.2 }}
-        >
+        <div className={`mt-16 text-center fade-in stagger-3 ${isVisible ? 'is-visible' : ''}`}>
           <MLText variant="bodyM" color="weaker" className="mb-4">Not sure which path fits you?</MLText>
-          <MLButton
-            variant="text"
+          <VeoButton
+            variant="ghost"
             size="md"
+            icon={<VeoArrowIcon />}
+            iconPosition="right"
             onClick={() => navigate('/contact')}
           >
             Schedule a Quick Chat
-          </MLButton>
-        </motion.div>
+          </VeoButton>
+        </div>
       </div>
     </section>
   );

@@ -31,7 +31,7 @@ export const Layout = ({
     }
   }, [prefersReducedMotion, prefersHighContrast]);
   return (
-    <div className="min-h-screen bg-bg relative overflow-hidden">
+    <div className="min-h-screen bg-bg relative">
       {/* Skip to main content link for screen readers */}
       <a 
         href="#main-content" 

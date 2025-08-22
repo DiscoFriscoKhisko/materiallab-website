@@ -1,5 +1,6 @@
 import { Layout } from '../../components/Layout/Layout';
-import { MLSectionTitle, MLText, MLButton, MLHeading } from '../../components/ML';
+import { MLSectionTitle, MLText, MLHeading } from '../../components/ML';
+import { VeoButton, VeoArrowIcon } from '../../components/VeoButton';
 import { ContactSplit } from '../../components/ContactCTA';
 import { TestimonialCarousel } from '../../components/TestimonialCarousel';
 import { VideoHero } from '../../components/VideoHero/VideoHero';
@@ -142,18 +143,15 @@ export const Landing = () => {
             <MLText variant="bodyL" color="weak" className="mb-8 max-line-length mx-auto">
               Your next step is a no-obligation call to see if we're the right partner to bring your vision to life.
             </MLText>
-            <MLButton
-              variant="filled"
+            <VeoButton
+              variant="primary"
               size="lg"
               onClick={() => navigate('/contact')}
-              iconRight={
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              }
+              icon={<VeoArrowIcon />}
+              iconPosition="right"
             >
               Book a Discovery Call
-            </MLButton>
+            </VeoButton>
           </div>
         </section>
 

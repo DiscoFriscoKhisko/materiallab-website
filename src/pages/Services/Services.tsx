@@ -1,5 +1,6 @@
 import { Layout } from '../../components/Layout/Layout';
-import { MLSectionTitle, MLText, MLButton, MLHeading } from '../../components/ML';
+import { MLSectionTitle, MLText, MLHeading } from '../../components/ML';
+import { VeoButton, VeoArrowIcon } from '../../components/VeoButton';
 import { ContactSplit } from '../../components/ContactCTA';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
@@ -77,19 +78,15 @@ export const Services = () => {
                 cutting-edge design, and robust development. Your vision, our execution.
               </MLText>
 
-              <MLButton
-                variant="filled"
+              <VeoButton
+                variant="primary"
                 size="lg"
-                className="ml-btn-primary"
                 onClick={() => navigate('/contact')}
-                iconRight={
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                }
+                icon={<VeoArrowIcon />}
+                iconPosition="right"
               >
                 Start Your Journey
-              </MLButton>
+              </VeoButton>
             </motion.div>
           </div>
         </section>
@@ -165,7 +162,7 @@ export const Services = () => {
               {capabilities.map((capability, index) => (
                 <motion.div
                   key={capability.title}
-                  className="p-8 rounded-2xl bg-surface-1 border border-outline-variant hover:border-primary/20 transition-colors duration-300"
+                  className="p-veo-6 rounded-veo-2xl bg-surface-1 border border-outline-variant hover:border-primary/20 transition-colors duration-veo-300"
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -201,17 +198,14 @@ export const Services = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <MLButton
-                variant="outlined"
+              <VeoButton
+                variant="outline"
                 onClick={() => navigate('/work')}
-                iconRight={
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                }
+                icon={<VeoArrowIcon />}
+                iconPosition="right"
               >
                 See our work
-              </MLButton>
+              </VeoButton>
             </motion.div>
           </div>
         </section>

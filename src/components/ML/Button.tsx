@@ -25,17 +25,17 @@ export const MLButton = forwardRef<HTMLButtonElement, MLButtonProps>(({
   ...props
 }, ref) => {
   const isFocusVisible = useFocusVisible();
-  const baseClasses = `relative overflow-hidden font-primary rounded-lg transition-all duration-200 ease-out transform-gpu inline-flex items-center justify-center gap-2 select-none group keyboard-navigation ${isFocusVisible ? 'focus-visible' : ''}`;
+  const baseClasses = `relative overflow-hidden font-primary rounded-full transition-all duration-200 ease-out transform-gpu inline-flex items-center justify-center gap-2 select-none group keyboard-navigation btn-lift ${isFocusVisible ? 'focus-visible' : ''}`;
 
   // Check if using ML design system classes
   const isUsingMLClasses = className.includes('ml-btn-');
   
   const variantClasses = {
-    filled: isUsingMLClasses ? '' : 'bg-primary text-on-primary shadow-sm hover:shadow-md hover:bg-primary/95 active:bg-primary/90 active:shadow-sm tracking-button font-weight-button transition-all duration-200 ease-out',
-    elevated: isUsingMLClasses ? '' : 'bg-surface text-on-surface shadow-sm hover:shadow-md hover:bg-surface/95 active:bg-surface/90 active:shadow-sm tracking-button font-weight-button transition-all duration-200 ease-out',
-    tonal: isUsingMLClasses ? '' : 'bg-secondary-container text-on-secondary-container hover:bg-secondary-container/90 active:bg-secondary-container/80 tracking-button font-weight-button transition-all duration-200 ease-out',
-    outlined: isUsingMLClasses ? '' : 'border border-outline text-on-surface hover:bg-on-surface/5 active:bg-on-surface/10 hover:border-outline/60 tracking-button font-weight-button transition-all duration-200 ease-out',
-    text: isUsingMLClasses ? '' : 'text-primary hover:bg-primary/5 active:bg-primary/10 tracking-button font-weight-button transition-all duration-200 ease-out'
+    filled: isUsingMLClasses ? '' : 'bg-primary text-on-primary shadow-sm hover:shadow-md hover:bg-primary/95 active:bg-primary/90 active:shadow-sm tracking-button font-weight-button btn-glow-primary',
+    elevated: isUsingMLClasses ? '' : 'bg-surface text-on-surface shadow-sm hover:shadow-md hover:bg-surface/95 active:bg-surface/90 active:shadow-sm tracking-button font-weight-button',
+    tonal: isUsingMLClasses ? '' : 'bg-secondary-container text-on-secondary-container hover:bg-secondary-container/90 active:bg-secondary-container/80 tracking-button font-weight-button btn-glow-secondary',
+    outlined: isUsingMLClasses ? '' : 'border border-outline text-on-surface hover:bg-on-surface/5 active:bg-on-surface/10 hover:border-outline/60 tracking-button font-weight-button',
+    text: isUsingMLClasses ? '' : 'text-primary hover:bg-primary/5 active:bg-primary/10 tracking-button font-weight-button'
   };
 
   const sizeClasses = {

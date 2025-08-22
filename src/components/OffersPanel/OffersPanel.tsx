@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { MLCard, MLText, MLHeading, MLButton } from '../ML';
+import { MLCard, MLText, MLHeading } from '../ML';
+import { VeoButton, VeoArrowIcon } from '../VeoButton';
 import { useNavigate } from 'react-router-dom';
 
 interface OffersPanelProps {
@@ -48,7 +49,7 @@ export const OffersPanel = ({ persona }: OffersPanelProps) => {
   const currentOffer = offers[persona];
 
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8">
+    <section className="py-veo-12 px-veo-4 sm:px-veo-6 lg:px-veo-8">
       <div className="max-w-4xl mx-auto">
         <AnimatePresence mode="wait">
           <motion.div
@@ -60,27 +61,27 @@ export const OffersPanel = ({ persona }: OffersPanelProps) => {
           >
             <MLCard 
               variant="glow-primary"
-              className="p-8 lg:p-12"
+              className="p-veo-6 lg:p-veo-8"
             >
-              <div className="text-center mb-8">
-                <MLHeading level={2} className="mb-4">
+              <div className="text-center mb-veo-6">
+                <MLHeading level={2} className="mb-veo-4">
                   {currentOffer.title}
                 </MLHeading>
-                <MLText variant="bodyL" color="weak" className="mb-6">
+                <MLText variant="bodyL" color="weak" className="mb-veo-6">
                   Typical timeline: {currentOffer.timeline}
                 </MLText>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div className="grid md:grid-cols-2 gap-veo-6 items-center">
                 <div>
-                  <MLHeading level={4} className="mb-6">
+                  <MLHeading level={4} className="mb-veo-6">
                     What's included:
                   </MLHeading>
-                  <ul className="space-y-4">
+                  <ul className="space-y-veo-4">
                     {currentOffer.points.map((point, index) => (
                       <motion.li
                         key={index}
-                        className="flex items-start space-x-3"
+                        className="flex items-start space-x-veo-3"
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.3, delay: index * 0.1 }}
@@ -99,19 +100,16 @@ export const OffersPanel = ({ persona }: OffersPanelProps) => {
                 </div>
 
                 <div className="text-center">
-                  <MLButton
-                    variant="filled"
+                  <VeoButton
+                    variant="primary"
                     size="lg"
-                    className="mb-4"
+                    className="mb-veo-4"
                     onClick={() => navigate('/contact', { state: { projectType: persona } })}
-                    iconRight={
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    }
+                    icon={<VeoArrowIcon />}
+                    iconPosition="right"
                   >
                     {currentOffer.cta}
-                  </MLButton>
+                  </VeoButton>
                   
                   <MLText variant="bodyS" color="weaker">
                     Book a Discovery Call to discuss your specific needs

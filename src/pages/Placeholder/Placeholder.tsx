@@ -1,6 +1,7 @@
 import { Layout } from '../../components/Layout/Layout';
 import { motion } from 'framer-motion';
-import { MLButton, MLCard, MLText, MLHeading } from '../../components/ML';
+import { MLCard, MLText, MLHeading } from '../../components/ML';
+import { VeoButton, VeoArrowIcon } from '../../components/VeoButton';
 import { useNavigate } from 'react-router-dom';
 
 interface PlaceholderProps {
@@ -50,10 +51,10 @@ export const Placeholder = ({
         </div>
 
         {/* Header Section */}
-        <section className="py-24 px-4 sm:px-6 lg:px-8 relative">
+        <section className="py-veo-16 px-veo-4 sm:px-veo-6 lg:px-veo-8 relative">
           <div className="max-w-4xl mx-auto text-center">
             <motion.div
-              className="inline-flex items-center px-4 py-2 bg-ion/20 border border-ion/30 rounded-full mb-6"
+              className="inline-flex items-center px-veo-4 py-veo-2 bg-ion/20 border border-ion/30 rounded-full mb-veo-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
@@ -71,10 +72,10 @@ export const Placeholder = ({
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <MLHeading level={1} className="mb-6">
+              <MLHeading level={1} className="mb-veo-6">
                 {title}
               </MLHeading>
-              <MLText variant="bodyL" color="weak" className="max-w-3xl mx-auto mb-12">
+              <MLText variant="bodyL" color="weak" className="max-w-3xl mx-auto mb-veo-8">
                 {description}
               </MLText>
             </motion.div>
@@ -82,9 +83,9 @@ export const Placeholder = ({
         </section>
 
         {/* Content Sections */}
-        <section className="py-12 px-4 sm:px-6 lg:px-8">
+        <section className="py-veo-8 px-veo-4 sm:px-veo-6 lg:px-veo-8">
           <div className="max-w-6xl mx-auto">
-            <div className="grid gap-8 md:gap-12">
+            <div className="grid gap-veo-6 md:gap-veo-8">
               {sections.map((section, index) => (
                 <motion.div
                   key={index}
@@ -93,10 +94,10 @@ export const Placeholder = ({
                   viewport={{ once: true }}
                   transition={{ duration: 0.8, delay: index * 0.2 }}
                 >
-                  <MLCard className="p-8">
-                    <div className={`grid gap-8 ${section.mediaDescription ? 'md:grid-cols-2' : 'grid-cols-1'}`}>
+                  <MLCard className="p-veo-6">
+                    <div className={`grid gap-veo-6 ${section.mediaDescription ? 'md:grid-cols-2' : 'grid-cols-1'}`}>
                       <div>
-                        <MLHeading level={3} className="mb-4">
+                        <MLHeading level={3} className="mb-veo-4">
                           {section.title}
                         </MLHeading>
                         <MLText color="weak" className="leading-relaxed">
@@ -106,7 +107,7 @@ export const Placeholder = ({
                       
                       {section.mediaDescription && (
                         <div className="relative">
-                          <div className="aspect-video bg-surface-2 rounded-lg border-2 border-dashed border-glass-light flex items-center justify-center p-6">
+                          <div className="aspect-video bg-surface-2 rounded-veo-lg border-2 border-dashed border-glass-light flex items-center justify-center p-veo-6">
                             <div className="text-center">
                               <motion.svg 
                                 className="w-12 h-12 text-ion mx-auto mb-4"
@@ -134,7 +135,7 @@ export const Placeholder = ({
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <section className="py-veo-12 px-veo-4 sm:px-veo-6 lg:px-veo-8">
           <motion.div
             className="max-w-4xl mx-auto text-center"
             initial={{ opacity: 0, y: 30 }}
@@ -142,26 +143,23 @@ export const Placeholder = ({
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <MLCard variant="glow-primary" className="p-12">
-              <MLHeading level={3} className="mb-6">
+            <MLCard variant="glow-primary" className="p-veo-8">
+              <MLHeading level={3} className="mb-veo-6">
                 Page Under Construction
               </MLHeading>
-              <MLText variant="bodyL" color="weak" className="mb-8 max-w-2xl mx-auto">
+              <MLText variant="bodyL" color="weak" className="mb-veo-6 max-w-2xl mx-auto">
                 This page is currently being developed with detailed content, case studies, and interactive elements. 
                 For immediate assistance, please get in touch with us.
               </MLText>
-              <MLButton
-                variant="filled"
+              <VeoButton
+                variant="primary"
                 size="lg"
                 onClick={handleCTA}
-                iconRight={
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                }
+                icon={<VeoArrowIcon />}
+                iconPosition="right"
               >
                 {ctaText}
-              </MLButton>
+              </VeoButton>
             </MLCard>
           </motion.div>
         </section>

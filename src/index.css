@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Sans+Kannada:wght@400;500;600;700&display=swap');
 @import './styles/tokens.css';
+@import './styles/veo-system.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -44,6 +45,159 @@
 .animate-gradient {
   background-size: 200% 200%;
   animation: gradient-shift 4s ease-in-out infinite;
+}
+
+/* === VEO-STYLE SCROLLYTELLING & ANIMATIONS === */
+
+/* Background Media Layer */
+.background-media {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  object-fit: cover;
+}
+
+.background-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0.2));
+}
+
+/* Scroll-Triggered Fade Animations */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered Animations */
+.stagger-1 { transition-delay: 0.15s; }
+.stagger-2 { transition-delay: 0.3s; }
+.stagger-3 { transition-delay: 0.45s; }
+.stagger-4 { transition-delay: 0.6s; }
+.stagger-5 { transition-delay: 0.75s; }
+
+/* Button Lift and Glow Effects */
+.btn-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-lift:hover {
+  transform: translateY(-2px);
+}
+
+.btn-glow-primary:hover {
+  box-shadow: 0 4px 20px rgba(138, 99, 210, 0.3);
+}
+
+.btn-glow-secondary:hover {
+  box-shadow: 0 4px 20px rgba(85, 194, 255, 0.3);
+}
+
+/* Arrow Animation for Secondary Links */
+.link-arrow span {
+  transition: transform 0.2s ease;
+}
+
+.link-arrow:hover span {
+  transform: translateX(4px);
+}
+
+/* === ACCESSIBILITY IMPROVEMENTS === */
+
+/* Enhanced focus rings */
+.veo-focus-ring:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: var(--veo-radius-md);
+}
+
+/* Skip link for screen readers */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--primary);
+  color: var(--on-primary);
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: var(--veo-radius-md);
+  font-weight: 500;
+  z-index: 1000;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .veo-fade-in,
+  .fade-in {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+  
+  .veo-card,
+  .card {
+    border: 2px solid var(--outline) !important;
+  }
+}
+
+/* Reduced motion support enhanced */
+@media (prefers-reduced-motion: reduce) {
+  .veo-fade-in,
+  .veo-slide-up,
+  .fade-in,
+  .parallax,
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    transform: none !important;
+  }
+  
+  .veo-parallax {
+    transform: none !important;
+  }
+}
+
+/* Screen reader only content */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Focus trap for modals */
+.focus-trap {
+  position: relative;
+}
+
+.focus-trap::before,
+.focus-trap::after {
+  content: '';
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
 }
 
 /* === SOPHISTICATED SCROLL ANIMATIONS === */

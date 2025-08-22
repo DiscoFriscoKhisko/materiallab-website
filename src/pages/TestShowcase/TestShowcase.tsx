@@ -1,5 +1,6 @@
 import { Layout } from '../../components/Layout/Layout';
-import { MLSectionTitle, MLText, MLButton } from '../../components/ML';
+import { MLSectionTitle, MLText } from '../../components/ML';
+import { VeoButton } from '../../components/VeoButton';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 
@@ -8,14 +9,14 @@ export const TestShowcase = () => {
 
   return (
     <Layout>
-      <div className="relative overflow-hidden bg-background py-12">
+      <div className="relative overflow-hidden bg-background py-veo-8">
         {/* Header */}
         <section className="scene-module">
-          <div className="max-w-6xl mx-auto px-6">
-            <MLText variant="display" as="h1" className="mb-6 text-center">
+          <div className="max-w-6xl mx-auto px-veo-6">
+            <MLText variant="display" as="h1" className="mb-veo-6 text-center">
               Design System Test Showcase
             </MLText>
-            <MLText variant="body" color="weak" className="mb-12 text-center max-w-3xl mx-auto">
+            <MLText variant="body" color="weak" className="mb-veo-8 text-center max-w-3xl mx-auto">
               Visual verification of all ML design system components, interactions, and accessibility features.
             </MLText>
           </div>
@@ -23,38 +24,38 @@ export const TestShowcase = () => {
 
         {/* Color Palette Testing */}
         <section className="scene-module bg-surface/30">
-          <div className="max-w-6xl mx-auto px-6">
-            <MLSectionTitle variant="headline" className="mb-8">
+          <div className="max-w-6xl mx-auto px-veo-6">
+            <MLSectionTitle variant="headline" className="mb-veo-6">
               Color Palette & Variables
             </MLSectionTitle>
             
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-              <div className="space-y-3">
-                <div className="h-16 rounded-lg" style={{ backgroundColor: 'var(--ml-primary)' }} />
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-veo-6 mb-veo-8">
+              <div className="space-y-veo-3">
+                <div className="h-veo-12 rounded-veo-lg" style={{ backgroundColor: 'var(--ml-primary)' }} />
                 <div className="text-center">
                   <MLText variant="bodyS" className="font-mono">--ml-primary</MLText>
                   <MLText variant="caption" color="weak">#6366F1</MLText>
                 </div>
               </div>
               
-              <div className="space-y-3">
-                <div className="h-16 rounded-lg" style={{ backgroundColor: 'var(--ml-veo-blue)' }} />
+              <div className="space-y-veo-3">
+                <div className="h-veo-12 rounded-veo-lg" style={{ backgroundColor: 'var(--ml-veo-blue)' }} />
                 <div className="text-center">
                   <MLText variant="bodyS" className="font-mono">--ml-veo-blue</MLText>
                   <MLText variant="caption" color="weak">#4A90E2</MLText>
                 </div>
               </div>
               
-              <div className="space-y-3">
-                <div className="h-16 rounded-lg" style={{ backgroundColor: 'var(--ml-mist-cyan)' }} />
+              <div className="space-y-veo-3">
+                <div className="h-veo-12 rounded-veo-lg" style={{ backgroundColor: 'var(--ml-mist-cyan)' }} />
                 <div className="text-center">
                   <MLText variant="bodyS" className="font-mono">--ml-mist-cyan</MLText>
                   <MLText variant="caption" color="weak">#7FE3D7</MLText>
                 </div>
               </div>
               
-              <div className="space-y-3">
-                <div className="h-16 rounded-lg" style={{ backgroundColor: 'var(--ml-iris-indigo)' }} />
+              <div className="space-y-veo-3">
+                <div className="h-veo-12 rounded-veo-lg" style={{ backgroundColor: 'var(--ml-iris-indigo)' }} />
                 <div className="text-center">
                   <MLText variant="bodyS" className="font-mono">--ml-iris-indigo</MLText>
                   <MLText variant="caption" color="weak">#6B6CF3</MLText>
@@ -66,54 +67,54 @@ export const TestShowcase = () => {
 
         {/* Button Testing */}
         <section className="scene-module">
-          <div className="max-w-6xl mx-auto px-6">
-            <MLSectionTitle variant="headline" className="mb-8">
+          <div className="max-w-6xl mx-auto px-veo-6">
+            <MLSectionTitle variant="headline" className="mb-veo-6">
               Button Components & States
             </MLSectionTitle>
             
-            <div className="space-y-8">
+            <div className="space-y-veo-6">
               {/* ML Buttons */}
-              <div className="space-y-4">
-                <MLText variant="title" className="mb-4">ML Design System Buttons</MLText>
-                <div className="flex flex-wrap gap-4">
-                  <MLButton 
-                    variant="filled" 
+              <div className="space-y-veo-4">
+                <MLText variant="title" className="mb-veo-4">ML Design System Buttons</MLText>
+                <div className="flex flex-wrap gap-veo-4">
+                  <VeoButton 
+                    variant="primary" 
                     size="lg" 
                     className="ml-btn-primary"
                     onFocus={() => setFocusState('ml-primary-lg')}
                     onBlur={() => setFocusState('')}
                   >
                     Primary Large
-                  </MLButton>
+                  </VeoButton>
                   
-                  <MLButton 
-                    variant="filled" 
+                  <VeoButton 
+                    variant="primary" 
                     size="md" 
                     className="ml-btn-primary"
                     onFocus={() => setFocusState('ml-primary-md')}
                     onBlur={() => setFocusState('')}
                   >
                     Primary Medium
-                  </MLButton>
+                  </VeoButton>
                   
-                  <MLButton 
-                    variant="outlined" 
+                  <VeoButton 
+                    variant="outline" 
                     size="lg" 
                     className="ml-btn-secondary"
                     onFocus={() => setFocusState('ml-secondary')}
                     onBlur={() => setFocusState('')}
                   >
                     Secondary
-                  </MLButton>
+                  </VeoButton>
                   
-                  <MLButton 
-                    variant="filled" 
+                  <VeoButton 
+                    variant="primary" 
                     size="lg" 
                     className="ml-btn-primary"
                     disabled
                   >
                     Disabled
-                  </MLButton>
+                  </VeoButton>
                 </div>
                 {focusState && (
                   <MLText variant="caption" color="weak">
@@ -123,13 +124,13 @@ export const TestShowcase = () => {
               </div>
 
               {/* Standard Buttons for comparison */}
-              <div className="space-y-4">
-                <MLText variant="title" className="mb-4">Standard Buttons (Original)</MLText>
-                <div className="flex flex-wrap gap-4">
-                  <MLButton variant="filled" size="lg">Standard Filled</MLButton>
-                  <MLButton variant="outlined" size="lg">Standard Outlined</MLButton>
-                  <MLButton variant="text" size="lg">Standard Text</MLButton>
-                  <MLButton variant="tonal" size="lg">Standard Tonal</MLButton>
+              <div className="space-y-veo-4">
+                <MLText variant="title" className="mb-veo-4">Standard Buttons (Original)</MLText>
+                <div className="flex flex-wrap gap-veo-4">
+                  <VeoButton variant="primary" size="lg">Standard Filled</VeoButton>
+                  <VeoButton variant="outline" size="lg">Standard Outlined</VeoButton>
+                  <VeoButton variant="ghost" size="lg">Standard Text</VeoButton>
+                  <VeoButton variant="secondary" size="lg">Standard Tonal</VeoButton>
                 </div>
               </div>
             </div>
@@ -138,15 +139,15 @@ export const TestShowcase = () => {
 
         {/* Links & Text Effects */}
         <section className="scene-module bg-surface/30">
-          <div className="max-w-6xl mx-auto px-6">
-            <MLSectionTitle variant="headline" className="mb-8">
+          <div className="max-w-6xl mx-auto px-veo-6">
+            <MLSectionTitle variant="headline" className="mb-veo-6">
               Links & Text Effects
             </MLSectionTitle>
             
-            <div className="space-y-6">
+            <div className="space-y-veo-6">
               <div>
-                <MLText variant="title" className="mb-4">Gradient Underline Links</MLText>
-                <div className="space-y-2">
+                <MLText variant="title" className="mb-veo-4">Gradient Underline Links</MLText>
+                <div className="space-y-veo-2">
                   <p>
                     <a href="#" className="ml-link">Standard gradient link with shimmer on hover</a>
                   </p>
@@ -165,24 +166,24 @@ export const TestShowcase = () => {
 
         {/* Progress & Animations */}
         <section className="scene-module">
-          <div className="max-w-6xl mx-auto px-6">
-            <MLSectionTitle variant="headline" className="mb-8">
+          <div className="max-w-6xl mx-auto px-veo-6">
+            <MLSectionTitle variant="headline" className="mb-veo-6">
               Progress Bars & Animations
             </MLSectionTitle>
             
-            <div className="space-y-6">
+            <div className="space-y-veo-6">
               <div>
-                <MLText variant="title" className="mb-4">Gradient Progress Bars</MLText>
-                <div className="space-y-4">
+                <MLText variant="title" className="mb-veo-4">Gradient Progress Bars</MLText>
+                <div className="space-y-veo-4">
                   <div>
-                    <MLText variant="bodyS" color="weak" className="mb-2">Static Progress (75%)</MLText>
+                    <MLText variant="bodyS" color="weak" className="mb-veo-2">Static Progress (75%)</MLText>
                     <div className="ml-progress">
                       <div className="ml-progress__bar" style={{ '--value': '75%' } as any} />
                     </div>
                   </div>
                   
                   <div>
-                    <MLText variant="bodyS" color="weak" className="mb-2">Animated Progress (45%)</MLText>
+                    <MLText variant="bodyS" color="weak" className="mb-veo-2">Animated Progress (45%)</MLText>
                     <div className="ml-progress">
                       <div className="ml-progress__bar is-animated" style={{ '--value': '45%' } as any} />
                     </div>
@@ -191,15 +192,15 @@ export const TestShowcase = () => {
               </div>
               
               <div>
-                <MLText variant="title" className="mb-4">Reveal Animations</MLText>
-                <div className="space-y-4">
+                <MLText variant="title" className="mb-veo-4">Reveal Animations</MLText>
+                <div className="space-y-veo-4">
                   <motion.div 
                     className="ml-reveal is-visible"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
                   >
-                    <div className="p-6 bg-surface-1 rounded-lg">
+                    <div className="p-veo-6 bg-surface-1 rounded-veo-lg">
                       <MLText variant="body">
                         This content uses the ml-reveal animation utility class
                       </MLText>
@@ -213,34 +214,34 @@ export const TestShowcase = () => {
 
         {/* Accessibility Testing */}
         <section className="scene-module bg-surface/30">
-          <div className="max-w-6xl mx-auto px-6">
-            <MLSectionTitle variant="headline" className="mb-8">
+          <div className="max-w-6xl mx-auto px-veo-6">
+            <MLSectionTitle variant="headline" className="mb-veo-6">
               Accessibility Features
             </MLSectionTitle>
             
-            <div className="space-y-6">
+            <div className="space-y-veo-6">
               <div>
-                <MLText variant="title" className="mb-4">Focus Management</MLText>
-                <div className="space-y-4">
+                <MLText variant="title" className="mb-veo-4">Focus Management</MLText>
+                <div className="space-y-veo-4">
                   <input 
                     type="text" 
                     placeholder="Focusable input with ML styles" 
-                    className="ml-focusable px-4 py-3 border border-outline rounded-lg w-full max-w-md"
+                    className="ml-focusable px-veo-4 py-veo-3 border border-outline rounded-veo-lg w-full max-w-md"
                   />
-                  <button className="ml-focusable px-4 py-2 border border-outline rounded-lg">
+                  <button className="ml-focusable px-veo-4 py-veo-2 border border-outline rounded-veo-lg">
                     Focusable element
                   </button>
                 </div>
               </div>
               
               <div>
-                <MLText variant="title" className="mb-4">Color Contrast Testing</MLText>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="p-4 bg-surface-1 rounded-lg">
+                <MLText variant="title" className="mb-veo-4">Color Contrast Testing</MLText>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-veo-4">
+                  <div className="p-veo-4 bg-surface-1 rounded-veo-lg">
                     <MLText variant="body" color="text">Primary text on surface</MLText>
                     <MLText variant="body" color="weak">Secondary text on surface</MLText>
                   </div>
-                  <div className="p-4 rounded-lg" style={{ backgroundColor: 'var(--ml-primary)' }}>
+                  <div className="p-veo-4 rounded-veo-lg" style={{ backgroundColor: 'var(--ml-primary)' }}>
                     <MLText variant="body" className="text-white">White text on primary</MLText>
                   </div>
                 </div>
@@ -251,16 +252,16 @@ export const TestShowcase = () => {
 
         {/* Test Instructions */}
         <section className="scene-module">
-          <div className="max-w-4xl mx-auto px-6 text-center">
-            <MLSectionTitle variant="headline" className="mb-6">
+          <div className="max-w-4xl mx-auto px-veo-6 text-center">
+            <MLSectionTitle variant="headline" className="mb-veo-6">
               Manual Testing Checklist
             </MLSectionTitle>
             
-            <div className="text-left bg-surface-1 p-6 rounded-lg">
-              <MLText variant="body" className="mb-4 font-medium">
+            <div className="text-left bg-surface-1 p-veo-6 rounded-veo-lg">
+              <MLText variant="body" className="mb-veo-4 font-medium">
                 Please verify the following:
               </MLText>
-              <ul className="space-y-2 text-sm">
+              <ul className="space-y-veo-2 text-sm">
                 <li>✅ ML buttons show Electric Indigo (#6366F1) background</li>
                 <li>✅ Hover effects work on all interactive elements</li>
                 <li>✅ Focus rings appear when using keyboard navigation</li>

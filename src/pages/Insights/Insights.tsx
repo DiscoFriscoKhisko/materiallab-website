@@ -1,5 +1,6 @@
 import { Layout } from '../../components/Layout/Layout';
-import { MLText, MLButton, MLHeading } from '../../components/ML';
+import { MLText, MLHeading } from '../../components/ML';
+import { VeoButton, VeoArrowIcon } from '../../components/VeoButton';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { useScrollAnimation } from '../../hooks/useScrollAnimation';
@@ -13,7 +14,7 @@ export const Insights = () => {
       <div className="relative overflow-hidden bg-background">
         {/* Hero Section */}
         <section ref={heroRef.ref} className="scene-module min-h-[60vh] flex items-center">
-          <div className="max-w-4xl mx-auto px-6 text-center">
+          <div className="max-w-4xl mx-auto px-veo-6 text-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={heroRef.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -28,38 +29,32 @@ export const Insights = () => {
                 lessons learned from our projects, and industry trends.
               </MLText>
 
-              <div className="space-y-6">
-                <div className="p-8 rounded-2xl bg-surface-1 border border-outline-variant max-w-2xl mx-auto">
-                  <MLHeading level={3} className="mb-4">
+              <div className="space-y-veo-6">
+                <div className="p-veo-6 rounded-veo-2xl bg-surface-1 border border-outline-variant max-w-2xl mx-auto">
+                  <MLHeading level={3} className="mb-veo-4">
                     Coming Soon
                   </MLHeading>
-                  <MLText variant="body" color="weak" className="mb-6">
+                  <MLText variant="body" color="weak" className="mb-veo-6">
                     In the meantime, feel free to reach out if you have questions about product development 
                     or want to discuss your project.
                   </MLText>
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <MLButton
-                      variant="filled"
+                  <div className="flex flex-col sm:flex-row gap-veo-4 justify-center">
+                    <VeoButton
+                      variant="primary"
                       onClick={() => navigate('/contact')}
-                      iconRight={
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                      }
+                      icon={<VeoArrowIcon />}
+                      iconPosition="right"
                     >
                       Get in touch
-                    </MLButton>
-                    <MLButton
-                      variant="outlined"
+                    </VeoButton>
+                    <VeoButton
+                      variant="outline"
                       onClick={() => navigate('/work')}
-                      iconRight={
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                      }
+                      icon={<VeoArrowIcon />}
+                      iconPosition="right"
                     >
                       View our work
-                    </MLButton>
+                    </VeoButton>
                   </div>
                 </div>
               </div>

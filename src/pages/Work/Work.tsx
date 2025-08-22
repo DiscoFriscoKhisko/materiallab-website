@@ -1,5 +1,6 @@
 import { Layout } from '../../components/Layout/Layout';
-import { MLHeading, MLText, MLButton, MLCard } from '../../components/ML';
+import { MLHeading, MLText, MLCard } from '../../components/ML';
+import { VeoButton, VeoArrowIcon } from '../../components/VeoButton';
 import { MediaPlaceholder } from '../../components/MediaPlaceholder/MediaPlaceholder';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
@@ -56,7 +57,7 @@ export const Work = () => {
     <Layout>
       <div className="min-h-screen bg-bg">
         {/* Hero Section */}
-        <section className="py-24 lg:py-32 px-4 sm:px-6 lg:px-8">
+        <section className="py-veo-16 lg:py-veo-20 px-veo-4 sm:px-veo-6 lg:px-veo-8">
           <div className="max-w-4xl mx-auto text-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -85,12 +86,12 @@ export const Work = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
               >
-                <MLCard className="p-8 lg:p-12">
+                <MLCard className="p-veo-6 lg:p-veo-8">
                   <div className="grid lg:grid-cols-2 gap-12 items-start">
                     {/* Project Details */}
                     <div>
-                      <div className="flex items-center gap-2 mb-4">
-                        <MLText variant="caption" className="bg-primary/20 text-primary font-medium px-3 py-1 rounded-full">
+                      <div className="flex items-center gap-veo-2 mb-veo-4">
+                        <MLText variant="caption" className="bg-primary/20 text-primary font-medium px-veo-3 py-veo-1 rounded-full">
                           {project.category}
                         </MLText>
                         <MLText variant="caption" color="weaker">
@@ -106,9 +107,9 @@ export const Work = () => {
                         {project.client}
                       </MLText>
                       
-                      <div className="space-y-6">
+                      <div className="space-y-veo-6">
                         <div>
-                          <MLHeading level={5} className="mb-2 text-primary">
+                          <MLHeading level={5} className="mb-veo-2 text-primary">
                             Challenge
                           </MLHeading>
                           <MLText variant="bodyM" color="weak">
@@ -129,7 +130,7 @@ export const Work = () => {
                           <MLHeading level={5} className="mb-3">
                             Results
                           </MLHeading>
-                          <div className="grid grid-cols-2 gap-3">
+                          <div className="grid grid-cols-2 gap-veo-3">
                             {project.results.map((result, idx) => (
                               <div key={idx} className="flex items-start">
                                 <svg className="w-4 h-4 text-success mt-1 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -147,9 +148,9 @@ export const Work = () => {
                           <MLHeading level={5} className="mb-2">
                             Technologies
                           </MLHeading>
-                          <div className="flex flex-wrap gap-2">
+                          <div className="flex flex-wrap gap-veo-2">
                             {project.technologies.map((tech, idx) => (
-                              <MLText key={idx} variant="caption" className="bg-surface-2 text-text-weak px-2 py-1 rounded">
+                              <MLText key={idx} variant="caption" className="bg-surface-2 text-text-weak px-veo-2 py-veo-1 rounded-veo">
                                 {tech}
                               </MLText>
                             ))}
@@ -159,7 +160,7 @@ export const Work = () => {
                     </div>
                     
                     {/* Visual + Testimonial */}
-                    <div className="space-y-6">
+                    <div className="space-y-veo-6">
                       <MediaPlaceholder
                         type="image"
                         title={`${project.title} - Screenshot`}
@@ -168,7 +169,7 @@ export const Work = () => {
                       />
                       
                       {/* Testimonial */}
-                      <MLCard variant="glow-primary" className="p-6">
+                      <MLCard variant="glow-primary" className="p-veo-6">
                         <MLText variant="bodyM" className="mb-4 italic">
                           "{project.testimonial.quote}"
                         </MLText>
@@ -199,18 +200,15 @@ export const Work = () => {
               <MLText variant="bodyL" color="weak" className="mb-8">
                 Discovery → Strategy → Build → Launch. Battle-tested methodology designed for speed and results.
               </MLText>
-              <MLButton
-                variant="text"
+              <VeoButton
+                variant="ghost"
                 size="lg"
                 onClick={() => navigate('/approach')}
-                iconRight={
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                }
+                icon={<VeoArrowIcon />}
+                iconPosition="right"
               >
                 Learn about our approach
-              </MLButton>
+              </VeoButton>
             </motion.div>
           </div>
         </section>
@@ -230,18 +228,15 @@ export const Work = () => {
             <MLText variant="bodyL" color="weak" className="mb-8">
               Let's discuss your project and create something people love.
             </MLText>
-            <MLButton
-              variant="filled"
+            <VeoButton
+              variant="primary"
               size="lg"
               onClick={() => navigate('/contact')}
-              iconRight={
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              }
+              icon={<VeoArrowIcon />}
+              iconPosition="right"
             >
               Book a call
-            </MLButton>
+            </VeoButton>
           </motion.div>
         </section>
       </div>

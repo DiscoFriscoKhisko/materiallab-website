@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import { MLText, MLHeading, MLButton } from '../ML';
+import { MLText, MLHeading } from '../ML';
+import { VeoButton, VeoArrowIcon } from '../VeoButton';
 
 interface QuickFormData {
   name: string;
@@ -19,14 +20,14 @@ interface QuickFormProps {
 
 const SuccessAnimation = () => (
   <motion.div
-    className="flex flex-col items-center justify-center py-12"
+    className="flex flex-col items-center justify-center py-veo-8"
     initial={{ opacity: 0, scale: 0.8 }}
     animate={{ opacity: 1, scale: 1 }}
     transition={{ duration: 0.5 }}
   >
     {/* Checkmark */}
     <motion.div
-      className="w-16 h-16 rounded-full bg-success/20 flex items-center justify-center mb-6"
+      className="w-16 h-16 rounded-full bg-success/20 flex items-center justify-center mb-veo-6"
       initial={{ scale: 0 }}
       animate={{ scale: 1 }}
       transition={{ duration: 0.5, delay: 0.2 }}
@@ -49,7 +50,7 @@ const SuccessAnimation = () => (
       </motion.svg>
     </motion.div>
 
-    <MLHeading level={4} className="mb-3 text-success">
+    <MLHeading level={4} className="mb-veo-3 text-success">
       Got it! We'll be in touch soon.
     </MLHeading>
     <MLText color="weak" className="text-center max-w-sm">
@@ -211,11 +212,11 @@ export const QuickForm = ({ onSubmit, className = '' }: QuickFormProps) => {
   }
 
   return (
-    <div className={`quick-form-container glow-gradient-secondary glow-noise p-8 rounded-2xl ${className}`}>
+    <div className={`quick-form-container glow-gradient-secondary glow-noise p-veo-6 rounded-veo-2xl ${className}`}>
       <div className="relative z-10">
         {/* Header */}
-        <div className="mb-8">
-          <MLHeading level={4} className="mb-3">
+        <div className="mb-veo-6">
+          <MLHeading level={4} className="mb-veo-3">
             Tell us about your project
           </MLHeading>
           <MLText color="weak" className="leading-relaxed">
@@ -224,7 +225,7 @@ export const QuickForm = ({ onSubmit, className = '' }: QuickFormProps) => {
         </div>
 
         {/* Progress Indicator */}
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center justify-between mb-veo-6">
           <div className="flex space-x-2">
             {[1, 2].map((stepNum) => (
               <motion.div
@@ -254,11 +255,11 @@ export const QuickForm = ({ onSubmit, className = '' }: QuickFormProps) => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.3 }}
-                className="space-y-6"
+                className="space-y-veo-4"
               >
                 {/* Name */}
                 <div>
-                  <MLText variant="bodyS" className="block font-medium text-on-surface mb-2">
+                  <MLText variant="bodyS" className="block font-medium text-on-surface mb-veo-2">
                     Your name *
                   </MLText>
                   <motion.input
@@ -267,7 +268,7 @@ export const QuickForm = ({ onSubmit, className = '' }: QuickFormProps) => {
                     onChange={(e) => handleChange('name', e.target.value)}
                     onBlur={(e) => handleBlur('name', e.target.value)}
                     className={`
-                      w-full px-4 py-3 rounded-lg bg-surface border
+                      w-full px-veo-4 py-veo-3 rounded-veo-lg bg-surface border
                       ${errors.name ? 'border-error' : 'border-outline-variant'}
                       focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none
                       transition-all duration-200
@@ -288,7 +289,7 @@ export const QuickForm = ({ onSubmit, className = '' }: QuickFormProps) => {
 
                 {/* Contact */}
                 <div>
-                  <label className="block text-sm font-medium text-on-surface mb-2">
+                  <label className="block text-sm font-medium text-on-surface mb-veo-2">
                     Email or phone *
                   </label>
                   <motion.input
@@ -297,7 +298,7 @@ export const QuickForm = ({ onSubmit, className = '' }: QuickFormProps) => {
                     onChange={(e) => handleChange('contact', e.target.value)}
                     onBlur={(e) => handleBlur('contact', e.target.value)}
                     className={`
-                      w-full px-4 py-3 rounded-lg bg-surface border
+                      w-full px-veo-4 py-veo-3 rounded-veo-lg bg-surface border
                       ${errors.contact ? 'border-error' : 'border-outline-variant'}
                       focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none
                       transition-all duration-200
@@ -318,33 +319,30 @@ export const QuickForm = ({ onSubmit, className = '' }: QuickFormProps) => {
 
                 {/* Company (Optional) */}
                 <div>
-                  <label className="block text-sm font-medium text-on-surface mb-2">
+                  <label className="block text-sm font-medium text-on-surface mb-veo-2">
                     Company (optional)
                   </label>
                   <motion.input
                     type="text"
                     value={formData.company}
                     onChange={(e) => handleChange('company', e.target.value)}
-                    className="w-full px-4 py-3 rounded-lg bg-surface border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none transition-all duration-200"
+                    className="w-full px-veo-4 py-veo-3 rounded-veo-lg bg-surface border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none transition-all duration-200"
                     placeholder="Your company name"
                     whileFocus={{ scale: 1.02 }}
                   />
                 </div>
 
-                <MLButton
+                <VeoButton
                   type="button"
                   onClick={handleNext}
-                  variant="filled"
+                  variant="primary"
                   size="lg"
                   className="w-full"
-                  iconRight={
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  }
+                  icon={<VeoArrowIcon />}
+                  iconPosition="right"
                 >
                   Next
-                </MLButton>
+                </VeoButton>
               </motion.div>
             )}
 
@@ -356,11 +354,11 @@ export const QuickForm = ({ onSubmit, className = '' }: QuickFormProps) => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.3 }}
-                className="space-y-6"
+                className="space-y-veo-4"
               >
                 {/* Project Type */}
                 <div>
-                  <label className="block text-sm font-medium text-on-surface mb-3">
+                  <label className="block text-sm font-medium text-on-surface mb-veo-3">
                     What type of project? *
                   </label>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -372,7 +370,7 @@ export const QuickForm = ({ onSubmit, className = '' }: QuickFormProps) => {
                       <motion.label
                         key={option.value}
                         className={`
-                          relative flex flex-col p-4 rounded-lg border cursor-pointer
+                          relative flex flex-col p-4 rounded-veo-lg border cursor-pointer
                           ${formData.projectType === option.value
                             ? 'border-primary bg-primary/5'
                             : 'border-outline-variant hover:border-primary/50'
@@ -420,7 +418,7 @@ export const QuickForm = ({ onSubmit, className = '' }: QuickFormProps) => {
 
                 {/* Description */}
                 <div>
-                  <label className="block text-sm font-medium text-on-surface mb-2">
+                  <label className="block text-sm font-medium text-on-surface mb-veo-2">
                     Tell us more *
                   </label>
                   <motion.textarea
@@ -429,7 +427,7 @@ export const QuickForm = ({ onSubmit, className = '' }: QuickFormProps) => {
                     onBlur={(e) => handleBlur('description', e.target.value)}
                     rows={4}
                     className={`
-                      w-full px-4 py-3 rounded-lg bg-surface border resize-none
+                      w-full px-veo-4 py-veo-3 rounded-veo-lg bg-surface border resize-none
                       ${errors.description ? 'border-error' : 'border-outline-variant'}
                       focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none
                       transition-all duration-200
@@ -450,37 +448,33 @@ export const QuickForm = ({ onSubmit, className = '' }: QuickFormProps) => {
 
                 {/* Action Buttons */}
                 <div className="flex gap-3">
-                  <MLButton
+                  <VeoButton
                     type="button"
                     onClick={() => setStep(step - 1)}
-                    variant="outlined"
+                    variant="outline"
                     size="lg"
                     className="flex-1"
                   >
                     Back
-                  </MLButton>
-                  <MLButton
+                  </VeoButton>
+                  <VeoButton
                     type="submit"
-                    variant="filled"
+                    variant="primary"
                     size="lg"
                     className="flex-1"
                     disabled={isSubmitting}
-                    iconRight={
-                      isSubmitting ? (
-                        <motion.div
-                          className="w-4 h-4 border-2 border-white border-t-transparent rounded-full"
-                          animate={{ rotate: 360 }}
-                          transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                        />
-                      ) : (
+                    loading={isSubmitting}
+                    icon={
+                      !isSubmitting ? (
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
                         </svg>
-                      )
+                      ) : undefined
                     }
+                    iconPosition="right"
                   >
                     {isSubmitting ? 'Sending...' : 'Send'}
-                  </MLButton>
+                  </VeoButton>
                 </div>
               </motion.div>
             )}

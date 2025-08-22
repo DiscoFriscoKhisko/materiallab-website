@@ -27,7 +27,7 @@ export const Navigation = () => {
   return (
     <>
       <nav 
-        className={`sticky top-0 z-50 bg-background transition-all duration-300 ease-out ${
+        className={`sticky top-0 z-50 bg-bg transition-all duration-300 ease-out ${
           isScrolled ? 'py-3' : 'py-6'
         }`}
         role="navigation"
@@ -86,8 +86,8 @@ export const Navigation = () => {
                   to={item.path}
                   className={`px-3 py-2 rounded-full text-sm font-normal font-primary transition-all duration-200 ease-out ${
                     location.pathname === item.path 
-                      ? 'text-white bg-white/10' 
-                      : 'text-white/70 hover:text-white hover:bg-white/8'
+                      ? 'text-on-surface bg-white bg-opacity-20' 
+                      : 'text-on-surface-variant hover:text-on-surface hover:bg-white hover:bg-opacity-10'
                   }`}
                 >
                   {item.label}

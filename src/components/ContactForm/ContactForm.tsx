@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MLButton, MLInput, MLText, MLHeading } from '../ML';
+import { MLText, MLHeading } from '../ML';
+import { VeoButton, VeoArrowIcon } from '../VeoButton';
+import { VeoInput, VeoTextarea } from '../VeoForm';
 
 interface ContactFormData {
   name: string;
@@ -125,8 +127,8 @@ export const ContactForm = ({ defaultProjectType = 'certain', onClose }: Contact
         </MLText>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <MLInput
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <VeoInput
           label="Name *"
           type="text"
           value={formData.name}
@@ -136,7 +138,7 @@ export const ContactForm = ({ defaultProjectType = 'certain', onClose }: Contact
           required
         />
 
-        <MLInput
+        <VeoInput
           label="Email *"
           type="email"
           value={formData.email}
@@ -147,7 +149,7 @@ export const ContactForm = ({ defaultProjectType = 'certain', onClose }: Contact
         />
       </div>
 
-      <MLInput
+      <VeoInput
         label="Company"
         type="text"
         value={formData.company}
@@ -190,49 +192,39 @@ export const ContactForm = ({ defaultProjectType = 'certain', onClose }: Contact
         </div>
       </div>
 
-      <div className="space-y-2">
-        <label htmlFor="message" className="block">
-          <MLText variant="bodyS" className="font-medium">Message *</MLText>
-        </label>
-        <textarea
-          id="message"
-          rows={4}
-          value={formData.message}
-          onChange={(e) => handleInputChange('message', e.target.value)}
-          placeholder="Tell us about your project, goals, timeline, or any questions you have..."
-          className={`w-full px-3 py-2 bg-surface border rounded-lg font-primary text-text placeholder:text-text-weaker transition-all duration-base focus:outline-none focus:ring-2 focus:ring-ion focus:ring-offset-2 focus:ring-offset-bg resize-none ${
-            errors.message ? 'border-error focus:border-error focus:ring-error' : 'border-glass-light hover:border-ion-subtle focus:border-ion'
-          }`}
-          required
-        />
-        {errors.message && (
-          <MLText variant="bodyS" color="weak" className="mt-1 text-error">
-            {errors.message}
-          </MLText>
-        )}
-      </div>
+      <VeoTextarea
+        label="Message *"
+        rows={4}
+        value={formData.message}
+        onChange={(e) => handleInputChange('message', e.target.value)}
+        placeholder="Tell us about your project, goals, timeline, or any questions you have..."
+        error={errors.message}
+        required
+      />
 
-      <div className="flex flex-col sm:flex-row gap-3 pt-4">
-        <MLButton
+      <div className="flex flex-col sm:flex-row gap-4 pt-4">
+        <VeoButton
           type="submit"
-          variant="filled"
+          variant="primary"
           size="lg"
-          state={isSubmitting ? 'loading' : 'default'}
+          loading={isSubmitting}
           className="flex-1"
           disabled={isSubmitting}
+          icon={<VeoArrowIcon />}
+          iconPosition="right"
         >
           {isSubmitting ? 'Sending...' : 'Send Message'}
-        </MLButton>
+        </VeoButton>
         
         {onClose && (
-          <MLButton
+          <VeoButton
             type="button"
-            variant="outlined"
+            variant="outline"
             size="lg"
             onClick={onClose}
           >
             Cancel
-          </MLButton>
+          </VeoButton>
         )}
       </div>
 
