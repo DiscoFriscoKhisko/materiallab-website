@@ -25,10 +25,13 @@ const PageLoader = () => (
 );
 
 function App() {
+  // Set basename for GitHub Pages deployment
+  const basename = import.meta.env.PROD ? '/materiallab-website' : '/';
+  
   return (
     <ErrorBoundary>
       <LanguageProvider>
-        <Router>
+        <Router basename={basename}>
           <Suspense fallback={<PageLoader />}>
             <Routes>
               <Route path="/" element={<Landing />} />
