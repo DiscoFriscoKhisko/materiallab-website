@@ -11,7 +11,6 @@ const Work = lazy(() => import('./pages/Work/Work').then(m => ({ default: m.Work
 const Approach = lazy(() => import('./pages/Approach/Approach').then(m => ({ default: m.Approach })));
 const Insights = lazy(() => import('./pages/Insights/Insights').then(m => ({ default: m.Insights })));
 const About = lazy(() => import('./pages/About/About').then(m => ({ default: m.About })));
-const TestShowcase = lazy(() => import('./pages/TestShowcase/TestShowcase').then(m => ({ default: m.TestShowcase })));
 const NotFound = lazy(() => import('./pages/NotFound/NotFound').then(m => ({ default: m.NotFound })));
 
 // Loading component
@@ -41,7 +40,6 @@ function App() {
               <Route path="/contact" element={<Contact />} />
               <Route path="/work" element={<Work />} />
               <Route path="/about" element={<About />} />
-              <Route path="/test-showcase" element={<TestShowcase />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>

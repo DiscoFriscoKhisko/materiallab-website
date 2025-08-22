@@ -1,7 +1,7 @@
-// ML Design System Components
-export { MLButton } from './Button';
+// ML Design System Components  
+export { Button as MLButton } from '../UI/Button';
 export { MLCard } from './Card';
-export { MLInput } from './Input';
+export { Input as MLInput } from '../UI/Input';
 export { MLText, MLHeading, MLBody, MLCaption } from './Typography';
 export { MLVideo } from './Video';
 
