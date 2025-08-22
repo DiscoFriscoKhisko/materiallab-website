@@ -3,54 +3,46 @@
 @import '@fontsource-variable/sora';
 
 :root {
-  /* === DUAL THEME SYSTEM - VEO INSPIRED === */
+  /* === DUAL THEME SYSTEM - DARK FIRST === */
   
-  /* Light Theme (Primary - like Veo) */
-  --background: #FFFFFF;
-  --on-background: #1A1A1A;
-  --surface: #FFFFFF;
-  --surface-1: #F8F9FA;
-  --surface-2: #F1F3F4;
-  --surface-3: #E8EAED;
-  --on-surface: #1A1A1A;
-  --on-surface-variant: #5F6368;
-  --outline: #E0E0E0;
-  --outline-variant: #F0F0F0;
+  /* Dark Theme (Default - AI-native dark theme) */
+  --background: #0B0F1A;
+  --on-background: rgba(255, 255, 255, 0.87);
+  --surface: #1A1F2E;
+  --surface-1: #242B3D;
+  --surface-2: #2E3749;
+  --surface-3: #384356;
+  --on-surface: rgba(255, 255, 255, 0.87);
+  --on-surface-variant: rgba(255, 255, 255, 0.60);
+  --outline: rgba(255, 255, 255, 0.12);
+  --outline-variant: rgba(255, 255, 255, 0.08);
   
-  /* Primary Brand Color - Professional Blue */
-  --primary: #1A73E8;
-  --on-primary: #FFFFFF;
-  --primary-container: #E8F0FE;
-  --on-primary-container: #0D47A1;
+  /* Primary Brand Color - Ion Blue for dark mode */
+  --primary: #55C2FF;
+  --on-primary: #0B1426;
+  --primary-container: #1A3A5C;
+  --on-primary-container: #B3E5FC;
   
-  /* Secondary - Minimal */
-  --secondary: #5F6368;
+  /* Secondary - Sunset Coral accent */
+  --secondary: #FF6F61;
   --on-secondary: #FFFFFF;
-  --secondary-container: #F1F3F4;
-  --on-secondary-container: #202124;
+  --secondary-container: #4A1E1A;
+  --on-secondary-container: #FFCDD2;
   
-  /* Semantic Colors - Clean & Accessible */
-  --error: #EA4335;
+  /* Semantic Colors - Dark theme optimized */
+  --error: #FF5449;
   --on-error: #FFFFFF;
-  --warning: #FBBC04;
+  --warning: #FFB74D;
   --on-warning: #1A1A1A;
-  --success: #34A853;
+  --success: #81C784;
   --on-success: #FFFFFF;
   --info: var(--primary);
   
-  /* Text Hierarchy - Simple & Clear */
+  /* Text Hierarchy - Dark theme */
   --text: var(--on-surface);
   --text-weak: var(--on-surface-variant);
-  --text-weaker: #9AA0A6;
-  --text-inverse: var(--on-primary);
-  
-  /* Dark Mode Toggle (for later) */
-  --dark-background: #121212;
-  --dark-on-background: rgba(255, 255, 255, 0.87);
-  --dark-surface: #1E1E1E;
-  --dark-on-surface: rgba(255, 255, 255, 0.87);
-  --dark-on-surface-variant: rgba(255, 255, 255, 0.60);
-  --dark-outline: rgba(255, 255, 255, 0.12);
+  --text-weaker: rgba(255, 255, 255, 0.38);
+  --text-inverse: #1A1A1A;
   
   /* === TYPOGRAPHY === */
   --font-primary: 'Inter Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
@@ -122,4 +114,46 @@
   --ease-in: cubic-bezier(0.4, 0, 1, 1);
   --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
   
+}
+
+/* === LIGHT THEME OVERRIDES === */
+.light-theme {
+  /* Light Theme Colors - Clean & Professional */
+  --background: #FFFFFF;
+  --on-background: #1A1A1A;
+  --surface: #FFFFFF;
+  --surface-1: #F8F9FA;
+  --surface-2: #F1F3F4;
+  --surface-3: #E8EAED;
+  --on-surface: #1A1A1A;
+  --on-surface-variant: #5F6368;
+  --outline: #E0E0E0;
+  --outline-variant: #F0F0F0;
+  
+  /* Primary Brand Color - Professional Blue for light mode */
+  --primary: #1A73E8;
+  --on-primary: #FFFFFF;
+  --primary-container: #E8F0FE;
+  --on-primary-container: #0D47A1;
+  
+  /* Secondary - Muted for light mode */
+  --secondary: #5F6368;
+  --on-secondary: #FFFFFF;
+  --secondary-container: #F1F3F4;
+  --on-secondary-container: #202124;
+  
+  /* Semantic Colors - Light theme optimized */
+  --error: #EA4335;
+  --on-error: #FFFFFF;
+  --warning: #FBBC04;
+  --on-warning: #1A1A1A;
+  --success: #34A853;
+  --on-success: #FFFFFF;
+  --info: var(--primary);
+  
+  /* Text Hierarchy - Light theme */
+  --text: var(--on-surface);
+  --text-weak: var(--on-surface-variant);
+  --text-weaker: #9AA0A6;
+  --text-inverse: var(--on-primary);
 }
