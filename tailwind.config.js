@@ -106,10 +106,12 @@ export default {
       },
       
       fontFamily: {
-        display: 'var(--font-display)',
-        headline: 'var(--font-headline)',
-        body: 'var(--font-body)',
-        mono: 'var(--font-mono)'
+        primary: 'var(--font-primary)',  // Unified Sora font
+        mono: 'var(--font-mono)',
+        // Legacy support - all map to primary
+        display: 'var(--font-primary)',
+        headline: 'var(--font-primary)',
+        body: 'var(--font-primary)'
       },
       
       fontSize: {

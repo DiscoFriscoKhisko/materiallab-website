@@ -55,7 +55,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  font-family: var(--font-display);
+  font-family: var(--font-primary);
 }
 
 .hero-subtitle {

@@ -6,7 +6,7 @@
 
 @layer base {
   html {
-    font-family: var(--font-body);
+    font-family: var(--font-primary);
   }
   
   body {
@@ -24,12 +24,12 @@
   
   /* Enhanced multilingual typography */
   html[lang="hi"] .font-headline,
-  html[lang="hi"] .font-display {
+  html[lang="hi"] .font-primary {
     font-family: 'Noto Sans Devanagari', var(--font-headline);
   }
   
   html[lang="kn"] .font-headline,
-  html[lang="kn"] .font-display {
+  html[lang="kn"] .font-primary {
     font-family: 'Noto Sans Kannada', var(--font-headline);
   }
 }
@@ -376,7 +376,7 @@
 
 /* Typography Utilities */
 .text-display { 
-  font-family: var(--font-display);
+  font-family: var(--font-primary);
   font-weight: var(--font-weight-bold);
 }
 
@@ -391,12 +391,12 @@
 }
 
 .text-body { 
-  font-family: var(--font-body);
+  font-family: var(--font-primary);
   font-weight: var(--font-weight-normal);
 }
 
 .text-label { 
-  font-family: var(--font-body);
+  font-family: var(--font-primary);
   font-weight: var(--font-weight-medium);
 }
 

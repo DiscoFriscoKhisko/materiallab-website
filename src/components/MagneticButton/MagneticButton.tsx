@@ -24,7 +24,7 @@ export const MagneticButton = ({
 }: MagneticButtonProps) => {
   const magneticRef = useMagneticEffect(magneticStrength);
 
-  const baseClasses = 'relative overflow-hidden font-medium font-body rounded-lg transition-all duration-base focus:outline-none focus:ring-2 focus:ring-offset-2 transform-gpu';
+  const baseClasses = 'relative overflow-hidden font-medium font-primary rounded-lg transition-all duration-base focus:outline-none focus:ring-2 focus:ring-offset-2 transform-gpu';
 
   const variantClasses = {
     primary: 'bg-primary text-text-inverse hover:bg-primary-strong focus:ring-ion btn-magnetic shadow-elevation-1 hover:shadow-elevation-2',

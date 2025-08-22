@@ -160,7 +160,7 @@ export const Hero3D = ({ className = '', variant = 'lab' }: Hero3DProps) => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
       >
-        <h3 className="text-title font-headline font-semibold mb-2 text-on-surface">
+        <h3 className="text-title font-primary font-semibold mb-2 text-on-surface">
           {scene.title}
         </h3>
         <p className="text-body text-on-surface-variant">

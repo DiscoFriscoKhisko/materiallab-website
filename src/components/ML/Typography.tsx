@@ -59,23 +59,23 @@ export const MLText = forwardRef<HTMLElement, MLTypographyProps>(({
   // Get the appropriate font size class based on language
   const getVariantClass = (variant: string) => {
     const baseVariants = {
-      // Enhanced role-based variants with Playfair Display for headings
-      display: `text-h1 font-display font-weight-display tracking-tight max-line-length`,
-      headline: `text-h2 font-display font-weight-heading tracking-tight`,
-      title: `text-h3 font-display font-weight-heading`,
-      body: isIndic ? `text-body font-body font-weight-body max-line-length` : `text-body font-body font-weight-body max-line-length`,
-      label: `text-button font-body font-weight-button tracking-button`,
+      // Unified Sora typography system - all variants use primary font
+      display: `text-h1 font-primary font-bold tracking-tight max-line-length`,
+      headline: `text-h2 font-primary font-semibold tracking-tight`,
+      title: `text-h3 font-primary font-semibold`,
+      body: isIndic ? `text-body font-primary font-normal max-line-length` : `text-body font-primary font-normal max-line-length`,
+      label: `text-button font-primary font-medium`,
       
-      // Enhanced legacy support with refined typography
-      h1: 'text-h1 font-display font-weight-display tracking-tight',
-      h2: 'text-h2 font-display font-weight-heading tracking-tight',
-      h3: 'text-h3 font-display font-weight-heading',
-      h4: 'text-h4 font-display font-weight-heading',
-      h5: 'text-h5 font-display font-weight-heading',
-      bodyL: isIndic ? 'text-body font-body font-weight-body max-line-length' : 'text-body font-body font-weight-body max-line-length',
-      bodyM: isIndic ? 'text-body font-body font-weight-body content-width' : 'text-body font-body font-weight-body content-width',
-      bodyS: 'text-small font-body font-weight-body',
-      caption: 'text-caption font-body tracking-wide'
+      // Legacy support - all use unified Sora font
+      h1: 'text-h1 font-primary font-bold tracking-tight',
+      h2: 'text-h2 font-primary font-semibold tracking-tight',
+      h3: 'text-h3 font-primary font-semibold',
+      h4: 'text-h4 font-primary font-medium',
+      h5: 'text-h5 font-primary font-medium',
+      bodyL: isIndic ? 'text-body font-primary font-normal max-line-length' : 'text-body font-primary font-normal max-line-length',
+      bodyM: isIndic ? 'text-body font-primary font-normal content-width' : 'text-body font-primary font-normal content-width',
+      bodyS: 'text-small font-primary font-normal',
+      caption: 'text-caption font-primary font-light'
     };
     return baseVariants[variant as keyof typeof baseVariants] || baseVariants.body;
   };

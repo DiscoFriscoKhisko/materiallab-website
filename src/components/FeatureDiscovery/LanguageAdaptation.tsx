@@ -39,7 +39,7 @@ export const LanguageAdaptation = () => {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8 }}
         >
-          <h3 className="text-headline font-headline font-semibold mb-4 text-on-surface">
+          <h3 className="text-headline font-primary font-semibold mb-4 text-on-surface">
             {t('languageCard.title')}
           </h3>
           <p className="text-body text-on-surface-variant max-w-2xl mx-auto">
@@ -72,11 +72,11 @@ export const LanguageAdaptation = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.3 }}
-                  className="text-title font-headline font-semibold text-on-surface mb-4"
+                  className="text-title font-primary font-semibold text-on-surface mb-4"
                   style={{
                     fontFamily: previewLanguage === 'en' 
-                      ? 'var(--font-headline)'
-                      : 'var(--font-display)'
+                      ? 'var(--font-primary)'
+                      : 'var(--font-primary)'
                   }}
                 >
                   {getSampleText(previewLanguage)}

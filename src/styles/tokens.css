@@ -170,11 +170,14 @@
   
   /* === TYPOGRAPHY === */
   
-  /* Font Stacks with Multilingual Support */
-  --font-display: 'Playfair Display Variable', 'Noto Sans Devanagari', 'Noto Sans Kannada', serif;
-  --font-headline: 'Sora Variable', 'Noto Sans Devanagari', 'Noto Sans Kannada', system-ui, sans-serif;
-  --font-body: 'Inter Variable', 'Noto Sans Devanagari', 'Noto Sans Kannada', system-ui, sans-serif;
+  /* Unified Font System - Sora for all UI text */
+  --font-primary: 'Sora Variable', 'Noto Sans Devanagari', 'Noto Sans Kannada', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+  
+  /* Legacy support - all map to primary font */
+  --font-display: var(--font-primary);
+  --font-headline: var(--font-primary);
+  --font-body: var(--font-primary);
   
   /* Font Weights */
   --font-weight-normal: 400;
@@ -216,14 +219,16 @@
   --text-button-tracking: 0.5px;  /* Increased letter spacing for clarity */
   --text-button-weight: 500;
   
-  /* Supporting text sizes */
+  /* Supporting text sizes - Sora */
   --text-small: clamp(0.875rem, 1.5vw, 1rem);  /* 14px - 16px */
   --text-small-lh: 1.5;
-  --text-small-tracking: 0;
+  --text-small-tracking: 0em;
+  --text-small-weight: var(--font-weight-normal);  /* 400 */
   
   --text-caption: clamp(0.75rem, 1vw, 0.875rem);  /* 12px - 14px */
   --text-caption-lh: 1.4;
   --text-caption-tracking: 0.025em;
+  --text-caption-weight: var(--font-weight-light);  /* 300 */
   
   /* Legacy mappings for backward compatibility */
   --text-display: var(--text-h1);
@@ -242,16 +247,16 @@
   --text-label-lh: var(--text-button-lh);
   --text-label-tracking: var(--text-button-tracking);
   
-  /* H4 and H5 for smaller headings */
+  /* H4 and H5 for smaller headings - Sora */
   --text-h4: clamp(1.25rem, 2vw, 1.75rem);  /* 20px - 28px */
   --text-h4-lh: 1.3;
-  --text-h4-tracking: 0;
-  --text-h4-weight: 500;
+  --text-h4-tracking: 0em;
+  --text-h4-weight: var(--font-weight-medium);  /* 500 */
   
   --text-h5: clamp(1.125rem, 1.5vw, 1.5rem);  /* 18px - 24px */
   --text-h5-lh: 1.35;
-  --text-h5-tracking: 0;
-  --text-h5-weight: 500;
+  --text-h5-tracking: 0em;
+  --text-h5-weight: var(--font-weight-medium);  /* 500 */
   
   --text-body-l: var(--text-body);
   --text-body-l-lh: var(--text-body-lh);
@@ -510,7 +515,7 @@
 
 /* Typography Utilities */
 .heading-1 {
-  font-family: var(--font-display);
+  font-family: var(--font-primary);
   font-size: var(--text-h1);
   line-height: var(--text-h1-lh);
   font-weight: 700;
@@ -518,7 +523,7 @@
 }
 
 .heading-2 {
-  font-family: var(--font-display);
+  font-family: var(--font-primary);
   font-size: var(--text-h2);
   line-height: var(--text-h2-lh);
   font-weight: 600;
@@ -526,7 +531,7 @@
 }
 
 .heading-3 {
-  font-family: var(--font-display);
+  font-family: var(--font-primary);
   font-size: var(--text-h3);
   line-height: var(--text-h3-lh);
   font-weight: 600;
@@ -534,14 +539,14 @@
 }
 
 .body-large {
-  font-family: var(--font-body);
+  font-family: var(--font-primary);
   font-size: var(--text-body-l);
   line-height: var(--text-body-l-lh);
   color: var(--text-weak);
 }
 
 .body-medium {
-  font-family: var(--font-body);
+  font-family: var(--font-primary);
   font-size: var(--text-body-m);
   line-height: var(--text-body-m-lh);
   color: var(--text-weak);

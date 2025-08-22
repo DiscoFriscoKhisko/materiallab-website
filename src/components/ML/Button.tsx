@@ -25,7 +25,7 @@ export const MLButton = forwardRef<HTMLButtonElement, MLButtonProps>(({
   ...props
 }, ref) => {
   const isFocusVisible = useFocusVisible();
-  const baseClasses = `relative overflow-hidden font-body rounded-lg transition-all duration-200 ease-out transform-gpu inline-flex items-center justify-center gap-2 select-none group keyboard-navigation ${isFocusVisible ? 'focus-visible' : ''}`;
+  const baseClasses = `relative overflow-hidden font-primary rounded-lg transition-all duration-200 ease-out transform-gpu inline-flex items-center justify-center gap-2 select-none group keyboard-navigation ${isFocusVisible ? 'focus-visible' : ''}`;
 
   // Check if using ML design system classes
   const isUsingMLClasses = className.includes('ml-btn-');

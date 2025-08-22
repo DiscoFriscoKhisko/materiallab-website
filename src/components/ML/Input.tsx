@@ -32,7 +32,7 @@ export const MLInput = forwardRef<HTMLInputElement, MLInputProps>(({
     filled: 'bg-surface-2 border border-transparent hover:bg-surface-3 focus:border-ion focus:bg-surface'
   };
 
-  const baseClasses = 'w-full font-body text-text placeholder:text-text-weaker rounded-lg transition-all duration-base focus:outline-none focus:ring-2 focus:ring-ion focus:ring-offset-2 focus:ring-offset-bg disabled:opacity-50 disabled:cursor-not-allowed';
+  const baseClasses = 'w-full font-primary text-text placeholder:text-text-weaker rounded-lg transition-all duration-base focus:outline-none focus:ring-2 focus:ring-ion focus:ring-offset-2 focus:ring-offset-bg disabled:opacity-50 disabled:cursor-not-allowed';
 
   const hasError = !!error;
 

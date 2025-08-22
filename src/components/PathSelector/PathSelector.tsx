@@ -25,7 +25,7 @@ export const PathSelector = () => {
       <div className="max-w-5xl mx-auto text-center">
         <AnimatedText
           variant="gradient"
-          className="text-h1 font-bold font-display mb-8 leading-tight text-text"
+          className="text-h1 font-bold font-primary mb-8 leading-tight text-text"
           delay={0.2}
         >
           Do you already know what you need?

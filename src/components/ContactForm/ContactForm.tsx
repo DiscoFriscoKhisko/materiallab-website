@@ -200,7 +200,7 @@ export const ContactForm = ({ defaultProjectType = 'certain', onClose }: Contact
           value={formData.message}
           onChange={(e) => handleInputChange('message', e.target.value)}
           placeholder="Tell us about your project, goals, timeline, or any questions you have..."
-          className={`w-full px-3 py-2 bg-surface border rounded-lg font-body text-text placeholder:text-text-weaker transition-all duration-base focus:outline-none focus:ring-2 focus:ring-ion focus:ring-offset-2 focus:ring-offset-bg resize-none ${
+          className={`w-full px-3 py-2 bg-surface border rounded-lg font-primary text-text placeholder:text-text-weaker transition-all duration-base focus:outline-none focus:ring-2 focus:ring-ion focus:ring-offset-2 focus:ring-offset-bg resize-none ${
             errors.message ? 'border-error focus:border-error focus:ring-error' : 'border-glass-light hover:border-ion-subtle focus:border-ion'
           }`}
           required
