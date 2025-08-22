@@ -11,34 +11,34 @@ export const OffersPanel = ({ persona }: OffersPanelProps) => {
   
   const offers = {
     smb: {
-      title: 'From MVP to V1, fast',
+      title: 'The MVP Launchpad',
       points: [
-        'Scope to essentials',
-        '2-week MVP runway',
-        'Weekly demos',
-        'Analytics + runbook at handoff'
+        'Go from a validated idea to a paying customer',
+        'Scope the essentials, build your core product on a 2-week runway',
+        'Weekly demos to keep you in the loop',
+        'Market-ready product with analytics and a runbook'
       ],
       cta: 'Start your MVP',
       timeline: '2-8 weeks'
     },
     creator: {
-      title: 'Beautiful site/shop + lighter ops',
+      title: 'The Creator Toolkit',
       points: [
-        'Clean design',
-        'Fast checkout',
-        'SEO basics',
-        '1-2 targeted automations to save hours weekly'
+        'Build your digital home with beautiful design',
+        'Fast, clean website or shop with checkout',
+        'SEO basics to get discovered',
+        '1-2 core automations to lighten your operational load'
       ],
       cta: 'Build your presence',
       timeline: '1-4 weeks'
     },
     ai: {
-      title: 'Pilot one workflow in 4-6 weeks',
+      title: 'The Automation Pilot',
       points: [
-        'Baseline current steps',
-        'Automate',
-        'Measure',
-        'Rollout; no extra dashboards unless needed'
+        'Target one high-value workflow and prove the ROI',
+        'Map your baseline, build a custom tool to automate it',
+        'Measure the impact with clear metrics',
+        'Create a plan for company-wide rollout'
       ],
       cta: 'Start automation pilot',
       timeline: '4-6 weeks'
@@ -58,7 +58,10 @@ export const OffersPanel = ({ persona }: OffersPanelProps) => {
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
           >
-            <MLCard className="p-8 lg:p-12 bg-gradient-to-br from-coral/5 to-ion/5">
+            <MLCard 
+              variant="glow-primary"
+              className="p-8 lg:p-12"
+            >
               <div className="text-center mb-8">
                 <MLHeading level={2} className="mb-4">
                   {currentOffer.title}
@@ -83,7 +86,7 @@ export const OffersPanel = ({ persona }: OffersPanelProps) => {
                         transition={{ duration: 0.3, delay: index * 0.1 }}
                       >
                         <svg 
-                          className="w-5 h-5 text-coral mt-0.5 flex-shrink-0" 
+                          className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" 
                           fill="currentColor" 
                           viewBox="0 0 20 20"
                         >
@@ -111,7 +114,7 @@ export const OffersPanel = ({ persona }: OffersPanelProps) => {
                   </MLButton>
                   
                   <MLText variant="bodyS" color="weaker">
-                    Book a call to discuss your specific needs
+                    Book a Discovery Call to discuss your specific needs
                   </MLText>
                 </div>
               </div>

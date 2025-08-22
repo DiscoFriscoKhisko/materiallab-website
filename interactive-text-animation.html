@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Material Lab - Interactive Text Animation</title>
+    
+    <!-- Google Fonts - Space Grotesk (modern, bold) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- GSAP Library for professional animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    
+    <style>
+        /* === CSS VARIABLES - MaterialLab Brand Palette === */
+        :root {
+            /* MaterialLab Brand Colors */
+            --color-primary: #8A63D2;           /* Confident purple accent */
+            --color-secondary: #64FFDA;         /* Bright teal for highlights (Ion Blue) */
+            --color-tertiary: #FFB74D;          /* Warm orange for accents */
+            --color-background: #121212;        /* Near-black, easier on eyes */
+            --color-surface: #1E1E1E;           /* Elevated elements */
+            --color-surface-1: #252525;         /* Slightly elevated */
+            --color-text: rgba(255, 255, 255, 0.87);     /* Primary text - 87% opacity */
+            --color-text-weak: rgba(255, 255, 255, 0.60); /* Secondary text - 60% opacity */
+            --color-outline: rgba(255, 255, 255, 0.12);   /* Subtle borders */
+            
+            /* Animation Variables */
+            --font-display: 'Space Grotesk', system-ui, sans-serif;
+            --text-size: clamp(3rem, 8vw, 8rem);
+            --animation-duration: 0.3s;
+            --current-blur: 0px;
+        }
+        
+        /* === GLOBAL STYLES === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-display);
+            background: linear-gradient(135deg, 
+                var(--color-background) 0%, 
+                #1a1a1a 50%, 
+                var(--color-surface) 100%);
+            color: var(--color-text);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            cursor: crosshair;
+        }
+        
+        /* === ANIMATED TEXT CONTAINER === */
+        .text-container {
+            position: relative;
+            text-align: center;
+            user-select: none;
+        }
+        
+        .animated-text {
+            font-size: var(--text-size);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            color: var(--color-text);
+            
+            /* GPU Acceleration for smooth animations */
+            will-change: filter, transform;
+            transform: translateZ(0);
+            
+            /* Dynamic blur that we'll control */
+            filter: blur(var(--current-blur));
+            transition: filter var(--animation-duration) cubic-bezier(0.4, 0, 0.2, 1);
+            
+            /* Initial state - will be overridden by JavaScript */
+            opacity: 1;
+            
+            /* Glowing text shadow for premium effect */
+            text-shadow: 
+                0 0 20px rgba(138, 99, 210, 0.3),
+                0 0 40px rgba(100, 255, 218, 0.2),
+                0 0 60px rgba(255, 183, 77, 0.1);
+        }
+        
+        /* Gradient overlay for extra visual appeal */
+        .animated-text::before {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, 
+                var(--color-primary) 0%,
+                var(--color-secondary) 50%,
+                var(--color-tertiary) 100%);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 6s ease-in-out infinite;
+            opacity: 0.7;
+            z-index: 1;
+        }
+        
+        /* === ANIMATIONS === */
+        @keyframes gradientShift {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+        
+        /* === LOADING STATE === */
+        .loading {
+            filter: blur(20px) !important;
+            opacity: 0 !important;
+            transform: scale(1.1);
+        }
+        
+        /* === DEBUG INFO === */
+        .debug-info {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: var(--color-surface);
+            color: var(--color-text-weak);
+            padding: 15px 20px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-family: 'JetBrains Mono', monospace;
+            border: 1px solid var(--color-outline);
+            display: none;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        
+        .debug-info.visible {
+            display: block;
+        }
+        
+        /* === VISUAL INDICATORS === */
+        .speed-indicator {
+            position: fixed;
+            top: 50%;
+            right: 30px;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 200px;
+            background: var(--color-surface);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        
+        .speed-bar {
+            width: 100%;
+            background: linear-gradient(to top, var(--color-primary), var(--color-secondary));
+            transition: height 0.1s ease-out;
+            border-radius: 2px;
+            height: 0%;
+        }
+        
+        /* === ACCESSIBILITY === */
+        @media (prefers-reduced-motion: reduce) {
+            .animated-text::before {
+                animation: none;
+            }
+            
+            .animated-text {
+                transition: none;
+            }
+        }
+        
+        /* === RESPONSIVE DESIGN === */
+        @media (max-width: 768px) {
+            :root {
+                --text-size: clamp(2rem, 12vw, 6rem);
+            }
+            
+            body {
+                padding: 2rem 1rem;
+            }
+            
+            .speed-indicator {
+                display: none;
+            }
+        }
+        
+        /* === HELPER TEXT === */
+        .helper-text {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--color-text-weak);
+            font-size: 0.9rem;
+            text-align: center;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <!-- Debug information -->
+    <div class="debug-info" id="debugInfo">
+        <div><strong>🎮 Debug Mode</strong></div>
+        <div>Speed: <span id="speedValue">0</span> px/ms</div>
+        <div>Blur: <span id="blurValue">0</span>px</div>
+        <div>Mouse: (<span id="mouseX">0</span>, <span id="mouseY">0</span>)</div>
+        <div>Status: <span id="status">Loading...</span></div>
+    </div>
+    
+    <!-- Speed indicator -->
+    <div class="speed-indicator">
+        <div class="speed-bar" id="speedBar"></div>
+    </div>
+    
+    <!-- Main animated text container -->
+    <div class="text-container">
+        <h1 class="animated-text loading" id="animatedText" data-text="Material Lab">Material Lab</h1>
+    </div>
+    
+    <!-- Helper text -->
+    <div class="helper-text">
+        Move your cursor over the text • Press 'D' for debug mode
+    </div>
+
+    <script>
+        // === INTERACTIVE TEXT ANIMATION SCRIPT ===
+        
+        class MaterialLabTextAnimation {
+            constructor() {
+                console.log('🚀 Initializing Material Lab Text Animation...');
+                
+                // DOM elements
+                this.textElement = document.getElementById('animatedText');
+                this.debugInfo = document.getElementById('debugInfo');
+                this.speedDisplay = document.getElementById('speedValue');
+                this.blurDisplay = document.getElementById('blurValue');
+                this.mouseXDisplay = document.getElementById('mouseX');
+                this.mouseYDisplay = document.getElementById('mouseY');
+                this.statusDisplay = document.getElementById('status');
+                this.speedBar = document.getElementById('speedBar');
+                
+                // Animation state
+                this.isInitialized = false;
+                this.mousePosition = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+                this.previousMousePosition = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+                this.mouseSpeed = 0;
+                this.maxBlur = 15;
+                this.minSpeed = 0.5;
+                this.maxSpeed = 8;
+                
+                // Performance optimization
+                this.animationFrame = null;
+                this.lastUpdate = Date.now();
+                this.updateInterval = 16; // ~60fps
+                
+                // Initialize
+                this.updateStatus('Initializing...');
+                this.init();
+            }
+            
+            // === INITIALIZATION === 
+            init() {
+                console.log('🔧 Setting up animation...');
+                
+                // Check if GSAP is available
+                if (typeof gsap === 'undefined') {
+                    console.warn('⚠️ GSAP not loaded, using CSS fallback');
+                    this.initWithoutGSAP();
+                    return;
+                }
+                
+                console.log('✅ GSAP loaded successfully');
+                
+                // Set up initial animation with GSAP
+                this.playInitialAnimation();
+                
+                // Setup event listeners
+                this.setupEventListeners();
+                
+                this.updateStatus('Ready');
+                console.log('✨ Material Lab Text Animation initialized successfully!');
+            }
+            
+            // === FALLBACK INITIALIZATION WITHOUT GSAP ===
+            initWithoutGSAP() {
+                console.log('🎯 Using CSS fallback animation');
+                
+                // Remove loading class after a delay
+                setTimeout(() => {
+                    this.textElement.classList.remove('loading');
+                    this.textElement.style.transition = 'filter 2s ease-out, opacity 1s ease-out, transform 2s ease-out';
+                    this.textElement.style.filter = 'blur(0px)';
+                    this.textElement.style.opacity = '1';
+                    this.textElement.style.transform = 'scale(1)';
+                    
+                    setTimeout(() => {
+                        this.isInitialized = true;
+                        this.updateStatus('Ready (CSS mode)');
+                        console.log('✅ CSS fallback animation complete');
+                    }, 2000);
+                }, 500);
+                
+                this.setupEventListeners();
+            }
+            
+            // === INITIAL ANIMATION WITH GSAP ===
+            playInitialAnimation() {
+                console.log('🎬 Starting initial blur-to-focus animation');
+                
+                // Create timeline
+                const tl = gsap.timeline({
+                    onComplete: () => {
+                        this.isInitialized = true;
+                        this.updateStatus('Interactive');
+                        console.log('🎉 Initial animation complete - Interactive mode enabled!');
+                    }
+                });
+                
+                // Animate from loading state to focused
+                tl.to(this.textElement, {
+                    opacity: 1,
+                    duration: 0.8,
+                    ease: "power2.out"
+                })
+                .to(this.textElement, {
+                    filter: 'blur(0px)',
+                    scale: 1,
+                    duration: 3,
+                    ease: "power3.out"
+                }, 0.3);
+                
+                // Remove loading class
+                this.textElement.classList.remove('loading');
+            }
+            
+            // === EVENT LISTENERS ===
+            setupEventListeners() {
+                console.log('🎮 Setting up event listeners...');
+                
+                // Mouse movement
+                document.addEventListener('mousemove', (e) => this.handleMouseMove(e));
+                
+                // Touch events for mobile
+                document.addEventListener('touchstart', (e) => this.handleTouchStart(e), { passive: true });
+                document.addEventListener('touchmove', (e) => this.handleTouchMove(e), { passive: true });
+                document.addEventListener('touchend', () => this.handleTouchEnd(), { passive: true });
+                
+                // Debug toggle
+                document.addEventListener('keydown', (e) => {
+                    if (e.key.toLowerCase() === 'd') {
+                        this.toggleDebugInfo();
+                    }
+                });
+                
+                // Cleanup
+                window.addEventListener('beforeunload', () => this.cleanup());
+                
+                console.log('✅ Event listeners ready');
+            }
+            
+            // === MOUSE MOVEMENT HANDLING ===
+            handleMouseMove(event) {
+                // Update mouse position
+                this.previousMousePosition = { ...this.mousePosition };
+                this.mousePosition = {
+                    x: event.clientX,
+                    y: event.clientY
+                };
+                
+                // Always update, even before initialization for smooth experience
+                this.throttledUpdate();
+            }
+            
+            // === TOUCH HANDLING ===
+            handleTouchStart(event) {
+                const touch = event.touches[0];
+                this.mousePosition = {
+                    x: touch.clientX,
+                    y: touch.clientY
+                };
+                this.previousMousePosition = { ...this.mousePosition };
+            }
+            
+            handleTouchMove(event) {
+                const touch = event.touches[0];
+                this.previousMousePosition = { ...this.mousePosition };
+                this.mousePosition = {
+                    x: touch.clientX,
+                    y: touch.clientY
+                };
+                
+                this.throttledUpdate();
+            }
+            
+            handleTouchEnd() {
+                // Smoothly return to no blur
+                this.mouseSpeed = 0;
+                this.applyBlurEffect();
+            }
+            
+            // === PERFORMANCE OPTIMIZED UPDATE ===
+            throttledUpdate() {
+                if (this.animationFrame) return;
+                
+                this.animationFrame = requestAnimationFrame(() => {
+                    const now = Date.now();
+                    
+                    if (now - this.lastUpdate >= this.updateInterval) {
+                        this.calculateSpeedAndApplyBlur();
+                        this.lastUpdate = now;
+                    }
+                    
+                    this.animationFrame = null;
+                });
+            }
+            
+            // === SPEED CALCULATION ===
+            calculateSpeedAndApplyBlur() {
+                // Calculate distance moved
+                const deltaX = this.mousePosition.x - this.previousMousePosition.x;
+                const deltaY = this.mousePosition.y - this.previousMousePosition.y;
+                const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+                
+                // Calculate speed
+                this.mouseSpeed = distance / this.updateInterval;
+                
+                // Apply blur effect
+                this.applyBlurEffect();
+                
+                // Update visual indicators
+                this.updateDebugInfo();
+                this.updateSpeedIndicator();
+            }
+            
+            // === BLUR EFFECT APPLICATION ===
+            applyBlurEffect() {
+                let blurIntensity = 0;
+                
+                if (this.mouseSpeed > this.minSpeed) {
+                    // Normalize speed
+                    const normalizedSpeed = Math.min(this.mouseSpeed / this.maxSpeed, 1);
+                    
+                    // Apply smooth easing
+                    const easedSpeed = this.easeOutCubic(normalizedSpeed);
+                    
+                    // Calculate blur
+                    blurIntensity = easedSpeed * this.maxBlur;
+                }
+                
+                // Apply blur using CSS custom property for smooth transitions
+                this.textElement.style.setProperty('--current-blur', `${blurIntensity.toFixed(2)}px`);
+            }
+            
+            // === UTILITY FUNCTIONS ===
+            easeOutCubic(t) {
+                return 1 - Math.pow(1 - t, 3);
+            }
+            
+            updateStatus(status) {
+                if (this.statusDisplay) {
+                    this.statusDisplay.textContent = status;
+                }
+            }
+            
+            // === DEBUG FUNCTIONALITY ===
+            toggleDebugInfo() {
+                this.debugInfo.classList.toggle('visible');
+                const isVisible = this.debugInfo.classList.contains('visible');
+                console.log(`🐛 Debug mode ${isVisible ? 'enabled' : 'disabled'}`);
+            }
+            
+            updateDebugInfo() {
+                if (this.debugInfo.classList.contains('visible')) {
+                    this.speedDisplay.textContent = this.mouseSpeed.toFixed(3);
+                    this.blurDisplay.textContent = (this.mouseSpeed > this.minSpeed ? 
+                        (this.easeOutCubic(Math.min(this.mouseSpeed / this.maxSpeed, 1)) * this.maxBlur).toFixed(2) : 
+                        '0.00');
+                    this.mouseXDisplay.textContent = Math.round(this.mousePosition.x);
+                    this.mouseYDisplay.textContent = Math.round(this.mousePosition.y);
+                }
+            }
+            
+            updateSpeedIndicator() {
+                if (this.speedBar) {
+                    const speedPercentage = Math.min((this.mouseSpeed / this.maxSpeed) * 100, 100);
+                    this.speedBar.style.height = `${speedPercentage}%`;
+                }
+            }
+            
+            // === CLEANUP ===
+            cleanup() {
+                if (this.animationFrame) {
+                    cancelAnimationFrame(this.animationFrame);
+                }
+                console.log('🧹 Animation cleanup completed');
+            }
+        }
+        
+        // === INITIALIZATION ===
+        // Start as soon as possible
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('📄 DOM loaded, starting animation...');
+            new MaterialLabTextAnimation();
+        });
+        
+        // Fallback if DOMContentLoaded already fired
+        if (document.readyState === 'loading') {
+            // Still loading, wait for DOMContentLoaded
+        } else {
+            // DOM already loaded
+            console.log('📄 DOM already loaded, starting animation immediately...');
+            new MaterialLabTextAnimation();
+        }
+        
+        // === WELCOME MESSAGE ===
+        console.log(`
+🎨 Material Lab Interactive Text Animation
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✨ Features:
+   • Initial blur-to-focus animation on page load
+   • Real-time cursor speed-based blur effects  
+   • Touch device compatibility
+   • GPU-accelerated performance
+   • MaterialLab brand colors
+
+🎮 Controls:
+   • Move cursor over text for blur effects
+   • Press 'D' to toggle debug information
+   • Faster movement = more intense blur
+
+🔧 Technical:
+   • GSAP animations with CSS fallback
+   • 60fps performance optimization
+   • Smooth easing curves
+        `);
+        
+        // === ERROR HANDLING ===
+        window.addEventListener('error', (event) => {
+            console.error('❌ Animation error:', event.error);
+        });
+        
+        window.addEventListener('unhandledrejection', (event) => {
+            console.error('❌ Promise rejection:', event.reason);
+        });
+    </script>
+</body>
+</html>

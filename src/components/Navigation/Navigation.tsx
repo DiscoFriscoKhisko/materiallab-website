@@ -2,11 +2,10 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { MagneticButton } from '../MagneticButton/MagneticButton';
 import { ThemeToggle } from '../ThemeToggle/ThemeToggle';
-import { useLanguage } from '../../contexts/LanguageContext';
+import { MLText, MLHeading } from '../ML';
 import { useState, useEffect } from 'react';
 
 export const Navigation = () => {
-  const { t } = useLanguage();
   const location = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -31,9 +30,10 @@ export const Navigation = () => {
   }, []);
 
   const navItems = [
-    { path: '/what-we-do', label: t('nav.whatWeDo') },
-    { path: '/case-studies', label: t('nav.caseStudies') },
-    { path: '/about', label: t('nav.about') }
+    { path: '/what-we-do', label: 'What We Do' },
+    { path: '/approach', label: 'Approach' },
+    { path: '/lab-notes', label: 'Lab Notes' },
+    { path: '/contact', label: 'Get in Touch' }
   ];
 
   // Handle mobile menu keyboard interaction
@@ -79,23 +79,24 @@ export const Navigation = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 group">
             <motion.div 
-              className="relative w-10 h-10 bg-gradient-to-br from-coral to-ion rounded-lg flex items-center justify-center shadow-elevation-1"
+              className="relative w-10 h-10 bg-gradient-to-br from-primary to-ion rounded-lg flex items-center justify-center shadow-elevation-1"
               whileHover={{ scale: 1.1, rotate: 5 }}
               transition={{ type: 'spring', stiffness: 300 }}
             >
-              <span className="text-text-inverse font-bold text-sm font-display">ML</span>
+              <MLText variant="caption" className="text-text-inverse font-bold font-display">ML</MLText>
               <motion.div
-                className="absolute inset-0 bg-gradient-to-br from-coral-weak to-ion-weak rounded-lg opacity-0 group-hover:opacity-100"
+                className="absolute inset-0 bg-gradient-to-br from-primary-weak to-ion-weak rounded-lg opacity-0 group-hover:opacity-100"
                 animate={{ scale: [1, 1.2, 1] }}
                 transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
               />
             </motion.div>
-            <motion.span 
-              className="text-xl font-bold font-display bg-gradient-to-r from-text to-text-weak bg-clip-text text-transparent"
+            <motion.div
               whileHover={{ scale: 1.05 }}
             >
-              MaterialLab
-            </motion.span>
+              <MLHeading level={4} className="bg-gradient-to-r from-text to-text-weak bg-clip-text text-transparent">
+                MaterialLab
+              </MLHeading>
+            </motion.div>
           </Link>
           
           {/* Desktop Navigation */}
@@ -138,22 +139,6 @@ export const Navigation = () => {
               <ThemeToggle />
             </motion.div>
             
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4, delay: 0.4 }}
-            >
-              <MagneticButton
-                variant="primary"
-                size="md"
-                showArrow
-                onClick={() => {
-                  window.location.href = '/contact';
-                }}
-              >
-                {t('nav.bookCall')}
-              </MagneticButton>
-            </motion.div>
           </div>
 
           {/* Mobile Menu Button */}
@@ -241,7 +226,7 @@ export const Navigation = () => {
                       window.location.href = '/contact';
                     }}
                   >
-                    {t('nav.bookCall')}
+                    Book a Discovery Call
                   </MagneticButton>
                 </div>
               </nav>

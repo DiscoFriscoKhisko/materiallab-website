@@ -3,9 +3,9 @@ import { MLText } from '../ML';
 
 export const ProofStrip = () => {
   const metrics = [
-    'MVP shipped in 2 weeks',
-    '3× faster delivery to prod',
-    'Cut ops hours by up to 80%¹'
+    'MVP in 2 Weeks',
+    '3× Faster to Production',
+    'Up to 80% Ops Hours Reduced'
   ];
 
   return (
@@ -45,7 +45,7 @@ export const ProofStrip = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
         >
           <MLText variant="caption" color="weaker" className="italic">
-            ¹Measured against pre-automation baseline; results vary by workflow
+            Baselines and measurement criteria are established during our initial Discovery phase to ensure transparent, measurable results.
           </MLText>
         </motion.div>
       </div>

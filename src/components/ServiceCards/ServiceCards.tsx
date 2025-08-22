@@ -19,8 +19,8 @@ export const ServiceCards = ({ services, variant = 'certain' }: ServiceCardsProp
     const colorMap: Record<string, string> = {
       blue: 'from-ion/20 to-ion/40',
       green: 'from-success/20 to-success/40',
-      purple: 'from-ion/20 to-coral/40',
-      orange: 'from-coral/20 to-coral/40',
+      purple: 'from-ion/20 to-primary/40',
+      orange: 'from-primary/20 to-primary/40',
       indigo: 'from-ion/20 to-ion/40',
     };
     return colorMap[color] || colorMap.blue;
@@ -31,7 +31,7 @@ export const ServiceCards = ({ services, variant = 'certain' }: ServiceCardsProp
       blue: 'text-ion',
       green: 'text-success',
       purple: 'text-ion',
-      orange: 'text-coral',
+      orange: 'text-primary',
       indigo: 'text-ion',
     };
     return colorMap[color] || colorMap.blue;
@@ -47,10 +47,14 @@ export const ServiceCards = ({ services, variant = 'certain' }: ServiceCardsProp
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: index * 0.1 }}
         >
-          <MLCard className="p-6 md:p-8" hover={true}>
+          <MLCard 
+            className="p-6 md:p-8" 
+            variant={service.color === 'orange' || service.color === 'blue' ? 'glow-primary' : 'glow-ion'}
+            hover={true}
+          >
             <div className="flex items-start space-x-6">
               <motion.div 
-                className={`w-12 h-12 bg-gradient-to-br ${getIconBg(service.color)} rounded-xl flex items-center justify-center flex-shrink-0 shadow-elevation-1`}
+                className={`w-12 h-12 bg-gradient-to-br ${getIconBg(service.color)} rounded-xl flex items-center justify-center flex-shrink-0 shadow-elevation-1 relative overflow-hidden`}
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 transition={{ type: 'spring', stiffness: 300 }}
               >

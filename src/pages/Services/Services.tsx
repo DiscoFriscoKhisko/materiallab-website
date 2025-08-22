@@ -1,40 +1,230 @@
-import { Placeholder } from '../Placeholder/Placeholder';
+import { Layout } from '../../components/Layout/Layout';
+import { MLSectionTitle, MLText, MLButton, MLHeading } from '../../components/ML';
+import { ContactSplit } from '../../components/ContactCTA';
+import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
+import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 
 export const Services = () => {
-  const sections = [
+  const navigate = useNavigate();
+  const heroRef = useScrollAnimation({ threshold: 0.2 });
+  const processRef = useScrollAnimation({ threshold: 0.3 });
+  const capabilitiesRef = useScrollAnimation({ threshold: 0.3 });
+
+  const capabilities = [
     {
-      title: "AI Product Development",
-      content: "End-to-end development services for AI-powered products. From initial concept validation and technical feasibility assessment to full-scale development and deployment. Our team handles everything including data pipeline architecture, ML model development, user interface design, and cloud infrastructure setup.",
-      mediaDescription: "Interactive service process visualization, technology stack demonstrations, development timeline examples, and team collaboration videos"
+      title: "Product Strategy",
+      description: "We help define your product vision, identify market opportunities, and create roadmaps that align with your business goals.",
+      features: ["Market research", "User journey mapping", "Feature prioritization", "MVP planning"]
     },
     {
-      title: "Discovery & Strategy",
-      content: "Comprehensive discovery workshops to identify AI opportunities within your business. We conduct market research, user interviews, technical audits, and competitive analysis to create a strategic roadmap. Includes opportunity prioritization, technical requirements definition, and go-to-market strategy development.",
-      mediaDescription: "Workshop session footage, strategy framework diagrams, opportunity assessment templates, and roadmap visualization tools"
+      title: "Design & Development",
+      description: "From wireframes to fully functional products, we build with modern technologies and design principles.",
+      features: ["UI/UX design", "Frontend development", "Backend systems", "API integration"]
     },
     {
-      title: "Design & User Experience",
-      content: "User-centered design for AI products that are both powerful and intuitive. Our design process includes user research, information architecture, interaction design, and usability testing. We specialize in making complex AI functionality accessible through elegant, purpose-built interfaces.",
-      mediaDescription: "Design process time-lapse videos, before/after interface comparisons, user testing session recordings, and interactive design system showcases"
+      title: "Automation Solutions",
+      description: "Custom tools and workflows that eliminate repetitive tasks and streamline your operations.",
+      features: ["Process automation", "Custom integrations", "Data processing", "Workflow optimization"]
     },
     {
-      title: "Technical Implementation", 
-      content: "Full-stack development with modern technologies and AI integration. Our technical services include cloud architecture, API development, database design, AI model training and deployment, security implementation, and performance optimization. Built for scale from day one.",
-      mediaDescription: "Live coding demonstrations, system architecture walkthroughs, deployment pipeline visualizations, and performance monitoring dashboards"
+      title: "Launch Support",
+      description: "We don't just build and disappear. We support your product launch and help you scale successfully.",
+      features: ["Testing & QA", "Deployment", "Performance monitoring", "User feedback analysis"]
+    }
+  ];
+
+  const process = [
+    {
+      step: "01",
+      title: "Discovery",
+      description: "We start by understanding your business, users, and goals through detailed discovery sessions."
     },
     {
-      title: "Support & Scaling",
-      content: "Ongoing maintenance, feature development, and scaling support. Post-launch services include performance monitoring, user analytics, iterative improvements, new feature development, and technical support. We provide dedicated account management and priority support channels.",
-      mediaDescription: "Analytics dashboard examples, feature release showcases, support ticket resolution metrics, and scaling success story visualizations"
+      step: "02", 
+      title: "Strategy",
+      description: "Based on our findings, we create a clear product strategy and development roadmap."
+    },
+    {
+      step: "03",
+      title: "Build",
+      description: "Our team designs and develops your product with regular check-ins and feedback cycles."
+    },
+    {
+      step: "04",
+      title: "Launch",
+      description: "We support you through launch and provide ongoing optimization based on real user data."
     }
   ];
 
   return (
-    <Placeholder
-      title="Our Services"
-      description="Comprehensive AI product development services designed to take your vision from concept to scale. We provide end-to-end support with expertise in discovery, design, development, and ongoing optimization."
-      sections={sections}
-      ctaText="Get Service Details"
-    />
+    <Layout>
+      <div className="relative overflow-hidden bg-background">
+        {/* Hero Section */}
+        <section ref={heroRef.ref} className="scene-module">
+          <div className="max-w-4xl mx-auto px-6 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={heroRef.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              transition={{ duration: 0.8 }}
+            >
+              <MLText variant="display" as="h1" className="mb-6 heading-spacing-tight">
+                What We Do
+              </MLText>
+              
+              <MLText variant="body" color="weak" className="mb-12 max-line-length mx-auto paragraph-spacing">
+                We transform ambitious ideas into market-leading products through strategic thinking, 
+                cutting-edge design, and robust development. Your vision, our execution.
+              </MLText>
+
+              <MLButton
+                variant="filled"
+                size="lg"
+                className="ml-btn-primary"
+                onClick={() => navigate('/contact')}
+                iconRight={
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                }
+              >
+                Start Your Journey
+              </MLButton>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Our Process */}
+        <section ref={processRef.ref} className="scene-module bg-surface/30">
+          <div className="max-w-6xl mx-auto px-6">
+            <motion.div
+              className="text-center mb-16"
+              initial={{ opacity: 0, y: 30 }}
+              animate={processRef.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              transition={{ duration: 0.8 }}
+            >
+              <MLSectionTitle
+                variant="headline"
+                align="center"
+                animate={true}
+                subtitle="A proven approach that gets results"
+                className="mb-8"
+              >
+                How we work
+              </MLSectionTitle>
+            </motion.div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+              {process.map((item, index) => (
+                <motion.div
+                  key={item.step}
+                  className="text-center"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                >
+                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center mx-auto mb-6">
+                    <MLText variant="bodyM" className="text-text-inverse font-bold">
+                      {item.step}
+                    </MLText>
+                  </div>
+                  <MLHeading level={4} className="mb-4">
+                    {item.title}
+                  </MLHeading>
+                  <MLText variant="bodyS" color="weak">
+                    {item.description}
+                  </MLText>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Capabilities */}
+        <section ref={capabilitiesRef.ref} className="scene-module">
+          <div className="max-w-6xl mx-auto px-6">
+            <motion.div
+              className="text-center mb-16"
+              initial={{ opacity: 0, y: 30 }}
+              animate={capabilitiesRef.isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              transition={{ duration: 0.8 }}
+            >
+              <MLSectionTitle
+                variant="headline"
+                align="center"
+                animate={true}
+                subtitle="Everything you need to build successful products"
+                className="mb-8"
+              >
+                What we deliver
+              </MLSectionTitle>
+            </motion.div>
+
+            <div className="grid md:grid-cols-2 gap-8 mb-16">
+              {capabilities.map((capability, index) => (
+                <motion.div
+                  key={capability.title}
+                  className="p-8 rounded-2xl bg-surface-1 border border-outline-variant hover:border-primary/20 transition-colors duration-300"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  whileHover={{ y: -4 }}
+                >
+                  <MLHeading level={3} className="mb-4">
+                    {capability.title}
+                  </MLHeading>
+                  <MLText variant="body" color="weak" className="mb-6">
+                    {capability.description}
+                  </MLText>
+                  <div className="grid grid-cols-2 gap-3">
+                    {capability.features.map((feature) => (
+                      <div key={feature} className="flex items-center space-x-2">
+                        <svg className="w-4 h-4 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                        <MLText variant="bodyS" color="text">
+                          {feature}
+                        </MLText>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            <motion.div
+              className="text-center"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              <MLButton
+                variant="outlined"
+                onClick={() => navigate('/work')}
+                iconRight={
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                }
+              >
+                See our work
+              </MLButton>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Contact */}
+        <ContactSplit
+          whatsappNumber="+14155551234"
+          onFormSubmit={(data) => {
+            console.log('Form submitted:', data);
+          }}
+          className="bg-surface-1"
+        />
+      </div>
+    </Layout>
   );
 };

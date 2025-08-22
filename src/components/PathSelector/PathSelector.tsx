@@ -11,12 +11,12 @@ export const PathSelector = () => {
       {/* Background Elements */}
       <div className="absolute inset-0 -z-10">
         <motion.div
-          className="absolute top-20 left-1/4 w-64 h-64 bg-gradient-to-r from-coral/20 to-ion/20 rounded-full blur-3xl"
+          className="absolute top-20 left-1/4 w-64 h-64 bg-gradient-to-r from-primary/20 to-ion/20 rounded-full blur-3xl"
           animate={{ scale: [1, 1.2, 1], rotate: [0, 180, 360] }}
           transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
         />
         <motion.div
-          className="absolute bottom-20 right-1/4 w-48 h-48 bg-gradient-to-r from-ion/15 to-coral/15 rounded-full blur-3xl"
+          className="absolute bottom-20 right-1/4 w-48 h-48 bg-gradient-to-r from-ion/15 to-primary/15 rounded-full blur-3xl"
           animate={{ scale: [1.2, 1, 1.2], rotate: [360, 0, 360] }}
           transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
         />
@@ -60,7 +60,7 @@ export const PathSelector = () => {
               className="relative transform-3d"
             >
               {/* Gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-coral/10 to-ion/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-base" />
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-ion/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-base" />
               
               <motion.div 
                 className="relative z-10 text-center"
@@ -70,12 +70,12 @@ export const PathSelector = () => {
                 transition={{ duration: 0.6, delay: 0.8 }}
               >
                 <motion.div 
-                  className="w-20 h-20 bg-gradient-to-br from-coral/20 to-coral/40 rounded-lg flex items-center justify-center mx-auto mb-8 shadow-elevation-1"
+                  className="w-20 h-20 bg-gradient-to-br from-primary/20 to-primary/40 rounded-lg flex items-center justify-center mx-auto mb-8 shadow-elevation-1"
                   whileHover={{ scale: 1.1, rotate: 5 }}
                   transition={{ type: 'spring', stiffness: 300 }}
                 >
                   <motion.svg 
-                    className="w-10 h-10 text-coral" 
+                    className="w-10 h-10 text-primary" 
                     fill="none" 
                     stroke="currentColor" 
                     viewBox="0 0 24 24"
@@ -122,7 +122,7 @@ export const PathSelector = () => {
               className="relative transform-3d"
             >
               {/* Gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-ion/10 to-coral/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-base" />
+              <div className="absolute inset-0 bg-gradient-to-br from-ion/10 to-primary/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-base" />
               
               <motion.div 
                 className="relative z-10 text-center"

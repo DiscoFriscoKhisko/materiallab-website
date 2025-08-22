@@ -103,6 +103,71 @@
   --info: var(--secondary);         /* Info uses secondary teal */
   --link: #BB86FC;                  /* Purple-pink for links */
   
+  /* === VEO-INSPIRED DESIGN SYSTEM === */
+  /* Brand (Electric Indigo, modern tech) */
+  --ml-primary: #6366F1;
+  --ml-on-primary: #FFFFFF;
+  --ml-primary-container: #E0E7FF;
+  --ml-on-primary-container: #1E1B4B;
+
+  --ml-surface: #FFFFFF;
+  --ml-surface-alt: #F8FAFC;
+  --ml-ink: #0F172A;     /* body text */
+  --ml-muted: #334155;   /* secondary text */
+  --ml-outline: #E2E8F0; /* subtle borders */
+  --ml-outline-strong: #CBD5E1;
+
+  --ml-error: #D92D20;
+  --ml-on-error: #FFFFFF;
+
+  /* Veo-like restrained accents */
+  --ml-iris-indigo: #6B6CF3; /* primary accent */
+  --ml-veo-blue:   #4A90E2;  /* secondary accent */
+  --ml-mist-cyan:  #7FE3D7;  /* sparing highlight */
+  --ml-lavender-haze: #B7A7F7; /* optional: use rarely */
+
+  /* Gradients (use sparingly) */
+  --ml-gradient-angle: 45deg;
+  --ml-gradient-duo: linear-gradient(var(--ml-gradient-angle),
+                          var(--ml-iris-indigo), var(--ml-veo-blue));
+  --ml-gradient-tri: linear-gradient(var(--ml-gradient-angle),
+                          var(--ml-iris-indigo), var(--ml-veo-blue), var(--ml-mist-cyan));
+
+  /* Solid fallbacks for HC/reduced motion */
+  --ml-accent-fallback: var(--ml-veo-blue);
+
+  /* Motion & timing */
+  /* durations */
+  --ml-dur-xs: 120ms;  /* micro feedback */
+  --ml-dur-s:  180ms;  /* hover/press */
+  --ml-dur-m:  220ms;  /* UI transitions */
+  --ml-dur-l:  320ms;  /* content reveal */
+  --ml-dur-xl: 450ms;  /* narrative reveal */
+
+  /* easing */
+  --ml-ease-enter: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ml-ease-exit:  cubic-bezier(0.4, 0, 1, 1);
+  --ml-ease-emph:  cubic-bezier(0.2, 0.8, 0, 1);
+
+  /* common distances */
+  --ml-translate-sm: 6px;
+  --ml-translate-md: 12px;
+
+  /* Animation tokens */
+  /* Sparkle = subtle shimmer line across a border/underline (hover-only) */
+  --ml-sparkle-duration: 1100ms;
+  --ml-sparkle-ease: linear;
+  --ml-sparkle-size: 30%;     /* width of highlight sweep */
+  --ml-sparkle-angle: 30deg;
+  --ml-sparkle-color: rgba(127, 227, 215, 0.45); /* mist-cyan at ~45% */
+
+  /* Gradient shift = barely-there background-position drift (avoid by default) */
+  --ml-gradient-shift-duration: 6000ms;
+  --ml-gradient-shift-ease: linear;
+
+  /* Stagger for lists/cards */
+  --ml-stagger: 60ms;
+  
   /* === TYPOGRAPHY === */
   
   /* Font Stacks with Multilingual Support */
@@ -263,6 +328,33 @@
   --glass-medium: rgba(255, 255, 255, 0.08);
   --glass-strong: rgba(255, 255, 255, 0.12);
   --glass-backdrop: blur(16px) saturate(120%);
+  
+  /* Google Veo-style sharp gradient glow tokens */
+  --surface-dark: #0a0a0a;
+  --surface-darker: #050505;
+  --glow-primary: rgba(99, 102, 241, 0.22);
+  --glow-primary-ambient: rgba(99, 102, 241, 0.08);
+  --glow-primary-hover: rgba(99, 102, 241, 0.28);
+  --glow-primary-border: rgba(99, 102, 241, 0.1);
+  --glow-primary-border-hover: rgba(99, 102, 241, 0.15);
+  --glow-ion: rgba(85, 194, 255, 0.22);
+  --glow-ion-ambient: rgba(85, 194, 255, 0.08);
+  --glow-ion-hover: rgba(85, 194, 255, 0.28);
+  --glow-ion-border: rgba(85, 194, 255, 0.1);
+  --glow-ion-border-hover: rgba(85, 194, 255, 0.15);
+  --glow-secondary: var(--glow-ion);
+  --glow-intensity-peak: 0.22;
+  --glow-intensity-ambient: 0.08;
+  --glow-intensity-hover: 0.28;
+  --glow-cutoff-sharp: 45%;
+  --glow-cutoff-ambient: 70%;
+  --glow-position-focused: 50% -5%;
+  --glow-position-ambient: 50% 0%;
+  --glow-size-focused: ellipse 60% 50%;
+  --glow-size-ambient: ellipse 100% 80%;
+  --glow-size-hover-focused: ellipse 65% 55%;
+  --glow-size-hover-ambient: ellipse 110% 90%;
+  --glow-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   
   /* Legacy elevation mappings for compatibility */
   --elev-1-shadow: var(--elevation-1);

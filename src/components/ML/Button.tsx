@@ -27,18 +27,21 @@ export const MLButton = forwardRef<HTMLButtonElement, MLButtonProps>(({
   const isFocusVisible = useFocusVisible();
   const baseClasses = `relative overflow-hidden font-body rounded-lg transition-all duration-200 ease-out transform-gpu inline-flex items-center justify-center gap-2 select-none group keyboard-navigation ${isFocusVisible ? 'focus-visible' : ''}`;
 
+  // Check if using ML design system classes
+  const isUsingMLClasses = className.includes('ml-btn-');
+  
   const variantClasses = {
-    filled: 'bg-primary text-on-primary shadow-sm hover:shadow-md hover:bg-primary/95 active:bg-primary/90 active:shadow-sm tracking-button font-weight-button transition-all duration-200 ease-out',
-    elevated: 'bg-surface text-on-surface shadow-sm hover:shadow-md hover:bg-surface/95 active:bg-surface/90 active:shadow-sm tracking-button font-weight-button transition-all duration-200 ease-out',
-    tonal: 'bg-secondary-container text-on-secondary-container hover:bg-secondary-container/90 active:bg-secondary-container/80 tracking-button font-weight-button transition-all duration-200 ease-out',
-    outlined: 'border border-outline text-on-surface hover:bg-on-surface/5 active:bg-on-surface/10 hover:border-outline/60 tracking-button font-weight-button transition-all duration-200 ease-out',
-    text: 'text-primary hover:bg-primary/5 active:bg-primary/10 tracking-button font-weight-button transition-all duration-200 ease-out'
+    filled: isUsingMLClasses ? '' : 'bg-primary text-on-primary shadow-sm hover:shadow-md hover:bg-primary/95 active:bg-primary/90 active:shadow-sm tracking-button font-weight-button transition-all duration-200 ease-out',
+    elevated: isUsingMLClasses ? '' : 'bg-surface text-on-surface shadow-sm hover:shadow-md hover:bg-surface/95 active:bg-surface/90 active:shadow-sm tracking-button font-weight-button transition-all duration-200 ease-out',
+    tonal: isUsingMLClasses ? '' : 'bg-secondary-container text-on-secondary-container hover:bg-secondary-container/90 active:bg-secondary-container/80 tracking-button font-weight-button transition-all duration-200 ease-out',
+    outlined: isUsingMLClasses ? '' : 'border border-outline text-on-surface hover:bg-on-surface/5 active:bg-on-surface/10 hover:border-outline/60 tracking-button font-weight-button transition-all duration-200 ease-out',
+    text: isUsingMLClasses ? '' : 'text-primary hover:bg-primary/5 active:bg-primary/10 tracking-button font-weight-button transition-all duration-200 ease-out'
   };
 
   const sizeClasses = {
-    sm: 'px-3 py-1.5 text-sm min-h-[32px]',  /* Compact - 8px grid */
-    md: 'px-4 py-2 text-sm min-h-[36px]',    /* Standard - 8px grid */
-    lg: 'px-6 py-2.5 text-base min-h-[40px]' /* Large - 8px grid */
+    sm: isUsingMLClasses ? '' : 'px-3 py-1.5 text-sm min-h-[32px]',  /* Compact - 8px grid */
+    md: isUsingMLClasses ? '' : 'px-4 py-2 text-sm min-h-[36px]',    /* Standard - 8px grid */
+    lg: isUsingMLClasses ? '' : 'px-6 py-2.5 text-base min-h-[40px]' /* Large - 8px grid */
   };
 
   const stateClasses = {

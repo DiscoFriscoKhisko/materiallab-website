@@ -5,9 +5,10 @@ import { elevateCard } from '../../styles/motion';
 interface MLCardProps {
   children: ReactNode;
   className?: string;
-  variant?: 'filled' | 'elevated' | 'outlined';
+  variant?: 'filled' | 'elevated' | 'outlined' | 'glow-primary' | 'glow-ion' | 'glow-secondary';
   padding?: 'none' | 'sm' | 'md' | 'lg';
   hover?: boolean;
+  noise?: boolean;
   onClick?: () => void;
 }
 
@@ -17,6 +18,7 @@ export const MLCard = forwardRef<HTMLDivElement, MLCardProps>(({
   variant = 'filled',
   padding = 'md',
   hover = true,
+  noise = false,
   onClick,
   ...props
 }, ref) => {
@@ -25,7 +27,10 @@ export const MLCard = forwardRef<HTMLDivElement, MLCardProps>(({
   const variantClasses = {
     filled: 'bg-surface-1 border border-outline-variant',
     elevated: 'bg-surface shadow-elevation-1 hover:shadow-elevation-2',
-    outlined: 'bg-surface border border-outline'
+    outlined: 'bg-surface border border-outline',
+    'glow-ion': 'glow-gradient-ion border border-outline-variant/50',
+    'glow-primary': 'glow-gradient-primary border border-outline-variant/50',
+    'glow-secondary': 'glow-gradient-secondary border border-outline-variant/50'
   };
 
   const paddingClasses = {
@@ -36,7 +41,9 @@ export const MLCard = forwardRef<HTMLDivElement, MLCardProps>(({
   };
 
   const isInteractive = Boolean(onClick);
-  const hoverClasses = hover && isInteractive ? 'cursor-pointer hover:shadow-elevation-2' : '';
+  const isGlowVariant = variant.startsWith('glow-');
+  const hoverClasses = hover && isInteractive && !isGlowVariant ? 'cursor-pointer hover:shadow-elevation-2' : '';
+  const noiseClasses = noise || isGlowVariant ? 'glow-noise' : '';
 
   return (
     <motion.div
@@ -46,6 +53,8 @@ export const MLCard = forwardRef<HTMLDivElement, MLCardProps>(({
         ${variantClasses[variant]}
         ${paddingClasses[padding]}
         ${hoverClasses}
+        ${noiseClasses}
+        ${isInteractive ? 'cursor-pointer' : ''}
         ${className}
       `}
       variants={hover && isInteractive ? elevateCard : undefined}

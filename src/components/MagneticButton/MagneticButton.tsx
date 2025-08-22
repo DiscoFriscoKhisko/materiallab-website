@@ -27,16 +27,16 @@ export const MagneticButton = ({
   const baseClasses = 'relative overflow-hidden font-medium font-body rounded-lg transition-all duration-base focus:outline-none focus:ring-2 focus:ring-offset-2 transform-gpu';
 
   const variantClasses = {
-    primary: 'bg-coral text-text-inverse hover:bg-coral-strong focus:ring-ion btn-magnetic shadow-elevation-1 hover:shadow-elevation-2',
+    primary: 'bg-primary text-text-inverse hover:bg-primary-strong focus:ring-ion btn-magnetic shadow-elevation-1 hover:shadow-elevation-2',
     secondary: 'bg-surface text-text border border-glass-light hover:bg-surface-2 focus:ring-ion btn-magnetic shadow-elevation-1 hover:shadow-elevation-2',
     ghost: 'text-ion hover:bg-ion-subtle focus:ring-ion',
-    gradient: 'bg-gradient-to-r from-coral to-ion text-text-inverse hover:from-coral-strong hover:to-ion-strong focus:ring-ion animate-gradient btn-magnetic shadow-elevation-1 hover:shadow-elevation-2'
+    gradient: 'bg-gradient-to-r from-primary to-ion text-text-inverse hover:from-primary-strong hover:to-ion-strong focus:ring-ion animate-gradient btn-magnetic shadow-elevation-1 hover:shadow-elevation-2'
   };
 
   const sizeClasses = {
-    sm: 'px-4 py-2 text-sm',
-    md: 'px-6 py-3 text-base',
-    lg: 'px-8 py-4 text-lg'
+    sm: 'px-4 py-2',
+    md: 'px-6 py-3',
+    lg: 'px-8 py-4'
   };
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {

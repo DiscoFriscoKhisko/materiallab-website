@@ -12,7 +12,7 @@ export const NotFound = () => {
         {/* Background Effects */}
         <div className="absolute inset-0 -z-10">
           <motion.div
-            className="absolute top-1/3 left-1/4 w-64 h-64 bg-gradient-to-r from-coral/20 to-ion/20 rounded-full blur-3xl"
+            className="absolute top-1/3 left-1/4 w-64 h-64 bg-gradient-to-r from-primary/20 to-ion/20 rounded-full blur-3xl"
             animate={{ scale: [1, 1.2, 1], rotate: [0, 180, 360] }}
             transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
           />
@@ -25,11 +25,12 @@ export const NotFound = () => {
             transition={{ duration: 0.8 }}
           >
             <motion.div
-              className="text-8xl font-bold font-display mb-6 bg-gradient-to-r from-coral to-ion bg-clip-text text-transparent"
               animate={{ scale: [1, 1.05, 1] }}
               transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
             >
-              404
+              <MLHeading level={1} className="mb-6 bg-gradient-to-r from-primary to-ion bg-clip-text text-transparent">
+                404
+              </MLHeading>
             </motion.div>
             
             <MLHeading level={2} className="mb-6">

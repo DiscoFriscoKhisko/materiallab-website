@@ -38,12 +38,12 @@ export const Placeholder = ({
         {/* Background Effects */}
         <div className="absolute inset-0 -z-10">
           <motion.div
-            className="absolute top-20 left-1/4 w-64 h-64 bg-gradient-to-r from-coral/10 to-ion/10 rounded-full blur-3xl"
+            className="absolute top-20 left-1/4 w-64 h-64 bg-gradient-to-r from-primary/10 to-ion/10 rounded-full blur-3xl"
             animate={{ scale: [1, 1.2, 1], rotate: [0, 180, 360] }}
             transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
           />
           <motion.div
-            className="absolute bottom-20 right-1/4 w-48 h-48 bg-gradient-to-r from-ion/10 to-coral/10 rounded-full blur-3xl"
+            className="absolute bottom-20 right-1/4 w-48 h-48 bg-gradient-to-r from-ion/10 to-primary/10 rounded-full blur-3xl"
             animate={{ scale: [1.2, 1, 1.2], rotate: [360, 0, 360] }}
             transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
           />
@@ -53,15 +53,17 @@ export const Placeholder = ({
         <section className="py-24 px-4 sm:px-6 lg:px-8 relative">
           <div className="max-w-4xl mx-auto text-center">
             <motion.div
-              className="inline-flex items-center px-4 py-2 bg-ion/20 border border-ion/30 rounded-full text-ion font-medium text-sm mb-6"
+              className="inline-flex items-center px-4 py-2 bg-ion/20 border border-ion/30 rounded-full mb-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 mr-2 text-ion" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4" />
               </svg>
-              Coming Soon
+              <MLText variant="bodyS" className="text-ion font-medium">
+                Coming Soon
+              </MLText>
             </motion.div>
             
             <motion.div
@@ -140,7 +142,7 @@ export const Placeholder = ({
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <MLCard className="p-12 bg-gradient-to-br from-coral/10 to-ion/10 border-coral/20">
+            <MLCard variant="glow-primary" className="p-12">
               <MLHeading level={3} className="mb-6">
                 Page Under Construction
               </MLHeading>
