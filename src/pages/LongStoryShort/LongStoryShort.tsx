@@ -11,7 +11,7 @@ import { LivePreview } from './components/LivePreview';
 import './LongStoryShort.css';
 
 type SectionType = 'colors' | 'gradients' | 'modes' | 'tokens' | 'mood' | 'preview';
-type ThemeMode = 'light' | 'dark' | 'minimal' | 'maximal';
+type ThemeMode = 'light' | 'dark' | 'minimal' | 'maximal' | 'night-interior' | 'day-exterior' | 'golden-hour' | 'intimate' | 'dramatic' | 'memory';
 
 const LongStoryShort: React.FC = () => {
   const [activeSection, setActiveSection] = useState<SectionType>('colors');
@@ -27,10 +27,19 @@ const LongStoryShort: React.FC = () => {
   ];
 
   const themeModes = [
-    { key: 'light' as const, label: 'Light', description: 'Clean, minimal' },
-    { key: 'dark' as const, label: 'Dark', description: 'Rich, atmospheric' },
-    { key: 'minimal' as const, label: 'Minimal', description: 'Maximum whitespace' },
-    { key: 'maximal' as const, label: 'Maximal', description: 'Rich gradients' }
+    // V1 Original Modes
+    { key: 'light' as const, label: 'V1 Light', description: 'Gallery clarity', version: 'V1' },
+    { key: 'dark' as const, label: 'V1 Dark', description: 'Cinematic depth', version: 'V1' },
+    { key: 'minimal' as const, label: 'V1 Minimal', description: 'Zen focus', version: 'V1' },
+    { key: 'maximal' as const, label: 'V1 Maximal', description: 'Rich abundance', version: 'V1' },
+    
+    // Film-Inspired Modes
+    { key: 'night-interior' as const, label: 'Night Interior', description: 'Amber-lit intimacy', version: 'Film' },
+    { key: 'day-exterior' as const, label: 'Day Exterior', description: 'Natural daylight', version: 'Film' },
+    { key: 'golden-hour' as const, label: 'Golden Hour', description: 'Sunset warmth', version: 'Film' },
+    { key: 'intimate' as const, label: 'Intimate', description: 'Cozy interior', version: 'Film' },
+    { key: 'dramatic' as const, label: 'Dramatic', description: 'High contrast', version: 'Film' },
+    { key: 'memory' as const, label: 'Memory', description: 'Nostalgic fade', version: 'Film' }
   ];
 
   const renderContent = () => {
@@ -73,17 +82,39 @@ const LongStoryShort: React.FC = () => {
             {/* Theme Mode Switcher */}
             <div className="lss-theme-switcher">
               <span className="lss-switcher-label">Theme Mode:</span>
-              <div className="lss-theme-buttons">
-                {themeModes.map((mode) => (
-                  <button
-                    key={mode.key}
-                    className={`lss-theme-btn ${themeMode === mode.key ? 'active' : ''}`}
-                    onClick={() => setThemeMode(mode.key)}
-                    title={mode.description}
-                  >
-                    {mode.label}
-                  </button>
-                ))}
+              
+              {/* V1 Original Modes */}
+              <div className="lss-mode-section">
+                <span className="lss-version-label">Original (V1):</span>
+                <div className="lss-theme-buttons">
+                  {themeModes.filter(mode => mode.version === 'V1').map((mode) => (
+                    <button
+                      key={mode.key}
+                      className={`lss-theme-btn ${themeMode === mode.key ? 'active' : ''} v1-mode`}
+                      onClick={() => setThemeMode(mode.key)}
+                      title={mode.description}
+                    >
+                      {mode.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Film-Inspired Modes */}
+              <div className="lss-mode-section">
+                <span className="lss-version-label">Film-Inspired:</span>
+                <div className="lss-theme-buttons">
+                  {themeModes.filter(mode => mode.version === 'Film').map((mode) => (
+                    <button
+                      key={mode.key}
+                      className={`lss-theme-btn ${themeMode === mode.key ? 'active' : ''} film-mode`}
+                      onClick={() => setThemeMode(mode.key)}
+                      title={mode.description}
+                    >
+                      {mode.label}
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

@@ -2,12 +2,12 @@ import React from 'react';
 import { MLText, MLHeading } from '../../../components/ML';
 
 interface ModeShowcaseProps {
-  currentMode: 'light' | 'dark' | 'minimal' | 'maximal';
-  onModeChange: (mode: 'light' | 'dark' | 'minimal' | 'maximal') => void;
+  currentMode: 'light' | 'dark' | 'minimal' | 'maximal' | 'night-interior' | 'day-exterior' | 'golden-hour' | 'intimate' | 'dramatic' | 'memory';
+  onModeChange: (mode: 'light' | 'dark' | 'minimal' | 'maximal' | 'night-interior' | 'day-exterior' | 'golden-hour' | 'intimate' | 'dramatic' | 'memory') => void;
 }
 
 interface ThemeMode {
-  key: 'light' | 'dark' | 'minimal' | 'maximal';
+  key: 'light' | 'dark' | 'minimal' | 'maximal' | 'night-interior' | 'day-exterior' | 'golden-hour' | 'intimate' | 'dramatic' | 'memory';
   name: string;
   description: string;
   philosophy: string;
@@ -17,19 +17,21 @@ interface ThemeMode {
   accentColor: string;
   characteristics: string[];
   useCases: string[];
+  version?: string;
 }
 
 export const ModeShowcase: React.FC<ModeShowcaseProps> = ({ currentMode, onModeChange }) => {
   const themeModes: ThemeMode[] = [
     {
       key: 'light',
-      name: 'Light Mode',
+      name: 'V1 Light Mode',
       description: 'Clean, minimal aesthetic with high contrast and maximum readability',
       philosophy: 'Clarity through simplicity - every element serves a clear purpose',
       primaryColor: '#FF6B4A',
       backgroundColor: '#FAF9F6',
       textColor: '#0A0A0A',
       accentColor: '#FF6B4A',
+      version: 'V1',
       characteristics: [
         'High contrast ratios (19:1)',
         'Extensive white space',
@@ -45,13 +47,14 @@ export const ModeShowcase: React.FC<ModeShowcaseProps> = ({ currentMode, onModeC
     },
     {
       key: 'dark',
-      name: 'Dark Mode',
+      name: 'V1 Dark Mode',
       description: 'Rich, atmospheric design with soft contrasts and cinematic depth',
       philosophy: 'Emotional depth through atmospheric lighting and subtle gradients',
       primaryColor: '#B8A4E3',
       backgroundColor: '#0A0A0A',
       textColor: '#FAF9F6',
       accentColor: '#B8A4E3',
+      version: 'V1',
       characteristics: [
         'Soft lavender accents',
         'Reduced eye strain',
@@ -67,13 +70,14 @@ export const ModeShowcase: React.FC<ModeShowcaseProps> = ({ currentMode, onModeC
     },
     {
       key: 'minimal',
-      name: 'Minimal Mode',
+      name: 'V1 Minimal Mode',
       description: 'Maximum whitespace with single accent color for ultimate focus',
       philosophy: 'Less is more - inspired by minimalist art movement principles',
       primaryColor: '#FF6B4A',
       backgroundColor: '#FFFFFF',
       textColor: '#0A0A0A',
       accentColor: '#FF6B4A',
+      version: 'V1',
       characteristics: [
         'Maximum whitespace (80%+)',
         'Single accent color only',
@@ -89,13 +93,14 @@ export const ModeShowcase: React.FC<ModeShowcaseProps> = ({ currentMode, onModeC
     },
     {
       key: 'maximal',
-      name: 'Maximal Mode',
+      name: 'V1 Maximal Mode',
       description: 'Rich gradients and layered depth inspired by contemporary maximalism',
       philosophy: 'Intentional abundance - every gradient and color choice deliberate',
       primaryColor: '#FFB84D',
       backgroundColor: '#0A0A0A',
       textColor: '#FAF9F6',
       accentColor: '#FFB84D',
+      version: 'V1',
       characteristics: [
         'Multi-color gradients',
         'Layered visual depth',
@@ -107,6 +112,146 @@ export const ModeShowcase: React.FC<ModeShowcaseProps> = ({ currentMode, onModeC
         'Creative showcases',
         'Festival websites',
         'Art installations'
+      ]
+    },
+    
+    // Film-Inspired Modes
+    {
+      key: 'night-interior',
+      name: 'Night Interior',
+      description: 'Deep black base with warm amber interior lighting',
+      philosophy: 'Cinematic intimacy through warm practical lighting against darkness',
+      primaryColor: '#FFA500',
+      backgroundColor: '#0A0A0A',
+      textColor: '#FAF9F6',
+      accentColor: '#FFA500',
+      version: 'Film',
+      characteristics: [
+        'Pure black base (#0A0A0A)',
+        'Warm amber accents (#FFA500)',
+        'Soft warm grey text (#C0B5A7)',
+        'Interior lighting atmosphere'
+      ],
+      useCases: [
+        'Movie streaming platforms',
+        'Night mode applications',
+        'Creative portfolios',
+        'Entertainment apps'
+      ]
+    },
+    {
+      key: 'day-exterior',
+      name: 'Day Exterior',
+      description: 'Pure white base with natural sky blue accents',
+      philosophy: 'Natural daylight clarity with outdoor freshness',
+      primaryColor: '#87CEEB',
+      backgroundColor: '#FFFFFF',
+      textColor: '#0A0A0A',
+      accentColor: '#87CEEB',
+      version: 'Film',
+      characteristics: [
+        'Pure white base (#FFFFFF)',
+        'Sky blue accents (#87CEEB)',
+        'Natural light feeling',
+        'Clean outdoor aesthetic'
+      ],
+      useCases: [
+        'Travel applications',
+        'Weather apps',
+        'Outdoor activity platforms',
+        'Nature-focused sites'
+      ]
+    },
+    {
+      key: 'golden-hour',
+      name: 'Golden Hour',
+      description: 'Warm white base with golden orange sunset tones',
+      philosophy: 'Capturing the magic hour warmth and nostalgia',
+      primaryColor: '#FF8E53',
+      backgroundColor: '#FFFAF5',
+      textColor: '#2C1810',
+      accentColor: '#FF8E53',
+      version: 'Film',
+      characteristics: [
+        'Warm white base (#FFFAF5)',
+        'Golden orange accent (#FF8E53)',
+        'Sunset atmosphere',
+        'Nostalgic warmth'
+      ],
+      useCases: [
+        'Photography portfolios',
+        'Lifestyle brands',
+        'Romantic applications',
+        'Memory-focused platforms'
+      ]
+    },
+    {
+      key: 'intimate',
+      name: 'Intimate',
+      description: 'Soft white base with warm gold interior lighting',
+      philosophy: 'Cozy interior warmth creating personal connection',
+      primaryColor: '#D4A574',
+      backgroundColor: '#FAF9F6',
+      textColor: '#1A1612',
+      accentColor: '#D4A574',
+      version: 'Film',
+      characteristics: [
+        'Soft white base (#FAF9F6)',
+        'Warm gold accent (#D4A574)',
+        'Cozy atmosphere',
+        'Personal feeling'
+      ],
+      useCases: [
+        'Personal blogs',
+        'Boutique brands',
+        'Wellness apps',
+        'Interior design platforms'
+      ]
+    },
+    {
+      key: 'dramatic',
+      name: 'Dramatic',
+      description: 'Pure black base with high-contrast dramatic red',
+      philosophy: 'Maximum contrast for emotional impact and focus',
+      primaryColor: '#FF4444',
+      backgroundColor: '#000000',
+      textColor: '#FFFFFF',
+      accentColor: '#FF4444',
+      version: 'Film',
+      characteristics: [
+        'Pure black base (#000000)',
+        'Dramatic red accent (#FF4444)',
+        'Maximum contrast',
+        'Bold emotional impact'
+      ],
+      useCases: [
+        'Gaming platforms',
+        'Action sports sites',
+        'Music streaming',
+        'Bold brand statements'
+      ]
+    },
+    {
+      key: 'memory',
+      name: 'Memory',
+      description: 'Near-white base with nostalgic faded gold',
+      philosophy: 'Soft nostalgia through muted warm tones',
+      primaryColor: '#C9A882',
+      backgroundColor: '#FAFAFA',
+      textColor: '#3A3532',
+      accentColor: '#C9A882',
+      version: 'Film',
+      characteristics: [
+        'Near-white base (#FAFAFA)',
+        'Faded gold accent (#C9A882)',
+        'Nostalgic feeling',
+        'Soft, dreamy atmosphere'
+      ],
+      useCases: [
+        'Memory apps',
+        'Photo galleries',
+        'Heritage sites',
+        'Vintage-themed platforms'
       ]
     }
   ];

@@ -37,7 +37,7 @@
   transition: all var(--lss-duration-normal) var(--lss-easing);
 }
 
-/* Theme Modes */
+/* V1 Original Theme Modes */
 .lss-showcase.light {
   --lss-bg-primary: var(--lss-soft-white);
   --lss-bg-secondary: #FFFFFF;
@@ -72,6 +72,80 @@
   --lss-text-secondary: rgba(255, 255, 255, 0.7);
   --lss-accent: var(--lss-golden-hour);
   --lss-surface: rgba(26, 26, 26, 0.8);
+}
+
+/* Film-Inspired Theme Modes */
+
+/* Night Interior - Dark scene with warm amber lighting */
+.lss-showcase.night-interior {
+  --lss-bg-primary: #0A0A0A;
+  --lss-bg-secondary: #1A1A1A;
+  --lss-text-primary: var(--lss-soft-white);
+  --lss-text-secondary: #C0B5A7;
+  --lss-accent: #FFA500;
+  --lss-surface: rgba(26, 26, 26, 0.9);
+  --lss-gradient-radial: radial-gradient(circle at 50% 50%, rgba(255,165,0,0.12), transparent);
+  --lss-gradient-cropped: linear-gradient(180deg, rgba(255,165,0,0.08) 0%, transparent 100%);
+}
+
+/* Day Exterior - Bright outdoor scene with sky blue */
+.lss-showcase.day-exterior {
+  --lss-bg-primary: #FFFFFF;
+  --lss-bg-secondary: var(--lss-soft-white);
+  --lss-text-primary: var(--lss-rich-black);
+  --lss-text-secondary: #5A5A5A;
+  --lss-accent: #87CEEB;
+  --lss-surface: rgba(255, 255, 255, 0.95);
+  --lss-gradient-radial: radial-gradient(circle at 50% 50%, rgba(135,206,235,0.10), transparent);
+  --lss-gradient-cropped: linear-gradient(180deg, rgba(135,206,235,0.06) 0%, transparent 100%);
+}
+
+/* Golden Hour - Sunset warmth with golden orange */
+.lss-showcase.golden-hour {
+  --lss-bg-primary: #FFFAF5;
+  --lss-bg-secondary: #FFF8F0;
+  --lss-text-primary: #2C1810;
+  --lss-text-secondary: #8B6B47;
+  --lss-accent: #FF8E53;
+  --lss-surface: rgba(255, 248, 240, 0.9);
+  --lss-gradient-radial: radial-gradient(circle at 50% 50%, rgba(255,142,83,0.15), transparent);
+  --lss-gradient-cropped: linear-gradient(180deg, rgba(255,142,83,0.10) 0%, transparent 100%);
+}
+
+/* Intimate - Cozy interior with warm gold */
+.lss-showcase.intimate {
+  --lss-bg-primary: var(--lss-soft-white);
+  --lss-bg-secondary: #F5EDE4;
+  --lss-text-primary: #1A1612;
+  --lss-text-secondary: #6B5D52;
+  --lss-accent: #D4A574;
+  --lss-surface: rgba(245, 237, 228, 0.9);
+  --lss-gradient-radial: radial-gradient(circle at 50% 50%, rgba(212,165,116,0.12), transparent);
+  --lss-gradient-cropped: linear-gradient(180deg, rgba(212,165,116,0.08) 0%, transparent 100%);
+}
+
+/* Dramatic - High contrast with dramatic red */
+.lss-showcase.dramatic {
+  --lss-bg-primary: #000000;
+  --lss-bg-secondary: #0D0D0D;
+  --lss-text-primary: #FFFFFF;
+  --lss-text-secondary: #CCCCCC;
+  --lss-accent: #FF4444;
+  --lss-surface: rgba(13, 13, 13, 0.95);
+  --lss-gradient-radial: radial-gradient(circle at 50% 50%, rgba(255,68,68,0.15), transparent);
+  --lss-gradient-cropped: linear-gradient(180deg, rgba(255,68,68,0.10) 0%, transparent 100%);
+}
+
+/* Memory - Nostalgic fade with muted gold */
+.lss-showcase.memory {
+  --lss-bg-primary: #FAFAFA;
+  --lss-bg-secondary: #F5F0E8;
+  --lss-text-primary: #3A3532;
+  --lss-text-secondary: #7A6F6A;
+  --lss-accent: #C9A882;
+  --lss-surface: rgba(245, 240, 232, 0.9);
+  --lss-gradient-radial: radial-gradient(circle at 50% 50%, rgba(201,168,130,0.10), transparent);
+  --lss-gradient-cropped: linear-gradient(180deg, rgba(201,168,130,0.06) 0%, transparent 100%);
 }
 
 /* Hero Section */
@@ -117,15 +191,32 @@
 
 .lss-theme-switcher {
   display: flex;
-  align-items: center;
-  gap: var(--lss-space-md);
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: var(--lss-space-sm);
+  margin-top: var(--lss-space-md);
 }
 
 .lss-switcher-label {
   font-weight: 600;
   color: var(--lss-text-primary);
   font-size: 0.875rem;
+  margin-bottom: var(--lss-space-xs);
+}
+
+.lss-mode-section {
+  display: flex;
+  align-items: center;
+  gap: var(--lss-space-sm);
+  flex-wrap: wrap;
+}
+
+.lss-version-label {
+  font-weight: 600;
+  color: var(--lss-text-secondary);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  min-width: 100px;
 }
 
 .lss-theme-buttons {
@@ -136,6 +227,7 @@
   border-radius: 12px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10px);
+  flex-wrap: wrap;
 }
 
 .lss-theme-btn {
@@ -160,6 +252,35 @@
   background: var(--lss-accent);
   color: white;
   box-shadow: 0 4px 12px rgba(255, 107, 74, 0.3);
+}
+
+/* Style distinctions for mode versions */
+.lss-theme-btn.v1-mode {
+  position: relative;
+}
+
+.lss-theme-btn.v1-mode::before {
+  content: 'V1';
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  font-size: 0.6rem;
+  font-weight: 700;
+  opacity: 0.4;
+}
+
+.lss-theme-btn.film-mode {
+  position: relative;
+  background: linear-gradient(135deg, transparent 0%, rgba(255, 107, 74, 0.05) 100%);
+}
+
+.lss-theme-btn.film-mode::before {
+  content: '🎬';
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  font-size: 0.6rem;
+  opacity: 0.4;
 }
 
 .lss-hero-visual {
