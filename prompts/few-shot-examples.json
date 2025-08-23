@@ -1,0 +1,299 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "last_updated": "2025-01-22",
+    "description": "High-quality examples for few-shot learning across MaterialLab content types"
+  },
+  "ux_ui_examples": {
+    "user_story_driven_design": [
+      {
+        "context": "Busy project manager needs to quickly assess project status during Monday morning review",
+        "bad_example": {
+          "approach": "Generic dashboard with all possible metrics displayed equally",
+          "issues": ["No clear hierarchy", "Feature-focused not user-focused", "Overwhelming information"]
+        },
+        "materiallab_example": {
+          "approach": "Status-first design with clear visual hierarchy",
+          "implementation": "Large status indicator at top (At Risk/On Track), followed by the 3 most critical metrics that affect this week's client meetings, with detailed information available on-demand",
+          "why_better": "Serves specific user goal, provides actionable information, maintains user control over detail level"
+        }
+      },
+      {
+        "context": "New team member wants to understand how AI analysis works in project planning",
+        "bad_example": {
+          "approach": "AI analysis runs automatically without explanation",
+          "issues": ["Black box process", "No user control", "No educational value"]
+        },
+        "materiallab_example": {
+          "approach": "Transparent AI with progressive disclosure",
+          "implementation": "AI analysis opt-in with explanation: 'We can analyze your project data to suggest optimal timelines (takes ~30 seconds, uses team velocity + project complexity)' → Show analysis process → Present results with confidence levels and reasoning → Provide user controls to modify or override",
+          "why_better": "Educational, transparent, empowering, builds user understanding"
+        }
+      }
+    ],
+    "ai_transparency_patterns": [
+      {
+        "scenario": "AI recommends extending project timeline",
+        "bad_example": {
+          "text": "AI recommends extending timeline by 1 week",
+          "issues": ["No reasoning", "No confidence level", "No user control"]
+        },
+        "materiallab_example": {
+          "component": "AIRecommendationCard",
+          "implementation": {
+            "disclosure": "AILabel with 'analysis' variant",
+            "headline": "Timeline Extension Suggested (87% confidence)",
+            "reasoning": "Based on team velocity (23 points/sprint), project scope (67 points), and similar project patterns",
+            "limitations": "Doesn't account for external dependencies or team changes",
+            "user_controls": ["Adjust parameters", "See alternatives", "Override with manual planning"],
+            "transparency": "Learn how we calculate timeline recommendations"
+          },
+          "why_better": "Full transparency, user empowerment, educational value"
+        }
+      }
+    ]
+  },
+  "visual_examples": {
+    "photography_style": [
+      {
+        "context": "Hero image showing human-AI collaboration",
+        "bad_example": {
+          "description": "Stock photo of business people pointing at floating holographic charts",
+          "issues": ["Generic stock photography", "Futuristic unrealistic scenarios", "No authentic collaboration shown"]
+        },
+        "materiallab_example": {
+          "description": "Documentary-style photo of diverse team around table with laptops, sketches, and notes visible. One person is explaining data analysis results on screen while others listen and take notes. Natural lighting, authentic working environment.",
+          "technical_specs": "Shot with 50mm lens, f/1.8, soft window lighting",
+          "color_grading": "Warm tones aligned with Humanistic Intelligence palette",
+          "why_better": "Authentic collaboration, real work environment, shows human agency in AI-assisted process"
+        }
+      }
+    ],
+    "illustration_style": [
+      {
+        "context": "Process diagram showing MaterialLab's AI methodology",
+        "bad_example": {
+          "description": "Generic flowchart with robot icon → brain icon → gear icon",
+          "issues": ["Generic AI symbols", "No human element", "Cold, mechanical feel"]
+        },
+        "materiallab_example": {
+          "description": "Hand-drawn style diagram showing human decision points (warm orange circles) connected to AI analysis nodes (teal hexagons) with flowing organic lines representing collaboration",
+          "style": "Technical illustration with organic, hand-crafted qualities",
+          "color_usage": "MaterialLab brand palette only, meaningful color coding",
+          "why_better": "Shows partnership not replacement, uses brand colors meaningfully, warm approachable style"
+        }
+      }
+    ]
+  },
+  "copy_examples": {
+    "website_hero": [
+      {
+        "context": "Main landing page headline",
+        "bad_example": {
+          "headline": "Revolutionary AI Platform",
+          "subheading": "Leverage cutting-edge artificial intelligence to transform your business",
+          "cta": "Get Started Now",
+          "issues": ["Generic AI company language", "Overpromising", "No human element", "Vague value proposition"]
+        },
+        "materiallab_example": {
+          "headline": "Design Tomorrow, Together",
+          "subheading": "We unite human creativity with AI precision to build products that solve real problems for real people",
+          "cta": "Start Building",
+          "why_better": "Emphasizes collaboration, specific value, human-centric approach, action-oriented"
+        }
+      }
+    ],
+    "technical_documentation": [
+      {
+        "context": "Explaining AI confidence scores to business users",
+        "bad_example": {
+          "text": "The AI model generates confidence scores using proprietary algorithms to determine recommendation accuracy",
+          "issues": ["Technical jargon", "No practical value", "Black box explanation"]
+        },
+        "materiallab_example": {
+          "text": "AI confidence scores help you understand how certain our analysis is about a recommendation. A score of 85% means we found strong patterns in your data that support this suggestion, but you should still review it against your specific context and expertise. Scores below 70% usually mean we need more information about your situation, or that human judgment is especially important for this decision.",
+          "why_better": "Plain language, practical application, acknowledges human expertise, actionable guidance"
+        }
+      }
+    ],
+    "error_messages": [
+      {
+        "context": "File upload failure",
+        "bad_example": {
+          "text": "Error: Upload failed. Please try again.",
+          "issues": ["Vague", "No explanation", "No helpful guidance"]
+        },
+        "materiallab_example": {
+          "headline": "Upload Paused at 67%",
+          "explanation": "This usually happens with files over 5MB on slower connections",
+          "actions": [
+            "Resume upload (we saved your progress)",
+            "Try with a compressed version of your file", 
+            "Use our email option for large files"
+          ],
+          "reassurance": "Your data is secure and we'll complete the upload when you're ready",
+          "why_better": "Specific, helpful, solution-focused, reassuring"
+        }
+      }
+    ],
+    "ai_interaction": [
+      {
+        "context": "AI analysis results presentation",
+        "bad_example": {
+          "text": "AI analysis complete. The system recommends Option A based on optimal parameters.",
+          "issues": ["No reasoning", "Black box decision", "No user control"]
+        },
+        "materiallab_example": {
+          "disclosure": "AILabel: 'Analysis complete (87% confidence)'",
+          "headline": "Timeline Extension Recommended",
+          "reasoning": "Based on your team's velocity over the last 6 sprints and similar project complexity patterns, extending the timeline by 1 week would significantly improve delivery quality",
+          "factors": [
+            "Current team velocity: 23 story points per sprint",
+            "Project scope: 67 estimated story points",
+            "Similar projects typically need 15% buffer time"
+          ],
+          "limitations": "This analysis doesn't account for external dependencies or potential team changes",
+          "user_controls": [
+            "Apply this recommendation",
+            "Adjust parameters to see other options",
+            "Override with manual timeline planning",
+            "Learn more about how we calculate these estimates"
+          ],
+          "why_better": "Complete transparency, clear reasoning, user empowerment, educational value"
+        }
+      }
+    ]
+  },
+  "code_examples": {
+    "component_documentation": [
+      {
+        "context": "React component JSDoc documentation",
+        "bad_example": {
+          "code": "/**\n * Button component\n * @param props Button props\n * @returns Button element\n */",
+          "issues": ["Vague description", "No usage context", "No examples"]
+        },
+        "materiallab_example": {
+          "code": "/**\n * MaterialLab Button - Primary interactive element for user actions\n *\n * This component provides consistent interactive styling across MaterialLab interfaces\n * while maintaining accessibility and theme support. Use for primary user actions\n * like form submissions, navigation, and feature activation.\n *\n * @param variant - Visual style: 'primary' for main actions, 'secondary' for supporting actions\n * @param size - Touch target size: 'sm' (36px min), 'md' (44px min), 'lg' (52px min)\n * @param loading - Shows spinner and disables interaction during async operations\n * @param children - Button label text (should be clear and action-oriented)\n *\n * @example\n * ```tsx\n * // Primary form submission\n * <Button variant=\"primary\" loading={isSubmitting} onClick={handleSubmit}>\n *   Submit Project\n * </Button>\n *\n * // Secondary action with accessibility\n * <Button variant=\"secondary\" aria-describedby=\"help-text\">\n *   Learn More\n * </Button>\n * ```\n *\n * @throws {ValidationError} When children is empty or not provided\n * \n * Security: This component sanitizes all props and prevents XSS through React's\n * built-in escaping. No innerHTML or dangerouslySetInnerHTML used.\n */",
+          "why_better": "Comprehensive context, usage examples, security notes, accessibility guidance"
+        }
+      }
+    ],
+    "error_handling": [
+      {
+        "context": "API error handling in user-facing function",
+        "bad_example": {
+          "code": "catch (error) {\n  throw error;\n}",
+          "issues": ["No user context", "Exposes technical details", "Not helpful"]
+        },
+        "materiallab_example": {
+          "code": "catch (error) {\n  logger.error('Timeline analysis failed', {\n    userId: user.id,\n    projectId,\n    error: error.message\n  });\n  \n  if (error.name === 'ValidationError') {\n    throw new UserFacingError(\n      'Project data needs attention',\n      'Some project information appears incomplete. Please check that all required fields are filled out and try again.',\n      { suggestedAction: 'review_project_data' }\n    );\n  }\n  \n  if (error.name === 'TimeoutError') {\n    throw new UserFacingError(\n      'Analysis taking longer than expected',\n      'Your project has more data than usual. You can continue waiting (about 2 more minutes) or skip AI analysis and plan manually.',\n      { \n        suggestedActions: ['wait', 'skip_ai', 'reduce_scope'],\n        estimatedWaitTime: '2 minutes'\n      }\n    );\n  }\n  \n  // Generic fallback with helpful options\n  throw new UserFacingError(\n    'Unable to complete timeline analysis',\n    'We encountered an unexpected issue. Your project data is safe. You can try again or proceed with manual planning.',\n    { suggestedActions: ['retry', 'manual_planning', 'contact_support'] }\n  );\n}",
+          "why_better": "User-friendly messages, specific guidance, maintains data safety assurance, provides alternatives"
+        }
+      }
+    ]
+  },
+  "voice_consistency_examples": {
+    "sage_archetype_demonstrations": [
+      {
+        "context": "Explaining complex AI concept to non-technical user",
+        "sage_approach": "AI confidence scores work like a weather forecast probability. When we say 85% confidence, it means we found strong, consistent patterns in your data that support this recommendation - similar to how an 85% chance of rain means multiple weather indicators point to precipitation. Just like you might still check the sky and bring an umbrella based on your local knowledge, you should review our analysis against your specific context and expertise.",
+        "why_sage": "Uses analogy for clarity, acknowledges user expertise, educational without condescending"
+      }
+    ],
+    "creator_archetype_demonstrations": [
+      {
+        "context": "Introducing new AI capability",
+        "creator_approach": "Imagine if your project planning could anticipate problems before they happen. Our new timeline analysis doesn't just estimate dates - it spots the hidden risks that derail projects, like that dependency you forgot about or the sprint that's packed too tight. It's like having a experienced project manager's intuition, powered by data from hundreds of similar projects, working alongside your expertise to create more realistic, achievable plans.",
+        "why_creator": "Paints vision of possibility, shows innovation, emphasizes enhancement of human capability"
+      }
+    ],
+    "human_centricity_demonstrations": [
+      {
+        "context": "Describing AI-assisted design process",
+        "human_centric_approach": "AI assists your design process by analyzing user behavior patterns and suggesting improvements, but you make all creative decisions. The AI might notice that users struggle with a particular workflow and suggest alternative layouts, but you evaluate these suggestions against your design vision, brand requirements, and user feedback. Your creativity and judgment drive the process - AI just helps you spot patterns you might miss and consider options you might not think of.",
+        "why_human_centric": "Positions AI as assistant, emphasizes human decision-making, shows augmentation not replacement"
+      }
+    ]
+  },
+  "anti_slop_pattern_recognition": {
+    "generic_patterns_to_avoid": [
+      {
+        "pattern_type": "anthropomorphic_ai",
+        "bad_examples": [
+          "Our AI thinks this is the best approach",
+          "The model believes you should choose Option A", 
+          "AI understands your needs",
+          "The system learned from your preferences"
+        ],
+        "materiallab_replacements": [
+          "Based on data analysis, this approach shows the strongest indicators",
+          "Pattern analysis suggests Option A aligns best with your requirements",
+          "AI analysis indicates alignment with your stated goals",
+          "The system identified patterns in your usage data"
+        ]
+      },
+      {
+        "pattern_type": "overpromising_language",
+        "bad_examples": [
+          "Revolutionary breakthrough in AI",
+          "Effortless automation",
+          "Magical AI capabilities", 
+          "Seamless integration"
+        ],
+        "materiallab_replacements": [
+          "Significant advancement in AI collaboration",
+          "Streamlined workflow assistance",
+          "Transparent AI capabilities",
+          "Thoughtful integration process"
+        ]
+      },
+      {
+        "pattern_type": "replacement_mentality",
+        "bad_examples": [
+          "Eliminate the need for human intervention",
+          "Automate away manual processes",
+          "Replace human decision-making",
+          "Remove human error"
+        ],
+        "materiallab_replacements": [
+          "Augment human decision-making capabilities",
+          "Streamline manual processes while maintaining human oversight",
+          "Enhance human decision-making with data insights",
+          "Support more informed human decisions"
+        ]
+      }
+    ]
+  },
+  "contextual_adaptation_examples": {
+    "audience_specific_voice": [
+      {
+        "audience": "technical_team",
+        "context": "Explaining API integration approach",
+        "voice_adaptation": "Our REST API follows RESTful conventions with comprehensive OpenAPI documentation. Authentication uses OAuth 2.0 with JWT tokens, and we implement rate limiting to ensure fair usage across tenants. The AI analysis endpoints are designed to be idempotent, so you can safely retry requests. Response times average 200ms for simple analysis, up to 30 seconds for complex multi-dimensional analysis.",
+        "adaptation_notes": "More technical detail, assumes familiarity with concepts, focuses on implementation specifics"
+      },
+      {
+        "audience": "business_stakeholders", 
+        "context": "Explaining same API capabilities",
+        "voice_adaptation": "Our platform integrates with your existing systems through industry-standard connections, allowing your team to access AI insights directly within your current workflow. Security follows banking-grade standards, and the system is designed to handle your team's usage patterns reliably. Most analysis results appear in under 5 seconds, with more complex analysis taking up to 30 seconds - you'll see progress indicators and can continue other work while waiting.",
+        "adaptation_notes": "Business-focused language, emphasizes reliability and user experience, avoids technical jargon"
+      }
+    ]
+  },
+  "quality_benchmarks": {
+    "excellent_examples": [
+      {
+        "content_type": "Feature announcement",
+        "example": "Project Risk Detection Now Available\n\nYour project planning just got a safety net. Our new analysis identifies potential risks before they become problems - like spotting when your timeline assumes perfect conditions or when dependencies could create bottlenecks.\n\nHow it helps:\n• Flags unrealistic assumptions in project plans\n• Identifies dependency chains that could delay delivery \n• Suggests buffer time based on your team's actual performance\n• Shows confidence levels so you know when to dig deeper\n\nThe analysis runs in about 15 seconds and explains its reasoning, but you maintain full control over all project decisions. Ready to try it? Look for 'Analyze Risks' in your project planning view.",
+        "quality_indicators": [
+          "Leads with user benefit",
+          "Specific, actionable features",
+          "Transparent about AI process and limitations", 
+          "Maintains user control",
+          "Clear next steps",
+          "Avoids overpromising"
+        ]
+      }
+    ]
+  }
+}

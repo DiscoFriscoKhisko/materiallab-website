@@ -1,4 +1,5 @@
-/** @type {import('tailwindcss').Config} */
+import type { Config } from 'tailwindcss'
+
 export default {
   content: [
     "./index.html",
@@ -10,6 +11,7 @@ export default {
         // Material 3 Primary Colors
         primary: {
           DEFAULT: 'var(--primary)',
+          hover: 'var(--primary-hover)',
           container: 'var(--primary-container)',
         },
         'on-primary': {
@@ -108,6 +110,7 @@ export default {
       fontFamily: {
         primary: 'var(--font-primary)',  // Unified Sora font
         mono: 'var(--font-mono)',
+        veo: 'var(--font-veo)',  // Google Sans for Veo components
         // Legacy support - all map to primary
         display: 'var(--font-primary)',
         headline: 'var(--font-primary)',
@@ -150,7 +153,14 @@ export default {
         'body-l': ['var(--text-body-l)', { lineHeight: 'var(--text-body-l-lh)' }],
         'body-m': ['var(--text-body-m)', { lineHeight: 'var(--text-body-m-lh)' }],
         'body-s': ['var(--text-body-s)', { lineHeight: 'var(--text-body-s-lh)' }],
-        'caption': ['var(--text-caption)', { lineHeight: 'var(--text-caption-lh)' }]
+        'caption': ['var(--text-caption)', { lineHeight: 'var(--text-caption-lh)' }],
+        
+        // Veo typography scale
+        'veo-text-hero': ['var(--veo-text-hero)', { lineHeight: '1.1' }],      // 56px
+        'veo-text-headline': ['var(--veo-text-headline)', { lineHeight: '1.2' }], // 32px
+        'veo-text-title': ['var(--veo-text-title)', { lineHeight: '1.3' }],    // 24px
+        'veo-text-body': ['var(--veo-text-body)', { lineHeight: '1.5' }],      // 16px
+        'veo-text-caption': ['var(--veo-text-caption)', { lineHeight: '1.4' }]  // 14px
       },
       
       spacing: {
@@ -215,4 +225,4 @@ export default {
     },
   },
   plugins: [],
-}
+} satisfies Config

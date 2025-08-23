@@ -1,0 +1,329 @@
+{
+  "typography": {
+    "font": {
+      "family": {
+        "primary": {
+          "value": "'Space Grotesk Variable', 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif",
+          "description": "Primary brand font - thoughtfully nerdy personality",
+          "usage": "Headlines, display text, brand-forward content"
+        },
+        "body": {
+          "value": "'Inter Variable', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif",
+          "description": "Body text font - optimal readability",
+          "usage": "Body text, paragraphs, readable content"
+        },
+        "code": {
+          "value": "'Source Code Pro', 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, monospace",
+          "description": "Technical content font",
+          "usage": "Code blocks, technical documentation"
+        }
+      },
+      "size": {
+        "hero": {
+          "value": "clamp(2.5rem, 6vw + 1rem, 5rem)",
+          "description": "Hero text size - compelling presenter mode",
+          "usage": "Main page heroes, primary CTAs"
+        },
+        "display": {
+          "01": {
+            "value": "clamp(2rem, 4vw + 1rem, 3.5rem)",
+            "description": "Large display text",
+            "usage": "Section headers, major announcements"
+          },
+          "02": {
+            "value": "clamp(1.75rem, 3vw + 1rem, 2.75rem)",
+            "description": "Medium display text",
+            "usage": "Subsection headers, feature highlights"
+          },
+          "03": {
+            "value": "clamp(1.5rem, 2.5vw + 0.5rem, 2.25rem)",
+            "description": "Small display text",
+            "usage": "Card headers, component titles"
+          }
+        },
+        "heading": {
+          "01": {
+            "value": "clamp(1.5rem, 2vw + 0.5rem, 2rem)",
+            "description": "H1 - Primary page heading",
+            "usage": "Page titles, main content headers"
+          },
+          "02": {
+            "value": "clamp(1.25rem, 1.8vw + 0.25rem, 1.75rem)",
+            "description": "H2 - Major section heading",
+            "usage": "Section headers, major topics"
+          },
+          "03": {
+            "value": "clamp(1.125rem, 1.5vw + 0.25rem, 1.5rem)",
+            "description": "H3 - Subsection heading",
+            "usage": "Subsection headers, article headings"
+          },
+          "04": {
+            "value": "clamp(1rem, 1.2vw + 0.125rem, 1.25rem)",
+            "description": "H4 - Minor section heading",
+            "usage": "Small section headers, card titles"
+          },
+          "05": {
+            "value": "clamp(0.9375rem, 1vw + 0.125rem, 1.125rem)",
+            "description": "H5 - Small heading",
+            "usage": "Component headers, sidebar titles"
+          },
+          "06": {
+            "value": "clamp(0.875rem, 0.8vw + 0.125rem, 1rem)",
+            "description": "H6 - Smallest heading",
+            "usage": "Labels, micro-headers"
+          }
+        },
+        "body": {
+          "xl": {
+            "value": "1.25rem",
+            "description": "Extra large body text - 20px",
+            "usage": "Important content, feature descriptions"
+          },
+          "lg": {
+            "value": "1.125rem",
+            "description": "Large body text - 18px",
+            "usage": "Readable content, article text"
+          },
+          "md": {
+            "value": "1rem",
+            "description": "Standard body text - 16px (WCAG base)",
+            "usage": "Default body text, paragraphs"
+          },
+          "sm": {
+            "value": "0.9375rem",
+            "description": "Small body text - 15px",
+            "usage": "Secondary information, captions"
+          },
+          "xs": {
+            "value": "0.875rem",
+            "description": "Extra small text - 14px",
+            "usage": "Labels, metadata, fine print"
+          }
+        }
+      },
+      "weight": {
+        "light": {
+          "value": 300,
+          "description": "Light weight - subtle, elegant",
+          "usage": "Subtle text, secondary information"
+        },
+        "regular": {
+          "value": 400,
+          "description": "Regular weight - standard readability",
+          "usage": "Body text, default content"
+        },
+        "medium": {
+          "value": 500,
+          "description": "Medium weight - slight emphasis",
+          "usage": "Emphasized text, important content"
+        },
+        "semibold": {
+          "value": 600,
+          "description": "Semibold weight - clear hierarchy",
+          "usage": "Headers, labels, CTAs"
+        },
+        "bold": {
+          "value": 700,
+          "description": "Bold weight - strong emphasis",
+          "usage": "Important headers, strong emphasis"
+        }
+      },
+      "lineHeight": {
+        "compressed": {
+          "value": 1.1,
+          "description": "Compressed line height",
+          "usage": "Large display text, tight layouts"
+        },
+        "tight": {
+          "value": 1.25,
+          "description": "Tight line height",
+          "usage": "Headings, compact content"
+        },
+        "normal": {
+          "value": 1.5,
+          "description": "Normal line height - WCAG optimal",
+          "usage": "Body text, readable content"
+        },
+        "comfortable": {
+          "value": 1.6,
+          "description": "Comfortable line height",
+          "usage": "Long-form reading, articles"
+        },
+        "spacious": {
+          "value": 1.75,
+          "description": "Spacious line height",
+          "usage": "Accessibility mode, increased readability"
+        }
+      },
+      "letterSpacing": {
+        "compressed": {
+          "value": "-0.03em",
+          "description": "Compressed letter spacing",
+          "usage": "Large display text, tight layouts"
+        },
+        "tight": {
+          "value": "-0.015em",
+          "description": "Tight letter spacing",
+          "usage": "Headings, branded content"
+        },
+        "normal": {
+          "value": "0",
+          "description": "Normal letter spacing",
+          "usage": "Body text, default content"
+        },
+        "relaxed": {
+          "value": "0.01em",
+          "description": "Relaxed letter spacing",
+          "usage": "Comfortable reading, small text"
+        },
+        "wide": {
+          "value": "0.05em",
+          "description": "Wide letter spacing",
+          "usage": "Labels, buttons, uppercase text"
+        },
+        "wider": {
+          "value": "0.1em",
+          "description": "Wider letter spacing",
+          "usage": "All caps text, special emphasis"
+        }
+      }
+    },
+    "brand": {
+      "personality": {
+        "thoughtfulExpert": {
+          "weight": {
+            "value": "var(--font-weight-regular)",
+            "description": "Weight for thoughtful expert content"
+          },
+          "spacing": {
+            "value": "var(--letter-spacing-normal)",
+            "description": "Spacing for thoughtful expert content"
+          },
+          "lineHeight": {
+            "value": "var(--line-height-comfortable)",
+            "description": "Line height for thoughtful expert content"
+          }
+        },
+        "compellingPresenter": {
+          "weight": {
+            "value": "var(--font-weight-semibold)",
+            "description": "Weight for compelling presenter content"
+          },
+          "spacing": {
+            "value": "var(--letter-spacing-tight)",
+            "description": "Spacing for compelling presenter content"
+          },
+          "lineHeight": {
+            "value": "var(--line-height-tight)",
+            "description": "Line height for compelling presenter content"
+          }
+        }
+      },
+      "context": {
+        "formalCasual": {
+          "description": "Primary brand voice - formal casual tone",
+          "usage": "Main brand content, professional communication"
+        },
+        "technical": {
+          "description": "Technical expert mode for detailed explanations",
+          "usage": "Documentation, technical content, detailed explanations"
+        },
+        "compelling": {
+          "description": "Compelling presenter mode for CTAs and engagement",
+          "usage": "Calls to action, marketing copy, engagement content"
+        }
+      }
+    },
+    "accessibility": {
+      "wcag": {
+        "baseSize": {
+          "value": "16px",
+          "description": "WCAG 2.1 AA minimum base font size",
+          "compliance": "WCAG 2.1 AA"
+        },
+        "resizable": {
+          "description": "Supports text resizing up to 200% without loss of functionality",
+          "compliance": "WCAG 1.4.4"
+        },
+        "textSpacing": {
+          "description": "Supports user text spacing overrides",
+          "compliance": "WCAG 1.4.12"
+        },
+        "highContrast": {
+          "description": "Adapts to high contrast mode preferences",
+          "compliance": "WCAG 1.4.6"
+        }
+      }
+    },
+    "performance": {
+      "fontDisplay": {
+        "value": "swap",
+        "description": "Font-display strategy for performance"
+      },
+      "preload": {
+        "primary": [
+          "Space Grotesk Variable",
+          "Inter Variable"
+        ],
+        "description": "Critical fonts to preload for performance"
+      }
+    },
+    "classes": {
+      "hero": {
+        "class": "ml-typo-hero",
+        "description": "Hero typography with Material Lab gradient",
+        "properties": {
+          "fontFamily": "var(--font-primary)",
+          "fontSize": "var(--font-size-hero)",
+          "fontWeight": "var(--typo-presenter-weight)",
+          "lineHeight": "var(--typo-presenter-height)",
+          "letterSpacing": "var(--typo-presenter-spacing)"
+        }
+      },
+      "display1": {
+        "class": "ml-typo-display-1",
+        "description": "Large display text",
+        "properties": {
+          "fontFamily": "var(--font-primary)",
+          "fontSize": "var(--font-size-display-1)",
+          "fontWeight": "var(--font-weight-semibold)",
+          "lineHeight": "var(--line-height-tight)",
+          "letterSpacing": "var(--letter-spacing-tight)"
+        }
+      },
+      "h1": {
+        "class": "ml-typo-h1",
+        "description": "Primary heading",
+        "properties": {
+          "fontFamily": "var(--font-primary)",
+          "fontSize": "var(--font-size-h1)",
+          "fontWeight": "var(--typo-expert-weight)",
+          "lineHeight": "var(--line-height-tight)",
+          "letterSpacing": "var(--letter-spacing-normal)"
+        }
+      },
+      "body": {
+        "class": "ml-typo-body",
+        "description": "Standard body text",
+        "properties": {
+          "fontFamily": "var(--font-body)",
+          "fontSize": "var(--font-size-body)",
+          "fontWeight": "var(--typo-expert-weight)",
+          "lineHeight": "var(--typo-expert-height)",
+          "letterSpacing": "var(--typo-expert-spacing)"
+        }
+      },
+      "code": {
+        "class": "ml-typo-code",
+        "description": "Inline code text",
+        "properties": {
+          "fontFamily": "var(--font-code)",
+          "fontSize": "var(--font-size-body-sm)",
+          "fontWeight": "var(--font-weight-regular)",
+          "lineHeight": "var(--line-height-comfortable)",
+          "letterSpacing": "var(--letter-spacing-normal)"
+        }
+      }
+    }
+  }
+}

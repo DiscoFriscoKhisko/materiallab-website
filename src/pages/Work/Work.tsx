@@ -87,7 +87,7 @@ export const Work = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
               >
-                <MLCard className="p-veo-6 lg:p-veo-8">
+                <MLCard className="p-veo-6 lg:p-veo-8 shadow-elevation-3 hover:shadow-elevation-4 transition-all duration-300 border border-white/5 hover:border-white/10">
                   <div className="grid lg:grid-cols-2 gap-12 items-start">
                     {/* Project Details */}
                     <div>
@@ -170,7 +170,7 @@ export const Work = () => {
                       />
                       
                       {/* Testimonial */}
-                      <MLCard variant="glow-primary" className="p-veo-6">
+                      <MLCard variant="glow-primary" className="p-veo-6 shadow-elevation-2 border border-primary/20">
                         <MLText variant="bodyM" className="mb-4 italic">
                           "{project.testimonial.quote}"
                         </MLText>
@@ -235,6 +235,7 @@ export const Work = () => {
               onClick={() => navigate('/contact')}
               icon={<VeoArrowRightIcon />}
               iconPosition="right"
+              className="font-semibold shadow-elevation-2 hover:shadow-elevation-3 hover:scale-105 transition-all duration-200"
             >
               Book a call
             </VeoButton>

@@ -1,6 +1,10 @@
-/* MaterialLab Design Tokens - Clean & Professional */
+/* MaterialLab Design Tokens - Clean & Professional with Veo Integration */
 @import '@fontsource-variable/inter';
 @import '@fontsource-variable/sora';
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@300;400;500;600;700&display=swap');
+
+/* Import comprehensive typography system */
+@import './typography.css';
 
 :root {
   /* === DUAL THEME SYSTEM - DARK FIRST === */
@@ -16,6 +20,9 @@
   --on-surface-variant: rgba(255, 255, 255, 0.60);
   --outline: rgba(255, 255, 255, 0.12);
   --outline-variant: rgba(255, 255, 255, 0.08);
+  
+  /* RGB values for dark theme */
+  --surface-rgb: 26, 31, 46;
   
   /* Primary Brand Color - Ion Blue for dark mode */
   --primary: #55C2FF;
@@ -47,6 +54,7 @@
   /* === TYPOGRAPHY === */
   --font-primary: 'Inter Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
   --font-display: 'Sora Variable', var(--font-primary);
+  --font-veo: 'Google Sans', 'Inter Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
   
   /* Typography Scale - Google-style */
   --text-xs: 0.75rem;    /* 12px */
@@ -93,60 +101,113 @@
   --space-24: 6rem;     /* 96px */
   --space-32: 8rem;     /* 128px */
   
+  /* === BORDER RADIUS === */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  
   /* === BORDERS & RADIUS === */
-  --radius-sm: 0.25rem;   /* 4px */
-  --radius-md: 0.5rem;    /* 8px */
   --radius-lg: 0.75rem;   /* 12px */
   --radius-xl: 1rem;      /* 16px */
   --radius-full: 9999px;
   
-  /* === SHADOWS === */
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  /* === GOOGLE MATERIAL DESIGN 3 ELEVATION SYSTEM === */
+  /* Level 0 - Surface */
+  --elevation-0: none;
   
-  /* === MOTION === */
-  --duration-fast: 150ms;
-  --duration-base: 300ms;
-  --duration-slow: 500ms;
-  --ease-out: cubic-bezier(0, 0, 0.2, 1);
-  --ease-in: cubic-bezier(0.4, 0, 1, 1);
-  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  /* Level 1 - Cards, elevated buttons */
+  --elevation-1: 0px 1px 2px rgba(0, 0, 0, 0.3), 
+                 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+  
+  /* Level 2 - FAB, raised buttons */
+  --elevation-2: 0px 1px 2px rgba(0, 0, 0, 0.3), 
+                 0px 2px 6px 2px rgba(0, 0, 0, 0.15);
+  
+  /* Level 3 - Tooltip, modals */
+  --elevation-3: 0px 1px 3px rgba(0, 0, 0, 0.3), 
+                 0px 4px 8px 3px rgba(0, 0, 0, 0.15);
+  
+  /* Level 4 - Navigation drawer */
+  --elevation-4: 0px 2px 3px rgba(0, 0, 0, 0.3), 
+                 0px 6px 10px 4px rgba(0, 0, 0, 0.15);
+  
+  /* Level 5 - App bar */
+  --elevation-5: 0px 4px 4px rgba(0, 0, 0, 0.3), 
+                 0px 8px 12px 6px rgba(0, 0, 0, 0.15);
+
+  /* Legacy shadows (kept for compatibility) */
+  --shadow-sm: var(--elevation-1);
+  --shadow-md: var(--elevation-2);
+  --shadow-lg: var(--elevation-3);
+  --shadow-xl: var(--elevation-4);
+  
+  /* === GOOGLE MOTION DESIGN TOKENS === */
+  /* Durations */
+  --duration-short1: 50ms;    /* Micro-interactions */
+  --duration-short2: 100ms;   /* Icon animations */
+  --duration-short3: 150ms;   /* Small component animations */
+  --duration-short4: 200ms;   /* Standard transitions */
+  --duration-medium1: 250ms;  /* Component enter/exit */
+  --duration-medium2: 300ms;  /* Layout changes */
+  --duration-medium3: 350ms;  /* Page transitions */
+  --duration-medium4: 400ms;  /* Large components */
+  --duration-long1: 450ms;    /* Complex transitions */
+  --duration-long2: 500ms;    /* Video transitions */
+  --duration-long3: 550ms;    /* Full screen transitions */
+  --duration-long4: 600ms;    /* App-wide transitions */
+  
+  /* Standard Google easing curves */
+  --easing-linear: cubic-bezier(0, 0, 1, 1);
+  --easing-standard: cubic-bezier(0.2, 0, 0, 1);
+  --easing-standard-accelerate: cubic-bezier(0.3, 0, 1, 1);
+  --easing-standard-decelerate: cubic-bezier(0, 0, 0, 1);
+  --easing-emphasized: cubic-bezier(0.2, 0, 0, 1);
+  --easing-emphasized-accelerate: cubic-bezier(0.3, 0, 0.8, 0.15);
+  --easing-emphasized-decelerate: cubic-bezier(0.05, 0.7, 0.1, 1);
+  
+  /* Legacy motion (for compatibility) */
+  --duration-fast: var(--duration-short4);
+  --duration-base: var(--duration-medium2);
+  --duration-slow: var(--duration-long2);
+  --ease-out: var(--easing-standard-decelerate);
+  --ease-in: var(--easing-standard-accelerate);
+  --ease-in-out: var(--easing-standard);
   
 }
 
-/* === LIGHT THEME OVERRIDES === */
+/* === VEO-INSPIRED LIGHT THEME === */
 .light-theme {
-  /* Light Theme Colors - Clean & Professional */
+  /* Light Theme Colors - Veo-inspired minimal palette */
   --background: #FFFFFF;
-  --on-background: #1A1A1A;
+  --on-background: #202124;
   --surface: #FFFFFF;
   --surface-1: #F8F9FA;
   --surface-2: #F1F3F4;
   --surface-3: #E8EAED;
-  --on-surface: #1A1A1A;
+  --on-surface: #202124;
   --on-surface-variant: #5F6368;
-  --outline: #E0E0E0;
-  --outline-variant: #F0F0F0;
+  --outline: #DADCE0;
+  --outline-variant: #F1F3F4;
   
-  /* Primary Brand Color - Professional Blue for light mode */
+  /* Primary Brand Color - Google Blue for light mode */
   --primary: #1A73E8;
   --on-primary: #FFFFFF;
   --primary-container: #E8F0FE;
   --on-primary-container: #0D47A1;
+  --primary-hover: #1557B0;
   
-  /* Secondary - Muted for light mode */
+  /* Secondary - Subtle gray for light mode */
   --secondary: #5F6368;
   --on-secondary: #FFFFFF;
-  --secondary-container: #F1F3F4;
+  --secondary-container: #F8F9FA;
   --on-secondary-container: #202124;
   
-  /* Semantic Colors - Light theme optimized */
+  /* Semantic Colors - Google-inspired */
   --error: #EA4335;
   --on-error: #FFFFFF;
   --warning: #FBBC04;
-  --on-warning: #1A1A1A;
+  --on-warning: #202124;
   --success: #34A853;
   --on-success: #FFFFFF;
   --info: var(--primary);
@@ -156,4 +217,68 @@
   --text-weak: var(--on-surface-variant);
   --text-weaker: #9AA0A6;
   --text-inverse: var(--on-primary);
+  
+  /* RGB values for light theme */
+  --surface-rgb: 255, 255, 255;
+  
+  /* === VEO-SPECIFIC GOOGLE-STYLE DESIGN TOKENS === */
+  --veo-video-overlay: rgba(0, 0, 0, 0.4);
+  --veo-video-overlay-strong: rgba(0, 0, 0, 0.6);
+  --veo-backdrop-blur: blur(20px);
+  --veo-card-hover-shadow: var(--elevation-3);
+  --veo-hero-text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+
+  /* Google-style interaction states */
+  --veo-hover-overlay: rgba(26, 115, 232, 0.04);
+  --veo-active-overlay: rgba(26, 115, 232, 0.12);
+  --veo-focus-ring: 0 0 0 2px rgba(26, 115, 232, 0.12);
+  --veo-ripple-color: rgba(26, 115, 232, 0.12);
+  
+  /* Button state layers */
+  --veo-button-hover: rgba(26, 115, 232, 0.08);
+  --veo-button-active: rgba(26, 115, 232, 0.12);
+  --veo-button-disabled: rgba(0, 0, 0, 0.12);
+  
+  /* Enhanced glass morphism */
+  --veo-glass-bg: rgba(255, 255, 255, 0.1);
+  --veo-glass-border: rgba(255, 255, 255, 0.2);
+  --veo-glass-backdrop: blur(20px) saturate(180%);
+  
+  /* Veo Component Shadows - Subtle like Google */
+  --veo-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --veo-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.06);
+  --veo-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+  --veo-shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.04);
+  
+  /* Veo Typography Sizes */
+  --veo-text-hero: 3.5rem;      /* 56px */
+  --veo-text-headline: 2rem;    /* 32px */
+  --veo-text-title: 1.5rem;     /* 24px */
+  --veo-text-body: 1rem;        /* 16px */
+  --veo-text-caption: 0.875rem; /* 14px */
+}
+
+/* === DARK THEME OVERRIDES (PRESERVE EXISTING) === */
+.dark-theme {
+  /* Keep existing dark theme as fallback */
+  --background: #0B0F1A;
+  --on-background: rgba(255, 255, 255, 0.87);
+  --surface: #1A1F2E;
+  --surface-1: #242B3D;
+  --surface-2: #2E3749;
+  --surface-3: #384356;
+  --on-surface: rgba(255, 255, 255, 0.87);
+  --on-surface-variant: rgba(255, 255, 255, 0.60);
+  --outline: rgba(255, 255, 255, 0.12);
+  --outline-variant: rgba(255, 255, 255, 0.08);
+  
+  --primary: #55C2FF;
+  --on-primary: #0B1426;
+  --secondary: #FF6F61;
+  --on-secondary: #FFFFFF;
+  
+  --text: var(--on-surface);
+  --text-weak: var(--on-surface-variant);
+  --text-weaker: rgba(255, 255, 255, 0.38);
+  --text-inverse: #1A1A1A;
 }

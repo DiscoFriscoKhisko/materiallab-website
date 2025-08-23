@@ -2,6 +2,7 @@ import { Layout } from '../../components/Layout/Layout';
 import { MLText, MLHeading } from '../../components/ML';
 import { Button as VeoButton } from '../../components/UI';
 import { VeoArrowRightIcon } from '../../components/VeoIcon';
+import { VeoStyleHero } from '../../components/VeoStyleHero';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 
@@ -10,74 +11,57 @@ export const Landing = () => {
   
   return (
     <Layout>
-      {/* Hero Section - Clean & Focused */}
-      <section className="min-h-screen flex items-center justify-center px-6 py-24">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <MLHeading 
-              level={1} 
-              className="text-5xl md:text-6xl lg:text-7xl font-display font-bold mb-8 tracking-tight"
-            >
-              AI Product Studio
-            </MLHeading>
-            <MLText 
-              variant="bodyL" 
-              className="text-xl md:text-2xl text-text-weak mb-12 max-w-3xl mx-auto leading-relaxed"
-            >
-              We build AI-powered products that solve real problems. 
-              From concept to deployment, we're your technical partner.
-            </MLText>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <VeoButton
-                variant="primary"
-                size="lg"
-                onClick={() => navigate('/what-we-do')}
-                className="px-8 py-4 text-lg"
-              >
-                Explore Our Work
-              </VeoButton>
-              <VeoButton
-                variant="outline"
-                size="lg"
-                onClick={() => navigate('/contact')}
-                className="px-8 py-4 text-lg"
-              >
-                Start a Project
-              </VeoButton>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      {/* Hero Section - Veo Style with Interactive Elements */}
+      <VeoStyleHero
+        title="AI Product Studio"
+        subtitle="Turn your ideas into production-ready AI applications. From concept to deployment, we build the future with you."
+        primaryCta={{
+          text: "See Our Work",
+          path: "/work"
+        }}
+        secondaryCta={{
+          text: "Start Building",
+          path: "/contact"
+        }}
+      />
 
-      {/* Services Overview - Minimal Cards */}
-      <section className="py-32 bg-surface-1">
+      {/* Services Overview - Veo Style Cards */}
+      <section className="py-32 bg-gray-50">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-20">
-            <MLHeading level={2} className="text-4xl md:text-5xl font-display font-semibold mb-6">
-              What We Do
-            </MLHeading>
-            <MLText variant="bodyL" className="text-xl text-text-weak max-w-2xl mx-auto">
+          <motion.div 
+            className="text-center mb-20"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="font-veo text-4xl md:text-5xl font-medium text-gray-900 mb-6">
+              What We Build
+            </h2>
+            <p className="font-veo text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
               End-to-end AI product development with a focus on user experience and business impact.
-            </MLText>
-          </div>
+            </p>
+          </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-12">
+          <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                title: "AI Strategy",
-                description: "Define your AI roadmap and identify the highest-impact opportunities for your business."
+                title: "AI Strategy & Consulting",
+                description: "Define your AI roadmap and identify the highest-impact opportunities for your business.",
+                icon: "🎯",
+                metrics: "2-week roadmap"
               },
               {
                 title: "Product Development", 
-                description: "Build production-ready AI applications with modern frameworks and best practices."
+                description: "Build production-ready AI applications with modern frameworks and best practices.",
+                icon: "⚡",
+                metrics: "8-week MVP"
               },
               {
                 title: "Team Augmentation",
-                description: "Scale your team with experienced AI engineers and product specialists."
+                description: "Scale your team with experienced AI engineers and product specialists.",
+                icon: "🚀",
+                metrics: "Senior talent"
               }
             ].map((service, index) => (
               <motion.div
@@ -86,45 +70,92 @@ export const Landing = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="text-center p-8"
+                whileHover={{ scale: 1.02, boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)' }}
+                className="bg-white rounded-xl p-8 shadow-sm border border-gray-100 cursor-pointer hover:border-primary-container transition-all duration-300"
               >
-                <MLHeading level={3} className="text-2xl font-semibold mb-4">
+                <div className="text-4xl mb-6">{service.icon}</div>
+                <h3 className="font-veo text-2xl font-semibold text-gray-900 mb-4">
                   {service.title}
-                </MLHeading>
-                <MLText variant="body" className="text-text-weak leading-relaxed">
+                </h3>
+                <p className="font-veo text-gray-600 leading-relaxed mb-6">
                   {service.description}
-                </MLText>
+                </p>
+                <div className="flex items-center justify-between">
+                  <span className="bg-primary-container text-primary px-3 py-1 rounded-full text-sm font-medium">
+                    {service.metrics}
+                  </span>
+                  <span className="text-primary hover:text-primary-hover font-medium text-sm transition-colors">
+                    Learn more →
+                  </span>
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Call to Action - Simple & Direct */}
-      <section className="py-32">
+      {/* Call to Action - Veo Style */}
+      <section className="py-32 bg-primary-container">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
+            className="space-y-8"
           >
-            <MLHeading level={2} className="text-4xl md:text-5xl font-display font-semibold mb-8">
-              Ready to build something great?
-            </MLHeading>
-            <MLText variant="bodyL" className="text-xl text-text-weak mb-12 max-w-2xl mx-auto">
-              Let's discuss your project and explore how we can help bring your AI vision to life.
-            </MLText>
-            <VeoButton
-              variant="primary"
-              size="lg"
-              onClick={() => navigate('/contact')}
-              icon={<VeoArrowRightIcon />}
-              iconPosition="right"
-              className="px-8 py-4 text-lg"
+            {/* Stats */}
+            <motion.div
+              className="flex justify-center items-center space-x-12 mb-12"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              viewport={{ once: true }}
             >
-              Start the Conversation
-            </VeoButton>
+              {[
+                { number: '50+', label: 'Projects Delivered' },
+                { number: '2 weeks', label: 'Average MVP Time' },
+                { number: '98%', label: 'Client Satisfaction' }
+              ].map((stat, index) => (
+                <motion.div
+                  key={stat.label}
+                  className="text-center"
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 + index * 0.1, duration: 0.5 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="text-3xl font-veo font-bold text-primary">{stat.number}</div>
+                  <div className="text-sm font-veo text-gray-600">{stat.label}</div>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            <h2 className="font-veo text-4xl md:text-5xl font-medium text-gray-900 mb-8">
+              Ready to build something great?
+            </h2>
+            <p className="font-veo text-xl text-gray-600 mb-12 max-w-2xl mx-auto leading-relaxed">
+              Let's discuss your project and explore how we can help bring your AI vision to life.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <VeoButton
+                variant="filled"
+                size="lg"
+                onClick={() => navigate('/contact')}
+                className="bg-primary text-white hover:bg-primary-hover px-8 py-4 text-lg font-veo font-medium transition-all duration-300 hover:scale-105 shadow-lg"
+              >
+                Start the Conversation
+              </VeoButton>
+              <VeoButton
+                variant="outlined"
+                size="lg"
+                onClick={() => navigate('/veo')}
+                className="border-primary text-primary hover:bg-white px-8 py-4 text-lg font-veo font-medium transition-all duration-300 hover:scale-105"
+              >
+                Try Interactive Demo
+              </VeoButton>
+            </div>
           </motion.div>
         </div>
       </section>

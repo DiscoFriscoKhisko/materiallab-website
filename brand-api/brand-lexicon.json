@@ -1,0 +1,238 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "last_updated": "2025-01-22",
+    "description": "MaterialLab brand lexicon for consistent language use and AI content generation"
+  },
+  "preferred_terms": {
+    "collaboration_language": [
+      "collaborate", "partnership", "synthesize", "augment", "enhance", 
+      "empower", "amplify", "support", "assist", "combine", "integrate"
+    ],
+    "ai_description": [
+      "AI-assisted", "AI-powered", "intelligent system", "machine learning model",
+      "algorithmic analysis", "data-driven insights", "computational intelligence",
+      "AI recommendations", "automated analysis", "intelligent processing"
+    ],
+    "human_centricity": [
+      "human-centric", "user-focused", "people-first", "human-guided",
+      "user-empowered", "human-in-the-loop", "collaborative intelligence",
+      "human oversight", "user control", "human judgment"
+    ],
+    "innovation_language": [
+      "intentional innovation", "purposeful development", "strategic advancement",
+      "meaningful progress", "impactful solutions", "thoughtful implementation",
+      "deliberate improvement", "conscious evolution", "targeted enhancement"
+    ],
+    "transparency_terms": [
+      "transparent", "explainable", "interpretable", "clear", "open",
+      "understandable", "visible", "traceable", "auditable", "accountable"
+    ],
+    "quality_descriptors": [
+      "precise", "meticulous", "thorough", "comprehensive", "detailed",
+      "careful", "considered", "well-crafted", "refined", "polished"
+    ],
+    "outcome_focused": [
+      "results", "outcomes", "impact", "value", "benefit", "improvement",
+      "enhancement", "advancement", "progress", "achievement", "success"
+    ],
+    "process_language": [
+      "methodology", "approach", "framework", "process", "system",
+      "workflow", "pipeline", "structure", "protocol", "procedure"
+    ]
+  },
+  "forbidden_terms": {
+    "overused_buzzwords": [
+      "revolutionary", "disruptive", "game-changing", "paradigm shift",
+      "cutting-edge", "state-of-the-art", "next-generation", "breakthrough",
+      "groundbreaking", "transformative", "innovative" // overused
+    ],
+    "generic_tech_language": [
+      "seamless", "frictionless", "effortless", "magical", "automagically",
+      "plug-and-play", "turnkey", "one-size-fits-all", "silver bullet",
+      "end-to-end", "360-degree", "holistic", "ecosystem"
+    ],
+    "anthropomorphic_ai": [
+      "AI thinks", "AI believes", "AI understands", "AI knows", "AI learns",
+      "AI decides", "AI chooses", "AI wants", "AI feels", "AI realizes",
+      "machine intelligence", "artificial brain", "digital mind", "silicon brain"
+    ],
+    "replacement_language": [
+      "replace humans", "eliminate the need for", "make humans obsolete",
+      "automate away", "remove human error", "supersede human capability",
+      "outperform humans", "human-level intelligence", "artificial general intelligence"
+    ],
+    "vague_marketing": [
+      "synergy", "leverage", "utilize", "implement", "deploy", "solution",
+      "platform", "ecosystem", "paradigm", "framework" // when used vaguely
+    ],
+    "apologetic_language": [
+      "sorry for the inconvenience", "we apologize", "oops", "whoops",
+      "unfortunately", "regrettably", "sadly", "I'm afraid"
+    ],
+    "uncertain_qualifiers": [
+      "maybe", "perhaps", "possibly", "might", "could potentially",
+      "sort of", "kind of", "pretty much", "basically", "essentially"
+    ],
+    "exclusionary_language": [
+      "obviously", "clearly", "everyone knows", "it's simple", "just do",
+      "merely", "only", "easy", "trivial", "straightforward" // when not true
+    ]
+  },
+  "replacement_patterns": {
+    "forbidden_to_preferred": {
+      "revolutionary": ["significant advancement", "meaningful improvement", "substantial progress"],
+      "disruptive": ["transformative", "impactful", "innovative"],
+      "game-changing": ["significant", "impactful", "valuable"],
+      "seamless": ["intuitive", "smooth", "well-integrated"],
+      "AI thinks": ["AI analysis suggests", "The model indicates", "Based on the data"],
+      "AI believes": ["AI analysis shows", "The system determined", "Data indicates"],
+      "replace humans": ["augment human capabilities", "enhance human work", "support human decisions"],
+      "leverage": ["use", "apply", "employ", "utilize strategically"],
+      "synergy": ["collaboration", "combined effect", "cooperative advantage"],
+      "sorry for the inconvenience": ["We're working to resolve this", "Here's how we can help"],
+      "obviously": ["As you can see", "The data shows", "This indicates"],
+      "it's simple": ["Here's how it works", "The process involves", "You can accomplish this by"]
+    },
+    "context_specific_replacements": {
+      "error_messages": {
+        "something went wrong": "We encountered an issue",
+        "error occurred": "This action couldn't be completed",
+        "failed": "was unsuccessful",
+        "invalid": "doesn't match the expected format"
+      },
+      "ai_explanations": {
+        "AI determined": "Analysis shows",
+        "The algorithm decided": "Based on the criteria",
+        "Machine learning found": "Pattern analysis identified",
+        "AI discovered": "Data analysis revealed"
+      },
+      "feature_descriptions": {
+        "powered by AI": "enhanced with AI analysis",
+        "AI-driven": "supported by machine learning",
+        "intelligent": "data-informed", 
+        "smart": "adaptive" // when referring to systems
+      }
+    }
+  },
+  "industry_specific_vocabulary": {
+    "design_terminology": [
+      "user experience", "user interface", "interaction design", "visual hierarchy",
+      "information architecture", "usability", "accessibility", "responsive design",
+      "design system", "component library", "atomic design", "design tokens"
+    ],
+    "ai_technical_terms": [
+      "machine learning", "natural language processing", "computer vision",
+      "deep learning", "neural networks", "large language models", "retrieval-augmented generation",
+      "fine-tuning", "prompt engineering", "model training", "inference"
+    ],
+    "business_terminology": [
+      "return on investment", "key performance indicators", "user acquisition",
+      "conversion rate", "customer lifetime value", "market positioning",
+      "competitive advantage", "value proposition", "business model"
+    ],
+    "development_language": [
+      "software architecture", "application programming interface", "user interface",
+      "database design", "cloud computing", "microservices", "continuous integration",
+      "version control", "code review", "testing framework"
+    ]
+  },
+  "tone_specific_vocabularies": {
+    "confident_professional": [
+      "demonstrate", "establish", "achieve", "deliver", "implement",
+      "execute", "optimize", "enhance", "improve", "advance"
+    ],
+    "educational_authoritative": [
+      "explain", "illustrate", "demonstrate", "clarify", "outline",
+      "describe", "define", "analyze", "examine", "explore"
+    ],
+    "collaborative_empowering": [
+      "together", "partnership", "collaborate", "combine", "integrate",
+      "coordinate", "align", "synchronize", "harmonize", "unite"
+    ],
+    "transparent_honest": [
+      "clearly", "openly", "directly", "honestly", "transparently",
+      "explicitly", "straightforwardly", "candidly", "plainly", "simply"
+    ]
+  },
+  "ai_interaction_vocabulary": {
+    "ai_capability_description": [
+      "AI can analyze", "The system processes", "Machine learning identifies",
+      "Algorithms detect", "Data analysis reveals", "Pattern recognition finds",
+      "Computational analysis determines", "Automated processing handles"
+    ],
+    "ai_limitation_acknowledgment": [
+      "AI analysis doesn't account for", "This approach may not consider",
+      "Human expertise is needed for", "Manual review recommended for",
+      "Consider additional factors like", "This analysis has limitations in"
+    ],
+    "user_control_language": [
+      "You can modify", "You have the option to", "Feel free to adjust",
+      "You maintain control over", "You can override", "You decide whether to",
+      "It's your choice to", "You can customize", "You determine the"
+    ],
+    "collaboration_framing": [
+      "AI insights combined with your expertise", "Machine analysis to inform your decision",
+      "Data-driven suggestions for your consideration", "AI assistance to support your workflow",
+      "Computational support for your creative process", "Algorithmic analysis to enhance your judgment"
+    ]
+  },
+  "content_type_vocabularies": {
+    "microcopy": {
+      "actions": ["Start", "Continue", "Complete", "Review", "Submit", "Save", "Edit", "Delete"],
+      "confirmations": ["Completed", "Saved", "Updated", "Sent", "Processed", "Applied"],
+      "guidance": ["Choose", "Select", "Enter", "Upload", "Connect", "Configure"]
+    },
+    "headlines": {
+      "action_oriented": ["Build", "Create", "Design", "Develop", "Transform", "Enhance"],
+      "outcome_focused": ["Achieve", "Deliver", "Realize", "Accomplish", "Attain", "Reach"],
+      "partnership": ["Collaborate", "Partner", "Unite", "Combine", "Integrate", "Synthesize"]
+    },
+    "explanatory_content": {
+      "process_words": ["First", "Next", "Then", "Finally", "Meanwhile", "Subsequently"],
+      "connector_words": ["Because", "Therefore", "However", "Additionally", "Furthermore", "Consequently"],
+      "qualifier_words": ["Specifically", "Particularly", "Especially", "Notably", "Importantly", "Significantly"]
+    }
+  },
+  "validation_rules": {
+    "automatic_flags": {
+      "high_severity": [
+        "Any anthropomorphic AI language",
+        "Replacement/elimination language about humans",
+        "Overpromising AI capabilities",
+        "Generic marketing buzzwords"
+      ],
+      "medium_severity": [
+        "Overused tech terminology",
+        "Vague or unclear language",
+        "Apologetic error messaging",
+        "Exclusionary language patterns"
+      ],
+      "suggestions": [
+        "Consider more specific terminology",
+        "Opportunity for clearer explanation",
+        "Could be more human-centric",
+        "Consider user empowerment angle"
+      ]
+    },
+    "context_appropriateness": {
+      "technical_documentation": "Allow technical terms with proper definition",
+      "user_interface": "Prioritize clarity and action orientation",
+      "marketing_content": "Focus on benefits and outcomes",
+      "error_messages": "Emphasize solutions and next steps"
+    }
+  },
+  "localization_considerations": {
+    "universal_concepts": [
+      "Human-centricity translates across cultures",
+      "Transparency is valued globally", 
+      "Quality and precision are universal",
+      "Empowerment resonates internationally"
+    ],
+    "cultural_adaptations": {
+      "formality_levels": "Adjust based on cultural communication norms",
+      "directness_preferences": "Some cultures prefer more indirect communication",
+      "authority_relationships": "Adapt confidence level based on cultural context"
+    }
+  }
+}

@@ -1,0 +1,351 @@
+{
+  "meta": {
+    "name": "Material Lab Typography System",
+    "version": "1.0.0",
+    "description": "Fantasy AI-inspired typography system aligned with Material Lab brand foundation",
+    "baseRatio": 1.25,
+    "wcagLevel": "AA"
+  },
+  "font": {
+    "family": {
+      "display": {
+        "value": "Sora, 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif",
+        "description": "Technical yet approachable display font for headings and hero text",
+        "fallback": "-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif"
+      },
+      "body": {
+        "value": "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif",
+        "description": "Highly readable body text font for content and UI",
+        "fallback": "-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif"
+      },
+      "mono": {
+        "value": "JetBrains Mono, 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, monospace",
+        "description": "Developer-friendly monospace font for code and technical content",
+        "fallback": "'SF Mono', Monaco, Consolas, monospace"
+      }
+    },
+    "size": {
+      "hero": {
+        "value": "clamp(3rem, 8vw, 6rem)",
+        "pixels": "48px - 96px",
+        "description": "Large hero text for primary landing areas",
+        "wcagMinimum": "48px"
+      },
+      "display": {
+        "xl": {
+          "value": "clamp(2.5rem, 5vw, 4rem)",
+          "pixels": "40px - 64px",
+          "description": "Extra large display text for major sections"
+        },
+        "lg": {
+          "value": "clamp(2rem, 4vw, 3rem)",
+          "pixels": "32px - 48px",
+          "description": "Large display text for section headers"
+        },
+        "md": {
+          "value": "clamp(1.75rem, 3vw, 2.5rem)",
+          "pixels": "28px - 40px",
+          "description": "Medium display text for subsections"
+        },
+        "sm": {
+          "value": "clamp(1.5rem, 2.5vw, 2rem)",
+          "pixels": "24px - 32px",
+          "description": "Small display text for cards and components"
+        }
+      },
+      "heading": {
+        "h1": {
+          "value": "clamp(2rem, 3vw, 2.5rem)",
+          "pixels": "32px - 40px",
+          "description": "Primary page heading"
+        },
+        "h2": {
+          "value": "clamp(1.75rem, 2.5vw, 2rem)",
+          "pixels": "28px - 32px",
+          "description": "Major section heading"
+        },
+        "h3": {
+          "value": "clamp(1.5rem, 2vw, 1.75rem)",
+          "pixels": "24px - 28px",
+          "description": "Subsection heading"
+        },
+        "h4": {
+          "value": "clamp(1.25rem, 1.8vw, 1.5rem)",
+          "pixels": "20px - 24px",
+          "description": "Component heading"
+        },
+        "h5": {
+          "value": "clamp(1.125rem, 1.5vw, 1.25rem)",
+          "pixels": "18px - 20px",
+          "description": "Small section heading"
+        },
+        "h6": {
+          "value": "clamp(1rem, 1.2vw, 1.125rem)",
+          "pixels": "16px - 18px",
+          "description": "Minor heading or label"
+        }
+      },
+      "body": {
+        "xl": {
+          "value": "1.25rem",
+          "pixels": "20px",
+          "description": "Large body text for emphasis"
+        },
+        "lg": {
+          "value": "1.125rem",
+          "pixels": "18px",
+          "description": "Large body text for introductions"
+        },
+        "md": {
+          "value": "1rem",
+          "pixels": "16px",
+          "description": "Standard body text size",
+          "wcagDefault": true
+        },
+        "sm": {
+          "value": "0.875rem",
+          "pixels": "14px",
+          "description": "Small text for captions and metadata"
+        },
+        "xs": {
+          "value": "0.75rem",
+          "pixels": "12px",
+          "description": "Extra small text for fine print"
+        }
+      }
+    },
+    "weight": {
+      "light": {
+        "value": 300,
+        "description": "Light weight for decorative text"
+      },
+      "regular": {
+        "value": 400,
+        "description": "Regular weight for body text"
+      },
+      "medium": {
+        "value": 500,
+        "description": "Medium weight for emphasis"
+      },
+      "semibold": {
+        "value": 600,
+        "description": "Semibold weight for headings"
+      },
+      "bold": {
+        "value": 700,
+        "description": "Bold weight for strong emphasis"
+      }
+    },
+    "lineHeight": {
+      "tight": {
+        "value": 1.1,
+        "description": "Tight line height for large headings"
+      },
+      "snug": {
+        "value": 1.25,
+        "description": "Snug line height for display text"
+      },
+      "normal": {
+        "value": 1.5,
+        "description": "Normal line height for body text",
+        "wcagRecommended": true
+      },
+      "relaxed": {
+        "value": 1.625,
+        "description": "Relaxed line height for long-form content"
+      },
+      "loose": {
+        "value": 1.75,
+        "description": "Loose line height for accessibility"
+      }
+    },
+    "letterSpacing": {
+      "tighter": {
+        "value": "-0.03em",
+        "description": "Tighter tracking for large display text"
+      },
+      "tight": {
+        "value": "-0.02em",
+        "description": "Tight tracking for headings"
+      },
+      "normal": {
+        "value": "0",
+        "description": "Normal tracking for body text"
+      },
+      "wide": {
+        "value": "0.025em",
+        "description": "Wide tracking for labels and caps"
+      },
+      "wider": {
+        "value": "0.05em",
+        "description": "Wider tracking for button text"
+      }
+    }
+  },
+  "typography": {
+    "styles": {
+      "hero": {
+        "fontFamily": "display",
+        "fontSize": "hero",
+        "fontWeight": "bold",
+        "lineHeight": "tight",
+        "letterSpacing": "tighter",
+        "description": "Large hero text with gradient animation"
+      },
+      "display1": {
+        "fontFamily": "display",
+        "fontSize": "display.xl",
+        "fontWeight": "semibold",
+        "lineHeight": "snug",
+        "letterSpacing": "tight",
+        "description": "Primary display text for major sections"
+      },
+      "display2": {
+        "fontFamily": "display",
+        "fontSize": "display.lg",
+        "fontWeight": "semibold",
+        "lineHeight": "snug",
+        "letterSpacing": "tight",
+        "description": "Secondary display text"
+      },
+      "display3": {
+        "fontFamily": "display",
+        "fontSize": "display.md",
+        "fontWeight": "medium",
+        "lineHeight": "snug",
+        "letterSpacing": "normal",
+        "description": "Tertiary display text"
+      },
+      "headline1": {
+        "fontFamily": "display",
+        "fontSize": "heading.h1",
+        "fontWeight": "semibold",
+        "lineHeight": "snug",
+        "letterSpacing": "tight",
+        "description": "Primary page heading"
+      },
+      "headline2": {
+        "fontFamily": "display",
+        "fontSize": "heading.h2",
+        "fontWeight": "semibold",
+        "lineHeight": "snug",
+        "letterSpacing": "normal",
+        "description": "Major section heading"
+      },
+      "headline3": {
+        "fontFamily": "display",
+        "fontSize": "heading.h3",
+        "fontWeight": "medium",
+        "lineHeight": "normal",
+        "letterSpacing": "normal",
+        "description": "Subsection heading"
+      },
+      "headline4": {
+        "fontFamily": "body",
+        "fontSize": "heading.h4",
+        "fontWeight": "semibold",
+        "lineHeight": "normal",
+        "letterSpacing": "normal",
+        "description": "Component heading"
+      },
+      "headline5": {
+        "fontFamily": "body",
+        "fontSize": "heading.h5",
+        "fontWeight": "semibold",
+        "lineHeight": "normal",
+        "letterSpacing": "normal",
+        "description": "Small section heading"
+      },
+      "headline6": {
+        "fontFamily": "body",
+        "fontSize": "heading.h6",
+        "fontWeight": "semibold",
+        "lineHeight": "normal",
+        "letterSpacing": "normal",
+        "description": "Minor heading"
+      },
+      "bodyLarge": {
+        "fontFamily": "body",
+        "fontSize": "body.xl",
+        "fontWeight": "regular",
+        "lineHeight": "relaxed",
+        "letterSpacing": "normal",
+        "description": "Large body text for introductions"
+      },
+      "body": {
+        "fontFamily": "body",
+        "fontSize": "body.md",
+        "fontWeight": "regular",
+        "lineHeight": "normal",
+        "letterSpacing": "normal",
+        "description": "Standard body text"
+      },
+      "bodySmall": {
+        "fontFamily": "body",
+        "fontSize": "body.sm",
+        "fontWeight": "regular",
+        "lineHeight": "normal",
+        "letterSpacing": "normal",
+        "description": "Small body text"
+      },
+      "caption": {
+        "fontFamily": "body",
+        "fontSize": "body.xs",
+        "fontWeight": "regular",
+        "lineHeight": "normal",
+        "letterSpacing": "wide",
+        "description": "Caption and metadata text"
+      },
+      "label": {
+        "fontFamily": "body",
+        "fontSize": "body.sm",
+        "fontWeight": "medium",
+        "lineHeight": "normal",
+        "letterSpacing": "wide",
+        "description": "Form labels and UI text"
+      },
+      "code": {
+        "fontFamily": "mono",
+        "fontSize": "body.sm",
+        "fontWeight": "regular",
+        "lineHeight": "relaxed",
+        "letterSpacing": "normal",
+        "description": "Code blocks and technical text"
+      },
+      "button": {
+        "fontFamily": "body",
+        "fontSize": "body.sm",
+        "fontWeight": "semibold",
+        "lineHeight": "normal",
+        "letterSpacing": "wider",
+        "description": "Button text"
+      }
+    }
+  },
+  "accessibility": {
+    "wcag": {
+      "textResize": {
+        "maximum": "200%",
+        "description": "Text must be resizable up to 200% without loss of content or functionality"
+      },
+      "textSpacing": {
+        "lineHeight": "1.5x font size minimum",
+        "paragraphSpacing": "2x font size minimum",
+        "letterSpacing": "0.12x font size minimum",
+        "wordSpacing": "0.16x font size minimum",
+        "description": "Content must remain functional with custom text spacing"
+      },
+      "contrastRatio": {
+        "normal": "4.5:1",
+        "large": "3:1",
+        "description": "Minimum contrast ratios for text"
+      }
+    },
+    "features": {
+      "reducedMotion": true,
+      "highContrast": true,
+      "fontSizeControls": true,
+      "screenReaderOptimized": true
+    }
+  }
+}

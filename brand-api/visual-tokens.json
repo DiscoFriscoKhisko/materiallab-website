@@ -1,0 +1,306 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "last_updated": "2025-01-22",
+    "description": "Extended visual design tokens with anti-AI slop guidelines for MaterialLab",
+    "extends": "design-system/01_tokens.json"
+  },
+  "brand_themes": {
+    "humanistic_intelligence": {
+      "philosophy": "Warm, approachable AI-human collaboration",
+      "color_palette": {
+        "primary": "#141A46",
+        "accent": "#EC8B5E", 
+        "supporting": "#8BD8BD",
+        "background": "#FBEAEB",
+        "text": "#333333"
+      },
+      "typography": {
+        "headlines": "Space Grotesk",
+        "body": "Inter",
+        "code": "JetBrains Mono"
+      },
+      "visual_characteristics": [
+        "Organic shapes and flowing lines",
+        "Warm color temperatures",
+        "Human-scale photography",
+        "Soft shadows and gradients",
+        "Rounded corner radii"
+      ],
+      "prompt_keywords": [
+        "warm", "approachable", "human-centered", "organic", "flowing",
+        "collaborative", "empathetic", "accessible", "inclusive", "authentic"
+      ]
+    },
+    "structured_dynamism": {
+      "philosophy": "Technical precision and systematic efficiency",
+      "color_palette": {
+        "primary": "#1A1A1A",
+        "accent": "#C1F73A",
+        "supporting": "#00FFFF", 
+        "background": "#FFFFFF",
+        "text": "#333333"
+      },
+      "typography": {
+        "headlines": "Space Grotesk",
+        "body": "Inter", 
+        "code": "JetBrains Mono"
+      },
+      "visual_characteristics": [
+        "Geometric precision and clean lines",
+        "High contrast and clarity",
+        "Technical diagram aesthetics",
+        "Sharp corners and defined edges",
+        "Grid-based layouts"
+      ],
+      "prompt_keywords": [
+        "precise", "systematic", "technical", "geometric", "clean",
+        "efficient", "structured", "analytical", "methodical", "clarity"
+      ]
+    }
+  },
+  "anti_slop_visual_rules": {
+    "forbidden_patterns": {
+      "generic_ai_aesthetics": [
+        "hexagonal shapes and patterns",
+        "abstract swirls and portals",
+        "blue-green gradient combinations",
+        "circuit board backgrounds",
+        "robotic or mechanical imagery",
+        "glowing neon effects",
+        "matrix-style digital rain",
+        "generic 3D geometric renders"
+      ],
+      "overused_tech_visuals": [
+        "stock photos of laptops with code",
+        "hands typing on futuristic keyboards", 
+        "holographic interface mockups",
+        "brain with circuit overlays",
+        "network node visualizations",
+        "binary code backgrounds",
+        "lens flare and light streaks",
+        "chrome and glass materials"
+      ],
+      "composition_cliches": [
+        "centered logo with radiating elements",
+        "isometric illustrations without purpose",
+        "oversaturated color palettes",
+        "excessive drop shadows",
+        "overuse of transparency effects",
+        "competing visual hierarchies",
+        "inconsistent spacing systems"
+      ]
+    },
+    "required_elements": {
+      "brand_consistency": [
+        "Only use approved MaterialLab color tokens",
+        "Maintain typography hierarchy rules",
+        "Follow spacing and layout grids",
+        "Include appropriate white space",
+        "Ensure accessibility compliance"
+      ],
+      "human_centricity": [
+        "Include human elements in compositions",
+        "Show diverse and inclusive representation",
+        "Focus on real-world applications",
+        "Avoid intimidating or cold imagery",
+        "Emphasize collaboration over automation"
+      ],
+      "transparency": [
+        "Clear visual hierarchy and flow",
+        "Obvious interactive elements",
+        "Visible system status and feedback",
+        "Explainable visual relationships",
+        "No hidden or mysterious elements"
+      ]
+    }
+  },
+  "visual_prompt_templates": {
+    "photography_style": {
+      "preferred_approach": "Documentary-style photography with authentic subjects and environments",
+      "technical_specs": {
+        "camera": "50mm equivalent focal length for natural perspective",
+        "lighting": "Soft, natural lighting with minimal artificial enhancement",
+        "composition": "Rule of thirds with purposeful negative space",
+        "color_grading": "Natural tones aligned with brand palette"
+      },
+      "subject_matter": [
+        "Real people using technology naturally",
+        "Collaborative work environments",
+        "Diverse teams solving problems",
+        "Human hands interacting with interfaces",
+        "Authentic workplace scenarios"
+      ],
+      "forbidden_subjects": [
+        "Stock photo models with forced smiles",
+        "Futuristic or sci-fi environments",
+        "Isolated technology without human context",
+        "Overly polished or artificial scenarios"
+      ]
+    },
+    "illustration_style": {
+      "preferred_approach": "Clean, purposeful illustrations that support understanding",
+      "visual_characteristics": [
+        "Simplified but not oversimplified forms",
+        "Consistent line weights and styling",
+        "Purposeful use of brand colors",
+        "Clear visual metaphors",
+        "Accessible iconography"
+      ],
+      "content_focus": [
+        "Process flows and workflows",
+        "Conceptual relationships",
+        "Data visualization",
+        "System architecture diagrams",
+        "User journey illustrations"
+      ],
+      "style_references": [
+        "Technical manual illustrations",
+        "Architectural drawings",
+        "Scientific diagrams",
+        "Infographic design",
+        "Interface wireframes"
+      ]
+    },
+    "ui_visual_patterns": {
+      "layout_principles": [
+        "Clear visual hierarchy with purposeful typography scale",
+        "Consistent spacing based on 4px grid system",
+        "Logical information grouping and flow",
+        "Adequate white space for readability",
+        "Responsive design considerations"
+      ],
+      "interactive_elements": [
+        "Clear affordances for all clickable elements",
+        "Consistent hover and focus states",
+        "Loading and feedback animations",
+        "Accessible color contrast ratios",
+        "Keyboard navigation indicators"
+      ],
+      "ai_specific_patterns": [
+        "Clear labeling of AI-generated content",
+        "Progressive disclosure for complex AI explanations",
+        "Visual confidence indicators for AI outputs",
+        "User control elements for AI features",
+        "Transparent process visualization"
+      ]
+    }
+  },
+  "negative_prompt_library": {
+    "universal_exclusions": [
+      "--no hexagon",
+      "--no abstract swirl",
+      "--no blue-green gradient", 
+      "--no generic 3D render",
+      "--no circuit board pattern",
+      "--no neon glow effects",
+      "--no robotic imagery",
+      "--no matrix digital effects"
+    ],
+    "context_specific": {
+      "photography": [
+        "--no stock photo models",
+        "--no forced smiles",
+        "--no overly polished studios",
+        "--no futuristic environments",
+        "--no isolated technology"
+      ],
+      "illustrations": [
+        "--no clip art style",
+        "--no overly cartoonish",
+        "--no inconsistent line weights",
+        "--no random color choices",
+        "--no meaningless decorations"
+      ],
+      "ui_design": [
+        "--no skeuomorphic elements",
+        "--no excessive shadows",
+        "--no competing hierarchies", 
+        "--no accessibility violations",
+        "--no inconsistent spacing"
+      ]
+    }
+  },
+  "brand_reference_library": {
+    "approved_visual_examples": {
+      "humanistic_intelligence": [
+        "Warm professional photography with authentic subjects",
+        "Clean interface designs with organic touches",
+        "Collaborative workspace illustrations",
+        "Human-centric data visualizations"
+      ],
+      "structured_dynamism": [
+        "Precise technical diagrams and schematics",
+        "Clean geometric interface layouts",
+        "Analytical data presentations",
+        "Systematic process visualizations"
+      ]
+    },
+    "visual_quality_benchmarks": {
+      "photography_standards": [
+        "Sharp focus with purposeful depth of field",
+        "Natural color grading aligned with brand palette",
+        "Authentic subjects and scenarios",
+        "Professional lighting and composition"
+      ],
+      "design_standards": [
+        "Pixel-perfect alignment and spacing",
+        "Consistent use of design tokens",
+        "Clear visual hierarchy",
+        "Accessibility compliance verified"
+      ]
+    }
+  },
+  "style_transfer_parameters": {
+    "midjourney_style_references": {
+      "humanistic_style": {
+        "style_prompt": "warm professional photography, soft natural lighting, authentic human subjects, organic compositions, MaterialLab brand colors",
+        "quality_settings": "--ar 16:9 --style raw --stylize 250",
+        "reference_approach": "Use actual MaterialLab brand photography as --sref input"
+      },
+      "structured_style": {
+        "style_prompt": "clean technical illustration, precise geometric forms, high contrast, systematic layouts, analytical aesthetics",
+        "quality_settings": "--ar 16:9 --style raw --stylize 150", 
+        "reference_approach": "Use MaterialLab technical diagrams as --sref input"
+      }
+    },
+    "dall_e_style_guidance": {
+      "prompt_structure": "Create a [content description] in the style of [MaterialLab theme], using [specific color palette], with [composition rules], avoiding [negative elements]",
+      "quality_modifiers": ["professional", "clean", "purposeful", "authentic", "accessible"]
+    }
+  },
+  "validation_criteria": {
+    "brand_alignment_check": {
+      "color_compliance": "All colors must map to approved MaterialLab tokens",
+      "typography_consistency": "Only approved font families and hierarchy",
+      "theme_coherence": "Consistent with either Humanistic Intelligence or Structured Dynamism",
+      "anti_slop_verification": "No forbidden visual patterns present"
+    },
+    "accessibility_requirements": {
+      "color_contrast": "WCAG 2.1 AA minimum (4.5:1 for normal text)",
+      "text_legibility": "Appropriate font sizes and line spacing",
+      "interactive_clarity": "Clear visual affordances for all controls",
+      "motion_sensitivity": "Respects prefers-reduced-motion settings"
+    },
+    "technical_quality": {
+      "resolution_standards": "Appropriate resolution for intended use",
+      "file_optimization": "Optimized file sizes without quality loss",
+      "format_appropriateness": "Correct file formats for different use cases",
+      "responsive_considerations": "Works across different screen sizes"
+    }
+  },
+  "automated_style_detection": {
+    "visual_analysis_parameters": {
+      "color_extraction": "Identify dominant colors and compare to brand palette",
+      "composition_analysis": "Evaluate layout and visual hierarchy",
+      "style_classification": "Categorize as Humanistic vs Structured vs Generic",
+      "slop_pattern_detection": "Scan for forbidden visual elements"
+    },
+    "quality_scoring_matrix": {
+      "brand_consistency": "0-100 based on token compliance",
+      "visual_uniqueness": "0-100 based on distinction from generic AI imagery",
+      "human_centricity": "0-100 based on human-focused content",
+      "accessibility_score": "0-100 based on WCAG compliance"
+    }
+  }
+}

@@ -5,6 +5,7 @@ import { Suspense, lazy } from 'react';
 
 // Lazy load pages for better performance
 const Landing = lazy(() => import('./pages/Landing/Landing').then(m => ({ default: m.Landing })));
+const VeoLanding = lazy(() => import('./pages/VeoLanding').then(m => ({ default: m.VeoLanding })));
 const Contact = lazy(() => import('./pages/Contact/Contact').then(m => ({ default: m.Contact })));
 const Services = lazy(() => import('./pages/Services/Services').then(m => ({ default: m.Services })));
 const Work = lazy(() => import('./pages/Work/Work').then(m => ({ default: m.Work })));
@@ -12,6 +13,9 @@ const Approach = lazy(() => import('./pages/Approach/Approach').then(m => ({ def
 const Insights = lazy(() => import('./pages/Insights/Insights').then(m => ({ default: m.Insights })));
 const About = lazy(() => import('./pages/About/About').then(m => ({ default: m.About })));
 const NotFound = lazy(() => import('./pages/NotFound/NotFound').then(m => ({ default: m.NotFound })));
+const DesignSystem = lazy(() => import('./pages/DesignSystem/DesignSystem').then(m => ({ default: m.default })));
+const LongStoryShort = lazy(() => import('./pages/LongStoryShort/LongStoryShort').then(m => ({ default: m.default })));
+const FullDesignSystem = lazy(() => import('./pages/FullDesignSystem/FullDesignSystem').then(m => ({ default: m.default })));
 
 // Loading component
 const PageLoader = () => (
@@ -34,12 +38,18 @@ function App() {
           <Suspense fallback={<PageLoader />}>
             <Routes>
               <Route path="/" element={<Landing />} />
+              <Route path="/veo" element={<VeoLanding />} />
+              <Route path="/services" element={<Services />} />
               <Route path="/what-we-do" element={<Services />} />
               <Route path="/approach" element={<Approach />} />
+              <Route path="/insights" element={<Insights />} />
               <Route path="/lab-notes" element={<Insights />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/work" element={<Work />} />
               <Route path="/about" element={<About />} />
+              <Route path="/design-system" element={<DesignSystem />} />
+              <Route path="/long-story-short" element={<LongStoryShort />} />
+              <Route path="/full-design-system" element={<FullDesignSystem />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>

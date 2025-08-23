@@ -15,10 +15,10 @@
   --lss-gradient-cropped: linear-gradient(180deg, rgba(255,107,74,0.08) 0%, transparent 100%);
   --lss-gradient-multi: linear-gradient(135deg, #FF6B4A 0%, #FFB84D 50%, #B8A4E3 100%);
   
-  /* Typography */
-  --lss-font-display: 'Playfair Display', serif;
-  --lss-font-body: 'Inter', sans-serif;
-  --lss-font-mono: 'JetBrains Mono', monospace;
+  /* Typography - Material Lab System Integration */
+  --lss-font-display: var(--font-display);
+  --lss-font-body: var(--font-body);
+  --lss-font-mono: var(--font-mono);
   
   /* Spacing */
   --lss-space-xs: 0.5rem;
@@ -167,23 +167,42 @@
 
 .lss-hero-title {
   font-family: var(--lss-font-display);
-  font-size: 4rem;
-  font-weight: 700;
+  font-size: var(--font-size-hero);
+  font-weight: var(--font-weight-bold);
   color: var(--lss-text-primary);
   margin-bottom: var(--lss-space-sm);
-  line-height: 1.1;
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tighter);
+  
+  /* Fantasy AI-inspired gradient text */
+  background: linear-gradient(135deg, 
+    var(--lss-accent) 0%, 
+    var(--lss-golden-hour) 50%, 
+    var(--lss-soft-lavender) 100%
+  );
+  background-size: 200% 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shift 6s ease-in-out infinite;
 }
 
 .lss-hero-subtitle {
-  font-size: 1.5rem;
+  font-family: var(--lss-font-display);
+  font-size: var(--font-size-display-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-snug);
+  letter-spacing: var(--letter-spacing-normal);
   color: var(--lss-accent);
   margin-bottom: var(--lss-space-md);
-  font-weight: 500;
 }
 
 .lss-hero-description {
-  font-size: 1.125rem;
-  line-height: 1.6;
+  font-family: var(--lss-font-body);
+  font-size: var(--font-size-body-lg);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-relaxed);
+  letter-spacing: var(--letter-spacing-normal);
   color: var(--lss-text-secondary);
   margin-bottom: var(--lss-space-lg);
   max-width: 500px;
@@ -197,10 +216,14 @@
 }
 
 .lss-switcher-label {
-  font-weight: 600;
+  font-family: var(--lss-font-body);
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-wide);
   color: var(--lss-text-primary);
-  font-size: 0.875rem;
   margin-bottom: var(--lss-space-xs);
+  text-transform: uppercase;
 }
 
 .lss-mode-section {
@@ -211,11 +234,13 @@
 }
 
 .lss-version-label {
-  font-weight: 600;
+  font-family: var(--lss-font-body);
+  font-size: var(--font-size-body-xs);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-wider);
   color: var(--lss-text-secondary);
-  font-size: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
   min-width: 100px;
 }
 
@@ -236,8 +261,11 @@
   background: transparent;
   border-radius: 8px;
   cursor: pointer;
-  font-size: 0.875rem;
-  font-weight: 500;
+  font-family: var(--lss-font-body);
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-normal);
   color: var(--lss-text-secondary);
   transition: all var(--lss-duration-fast) var(--lss-easing);
 }
@@ -264,8 +292,10 @@
   position: absolute;
   top: 4px;
   right: 4px;
-  font-size: 0.6rem;
-  font-weight: 700;
+  font-family: var(--lss-font-body);
+  font-size: var(--font-size-body-xs);
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
   opacity: 0.4;
 }
 
@@ -279,7 +309,8 @@
   position: absolute;
   top: 4px;
   right: 4px;
-  font-size: 0.6rem;
+  font-size: var(--font-size-body-xs);
+  line-height: 1;
   opacity: 0.4;
 }
 
@@ -355,13 +386,16 @@
 }
 
 .lss-nav-icon {
-  font-size: 1.5rem;
+  font-size: var(--font-size-body-lg);
   opacity: 0.8;
 }
 
 .lss-nav-label {
-  font-size: 0.875rem;
-  font-weight: 500;
+  font-family: var(--lss-font-body);
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-normal);
   color: inherit;
 }
 
@@ -396,16 +430,21 @@
 }
 
 .lss-stat-number {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--lss-accent);
   font-family: var(--lss-font-display);
+  font-size: var(--font-size-display-sm);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+  color: var(--lss-accent);
 }
 
 .lss-stat-label {
-  font-size: 0.875rem;
+  font-family: var(--lss-font-body);
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-wide);
   color: var(--lss-text-secondary);
-  font-weight: 500;
 }
 
 /* Responsive Design */
@@ -417,7 +456,7 @@
   }
   
   .lss-hero-title {
-    font-size: 2.5rem;
+    font-size: clamp(2rem, 8vw, 2.5rem);
   }
   
   .lss-hero-visual {
@@ -444,7 +483,7 @@
   }
   
   .lss-nav-label {
-    font-size: 0.75rem;
+    font-size: var(--font-size-body-xs);
   }
   
   .lss-content {

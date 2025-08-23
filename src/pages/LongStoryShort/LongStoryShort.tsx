@@ -8,9 +8,12 @@ import { ModeShowcase } from './components/ModeShowcase';
 import { DesignTokensDisplay } from './components/DesignTokensDisplay';
 import { MoodBoardSection } from './components/MoodBoardSection';
 import { LivePreview } from './components/LivePreview';
+import { TypographyPlayground } from './components/TypographyPlayground';
+import { TypeTester } from './components/TypeTester';
 import './LongStoryShort.css';
+import '../../styles/typography-enhanced.css';
 
-type SectionType = 'colors' | 'gradients' | 'modes' | 'tokens' | 'mood' | 'preview';
+type SectionType = 'colors' | 'gradients' | 'modes' | 'tokens' | 'mood' | 'preview' | 'typography' | 'type-tester';
 type ThemeMode = 'light' | 'dark' | 'minimal' | 'maximal' | 'night-interior' | 'day-exterior' | 'golden-hour' | 'intimate' | 'dramatic' | 'memory';
 
 const LongStoryShort: React.FC = () => {
@@ -21,6 +24,8 @@ const LongStoryShort: React.FC = () => {
     { key: 'colors' as const, label: 'Color System', icon: '🎨' },
     { key: 'gradients' as const, label: 'Gradients', icon: '🌈' },
     { key: 'modes' as const, label: 'Design Modes', icon: '🎭' },
+    { key: 'typography' as const, label: 'Typography', icon: '✍️' },
+    { key: 'type-tester' as const, label: 'Type Tester', icon: '🔍' },
     { key: 'tokens' as const, label: 'Design Tokens', icon: '⚙️' },
     { key: 'mood' as const, label: 'Mood Board', icon: '📋' },
     { key: 'preview' as const, label: 'Live Preview', icon: '👁️' }
@@ -50,6 +55,10 @@ const LongStoryShort: React.FC = () => {
         return <GradientShowcase themeMode={themeMode} />;
       case 'modes':
         return <ModeShowcase currentMode={themeMode} onModeChange={setThemeMode} />;
+      case 'typography':
+        return <TypographyPlayground themeMode={themeMode} />;
+      case 'type-tester':
+        return <TypeTester themeMode={themeMode} />;
       case 'tokens':
         return <DesignTokensDisplay themeMode={themeMode} />;
       case 'mood':
@@ -67,13 +76,13 @@ const LongStoryShort: React.FC = () => {
         {/* Hero Section */}
         <section className="lss-hero">
           <div className="lss-hero-content">
-            <MLHeading level="1" className="lss-hero-title">
+            <h1 className="lss-hero-title ml-typo-hero">
               Long Story Short
-            </MLHeading>
-            <MLText className="lss-hero-subtitle">
+            </h1>
+            <p className="lss-hero-subtitle ml-typo-display-3">
               Cinematic color palette adapted for modern web experiences
-            </MLText>
-            <p className="lss-hero-description">
+            </p>
+            <p className="lss-hero-description ml-typo-body-lg typo-expert">
               A comprehensive design system inspired by nostalgic animation aesthetics,
               featuring warm sunset tones, atmospheric gradients, and emotional depth
               perfect for contemporary digital products.
@@ -152,16 +161,16 @@ const LongStoryShort: React.FC = () => {
               <span className="lss-stat-label">Core Colors</span>
             </div>
             <div className="lss-stat">
-              <span className="lss-stat-number">3</span>
-              <span className="lss-stat-label">Gradient Types</span>
+              <span className="lss-stat-number">17</span>
+              <span className="lss-stat-label">Typography Styles</span>
             </div>
             <div className="lss-stat">
-              <span className="lss-stat-number">4</span>
+              <span className="lss-stat-number">10</span>
               <span className="lss-stat-label">Theme Modes</span>
             </div>
             <div className="lss-stat">
-              <span className="lss-stat-number">80/20</span>
-              <span className="lss-stat-label">Color Ratio</span>
+              <span className="lss-stat-number">WCAG AA</span>
+              <span className="lss-stat-label">Accessibility</span>
             </div>
           </div>
         </footer>

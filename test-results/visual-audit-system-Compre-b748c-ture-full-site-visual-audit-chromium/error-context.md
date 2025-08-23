@@ -1,0 +1,118 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - link "Skip to main content" [ref=e4] [cursor=pointer]:
+    - /url: "#main-content"
+  - navigation "Main navigation" [ref=e5]:
+    - generic [ref=e7]:
+      - link "MaterialLab" [ref=e9] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e10] [cursor=pointer]:
+          - img [ref=e12] [cursor=pointer]:
+            - generic [ref=e21] [cursor=pointer]: ML
+          - generic [ref=e22] [cursor=pointer]: MaterialLab
+      - generic [ref=e23]:
+        - link "Services" [ref=e25] [cursor=pointer]:
+          - /url: /services
+          - text: Services
+        - link "Work" [ref=e29] [cursor=pointer]:
+          - /url: /work
+          - text: Work
+        - link "Approach" [ref=e33] [cursor=pointer]:
+          - /url: /approach
+          - text: Approach
+        - link "About" [ref=e37] [cursor=pointer]:
+          - /url: /about
+          - text: About
+        - link "Insights" [ref=e41] [cursor=pointer]:
+          - /url: /insights
+          - text: Insights
+      - generic [ref=e44]:
+        - link "Try Demo" [ref=e45] [cursor=pointer]:
+          - /url: /veo
+          - button "Try Demo" [ref=e46] [cursor=pointer]:
+            - generic [ref=e47] [cursor=pointer]: Try Demo
+        - link "Start Building" [ref=e48] [cursor=pointer]:
+          - /url: /contact
+          - button "Start Building" [ref=e49] [cursor=pointer]:
+            - generic [ref=e50] [cursor=pointer]: Start Building
+        - button "Switch to dark theme" [ref=e52] [cursor=pointer]:
+          - img [ref=e56] [cursor=pointer]
+  - main "Main content" [ref=e58]:
+    - generic [ref=e61]:
+      - heading "AI Development Services" [level=1] [ref=e62]
+      - paragraph [ref=e63]: End-to-end AI product development with a focus on business impact and user experience.
+    - generic [ref=e65]:
+      - generic [ref=e66]:
+        - heading "Our Services" [level=2] [ref=e67]
+        - paragraph [ref=e68]: From strategy to deployment, we handle every aspect of AI product development
+      - generic [ref=e69]:
+        - generic [ref=e70]:
+          - heading "AI Strategy & Consulting" [level=3] [ref=e71]
+          - paragraph [ref=e72]: Define your AI roadmap and identify the highest-impact opportunities for your business.
+          - generic [ref=e73]:
+            - paragraph [ref=e76]: AI opportunity assessment
+            - paragraph [ref=e79]: Technical feasibility analysis
+            - paragraph [ref=e82]: ROI modeling and planning
+            - paragraph [ref=e85]: Implementation roadmap
+          - generic [ref=e86]:
+            - paragraph [ref=e87]: Starting at $15k
+            - button "Get Started" [ref=e88] [cursor=pointer]:
+              - generic [ref=e89] [cursor=pointer]: Get Started
+        - generic [ref=e90]:
+          - heading "AI Product Development" [level=3] [ref=e91]
+          - paragraph [ref=e92]: Build production-ready AI applications with modern frameworks and best practices.
+          - generic [ref=e93]:
+            - paragraph [ref=e96]: Full-stack AI applications
+            - paragraph [ref=e99]: Machine learning model development
+            - paragraph [ref=e102]: API design and integration
+            - paragraph [ref=e105]: Cloud deployment and scaling
+          - generic [ref=e106]:
+            - paragraph [ref=e107]: Starting at $50k
+            - button "Get Started" [ref=e108] [cursor=pointer]:
+              - generic [ref=e109] [cursor=pointer]: Get Started
+        - generic [ref=e110]:
+          - heading "Team Augmentation" [level=3] [ref=e111]
+          - paragraph [ref=e112]: Scale your team with experienced AI engineers and product specialists.
+          - generic [ref=e113]:
+            - paragraph [ref=e116]: Senior ML engineers
+            - paragraph [ref=e119]: AI product managers
+            - paragraph [ref=e122]: Technical leadership
+            - paragraph [ref=e125]: Knowledge transfer
+          - generic [ref=e126]:
+            - paragraph [ref=e127]: From $8k/month
+            - button "Get Started" [ref=e128] [cursor=pointer]:
+              - generic [ref=e129] [cursor=pointer]: Get Started
+    - generic [ref=e131]:
+      - generic [ref=e132]:
+        - heading "How We Work" [level=2] [ref=e133]
+        - paragraph [ref=e134]: Our proven process for delivering successful AI products
+      - generic [ref=e135]:
+        - generic [ref=e136]:
+          - generic [ref=e137]: "01"
+          - heading "Discovery" [level=3] [ref=e138]
+          - paragraph [ref=e139]: We understand your business goals, technical constraints, and success criteria.
+        - generic [ref=e140]:
+          - generic [ref=e141]: "02"
+          - heading "Strategy" [level=3] [ref=e142]
+          - paragraph [ref=e143]: Define the AI solution architecture and implementation approach that fits your needs.
+        - generic [ref=e144]:
+          - generic [ref=e145]: "03"
+          - heading "Development" [level=3] [ref=e146]
+          - paragraph [ref=e147]: Build and iterate on your AI product with regular feedback and transparent progress.
+        - generic [ref=e148]:
+          - generic [ref=e149]: "04"
+          - heading "Deployment" [level=3] [ref=e150]
+          - paragraph [ref=e151]: Launch your AI product with proper monitoring, documentation, and team training.
+    - generic [ref=e153]:
+      - heading "Ready to start your AI project?" [level=2] [ref=e154]
+      - paragraph [ref=e155]: Let's discuss your goals and explore how we can help bring your AI vision to life.
+      - generic [ref=e156]:
+        - button "Start a Project" [ref=e157] [cursor=pointer]:
+          - generic [ref=e158] [cursor=pointer]:
+            - text: Start a Project
+            - img [ref=e160] [cursor=pointer]
+        - button "View Our Work" [ref=e162] [cursor=pointer]:
+          - generic [ref=e163] [cursor=pointer]: View Our Work
+```

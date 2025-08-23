@@ -48,13 +48,13 @@ export const ServiceCards = ({ services, variant = 'certain' }: ServiceCardsProp
           className={`fade-in ${index > 0 ? `stagger-${Math.min(index, 5)}` : ''} ${visibleItems[index] ? 'is-visible' : ''}`}
         >
           <MLCard 
-            className="p-veo-6 md:p-veo-6" 
+            className="p-veo-6 md:p-veo-8 shadow-elevation-3 hover:shadow-elevation-4 transition-all duration-300" 
             variant={service.color === 'orange' || service.color === 'blue' ? 'glow-primary' : 'glow-ion'}
             hover={true}
           >
             <div className="flex items-start space-x-veo-6">
               <motion.div 
-                className={`w-veo-8 h-veo-8 bg-gradient-to-br ${getIconBg(service.color)} rounded-veo-lg flex items-center justify-center flex-shrink-0 shadow-elevation-1 relative overflow-hidden`}
+                className={`w-veo-10 h-veo-10 bg-gradient-to-br ${getIconBg(service.color)} rounded-veo-xl flex items-center justify-center flex-shrink-0 shadow-elevation-2 hover:shadow-elevation-3 relative overflow-hidden border border-white/10`}
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 transition={{ type: 'spring', stiffness: 300 }}
               >
@@ -62,7 +62,7 @@ export const ServiceCards = ({ services, variant = 'certain' }: ServiceCardsProp
               </motion.div>
               
               <div className="flex-1">
-                <MLHeading level={3} className="mb-veo-3">
+                <MLHeading level={3} className="mb-veo-3 font-semibold text-xl md:text-2xl">
                   {service.title}
                 </MLHeading>
                 <MLText variant="bodyL" color="weak" className="mb-veo-4 leading-relaxed">

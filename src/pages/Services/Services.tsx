@@ -70,17 +70,17 @@ export const Services = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="py-24 px-6">
+      <section className="py-16 md:py-24 px-4 md:px-6">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <MLHeading level={1} className="text-5xl md:text-6xl font-display font-bold mb-8">
+            <MLHeading level={1} className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-8">
               AI Development Services
             </MLHeading>
-            <MLText variant="bodyL" className="text-xl text-text-weak max-w-2xl mx-auto leading-relaxed">
+            <MLText variant="bodyL" className="text-lg md:text-xl text-text-weak max-w-2xl mx-auto leading-relaxed">
               End-to-end AI product development with a focus on business impact and user experience.
             </MLText>
           </motion.div>
@@ -88,8 +88,8 @@ export const Services = () => {
       </section>
 
       {/* Services Grid */}
-      <section className="py-20 bg-surface-1">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="py-16 md:py-20 bg-surface-1">
+        <div className="max-w-7xl mx-auto px-4 md:px-6">
           <div className="text-center mb-16">
             <MLHeading level={2} className="text-4xl font-semibold mb-6">
               Our Services
@@ -99,7 +99,7 @@ export const Services = () => {
             </MLText>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {services.map((service, index) => (
               <motion.div
                 key={service.title}
@@ -107,9 +107,9 @@ export const Services = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-background rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow"
+                className="bg-background rounded-xl p-6 md:p-8 shadow-elevation-2 hover:shadow-elevation-4 transition-all duration-300 border border-white/5 hover:border-white/10"
               >
-                <MLHeading level={3} className="text-2xl font-semibold mb-4">
+                <MLHeading level={3} className="text-xl md:text-2xl font-semibold mb-4">
                   {service.title}
                 </MLHeading>
                 <MLText variant="body" className="text-text-weak leading-relaxed mb-6">
@@ -132,9 +132,9 @@ export const Services = () => {
                     {service.price}
                   </MLText>
                   <VeoButton
-                    variant="outline"
+                    variant="primary"
                     onClick={() => navigate('/contact')}
-                    className="w-full"
+                    className="w-full font-semibold shadow-elevation-1 hover:shadow-elevation-2"
                   >
                     Get Started
                   </VeoButton>
@@ -198,7 +198,7 @@ export const Services = () => {
               onClick={() => navigate('/contact')}
               icon={<VeoArrowRightIcon />}
               iconPosition="right"
-              className="px-8 py-4 text-lg"
+              className="px-8 py-4 text-lg font-semibold shadow-elevation-2 hover:shadow-elevation-3 hover:scale-105 transition-all duration-200"
             >
               Start a Project
             </VeoButton>

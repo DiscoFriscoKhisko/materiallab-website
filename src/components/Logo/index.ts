@@ -1,0 +1,1 @@
+export { MaterialLabLogo } from './MaterialLabLogo';

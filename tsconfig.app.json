@@ -15,6 +15,21 @@
     "noEmit": true,
     "jsx": "react-jsx",
 
+    /* Path aliases for atomic design system */
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@atoms/*": ["src/components/atoms/*"],
+      "@molecules/*": ["src/components/molecules/*"],
+      "@organisms/*": ["src/components/organisms/*"],
+      "@components/*": ["src/components/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@styles/*": ["src/styles/*"],
+      "@utils/*": ["src/utils/*"],
+      "@types/*": ["src/types/*"],
+      "@design-system/*": ["design-system/*"]
+    },
+
     /* Linting */
     "strict": false,
     "noUnusedLocals": false,

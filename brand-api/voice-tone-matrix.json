@@ -1,0 +1,210 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "last_updated": "2025-01-22",
+    "description": "Contextual voice and tone guidance for MaterialLab communications"
+  },
+  "core_voice": {
+    "base_characteristics": {
+      "confident": "Assured without being arrogant - state expertise clearly while acknowledging limitations",
+      "clear": "Simple, accessible language over complexity - explain technical concepts in human terms",
+      "human": "Warm, approachable, and relatable - remember real people use our products"
+    },
+    "voice_principles": [
+      "Educational but not condescending",
+      "Confident but not arrogant", 
+      "Technical but not intimidating",
+      "Innovative but not trendy",
+      "Professional but not cold"
+    ]
+  },
+  "contextual_tone_matrix": {
+    "website_hero": {
+      "primary_tone": "visionary",
+      "secondary_tone": "confident", 
+      "tertiary_tone": "human",
+      "characteristics": ["inspiring", "forward-looking", "accessible", "authentic"],
+      "example": "We unite human ingenuity with artificial intelligence to design the next generation of products.",
+      "prompt_guidance": "Inspiring and confident, focusing on the synthesis of human and AI capabilities. Avoid generic AI promises.",
+      "length_constraint": "10-15 words for headlines, 20-30 words for subheadings",
+      "forbidden": ["revolutionary", "game-changing", "disruptive", "seamless"]
+    },
+    "technical_documentation": {
+      "primary_tone": "educational",
+      "secondary_tone": "precise",
+      "tertiary_tone": "transparent",
+      "characteristics": ["clear", "detailed", "methodical", "honest"],
+      "example": "Our model leverages a Retrieval-Augmented Generation (RAG) architecture to ensure outputs are grounded in verifiable data sources.",
+      "prompt_guidance": "Educational and precise, explaining technical concepts clearly. Always include context and implications.",
+      "length_constraint": "No specific limit, prioritize clarity and completeness",
+      "forbidden": ["black box", "magic", "automatic", "seamless integration"]
+    },
+    "ui_microcopy": {
+      "primary_tone": "helpful",
+      "secondary_tone": "concise",
+      "tertiary_tone": "direct",
+      "characteristics": ["actionable", "clear", "reassuring", "human"],
+      "example": "AI suggestion accepted. This action can be undone in your history.",
+      "prompt_guidance": "Helpful and concise, focusing on user actions and outcomes. Avoid technical jargon.",
+      "length_constraint": "2-8 words for buttons, 10-15 words for notifications",
+      "forbidden": ["please", "sorry", "oops", "something went wrong"]
+    },
+    "ai_interactions": {
+      "primary_tone": "transparent",
+      "secondary_tone": "educational",
+      "tertiary_tone": "empowering",
+      "characteristics": ["clear", "honest", "user-empowering", "collaborative"],
+      "example": "Based on your project requirements, this approach scored highest for budget alignment and timeline feasibility. You can modify these parameters or explore alternatives.",
+      "prompt_guidance": "Transparent about AI involvement and decision process. Always provide user control and explanation.",
+      "length_constraint": "15-25 words for explanations, include reasoning and alternatives",
+      "forbidden": ["AI thinks", "model believes", "algorithm decides", "trust the AI"]
+    },
+    "error_messages": {
+      "primary_tone": "clear",
+      "secondary_tone": "helpful",
+      "tertiary_tone": "solution_focused",
+      "characteristics": ["direct", "actionable", "non-blame", "supportive"],
+      "example": "Connection timed out. Please check your internet and try again, or contact support if this continues.",
+      "prompt_guidance": "Clear and actionable, focusing on solution not problem. Avoid blame or technical intimidation.",
+      "length_constraint": "10-20 words, include specific action",
+      "forbidden": ["error", "failed", "invalid", "wrong", "sorry for the inconvenience"]
+    },
+    "social_media": {
+      "primary_tone": "engaging",
+      "secondary_tone": "approachable",
+      "tertiary_tone": "authentic",
+      "characteristics": ["conversational", "thoughtful", "community-focused", "educational"],
+      "example": "What's the most creative way you've used an AI design tool? Share your human-AI collaboration stories.",
+      "prompt_guidance": "Engaging and approachable, encouraging community interaction. Share insights and ask thoughtful questions.",
+      "length_constraint": "Platform-specific limits, prioritize engagement and value",
+      "forbidden": ["viral", "trending", "influencer", "engagement bait"]
+    },
+    "client_proposals": {
+      "primary_tone": "professional",
+      "secondary_tone": "confident",
+      "tertiary_tone": "strategic",
+      "characteristics": ["authoritative", "detailed", "results-focused", "partnership-oriented"],
+      "example": "This proposal outlines a strategic approach to leveraging our proprietary AI platform for your product development, with clear milestones and measurable outcomes.",
+      "prompt_guidance": "Professional and confident, focusing on partnership and results. Include specific deliverables and timelines.",
+      "length_constraint": "No limit, prioritize completeness and clarity",
+      "forbidden": ["synergy", "leverage", "paradigm shift", "best-in-class"]
+    },
+    "onboarding_flows": {
+      "primary_tone": "welcoming",
+      "secondary_tone": "educational",
+      "tertiary_tone": "encouraging",
+      "characteristics": ["supportive", "step-by-step", "confidence-building", "clear"],
+      "example": "Let's start by understanding your project goals. This helps our AI provide more relevant suggestions throughout your workflow.",
+      "prompt_guidance": "Welcoming and educational, building user confidence. Explain the why behind each step.",
+      "length_constraint": "15-25 words per step, break complex processes into simple actions",
+      "forbidden": ["easy", "simple", "just", "merely", "obviously"]
+    },
+    "feature_announcements": {
+      "primary_tone": "excited",
+      "secondary_tone": "informative",
+      "tertiary_tone": "user_focused",
+      "characteristics": ["enthusiastic", "clear", "benefit-oriented", "practical"],
+      "example": "New: AI project analysis now includes timeline predictions. Get more accurate planning insights while maintaining full control over your decisions.",
+      "prompt_guidance": "Excited but informative, focusing on user benefits. Explain what the feature does and why it matters.",
+      "length_constraint": "20-30 words for announcements, include clear benefit",
+      "forbidden": ["amazing", "incredible", "revolutionary", "game-changer"]
+    },
+    "educational_content": {
+      "primary_tone": "authoritative",
+      "secondary_tone": "accessible",
+      "tertiary_tone": "practical",
+      "characteristics": ["expert", "clear", "actionable", "comprehensive"],
+      "example": "Understanding AI confidence scores helps you make better decisions. A score of 85% means the model found strong patterns in the data, but you should still review the reasoning.",
+      "prompt_guidance": "Authoritative but accessible, providing practical value. Include both theory and application.",
+      "length_constraint": "No limit, prioritize comprehensiveness and actionability",
+      "forbidden": ["obviously", "everyone knows", "simply", "just do"]
+    }
+  },
+  "tone_adaptation_rules": {
+    "audience_modifiers": {
+      "technical_audience": {
+        "adjustments": "Increase technical precision, include more detail, use industry terminology with context",
+        "maintain": "Educational approach, human-centricity, transparency"
+      },
+      "business_audience": {
+        "adjustments": "Focus on outcomes and ROI, strategic language, business impact",
+        "maintain": "Clarity, confidence, authentic partnership approach"
+      },
+      "general_audience": {
+        "adjustments": "Simplify technical language, focus on benefits, use analogies",
+        "maintain": "Approachable tone, educational value, empowerment focus"
+      }
+    },
+    "urgency_modifiers": {
+      "high_urgency": {
+        "adjustments": "More direct language, shorter sentences, action-focused",
+        "maintain": "Helpful tone, clear instructions, user empowerment"
+      },
+      "low_urgency": {
+        "adjustments": "More conversational, can include context and education",
+        "maintain": "Engaging tone, value provision, relationship building"
+      }
+    },
+    "emotional_context": {
+      "user_frustrated": {
+        "approach": "Acknowledge issue, provide clear solution, avoid dismissing concerns",
+        "tone_shift": "More empathetic, solution-focused, patient"
+      },
+      "user_excited": {
+        "approach": "Match enthusiasm appropriately, provide guidance, maintain realistic expectations",
+        "tone_shift": "More energetic, supportive, encouraging"
+      },
+      "user_confused": {
+        "approach": "Step-by-step explanation, simpler language, check understanding",
+        "tone_shift": "More educational, patient, clear"
+      }
+    }
+  },
+  "ai_communication_standards": {
+    "transparency_requirements": {
+      "ai_disclosure": "Always clearly indicate when AI is involved in content generation or recommendations",
+      "process_explanation": "Explain how AI reached conclusions in terms users can understand",
+      "limitation_acknowledgment": "Be honest about what AI cannot do or areas of uncertainty",
+      "user_control": "Always provide options for users to modify, reject, or override AI suggestions"
+    },
+    "human_centricity_patterns": {
+      "empowerment_language": [
+        "Based on your requirements...",
+        "To help you decide...", 
+        "You have full control over...",
+        "This analysis suggests...",
+        "Consider these options..."
+      ],
+      "collaboration_framing": [
+        "AI analysis combined with your expertise",
+        "Machine insights to inform your decision",
+        "Data-driven suggestions for your review",
+        "AI assistance to enhance your workflow"
+      ],
+      "capability_honesty": [
+        "AI confidence level: [X]%",
+        "This analysis doesn't account for [limitation]",
+        "You may want to consider [human factor] as well",
+        "Review this suggestion against your specific context"
+      ]
+    }
+  },
+  "quality_gates": {
+    "voice_consistency_check": {
+      "questions": [
+        "Does this sound like a MaterialLab expert speaking?",
+        "Is the tone appropriate for the context?",
+        "Does it maintain our human-centric approach?",
+        "Is AI involvement transparent where relevant?",
+        "Does it empower rather than intimidate the user?"
+      ]
+    },
+    "brand_alignment_check": {
+      "sage_archetype": "Does this demonstrate wisdom and knowledge sharing?",
+      "creator_archetype": "Does this inspire innovation and creative thinking?",
+      "human_centricity": "Does this amplify human capabilities?",
+      "transparency": "Is the process or reasoning clear?",
+      "intentionality": "Does this serve a genuine user need?"
+    }
+  }
+}
