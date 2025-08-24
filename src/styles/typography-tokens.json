@@ -1,0 +1,319 @@
+{
+  "typography": {
+    "fontFamily": {
+      "primary": {
+        "value": "'Inter Variable', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif",
+        "description": "Primary font family for body text and UI elements. Supports MaterialLab's 'thoughtful expert' personality - clear, readable, professional.",
+        "usage": "Body text, UI elements, captions, labels"
+      },
+      "secondary": {
+        "value": "'Space Grotesk Variable', 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+        "description": "Secondary font family for headlines and display text. Supports MaterialLab's 'compelling presenter' personality - geometric, friendly, impactful.",
+        "usage": "Headlines, display text, hero sections"
+      },
+      "mono": {
+        "value": "'JetBrains Mono', 'Menlo', 'Monaco', 'Consolas', 'Courier New', monospace",
+        "description": "Monospace font family for code and technical content. Supports MaterialLab's 'nerdy' brand trait.",
+        "usage": "Code blocks, technical specifications, data"
+      }
+    },
+    "fontSize": {
+      "xs": {
+        "value": "0.75rem",
+        "px": "12px",
+        "description": "Extra small text size for fine print, captions"
+      },
+      "sm": {
+        "value": "0.875rem", 
+        "px": "14px",
+        "description": "Small text size for labels, metadata"
+      },
+      "base": {
+        "value": "1rem",
+        "px": "16px", 
+        "description": "Base font size for body text - foundation of modular scale"
+      },
+      "lg": {
+        "value": "1.25rem",
+        "px": "20px",
+        "description": "Large text size for emphasis, subheadings"
+      },
+      "xl": {
+        "value": "1.5625rem",
+        "px": "25px",
+        "description": "Extra large text size for small headlines"
+      },
+      "2xl": {
+        "value": "1.9375rem", 
+        "px": "31px",
+        "description": "2x large text size for medium headlines"
+      },
+      "3xl": {
+        "value": "2.4375rem",
+        "px": "39px",
+        "description": "3x large text size for large headlines"
+      },
+      "4xl": {
+        "value": "3.0625rem",
+        "px": "49px", 
+        "description": "4x large text size for hero headlines"
+      },
+      "5xl": {
+        "value": "3.8125rem",
+        "px": "61px",
+        "description": "5x large text size for impact statements"
+      },
+      "6xl": {
+        "value": "4.75rem",
+        "px": "76px",
+        "description": "6x large text size for maximum impact displays"
+      }
+    },
+    "fontWeight": {
+      "regular": {
+        "value": "400",
+        "description": "Regular font weight for body text and standard UI elements"
+      },
+      "medium": {
+        "value": "500", 
+        "description": "Medium font weight for emphasis and semi-bold elements"
+      },
+      "semibold": {
+        "value": "600",
+        "description": "Semibold font weight for strong emphasis and important labels"
+      },
+      "bold": {
+        "value": "700",
+        "description": "Bold font weight for headlines and maximum emphasis"
+      }
+    },
+    "lineHeight": {
+      "tight": {
+        "value": "1.1",
+        "description": "Tight line height for large headlines (3xl+) - prevents letter touching"
+      },
+      "snug": {
+        "value": "1.2", 
+        "description": "Snug line height for medium headlines (xl-2xl) - balanced spacing"
+      },
+      "normal": {
+        "value": "1.5",
+        "description": "Normal line height for body text - optimal readability (Goldilocks principle)"
+      },
+      "relaxed": {
+        "value": "1.6",
+        "description": "Relaxed line height for longer form content - enhanced reading flow"
+      },
+      "loose": {
+        "value": "1.7",
+        "description": "Loose line height for small text (xs-sm) - prevents cramping"
+      }
+    },
+    "letterSpacing": {
+      "tighter": {
+        "value": "-0.03em",
+        "description": "Tightest letter spacing for largest text (5xl-6xl) - prevents spread"
+      },
+      "tight": {
+        "value": "-0.02em", 
+        "description": "Tight letter spacing for large text (3xl-4xl) - refined appearance"
+      },
+      "normal": {
+        "value": "0",
+        "description": "Normal letter spacing for medium text (lg-2xl) - neutral spacing"
+      },
+      "wide": {
+        "value": "0.01em",
+        "description": "Wide letter spacing for body text - enhanced readability"
+      },
+      "wider": {
+        "value": "0.02em",
+        "description": "Wider letter spacing for small text (sm) - prevents cramping"
+      },
+      "widest": {
+        "value": "0.03em",
+        "description": "Widest letter spacing for extra small text (xs) - maximum legibility"
+      }
+    },
+    "textStyles": {
+      "display": {
+        "6xl": {
+          "fontFamily": "var(--font-secondary)",
+          "fontSize": "var(--font-size-6xl)",
+          "fontWeight": "var(--font-weight-bold)",
+          "lineHeight": "var(--line-height-tight)",
+          "letterSpacing": "var(--letter-spacing-tighter)",
+          "description": "Maximum impact display text - hero moments"
+        },
+        "5xl": {
+          "fontFamily": "var(--font-secondary)",
+          "fontSize": "var(--font-size-5xl)",
+          "fontWeight": "var(--font-weight-bold)",
+          "lineHeight": "var(--line-height-tight)",
+          "letterSpacing": "var(--letter-spacing-tighter)",
+          "description": "Large impact display text"
+        },
+        "4xl": {
+          "fontFamily": "var(--font-secondary)",
+          "fontSize": "var(--font-size-4xl)",
+          "fontWeight": "var(--font-weight-semibold)",
+          "lineHeight": "var(--line-height-snug)",
+          "letterSpacing": "var(--letter-spacing-tight)",
+          "description": "Hero headlines"
+        }
+      },
+      "heading": {
+        "3xl": {
+          "fontFamily": "var(--font-secondary)",
+          "fontSize": "var(--font-size-3xl)",
+          "fontWeight": "var(--font-weight-semibold)",
+          "lineHeight": "var(--line-height-snug)",
+          "letterSpacing": "var(--letter-spacing-tight)",
+          "description": "Large section headlines"
+        },
+        "2xl": {
+          "fontFamily": "var(--font-secondary)",
+          "fontSize": "var(--font-size-2xl)",
+          "fontWeight": "var(--font-weight-medium)",
+          "lineHeight": "var(--line-height-snug)",
+          "letterSpacing": "var(--letter-spacing-normal)",
+          "description": "Medium section headlines"
+        },
+        "xl": {
+          "fontFamily": "var(--font-secondary)",
+          "fontSize": "var(--font-size-xl)",
+          "fontWeight": "var(--font-weight-medium)",
+          "lineHeight": "var(--line-height-normal)",
+          "letterSpacing": "var(--letter-spacing-normal)",
+          "description": "Small section headlines"
+        },
+        "lg": {
+          "fontFamily": "var(--font-primary)",
+          "fontSize": "var(--font-size-lg)",
+          "fontWeight": "var(--font-weight-semibold)",
+          "lineHeight": "var(--line-height-normal)",
+          "letterSpacing": "var(--letter-spacing-wide)",
+          "description": "Subsection headlines"
+        }
+      },
+      "body": {
+        "large": {
+          "fontFamily": "var(--font-primary)",
+          "fontSize": "var(--font-size-lg)",
+          "fontWeight": "var(--font-weight-regular)",
+          "lineHeight": "var(--line-height-relaxed)",
+          "letterSpacing": "var(--letter-spacing-wide)",
+          "description": "Large body text for emphasis"
+        },
+        "base": {
+          "fontFamily": "var(--font-primary)",
+          "fontSize": "var(--font-size-base)",
+          "fontWeight": "var(--font-weight-regular)",
+          "lineHeight": "var(--line-height-normal)",
+          "letterSpacing": "var(--letter-spacing-normal)",
+          "description": "Standard body text - optimal readability"
+        },
+        "small": {
+          "fontFamily": "var(--font-primary)",
+          "fontSize": "var(--font-size-sm)",
+          "fontWeight": "var(--font-weight-regular)",
+          "lineHeight": "var(--line-height-loose)",
+          "letterSpacing": "var(--letter-spacing-wider)",
+          "description": "Small body text for secondary content"
+        }
+      },
+      "label": {
+        "large": {
+          "fontFamily": "var(--font-primary)",
+          "fontSize": "var(--font-size-sm)",
+          "fontWeight": "var(--font-weight-semibold)",
+          "lineHeight": "var(--line-height-normal)",
+          "letterSpacing": "var(--letter-spacing-wider)",
+          "description": "Large labels and UI text"
+        },
+        "base": {
+          "fontFamily": "var(--font-primary)",
+          "fontSize": "var(--font-size-xs)",
+          "fontWeight": "var(--font-weight-medium)",
+          "lineHeight": "var(--line-height-loose)",
+          "letterSpacing": "var(--letter-spacing-widest)",
+          "description": "Standard labels and metadata"
+        }
+      },
+      "code": {
+        "base": {
+          "fontFamily": "var(--font-mono)",
+          "fontSize": "var(--font-size-sm)",
+          "fontWeight": "var(--font-weight-regular)",
+          "lineHeight": "var(--line-height-relaxed)",
+          "letterSpacing": "var(--letter-spacing-normal)",
+          "description": "Inline code and technical content"
+        },
+        "block": {
+          "fontFamily": "var(--font-mono)",
+          "fontSize": "var(--font-size-sm)",
+          "fontWeight": "var(--font-weight-regular)",
+          "lineHeight": "var(--line-height-relaxed)",
+          "letterSpacing": "var(--letter-spacing-normal)",
+          "description": "Code blocks and preformatted text"
+        }
+      }
+    },
+    "brandVoice": {
+      "thoughtfulExpert": {
+        "description": "Professional, clear, detailed - uses primary font with optimal readability",
+        "recommendedStyles": ["body.base", "body.large", "heading.lg", "label.large"],
+        "characteristics": "Clean lines, generous spacing, high legibility"
+      },
+      "compellingPresenter": {
+        "description": "Bold, impactful, confident - uses secondary font with strong hierarchy",
+        "recommendedStyles": ["display.4xl", "display.5xl", "heading.2xl", "heading.3xl"],
+        "characteristics": "Geometric shapes, tight spacing, commanding presence"
+      },
+      "technical": {
+        "description": "Precise, nerdy, detailed - uses monospace font for technical content",
+        "recommendedStyles": ["code.base", "code.block"],
+        "characteristics": "Fixed-width, consistent spacing, technical accuracy"
+      }
+    },
+    "accessibility": {
+      "textResize": {
+        "maxScale": "200%",
+        "description": "All text must remain readable and functional when scaled up to 200% (WCAG 1.4.4)"
+      },
+      "textSpacing": {
+        "lineHeight": "1.5x font size minimum",
+        "paragraphSpacing": "2x font size minimum", 
+        "letterSpacing": "0.12x font size minimum",
+        "wordSpacing": "0.16x font size minimum",
+        "description": "Text must remain readable when users override spacing (WCAG 1.4.12)"
+      },
+      "fontChoice": {
+        "primaryRecommendation": "Sans-serif fonts for body text enhance on-screen legibility, especially for users with low vision",
+        "serifUsage": "Serif fonts may be used sparingly for headings or decorative purposes",
+        "reasoning": "Sans-serif fonts reduce visual noise and improve character recognition"
+      }
+    },
+    "implementation": {
+      "cssVariables": {
+        "fontFamily": {
+          "--font-primary": "var(--typography-font-family-primary)",
+          "--font-secondary": "var(--typography-font-family-secondary)",
+          "--font-mono": "var(--typography-font-family-mono)"
+        },
+        "fontSize": {
+          "--font-size-xs": "var(--typography-font-size-xs)",
+          "--font-size-sm": "var(--typography-font-size-sm)",
+          "--font-size-base": "var(--typography-font-size-base)",
+          "--font-size-lg": "var(--typography-font-size-lg)",
+          "--font-size-xl": "var(--typography-font-size-xl)",
+          "--font-size-2xl": "var(--typography-font-size-2xl)",
+          "--font-size-3xl": "var(--typography-font-size-3xl)",
+          "--font-size-4xl": "var(--typography-font-size-4xl)",
+          "--font-size-5xl": "var(--typography-font-size-5xl)",
+          "--font-size-6xl": "var(--typography-font-size-6xl)"
+        }
+      }
+    }
+  }
+}

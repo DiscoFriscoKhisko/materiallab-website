@@ -3,13 +3,11 @@ import { MLCard, MLText, MLHeading } from '../../components/ML';
 import { Button } from '../../components/UI/Button';
 import { DesignTokens } from './components/DesignTokens';
 import { ComponentLibrary } from './components/ComponentLibrary';
-import { AntiSlopShowcase } from './components/AntiSlopShowcase';
-import { VoiceGuidelines } from './components/VoiceGuidelines';
 import { BrandIdentity } from './components/BrandIdentity';
-import { ImperfectlyCraftedPreview } from './components/ImperfectlyCraftedPreview';
+import { TypographySpecimen } from '../../components/Typography/TypographySpecimen';
 import './DesignSystem.css';
 
-type SectionType = 'overview' | 'brand' | 'tokens' | 'components' | 'anti-slop' | 'voice' | 'code' | 'imperfect-preview';
+type SectionType = 'overview' | 'brand' | 'typography' | 'tokens' | 'components';
 
 interface SidebarItemProps {
   section: SectionType;
@@ -59,6 +57,21 @@ const DesignSystem: React.FC = () => {
               </MLCard>
 
               <MLCard className="overview-card">
+                <MLHeading level="3">Typography System</MLHeading>
+                <MLText>
+                  Complete typography system with dual brand personality support. 
+                  Inter and Space Grotesk fonts with WCAG 2.1 AA compliance.
+                </MLText>
+                <Button 
+                  variant="primary" 
+                  onClick={() => setCurrentSection('typography')}
+                  className="mt-4"
+                >
+                  View Typography
+                </Button>
+              </MLCard>
+
+              <MLCard className="overview-card">
                 <MLHeading level="3">Design Tokens</MLHeading>
                 <MLText>
                   Comprehensive token system with dual theme support. 
@@ -87,65 +100,20 @@ const DesignSystem: React.FC = () => {
                   Browse Components
                 </Button>
               </MLCard>
-
-              <MLCard className="overview-card">
-                <MLHeading level="3">Anti-Slop Guidelines</MLHeading>
-                <MLText>
-                  Specific patterns to avoid generic AI outputs. 
-                  Side-by-side comparisons of generic vs. MaterialLab approaches.
-                </MLText>
-                <Button 
-                  variant="primary" 
-                  onClick={() => setCurrentSection('anti-slop')}
-                  className="mt-4"
-                >
-                  See Guidelines
-                </Button>
-              </MLCard>
-
-              <MLCard className="overview-card">
-                <MLHeading level="3">Voice & Copy</MLHeading>
-                <MLText>
-                  Sage-Creator archetype implementation with contextual tone matrix.
-                  Human-empowering messaging that avoids anthropomorphic AI language.
-                </MLText>
-                <Button 
-                  variant="primary" 
-                  onClick={() => setCurrentSection('voice')}
-                  className="mt-4"
-                >
-                  Voice Guidelines
-                </Button>
-              </MLCard>
-
-              <MLCard className="overview-card">
-                <MLHeading level="3">Code Standards</MLHeading>
-                <MLText>
-                  Security-first development with comprehensive documentation patterns.
-                  Human-centric error handling and AI transparency implementation.
-                </MLText>
-                <Button 
-                  variant="primary" 
-                  onClick={() => setCurrentSection('code')}
-                  className="mt-4"
-                >
-                  Code Standards
-                </Button>
-              </MLCard>
             </div>
 
             <div className="design-system-stats">
               <MLCard className="stat-card">
-                <MLText className="stat-number">85+</MLText>
-                <MLText className="stat-label">Anti-Slop Patterns Identified</MLText>
+                <MLText className="stat-number">13</MLText>
+                <MLText className="stat-label">Typography Styles</MLText>
               </MLCard>
               <MLCard className="stat-card">
-                <MLText className="stat-number">4</MLText>
-                <MLText className="stat-label">Specialized Sentinel Agents</MLText>
+                <MLText className="stat-number">3</MLText>
+                <MLText className="stat-label">Brand Voices</MLText>
               </MLCard>
               <MLCard className="stat-card">
-                <MLText className="stat-number">100%</MLText>
-                <MLText className="stat-label">Brand Compliance Target</MLText>
+                <MLText className="stat-number">10</MLText>
+                <MLText className="stat-label">Theme Modes</MLText>
               </MLCard>
               <MLCard className="stat-card">
                 <MLText className="stat-number">WCAG 2.1 AA</MLText>
@@ -157,25 +125,21 @@ const DesignSystem: React.FC = () => {
         
       case 'brand':
         return <BrandIdentity />;
+      case 'typography':
+        return (
+          <div className="design-system-content">
+            <MLHeading level="1">Typography System</MLHeading>
+            <MLText className="mb-6">
+              Complete typography system with dual brand personality support, 
+              WCAG 2.1 AA compliance, and MaterialLab voice guidelines.
+            </MLText>
+            <TypographySpecimen />
+          </div>
+        );
       case 'tokens':
         return <DesignTokens />;
       case 'components':
         return <ComponentLibrary />;
-      case 'anti-slop':
-        return <AntiSlopShowcase />;
-      case 'voice':
-        return <VoiceGuidelines />;
-      case 'imperfect-preview':
-        return <ImperfectlyCraftedPreview />;
-      case 'code':
-        return (
-          <div className="design-system-content">
-            <MLHeading level="1">Code Standards</MLHeading>
-            <MLText>
-              Coming soon: Interactive code examples and validation patterns.
-            </MLText>
-          </div>
-        );
       default:
         return null;
     }
@@ -196,23 +160,14 @@ const DesignSystem: React.FC = () => {
           <SidebarItem section="brand" currentSection={currentSection} onClick={setCurrentSection}>
             Brand Identity
           </SidebarItem>
+          <SidebarItem section="typography" currentSection={currentSection} onClick={setCurrentSection}>
+            Typography
+          </SidebarItem>
           <SidebarItem section="tokens" currentSection={currentSection} onClick={setCurrentSection}>
             Design Tokens
           </SidebarItem>
           <SidebarItem section="components" currentSection={currentSection} onClick={setCurrentSection}>
             Components
-          </SidebarItem>
-          <SidebarItem section="anti-slop" currentSection={currentSection} onClick={setCurrentSection}>
-            Anti-Slop Guidelines
-          </SidebarItem>
-          <SidebarItem section="voice" currentSection={currentSection} onClick={setCurrentSection}>
-            Voice & Copy
-          </SidebarItem>
-          <SidebarItem section="imperfect-preview" currentSection={currentSection} onClick={setCurrentSection}>
-            🎨 Imperfect Preview
-          </SidebarItem>
-          <SidebarItem section="code" currentSection={currentSection} onClick={setCurrentSection}>
-            Code Standards
           </SidebarItem>
         </nav>
       </aside>

@@ -1,0 +1,140 @@
+/* Long Story Short - Experimental Design Tokens */
+
+:root {
+  /* === EXPERIMENTAL SPACING === */
+  --lss-space-micro: 2px;    /* For fine adjustments */
+  --lss-space-xs: 4px;       /* Mini spacing */
+  --lss-space-sm: 8px;       /* Small spacing */
+  --lss-space-md: 16px;      /* Medium spacing */
+  --lss-space-lg: 24px;      /* Large spacing */
+  --lss-space-xl: 32px;      /* Extra large spacing */
+  --lss-space-2xl: 48px;     /* 2x extra large */
+  --lss-space-3xl: 64px;     /* 3x extra large */
+  --lss-space-4xl: 96px;     /* 4x extra large */
+  
+  /* === EXPERIMENTAL TYPOGRAPHY SCALE === */
+  --lss-text-micro: 0.625rem;   /* 10px - Tiny labels */
+  --lss-text-xs: 0.75rem;       /* 12px - Small captions */
+  --lss-text-sm: 0.875rem;      /* 14px - Body small */
+  --lss-text-base: 1rem;        /* 16px - Body */
+  --lss-text-lg: 1.125rem;      /* 18px - Body large */
+  --lss-text-xl: 1.25rem;       /* 20px - Small headings */
+  --lss-text-2xl: 1.5rem;       /* 24px - Medium headings */
+  --lss-text-3xl: 1.875rem;     /* 30px - Large headings */
+  --lss-text-4xl: 2.25rem;      /* 36px - Display small */
+  --lss-text-5xl: 3rem;         /* 48px - Display medium */
+  --lss-text-6xl: 3.75rem;      /* 60px - Display large */
+  --lss-text-7xl: 4.5rem;       /* 72px - Display extra large */
+  
+  /* === EXPERIMENTAL BORDER RADIUS === */
+  --lss-radius-none: 0;
+  --lss-radius-xs: 2px;
+  --lss-radius-sm: 4px;
+  --lss-radius-md: 6px;
+  --lss-radius-lg: 8px;
+  --lss-radius-xl: 12px;
+  --lss-radius-2xl: 16px;
+  --lss-radius-3xl: 24px;
+  --lss-radius-full: 9999px;
+  
+  /* === EXPERIMENTAL SHADOWS === */
+  --lss-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --lss-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --lss-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.06);
+  --lss-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+  --lss-shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.04);
+  --lss-shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.15);
+  --lss-shadow-inner: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+  
+  /* === EXPERIMENTAL MOTION === */
+  --lss-duration-instant: 0ms;
+  --lss-duration-fast: 100ms;
+  --lss-duration-normal: 200ms;
+  --lss-duration-slow: 300ms;
+  --lss-duration-slower: 500ms;
+  
+  --lss-ease-linear: linear;
+  --lss-ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --lss-ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --lss-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --lss-ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  
+  /* === EXPERIMENTAL Z-INDEX === */
+  --lss-z-auto: auto;
+  --lss-z-0: 0;
+  --lss-z-10: 10;
+  --lss-z-20: 20;
+  --lss-z-30: 30;
+  --lss-z-40: 40;
+  --lss-z-50: 50;
+  --lss-z-tooltip: 100;
+  --lss-z-modal: 200;
+  --lss-z-toast: 300;
+  
+  /* === EXPERIMENTAL GLASS EFFECTS === */
+  --lss-glass-blur-sm: blur(4px);
+  --lss-glass-blur-md: blur(8px);
+  --lss-glass-blur-lg: blur(16px);
+  --lss-glass-blur-xl: blur(24px);
+  
+  --lss-glass-bg-light: rgba(255, 255, 255, 0.1);
+  --lss-glass-bg-medium: rgba(255, 255, 255, 0.15);
+  --lss-glass-bg-strong: rgba(255, 255, 255, 0.25);
+  
+  --lss-glass-border-light: rgba(255, 255, 255, 0.1);
+  --lss-glass-border-medium: rgba(255, 255, 255, 0.2);
+  --lss-glass-border-strong: rgba(255, 255, 255, 0.3);
+}
+
+/* === THEME-SPECIFIC EXPERIMENTAL TOKENS === */
+
+/* Light Theme Overrides */
+.light {
+  --lss-glass-bg-light: rgba(255, 255, 255, 0.7);
+  --lss-glass-bg-medium: rgba(255, 255, 255, 0.8);
+  --lss-glass-bg-strong: rgba(255, 255, 255, 0.9);
+  
+  --lss-glass-border-light: rgba(0, 0, 0, 0.05);
+  --lss-glass-border-medium: rgba(0, 0, 0, 0.1);
+  --lss-glass-border-strong: rgba(0, 0, 0, 0.15);
+}
+
+/* Dark Theme Overrides */
+.dark {
+  --lss-glass-bg-light: rgba(0, 0, 0, 0.2);
+  --lss-glass-bg-medium: rgba(0, 0, 0, 0.3);
+  --lss-glass-bg-strong: rgba(0, 0, 0, 0.5);
+}
+
+/* === EXPERIMENTAL COMPONENT TOKENS === */
+:root {
+  /* Button Tokens */
+  --lss-button-height-sm: 32px;
+  --lss-button-height-md: 40px;
+  --lss-button-height-lg: 48px;
+  --lss-button-padding-x-sm: var(--lss-space-md);
+  --lss-button-padding-x-md: var(--lss-space-lg);
+  --lss-button-padding-x-lg: var(--lss-space-xl);
+  
+  /* Card Tokens */
+  --lss-card-padding-sm: var(--lss-space-md);
+  --lss-card-padding-md: var(--lss-space-lg);
+  --lss-card-padding-lg: var(--lss-space-xl);
+  --lss-card-border-radius: var(--lss-radius-lg);
+  --lss-card-shadow: var(--lss-shadow-sm);
+  --lss-card-shadow-hover: var(--lss-shadow-md);
+  
+  /* Input Tokens */
+  --lss-input-height-sm: 36px;
+  --lss-input-height-md: 44px;
+  --lss-input-height-lg: 52px;
+  --lss-input-padding-x: var(--lss-space-md);
+  --lss-input-border-radius: var(--lss-radius-md);
+  --lss-input-border-width: 1px;
+  
+  /* Modal Tokens */
+  --lss-modal-backdrop: rgba(0, 0, 0, 0.5);
+  --lss-modal-border-radius: var(--lss-radius-xl);
+  --lss-modal-shadow: var(--lss-shadow-2xl);
+  --lss-modal-padding: var(--lss-space-2xl);
+}

@@ -11,45 +11,45 @@ export const Work = () => {
 
   const projects = [
     {
-      title: "FinTech MVP: 0 to 10k users in 8 weeks",
-      client: "Confidential Client",
-      category: "SMB • FinTech",
-      challenge: "Launch a peer-to-peer payment app in a competitive market with limited runway",
-      solution: "Focused MVP with core payment flows, integrated fraud detection, and viral sharing features",
-      results: ["10,000+ registered users", "98% uptime", "4.8★ app store rating", "Series A funding secured"],
-      timeline: "8 weeks",
-      technologies: ["React Native", "Node.js", "Stripe", "AWS"],
+      title: "Founder with limited runway needed revenue fast",
+      client: "B2B SaaS Startup",
+      category: "Growing Business • Technology",
+      challenge: "Solo founder, no technical cofounder, competitive market, limited runway for experimentation",
+      solution: "Technical partnership approach: rapid prototype validation, payment integration, production deployment",
+      results: ["Working prototype validated with potential customers", "First paying customer achieved", "Multiple customers and MRR growth", "Series A discussions initiated"],
+      timeline: "Partnership approach",
+      technologies: ["Modern web stack", "Payment systems", "Production deployment"],
       testimonial: {
-        quote: "MaterialLab delivered exactly what we needed, when we needed it. Their focus on essentials got us to market fast.",
-        author: "Founder, FinTech Startup"
+        quote: "They understood that every moment mattered. No long discovery phase, just rapid building based on real customer feedback.",
+        author: "Founder, B2B SaaS"
       }
     },
     {
-      title: "E-commerce automation: 80% reduction in manual work",
-      client: "Premium Wellness Brand",
-      category: "Creator • E-commerce",
-      challenge: "Manual order processing and customer service consuming 40+ hours weekly",
-      solution: "Automated order flows, customer support system, and inventory management dashboard",
-      results: ["80% reduction in manual work", "$2M+ processed automatically", "2x faster customer response", "Team focused on growth"],
-      timeline: "6 weeks",
-      technologies: ["Shopify Plus", "Custom APIs", "Zapier", "Automation tools"],
+      title: "Growing team overwhelmed by manual processes",
+      client: "Creative Agency",
+      category: "Growing Business • Automation",
+      challenge: "Manual processes consuming team bandwidth, reducing time available for client work and growth",
+      solution: "Process analysis and automation of repetitive workflows, elegant tool integration, team training",
+      results: ["Hours saved weekly, measurably", "Team refocused on high-value work", "Improved client service capacity", "Scalable workflow systems"],
+      timeline: "Iterative approach",
+      technologies: ["Workflow automation", "API integrations", "Custom solutions"],
       testimonial: {
-        quote: "Game changer. We went from drowning in admin work to focusing on what we do best - creating great products.",
-        author: "CEO, Wellness Brand"
+        quote: "We went from drowning in busy work to focusing on what we do best. The team actually enjoys the streamlined processes.",
+        author: "Creative Director"
       }
     },
     {
-      title: "HR workflow automation: 4-week pilot to full rollout",
-      client: "Mid-size Tech Company",
-      category: "SaaS • HR Operations",
-      challenge: "Resume screening and interview scheduling taking 20+ hours per hire",
-      solution: "Automated resume analysis, scheduling system, and candidate communication workflow",
-      results: ["6x faster screening", "90% scheduling automation", "Better candidate experience", "Full company rollout"],
-      timeline: "4 weeks pilot",
-      technologies: ["API integrations", "Calendar APIs", "Custom workflow engine"],
+      title: "Technical debt blocking business growth",
+      client: "Established Service Business",
+      category: "Growing Business • Modernization", 
+      challenge: "Legacy systems creating bottlenecks, preventing team from serving more customers effectively",
+      solution: "Systematic modernization approach, maintaining business continuity while upgrading core systems",
+      results: ["System reliability dramatically improved", "Team velocity increased significantly", "Customer capacity expanded", "Business growth unblocked"],
+      timeline: "Phased approach",
+      technologies: ["Modern architecture", "System integration", "Data migration"],
       testimonial: {
-        quote: "The pilot was so successful, we immediately expanded it company-wide. ROI was clear from week 2.",
-        author: "Head of People, Tech Company"
+        quote: "They made complex technical work feel manageable. Business kept running smoothly while we modernized everything underneath.",
+        author: "Operations Director"
       }
     }
   ];
@@ -70,7 +70,7 @@ export const Work = () => {
               </MLHeading>
               
               <MLText variant="bodyL" color="weak" className="mb-12 max-w-3xl mx-auto">
-                Real results from real projects. See how we've helped startups, creators, and companies build products people love.
+                Real stories from real partnerships. See how we've helped growing businesses build technology that matters.
               </MLText>
             </motion.div>
           </div>

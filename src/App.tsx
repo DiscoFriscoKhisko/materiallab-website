@@ -1,7 +1,17 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { LanguageProvider } from './contexts/LanguageContext';
+import { LSSThemeProvider } from './contexts/LSSThemeContext';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { Suspense, lazy } from 'react';
+import ThemeWrapper from './components/LSS/ThemeWrapper';
+
+// Import LSS styles
+import './styles/lss-tokens.css';
+import './styles/lss-system.css';
+import './styles/lss-components.css';
+
+// Import Typography System
+import './styles/typography-system.css';
 
 // Lazy load pages for better performance
 const Landing = lazy(() => import('./pages/Landing/Landing').then(m => ({ default: m.Landing })));
@@ -34,26 +44,30 @@ function App() {
   return (
     <ErrorBoundary>
       <LanguageProvider>
-        <Router basename={basename}>
-          <Suspense fallback={<PageLoader />}>
-            <Routes>
-              <Route path="/" element={<Landing />} />
-              <Route path="/veo" element={<VeoLanding />} />
-              <Route path="/services" element={<Services />} />
-              <Route path="/what-we-do" element={<Services />} />
-              <Route path="/approach" element={<Approach />} />
-              <Route path="/insights" element={<Insights />} />
-              <Route path="/lab-notes" element={<Insights />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/work" element={<Work />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/design-system" element={<DesignSystem />} />
-              <Route path="/long-story-short" element={<LongStoryShort />} />
-              <Route path="/full-design-system" element={<FullDesignSystem />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </Suspense>
-        </Router>
+        <LSSThemeProvider>
+          <ThemeWrapper>
+            <Router basename={basename}>
+              <Suspense fallback={<PageLoader />}>
+                <Routes>
+                  <Route path="/" element={<Landing />} />
+                  <Route path="/veo" element={<VeoLanding />} />
+                  <Route path="/services" element={<Services />} />
+                  <Route path="/what-we-do" element={<Services />} />
+                  <Route path="/approach" element={<Approach />} />
+                  <Route path="/insights" element={<Insights />} />
+                  <Route path="/lab-notes" element={<Insights />} />
+                  <Route path="/contact" element={<Contact />} />
+                  <Route path="/work" element={<Work />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/design-system" element={<DesignSystem />} />
+                  <Route path="/long-story-short" element={<LongStoryShort />} />
+                  <Route path="/full-design-system" element={<FullDesignSystem />} />
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </Suspense>
+            </Router>
+          </ThemeWrapper>
+        </LSSThemeProvider>
       </LanguageProvider>
     </ErrorBoundary>
   );

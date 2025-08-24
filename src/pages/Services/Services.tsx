@@ -10,60 +10,60 @@ export const Services = () => {
 
   const services = [
     {
-      title: "AI Strategy & Consulting",
-      description: "Define your AI roadmap and identify the highest-impact opportunities for your business.",
+      title: "Strategic Sprint",
+      description: "Know if technology solves your problem—with working code to prove it.",
       features: [
-        "AI opportunity assessment",
-        "Technical feasibility analysis", 
-        "ROI modeling and planning",
-        "Implementation roadmap"
+        "Working prototype in your hands",
+        "Technical roadmap with clear steps",
+        "Clear go/no-go recommendation", 
+        "Understanding of real costs and timeline"
       ],
-      price: "Starting at $15k"
+      price: "Fixed investment"
     },
     {
-      title: "AI Product Development",
-      description: "Build production-ready AI applications with modern frameworks and best practices.",
+      title: "Product Development",
+      description: "From validated idea to production software your customers can use.",
       features: [
-        "Full-stack AI applications",
-        "Machine learning model development",
-        "API design and integration", 
-        "Cloud deployment and scaling"
+        "Live product customers can access",
+        "Clean, maintainable codebase",
+        "Complete documentation and handoff", 
+        "Your team owns everything"
       ],
-      price: "Starting at $50k"
+      price: "Transparent pricing"
     },
     {
-      title: "Team Augmentation",
-      description: "Scale your team with experienced AI engineers and product specialists.",
+      title: "Business Automation",
+      description: "Turn repetitive tasks into automated workflows. Get your time back.",
       features: [
-        "Senior ML engineers",
-        "AI product managers",
-        "Technical leadership",
-        "Knowledge transfer"
+        "Hours saved weekly, measurably",
+        "Elegant integration with existing tools",
+        "Team training and documentation",
+        "Ongoing optimization support"
       ],
-      price: "From $8k/month"
+      price: "ROI-based approach"
     }
   ];
 
   const process = [
     {
       step: "01",
-      title: "Discovery",
-      description: "We understand your business goals, technical constraints, and success criteria."
+      title: "Deep Listening",
+      description: "We understand your business model, customer pain points, and constraints. No generic discovery decks."
     },
     {
       step: "02", 
-      title: "Strategy",
-      description: "Define the AI solution architecture and implementation approach that fits your needs."
+      title: "Rapid Validation",
+      description: "See your core idea working. Real code, real functionality, real feedback opportunity."
     },
     {
       step: "03",
-      title: "Development",
-      description: "Build and iterate on your AI product with regular feedback and transparent progress."
+      title: "Collaborative Building",
+      description: "Regular check-ins and demos. You guide priorities, we handle execution."
     },
     {
       step: "04",
-      title: "Deployment",
-      description: "Launch your AI product with proper monitoring, documentation, and team training."
+      title: "Full Ownership",
+      description: "Your team owns the code. We ensure you're confident running and modifying it."
     }
   ];
 
@@ -78,10 +78,10 @@ export const Services = () => {
             transition={{ duration: 0.8 }}
           >
             <MLHeading level={1} className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-8">
-              AI Development Services
+              How We Work: Fast, Focused, Together
             </MLHeading>
             <MLText variant="bodyL" className="text-lg md:text-xl text-text-weak max-w-2xl mx-auto leading-relaxed">
-              End-to-end AI product development with a focus on business impact and user experience.
+              True partnership means working together, not working for you. Here's how we approach every project.
             </MLText>
           </motion.div>
         </div>

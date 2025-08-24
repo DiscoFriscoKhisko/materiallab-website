@@ -1,19 +1,25 @@
 import React, { useState } from 'react';
-import { Layout } from '../../components/Layout/Layout';
-import { MLText, MLHeading } from '../../components/ML';
-import { Button } from '../../components/UI/Button';
-import { ColorSystemShowcase } from './components/ColorSystemShowcase';
-import { GradientShowcase } from './components/GradientShowcase';
-import { ModeShowcase } from './components/ModeShowcase';
-import { DesignTokensDisplay } from './components/DesignTokensDisplay';
-import { MoodBoardSection } from './components/MoodBoardSection';
-import { LivePreview } from './components/LivePreview';
-import { TypographyPlayground } from './components/TypographyPlayground';
-import { TypeTester } from './components/TypeTester';
+import { DocsLayout } from './layouts/DocsLayout';
+import { 
+  // Atoms
+  GradientShowcase,
+  DesignTokensDisplay, 
+  TypographyPlayground,
+  TypographySpecimen,
+  DocumentationDisplay,
+  // Molecules  
+  ModeShowcase,
+  // Organisms
+  ColorSystemShowcase,
+  LivePreview,
+  MoodBoardSection 
+} from './atomic';
 import './LongStoryShort.css';
 import '../../styles/typography-enhanced.css';
+import '../../styles/typography-system.css';
+import './tokens/experimental-tokens.css';
 
-type SectionType = 'colors' | 'gradients' | 'modes' | 'tokens' | 'mood' | 'preview' | 'typography' | 'type-tester';
+type SectionType = 'colors' | 'gradients' | 'modes' | 'tokens' | 'mood' | 'preview' | 'typography' | 'type-specimen' | 'docs';
 type ThemeMode = 'light' | 'dark' | 'minimal' | 'maximal' | 'night-interior' | 'day-exterior' | 'golden-hour' | 'intimate' | 'dramatic' | 'memory';
 
 const LongStoryShort: React.FC = () => {
@@ -25,10 +31,11 @@ const LongStoryShort: React.FC = () => {
     { key: 'gradients' as const, label: 'Gradients', icon: '🌈' },
     { key: 'modes' as const, label: 'Design Modes', icon: '🎭' },
     { key: 'typography' as const, label: 'Typography', icon: '✍️' },
-    { key: 'type-tester' as const, label: 'Type Tester', icon: '🔍' },
+    { key: 'type-specimen' as const, label: 'Type Specimen', icon: '📋' },
     { key: 'tokens' as const, label: 'Design Tokens', icon: '⚙️' },
-    { key: 'mood' as const, label: 'Mood Board', icon: '📋' },
-    { key: 'preview' as const, label: 'Live Preview', icon: '👁️' }
+    { key: 'mood' as const, label: 'Mood Board', icon: '🎭' },
+    { key: 'preview' as const, label: 'Live Preview', icon: '👁️' },
+    { key: 'docs' as const, label: 'Documentation', icon: '📚' }
   ];
 
   const themeModes = [
@@ -57,21 +64,28 @@ const LongStoryShort: React.FC = () => {
         return <ModeShowcase currentMode={themeMode} onModeChange={setThemeMode} />;
       case 'typography':
         return <TypographyPlayground themeMode={themeMode} />;
-      case 'type-tester':
-        return <TypeTester themeMode={themeMode} />;
+      case 'type-specimen':
+        return <TypographySpecimen className={themeMode} />;
       case 'tokens':
         return <DesignTokensDisplay themeMode={themeMode} />;
       case 'mood':
         return <MoodBoardSection themeMode={themeMode} />;
       case 'preview':
         return <LivePreview themeMode={themeMode} />;
+      case 'docs':
+        return <DocumentationDisplay themeMode={themeMode} />;
       default:
         return <ColorSystemShowcase themeMode={themeMode} />;
     }
   };
 
   return (
-    <Layout>
+    <DocsLayout
+      activeSection={activeSection}
+      onSectionChange={setActiveSection}
+      themeMode={themeMode}
+      onThemeChange={setThemeMode}
+    >
       <div className={`lss-showcase ${themeMode}`}>
         {/* Hero Section */}
         <section className="lss-hero">
@@ -80,73 +94,18 @@ const LongStoryShort: React.FC = () => {
               Long Story Short
             </h1>
             <p className="lss-hero-subtitle ml-typo-display-3">
-              Cinematic color palette adapted for modern web experiences
+              Experimental Design System
             </p>
             <p className="lss-hero-description ml-typo-body-lg typo-expert">
-              A comprehensive design system inspired by nostalgic animation aesthetics,
-              featuring warm sunset tones, atmospheric gradients, and emotional depth
-              perfect for contemporary digital products.
+              Your playground for testing new designs. When we approve something here,
+              it gets copied to the main Material Lab website. Use the sidebar to
+              switch between all 10 theme modes and explore components.
             </p>
-            
-            {/* Theme Mode Switcher */}
-            <div className="lss-theme-switcher">
-              <span className="lss-switcher-label">Theme Mode:</span>
-              
-              {/* V1 Original Modes */}
-              <div className="lss-mode-section">
-                <span className="lss-version-label">Original (V1):</span>
-                <div className="lss-theme-buttons">
-                  {themeModes.filter(mode => mode.version === 'V1').map((mode) => (
-                    <button
-                      key={mode.key}
-                      className={`lss-theme-btn ${themeMode === mode.key ? 'active' : ''} v1-mode`}
-                      onClick={() => setThemeMode(mode.key)}
-                      title={mode.description}
-                    >
-                      {mode.label}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Film-Inspired Modes */}
-              <div className="lss-mode-section">
-                <span className="lss-version-label">Film-Inspired:</span>
-                <div className="lss-theme-buttons">
-                  {themeModes.filter(mode => mode.version === 'Film').map((mode) => (
-                    <button
-                      key={mode.key}
-                      className={`lss-theme-btn ${themeMode === mode.key ? 'active' : ''} film-mode`}
-                      onClick={() => setThemeMode(mode.key)}
-                      title={mode.description}
-                    >
-                      {mode.label}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
           </div>
           <div className="lss-hero-visual">
             <div className="lss-gradient-orb"></div>
           </div>
         </section>
-
-        {/* Navigation */}
-        <nav className="lss-nav">
-          <div className="lss-nav-container">
-            {sections.map((section) => (
-              <button
-                key={section.key}
-                className={`lss-nav-item ${activeSection === section.key ? 'active' : ''}`}
-                onClick={() => setActiveSection(section.key)}
-              >
-                <span className="lss-nav-icon">{section.icon}</span>
-                <span className="lss-nav-label">{section.label}</span>
-              </button>
-            ))}
-          </div>
-        </nav>
 
         {/* Content */}
         <main className="lss-content">
@@ -157,16 +116,16 @@ const LongStoryShort: React.FC = () => {
         <footer className="lss-footer">
           <div className="lss-stats">
             <div className="lss-stat">
-              <span className="lss-stat-number">7</span>
-              <span className="lss-stat-label">Core Colors</span>
-            </div>
-            <div className="lss-stat">
-              <span className="lss-stat-number">17</span>
-              <span className="lss-stat-label">Typography Styles</span>
-            </div>
-            <div className="lss-stat">
               <span className="lss-stat-number">10</span>
               <span className="lss-stat-label">Theme Modes</span>
+            </div>
+            <div className="lss-stat">
+              <span className="lss-stat-number">8</span>
+              <span className="lss-stat-label">Components</span>
+            </div>
+            <div className="lss-stat">
+              <span className="lss-stat-number">3</span>
+              <span className="lss-stat-label">Categories</span>
             </div>
             <div className="lss-stat">
               <span className="lss-stat-number">WCAG AA</span>
@@ -175,7 +134,7 @@ const LongStoryShort: React.FC = () => {
           </div>
         </footer>
       </div>
-    </Layout>
+    </DocsLayout>
   );
 };
 

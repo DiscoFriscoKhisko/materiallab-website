@@ -26,6 +26,14 @@
     "validate:themes": "node scripts/validate-theme-support.js",
     "validate:performance": "bundlesize",
     "validate:all": "npm run validate:tokens && npm run validate:atomic && npm run validate:themes && npm run validate:performance",
+    "claude:quick-check": "tsx scripts/quick-check.ts",
+    "claude:full-validation": "tsx scripts/run-validation.ts full",
+    "claude:correction-loop": "tsx scripts/run-validation.ts loop",
+    "claude:material-design": "tsx scripts/run-validation.ts quick --component",
+    "claude:brand-check": "tsx scripts/validation-pipeline.ts",
+    "claude:context-load": "tsx scripts/context-loader.ts",
+    "claude:test": "tsx scripts/test-orchestration.ts",
+    "claude:quality-gates": "tsx scripts/quality-gates.ts",
     "atomic:registry": "node scripts/generate-component-registry.js",
     "atomic:migrate": "node scripts/migrate-component.js",
     "atomic:create": "node scripts/create-component.js",
@@ -58,6 +66,8 @@
     "tailwindcss": "^3.4.17",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.39.1",
+    "tsx": "^4.7.0",
+    "commander": "^11.1.0",
     "vite": "^7.1.2"
   }
 }

@@ -11,7 +11,7 @@
     "grepInvert": null,
     "maxFailures": 0,
     "metadata": {
-      "actualWorkers": 3
+      "actualWorkers": 4
     },
     "preserveOutput": "always",
     "reporter": [
@@ -44,7 +44,7 @@
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
-          "actualWorkers": 3
+          "actualWorkers": 4
         },
         "id": "setup",
         "name": "setup",
@@ -53,14 +53,14 @@
         "testMatch": [
           "/.*setup\\.ts/"
         ],
-        "timeout": 10000
+        "timeout": 30000
       },
       {
         "outputDir": "/Users/damini/materiallab-website/test-results",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
-          "actualWorkers": 3
+          "actualWorkers": 4
         },
         "id": "chromium",
         "name": "chromium",
@@ -69,14 +69,14 @@
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
         ],
-        "timeout": 10000
+        "timeout": 30000
       },
       {
         "outputDir": "/Users/damini/materiallab-website/test-results",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
-          "actualWorkers": 3
+          "actualWorkers": 4
         },
         "id": "mobile-chrome",
         "name": "mobile-chrome",
@@ -85,14 +85,14 @@
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
         ],
-        "timeout": 10000
+        "timeout": 30000
       },
       {
         "outputDir": "/Users/damini/materiallab-website/test-results",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
-          "actualWorkers": 3
+          "actualWorkers": 4
         },
         "id": "tablet",
         "name": "tablet",
@@ -101,14 +101,14 @@
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
         ],
-        "timeout": 10000
+        "timeout": 30000
       },
       {
         "outputDir": "/Users/damini/materiallab-website/test-results",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
-          "actualWorkers": 3
+          "actualWorkers": 4
         },
         "id": "firefox",
         "name": "firefox",
@@ -117,14 +117,14 @@
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
         ],
-        "timeout": 10000
+        "timeout": 30000
       },
       {
         "outputDir": "/Users/damini/materiallab-website/test-results",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
-          "actualWorkers": 3
+          "actualWorkers": 4
         },
         "id": "webkit",
         "name": "webkit",
@@ -133,14 +133,14 @@
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
         ],
-        "timeout": 10000
+        "timeout": 30000
       },
       {
         "outputDir": "/Users/damini/materiallab-website/test-results",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
-          "actualWorkers": 3
+          "actualWorkers": 4
         },
         "id": "high-dpi",
         "name": "high-dpi",
@@ -149,14 +149,14 @@
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
         ],
-        "timeout": 10000
+        "timeout": 30000
       },
       {
         "outputDir": "/Users/damini/materiallab-website/test-results",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
-          "actualWorkers": 3
+          "actualWorkers": 4
         },
         "id": "dark-theme",
         "name": "dark-theme",
@@ -165,7 +165,7 @@
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
         ],
-        "timeout": 10000
+        "timeout": 30000
       }
     ],
     "shard": null,
@@ -175,7 +175,7 @@
     "workers": 4,
     "webServer": {
       "command": "npm run dev",
-      "url": "http://localhost:3001",
+      "url": "http://localhost:3000",
       "reuseExistingServer": true,
       "timeout": 120000
     }
@@ -193,7 +193,7 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 10000,
+              "timeout": 30000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "setup",
@@ -203,7 +203,7 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1809,
+                  "duration": 1665,
                   "errors": [],
                   "stdout": [
                     {
@@ -215,7 +215,7 @@
                   ],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-08-22T18:40:45.222Z",
+                  "startTime": "2025-08-23T21:30:26.897Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -234,7 +234,7 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 10000,
+              "timeout": 30000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "setup",
@@ -244,7 +244,7 @@
                   "workerIndex": 1,
                   "parallelIndex": 1,
                   "status": "passed",
-                  "duration": 1792,
+                  "duration": 1703,
                   "errors": [],
                   "stdout": [
                     {
@@ -256,7 +256,7 @@
                   ],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-08-22T18:40:45.222Z",
+                  "startTime": "2025-08-23T21:30:26.898Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -275,7 +275,7 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 10000,
+              "timeout": 30000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "setup",
@@ -285,7 +285,7 @@
                   "workerIndex": 2,
                   "parallelIndex": 2,
                   "status": "passed",
-                  "duration": 4873,
+                  "duration": 5131,
                   "errors": [],
                   "stdout": [
                     {
@@ -315,7 +315,7 @@
                   ],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2025-08-22T18:40:45.221Z",
+                  "startTime": "2025-08-23T21:30:26.899Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -331,25 +331,25 @@
       ]
     },
     {
-      "title": "visual-audit-system.spec.ts",
-      "file": "visual-audit-system.spec.ts",
+      "title": "lss-integration.spec.js",
+      "file": "lss-integration.spec.js",
       "column": 0,
       "line": 0,
       "specs": [],
       "suites": [
         {
-          "title": "Comprehensive Visual Audit System",
-          "file": "visual-audit-system.spec.ts",
-          "line": 286,
+          "title": "LSS Design System Integration",
+          "file": "lss-integration.spec.js",
+          "line": 3,
           "column": 6,
           "specs": [
             {
-              "title": "capture full site visual audit",
+              "title": "should display all LSS components correctly",
               "ok": false,
               "tags": [],
               "tests": [
                 {
-                  "timeout": 10000,
+                  "timeout": 30000,
                   "annotations": [],
                   "expectedStatus": "passed",
                   "projectId": "chromium",
@@ -358,215 +358,427 @@
                     {
                       "workerIndex": 3,
                       "parallelIndex": 0,
-                      "status": "timedOut",
-                      "duration": 10115,
+                      "status": "failed",
+                      "duration": 3093,
                       "error": {
-                        "message": "\u001b[31mTest timeout of 10000ms exceeded.\u001b[39m",
-                        "stack": "\u001b[31mTest timeout of 10000ms exceeded.\u001b[39m"
+                        "message": "Error: expect.toContainText: Error: strict mode violation: locator('h1') resolved to 4 elements:\n    1) <h1 class=\"lss-hero-text lss-hero-title\">Software that creates material impact</h1> aka getByRole('heading', { name: 'Software that creates' })\n    2) <h1 class=\"lss-display-3 lss-stat-number\">50+</h1> aka getByRole('heading', { name: '+' })\n    3) <h1 class=\"lss-display-3 lss-stat-number\">2 weeks</h1> aka getByRole('heading', { name: 'weeks' })\n    4) <h1 class=\"lss-display-3 lss-stat-number\">98%</h1> aka getByRole('heading', { name: '%' })\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('h1')\u001b[22m\n",
+                        "stack": "Error: expect.toContainText: Error: strict mode violation: locator('h1') resolved to 4 elements:\n    1) <h1 class=\"lss-hero-text lss-hero-title\">Software that creates material impact</h1> aka getByRole('heading', { name: 'Software that creates' })\n    2) <h1 class=\"lss-display-3 lss-stat-number\">50+</h1> aka getByRole('heading', { name: '+' })\n    3) <h1 class=\"lss-display-3 lss-stat-number\">2 weeks</h1> aka getByRole('heading', { name: 'weeks' })\n    4) <h1 class=\"lss-display-3 lss-stat-number\">98%</h1> aka getByRole('heading', { name: '%' })\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('h1')\u001b[22m\n\n    at /Users/damini/materiallab-website/tests/lss-integration.spec.js:12:38",
+                        "location": {
+                          "file": "/Users/damini/materiallab-website/tests/lss-integration.spec.js",
+                          "column": 38,
+                          "line": 12
+                        },
+                        "snippet": "  10 |     // Check hero section\n  11 |     await expect(page.locator('.lss-hero-section')).toBeVisible();\n> 12 |     await expect(page.locator('h1')).toContainText('Software that creates material impact');\n     |                                      ^\n  13 |     \n  14 |     // Check services section\n  15 |     await expect(page.locator('.lss-services-section')).toBeVisible();"
                       },
                       "errors": [
                         {
-                          "message": "\u001b[31mTest timeout of 10000ms exceeded.\u001b[39m"
-                        },
-                        {
                           "location": {
-                            "file": "/Users/damini/materiallab-website/tests/visual-audit-system.spec.ts",
-                            "column": 21,
-                            "line": 140
+                            "file": "/Users/damini/materiallab-website/tests/lss-integration.spec.js",
+                            "column": 38,
+                            "line": 12
                           },
-                          "message": "Error: page.goto: Target page, context or browser has been closed\n\n  138 |   private async analyzeHomepage(issues: VisualIssue[]): Promise<void> {\n  139 |     // Navigate to homepage for DOM analysis\n> 140 |     await this.page.goto('/');\n      |                     ^\n  141 |     await this.page.waitForLoadState('networkidle');\n  142 |     \n  143 |     // Check hero section layout\n    at VisualAuditAnalyzer.analyzeHomepage (/Users/damini/materiallab-website/tests/visual-audit-system.spec.ts:140:21)\n    at VisualAuditAnalyzer.analyzeVisualIssues (/Users/damini/materiallab-website/tests/visual-audit-system.spec.ts:127:16)\n    at /Users/damini/materiallab-website/tests/visual-audit-system.spec.ts:294:35"
+                          "message": "Error: expect.toContainText: Error: strict mode violation: locator('h1') resolved to 4 elements:\n    1) <h1 class=\"lss-hero-text lss-hero-title\">Software that creates material impact</h1> aka getByRole('heading', { name: 'Software that creates' })\n    2) <h1 class=\"lss-display-3 lss-stat-number\">50+</h1> aka getByRole('heading', { name: '+' })\n    3) <h1 class=\"lss-display-3 lss-stat-number\">2 weeks</h1> aka getByRole('heading', { name: 'weeks' })\n    4) <h1 class=\"lss-display-3 lss-stat-number\">98%</h1> aka getByRole('heading', { name: '%' })\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('h1')\u001b[22m\n\n\n  10 |     // Check hero section\n  11 |     await expect(page.locator('.lss-hero-section')).toBeVisible();\n> 12 |     await expect(page.locator('h1')).toContainText('Software that creates material impact');\n     |                                      ^\n  13 |     \n  14 |     // Check services section\n  15 |     await expect(page.locator('.lss-services-section')).toBeVisible();\n    at /Users/damini/materiallab-website/tests/lss-integration.spec.js:12:38"
                         }
                       ],
-                      "stdout": [
-                        {
-                          "text": "🎯 Starting comprehensive visual audit...\n"
-                        },
-                        {
-                          "text": "  ✓ homepage @ desktop (1920x1080)\n"
-                        },
-                        {
-                          "text": "  ✓ homepage @ laptop (1440x900)\n"
-                        },
-                        {
-                          "text": "  ✓ homepage @ tablet (768x1024)\n"
-                        },
-                        {
-                          "text": "  ✓ homepage @ mobile (375x667)\n"
-                        },
-                        {
-                          "text": "  ✓ homepage @ mobile-large (414x896)\n"
-                        },
-                        {
-                          "text": "  ✓ services @ desktop (1920x1080)\n"
-                        },
-                        {
-                          "text": "  ❌ Failed: services @ laptop - Error: page.waitForTimeout: Test timeout of 10000ms exceeded.\n"
-                        },
-                        {
-                          "text": "  ❌ Failed: services @ tablet - Error: page.setViewportSize: Target page, context or browser has been closed\n"
-                        },
-                        {
-                          "text": "  ❌ Failed: services @ mobile - Error: page.setViewportSize: Target page, context or browser has been closed\n"
-                        },
-                        {
-                          "text": "  ❌ Failed: services @ mobile-large - Error: page.setViewportSize: Target page, context or browser has been closed\n"
-                        },
-                        {
-                          "text": "  ❌ Failed: work @ desktop - Error: page.setViewportSize: Target page, context or browser has been closed\n"
-                        },
-                        {
-                          "text": "  ❌ Failed: work @ laptop - Error: page.setViewportSize: Target page, context or browser has been closed\n"
-                        },
-                        {
-                          "text": "  ❌ Failed: work @ tablet - Error: page.setViewportSize: Target page, context or browser has been closed\n"
-                        },
-                        {
-                          "text": "  ❌ Failed: work @ mobile - Error: page.setViewportSize: Target page, context or browser has been closed\n"
-                        },
-                        {
-                          "text": "  ❌ Failed: work @ mobile-large - Error: page.setViewportSize: Target page, context or browser has been closed\n"
-                        },
-                        {
-                          "text": "  ❌ Failed: approach @ desktop - Error: page.setViewportSize: Target page, context or browser has been closed\n"
-                        },
-                        {
-                          "text": "  ❌ Failed: approach @ laptop - Error: page.setViewportSize: Target page, context or browser has been closed\n"
-                        },
-                        {
-                          "text": "  ❌ Failed: approach @ tablet - Error: page.setViewportSize: Target page, context or browser has been closed\n"
-                        },
-                        {
-                          "text": "  ❌ Failed: approach @ mobile - Error: page.setViewportSize: Target page, context or browser has been closed\n"
-                        },
-                        {
-                          "text": "  ❌ Failed: approach @ mobile-large - Error: page.setViewportSize: Target page, context or browser has been closed\n"
-                        },
-                        {
-                          "text": "  ❌ Failed: about @ desktop - Error: page.setViewportSize: Target page, context or browser has been closed\n"
-                        },
-                        {
-                          "text": "  ❌ Failed: about @ laptop - Error: page.setViewportSize: Target page, context or browser has been closed\n"
-                        },
-                        {
-                          "text": "  ❌ Failed: about @ tablet - Error: page.setViewportSize: Target page, context or browser has been closed\n"
-                        },
-                        {
-                          "text": "  ❌ Failed: about @ mobile - Error: page.setViewportSize: Target page, context or browser has been closed\n"
-                        },
-                        {
-                          "text": "  ❌ Failed: about @ mobile-large - Error: page.setViewportSize: Target page, context or browser has been closed\n"
-                        },
-                        {
-                          "text": "  ❌ Failed: contact @ desktop - Error: page.setViewportSize: Target page, context or browser has been closed\n"
-                        },
-                        {
-                          "text": "  ❌ Failed: contact @ laptop - Error: page.setViewportSize: Target page, context or browser has been closed\n"
-                        },
-                        {
-                          "text": "  ❌ Failed: contact @ tablet - Error: page.setViewportSize: Target page, context or browser has been closed\n"
-                        },
-                        {
-                          "text": "  ❌ Failed: contact @ mobile - Error: page.setViewportSize: Target page, context or browser has been closed\n"
-                        },
-                        {
-                          "text": "  ❌ Failed: contact @ mobile-large - Error: page.setViewportSize: Target page, context or browser has been closed\n"
-                        },
-                        {
-                          "text": "  ❌ Failed: insights @ desktop - Error: page.setViewportSize: Target page, context or browser has been closed\n"
-                        },
-                        {
-                          "text": "  ❌ Failed: insights @ laptop - Error: page.setViewportSize: Target page, context or browser has been closed\n"
-                        },
-                        {
-                          "text": "  ❌ Failed: insights @ tablet - Error: page.setViewportSize: Target page, context or browser has been closed\n"
-                        },
-                        {
-                          "text": "  ❌ Failed: insights @ mobile - Error: page.setViewportSize: Target page, context or browser has been closed\n"
-                        },
-                        {
-                          "text": "  ❌ Failed: insights @ mobile-large - Error: page.setViewportSize: Target page, context or browser has been closed\n"
-                        },
-                        {
-                          "text": "  ❌ Failed: veo-landing @ desktop - Error: page.setViewportSize: Target page, context or browser has been closed\n"
-                        },
-                        {
-                          "text": "  ❌ Failed: veo-landing @ laptop - Error: page.setViewportSize: Target page, context or browser has been closed\n"
-                        },
-                        {
-                          "text": "  ❌ Failed: veo-landing @ tablet - Error: page.setViewportSize: Target page, context or browser has been closed\n"
-                        },
-                        {
-                          "text": "  ❌ Failed: veo-landing @ mobile - Error: page.setViewportSize: Target page, context or browser has been closed\n"
-                        },
-                        {
-                          "text": "  ❌ Failed: veo-landing @ mobile-large - Error: page.setViewportSize: Target page, context or browser has been closed\n"
-                        },
-                        {
-                          "text": "📸 Captured 6 screenshots\n"
-                        },
-                        {
-                          "text": "📊 Visual audit complete - 6 screenshots captured\n"
-                        },
-                        {
-                          "text": "📁 Screenshots available in: test-results/audit/\n"
-                        },
-                        {
-                          "text": "\n📸 SCREENSHOT INVENTORY:\n"
-                        },
-                        {
-                          "text": "========================\n"
-                        },
-                        {
-                          "text": "  ✓ homepage     @ desktop      (1920x1080)\n"
-                        },
-                        {
-                          "text": "  ✓ homepage     @ laptop       (1440x900)\n"
-                        },
-                        {
-                          "text": "  ✓ homepage     @ tablet       (768x1024)\n"
-                        },
-                        {
-                          "text": "  ✓ homepage     @ mobile       (375x667)\n"
-                        },
-                        {
-                          "text": "  ✓ homepage     @ mobile       (375x667)\n"
-                        },
-                        {
-                          "text": "  ✓ services     @ desktop      (1920x1080)\n"
-                        },
-                        {
-                          "text": "🔍 Analyzing visual issues from screenshots...\n"
-                        }
-                      ],
+                      "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-08-22T18:40:50.538Z",
+                      "startTime": "2025-08-23T21:30:33.001Z",
                       "annotations": [],
                       "attachments": [
                         {
                           "name": "screenshot",
                           "contentType": "image/png",
-                          "path": "/Users/damini/materiallab-website/test-results/visual-audit-system-Compre-b748c-ture-full-site-visual-audit-chromium/test-failed-1.png"
+                          "path": "/Users/damini/materiallab-website/test-results/lss-integration-LSS-Design-d4e20-ll-LSS-components-correctly-chromium/test-failed-1.png"
                         },
                         {
                           "name": "video",
                           "contentType": "video/webm",
-                          "path": "/Users/damini/materiallab-website/test-results/visual-audit-system-Compre-b748c-ture-full-site-visual-audit-chromium/video.webm"
+                          "path": "/Users/damini/materiallab-website/test-results/lss-integration-LSS-Design-d4e20-ll-LSS-components-correctly-chromium/video.webm"
                         },
                         {
                           "name": "error-context",
                           "contentType": "text/markdown",
-                          "path": "/Users/damini/materiallab-website/test-results/visual-audit-system-Compre-b748c-ture-full-site-visual-audit-chromium/error-context.md"
+                          "path": "/Users/damini/materiallab-website/test-results/lss-integration-LSS-Design-d4e20-ll-LSS-components-correctly-chromium/error-context.md"
                         }
-                      ]
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/damini/materiallab-website/tests/lss-integration.spec.js",
+                        "column": 38,
+                        "line": 12
+                      }
                     }
                   ],
                   "status": "unexpected"
                 }
               ],
-              "id": "eae4f6a9945402b2a6e0-9e6c3b1d84485742a282",
-              "file": "visual-audit-system.spec.ts",
-              "line": 287,
+              "id": "95a8afbaad95ad7dc465-aeec5c371bdaaa7398b4",
+              "file": "lss-integration.spec.js",
+              "line": 9,
+              "column": 3
+            },
+            {
+              "title": "should display theme selector",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 3031,
+                      "error": {
+                        "message": "Error: expect.toBeVisible: Error: strict mode violation: locator('div').filter({ hasText: /Current Theme:/ }) resolved to 4 elements:\n    1) <div id=\"root\">…</div> aka locator('#root')\n    2) <div class=\"lss-app min-h-screen transition-all duration-500 light\">…</div> aka locator('div').filter({ hasText: 'Skip to main' }).nth(1)\n    3) <div>…</div> aka getByText('Current Theme: lightTotal')\n    4) <div>…</div> aka getByText('Current Theme: light')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('div').filter({ hasText: /Current Theme:/ })\u001b[22m\n",
+                        "stack": "Error: expect.toBeVisible: Error: strict mode violation: locator('div').filter({ hasText: /Current Theme:/ }) resolved to 4 elements:\n    1) <div id=\"root\">…</div> aka locator('#root')\n    2) <div class=\"lss-app min-h-screen transition-all duration-500 light\">…</div> aka locator('div').filter({ hasText: 'Skip to main' }).nth(1)\n    3) <div>…</div> aka getByText('Current Theme: lightTotal')\n    4) <div>…</div> aka getByText('Current Theme: light')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('div').filter({ hasText: /Current Theme:/ })\u001b[22m\n\n    at /Users/damini/materiallab-website/tests/lss-integration.spec.js:42:29",
+                        "location": {
+                          "file": "/Users/damini/materiallab-website/tests/lss-integration.spec.js",
+                          "column": 29,
+                          "line": 42
+                        },
+                        "snippet": "  40 |     // Check theme test indicator\n  41 |     const themeTest = page.locator('div').filter({ hasText: /Current Theme:/ });\n> 42 |     await expect(themeTest).toBeVisible();\n     |                             ^\n  43 |     await expect(themeTest).toContainText('Total Modes: 10');\n  44 |   });\n  45 |"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/damini/materiallab-website/tests/lss-integration.spec.js",
+                            "column": 29,
+                            "line": 42
+                          },
+                          "message": "Error: expect.toBeVisible: Error: strict mode violation: locator('div').filter({ hasText: /Current Theme:/ }) resolved to 4 elements:\n    1) <div id=\"root\">…</div> aka locator('#root')\n    2) <div class=\"lss-app min-h-screen transition-all duration-500 light\">…</div> aka locator('div').filter({ hasText: 'Skip to main' }).nth(1)\n    3) <div>…</div> aka getByText('Current Theme: lightTotal')\n    4) <div>…</div> aka getByText('Current Theme: light')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('div').filter({ hasText: /Current Theme:/ })\u001b[22m\n\n\n  40 |     // Check theme test indicator\n  41 |     const themeTest = page.locator('div').filter({ hasText: /Current Theme:/ });\n> 42 |     await expect(themeTest).toBeVisible();\n     |                             ^\n  43 |     await expect(themeTest).toContainText('Total Modes: 10');\n  44 |   });\n  45 |\n    at /Users/damini/materiallab-website/tests/lss-integration.spec.js:42:29"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-23T21:30:33.001Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/damini/materiallab-website/test-results/lss-integration-LSS-Design-01da1-ould-display-theme-selector-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/damini/materiallab-website/test-results/lss-integration-LSS-Design-01da1-ould-display-theme-selector-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/damini/materiallab-website/test-results/lss-integration-LSS-Design-01da1-ould-display-theme-selector-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/damini/materiallab-website/tests/lss-integration.spec.js",
+                        "column": 29,
+                        "line": 42
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "95a8afbaad95ad7dc465-273b1985eac7592a6fb2",
+              "file": "lss-integration.spec.js",
+              "line": 35,
+              "column": 3
+            },
+            {
+              "title": "should switch between all 10 themes",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 2,
+                      "status": "failed",
+                      "duration": 4526,
+                      "error": {
+                        "message": "Error: expect.toContainText: Error: strict mode violation: locator('div').filter({ hasText: /Current Theme:/ }) resolved to 4 elements:\n    1) <div id=\"root\">…</div> aka locator('#root')\n    2) <div class=\"lss-app min-h-screen transition-all duration-500 light\">…</div> aka locator('div').filter({ hasText: 'Skip to main' }).nth(1)\n    3) <div>…</div> aka getByText('Current Theme: lightTotal')\n    4) <div>…</div> aka getByText('Current Theme: light')\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('div').filter({ hasText: /Current Theme:/ })\u001b[22m\n",
+                        "stack": "Error: expect.toContainText: Error: strict mode violation: locator('div').filter({ hasText: /Current Theme:/ }) resolved to 4 elements:\n    1) <div id=\"root\">…</div> aka locator('#root')\n    2) <div class=\"lss-app min-h-screen transition-all duration-500 light\">…</div> aka locator('div').filter({ hasText: 'Skip to main' }).nth(1)\n    3) <div>…</div> aka getByText('Current Theme: lightTotal')\n    4) <div>…</div> aka getByText('Current Theme: light')\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('div').filter({ hasText: /Current Theme:/ })\u001b[22m\n\n    at /Users/damini/materiallab-website/tests/lss-integration.spec.js:64:31",
+                        "location": {
+                          "file": "/Users/damini/materiallab-website/tests/lss-integration.spec.js",
+                          "column": 31,
+                          "line": 64
+                        },
+                        "snippet": "  62 |       // Verify theme is applied\n  63 |       const themeTest = page.locator('div').filter({ hasText: /Current Theme:/ });\n> 64 |       await expect(themeTest).toContainText(theme.toLowerCase());\n     |                               ^\n  65 |       \n  66 |       // Reopen theme selector\n  67 |       await page.click('.fixed.bottom-6.right-6 button');"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/damini/materiallab-website/tests/lss-integration.spec.js",
+                            "column": 31,
+                            "line": 64
+                          },
+                          "message": "Error: expect.toContainText: Error: strict mode violation: locator('div').filter({ hasText: /Current Theme:/ }) resolved to 4 elements:\n    1) <div id=\"root\">…</div> aka locator('#root')\n    2) <div class=\"lss-app min-h-screen transition-all duration-500 light\">…</div> aka locator('div').filter({ hasText: 'Skip to main' }).nth(1)\n    3) <div>…</div> aka getByText('Current Theme: lightTotal')\n    4) <div>…</div> aka getByText('Current Theme: light')\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('div').filter({ hasText: /Current Theme:/ })\u001b[22m\n\n\n  62 |       // Verify theme is applied\n  63 |       const themeTest = page.locator('div').filter({ hasText: /Current Theme:/ });\n> 64 |       await expect(themeTest).toContainText(theme.toLowerCase());\n     |                               ^\n  65 |       \n  66 |       // Reopen theme selector\n  67 |       await page.click('.fixed.bottom-6.right-6 button');\n    at /Users/damini/materiallab-website/tests/lss-integration.spec.js:64:31"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-23T21:30:33.008Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/damini/materiallab-website/test-results/lss-integration-LSS-Design-b23e1-witch-between-all-10-themes-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/damini/materiallab-website/test-results/lss-integration-LSS-Design-b23e1-witch-between-all-10-themes-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/damini/materiallab-website/test-results/lss-integration-LSS-Design-b23e1-witch-between-all-10-themes-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/damini/materiallab-website/tests/lss-integration.spec.js",
+                        "column": 31,
+                        "line": 64
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "95a8afbaad95ad7dc465-c53320003653bb843ca6",
+              "file": "lss-integration.spec.js",
+              "line": 46,
+              "column": 3
+            },
+            {
+              "title": "should apply theme-specific colors and styling",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 4534,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-23T21:30:32.998Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "95a8afbaad95ad7dc465-8a5331a4c27c1b7885d8",
+              "file": "lss-integration.spec.js",
+              "line": 88,
+              "column": 3
+            },
+            {
+              "title": "should display service cards with proper styling",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 2784,
+                      "error": {
+                        "message": "TypeError: page.locator(...).scrollIntoView is not a function",
+                        "stack": "TypeError: page.locator(...).scrollIntoView is not a function\n    at /Users/damini/materiallab-website/tests/lss-integration.spec.js:113:49",
+                        "location": {
+                          "file": "/Users/damini/materiallab-website/tests/lss-integration.spec.js",
+                          "column": 49,
+                          "line": 113
+                        },
+                        "snippet": "  111 |   test('should display service cards with proper styling', async ({ page }) => {\n  112 |     // Scroll to services section\n> 113 |     await page.locator('.lss-services-section').scrollIntoView();\n      |                                                 ^\n  114 |     await page.waitForTimeout(1000);\n  115 |     \n  116 |     // Check service cards styling"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/damini/materiallab-website/tests/lss-integration.spec.js",
+                            "column": 49,
+                            "line": 113
+                          },
+                          "message": "TypeError: page.locator(...).scrollIntoView is not a function\n\n  111 |   test('should display service cards with proper styling', async ({ page }) => {\n  112 |     // Scroll to services section\n> 113 |     await page.locator('.lss-services-section').scrollIntoView();\n      |                                                 ^\n  114 |     await page.waitForTimeout(1000);\n  115 |     \n  116 |     // Check service cards styling\n    at /Users/damini/materiallab-website/tests/lss-integration.spec.js:113:49"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-23T21:30:37.064Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/damini/materiallab-website/test-results/lss-integration-LSS-Design-31dc3-e-cards-with-proper-styling-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/damini/materiallab-website/test-results/lss-integration-LSS-Design-31dc3-e-cards-with-proper-styling-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/damini/materiallab-website/test-results/lss-integration-LSS-Design-31dc3-e-cards-with-proper-styling-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/damini/materiallab-website/tests/lss-integration.spec.js",
+                        "column": 49,
+                        "line": 113
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "95a8afbaad95ad7dc465-836321ce24e86627fdfb",
+              "file": "lss-integration.spec.js",
+              "line": 111,
+              "column": 3
+            },
+            {
+              "title": "should navigate to other pages with theme persistence",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 8,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5472,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-23T21:30:37.059Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "95a8afbaad95ad7dc465-a0c8580c851cadb48beb",
+              "file": "lss-integration.spec.js",
+              "line": 131,
+              "column": 3
+            },
+            {
+              "title": "should have no console errors",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 3,
+                      "status": "failed",
+                      "duration": 2681,
+                      "error": {
+                        "message": "TypeError: page.locator(...).scrollIntoView is not a function",
+                        "stack": "TypeError: page.locator(...).scrollIntoView is not a function\n    at /Users/damini/materiallab-website/tests/lss-integration.spec.js:159:49",
+                        "location": {
+                          "file": "/Users/damini/materiallab-website/tests/lss-integration.spec.js",
+                          "column": 49,
+                          "line": 159
+                        },
+                        "snippet": "  157 |     \n  158 |     // Navigate and interact\n> 159 |     await page.locator('.lss-services-section').scrollIntoView();\n      |                                                 ^\n  160 |     await page.waitForTimeout(1000);\n  161 |     \n  162 |     await page.click('.fixed.bottom-6.right-6 button');"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/damini/materiallab-website/tests/lss-integration.spec.js",
+                            "column": 49,
+                            "line": 159
+                          },
+                          "message": "TypeError: page.locator(...).scrollIntoView is not a function\n\n  157 |     \n  158 |     // Navigate and interact\n> 159 |     await page.locator('.lss-services-section').scrollIntoView();\n      |                                                 ^\n  160 |     await page.waitForTimeout(1000);\n  161 |     \n  162 |     await page.click('.fixed.bottom-6.right-6 button');\n    at /Users/damini/materiallab-website/tests/lss-integration.spec.js:159:49"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-23T21:30:37.737Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/damini/materiallab-website/test-results/lss-integration-LSS-Design-72fcb-ould-have-no-console-errors-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/damini/materiallab-website/test-results/lss-integration-LSS-Design-72fcb-ould-have-no-console-errors-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/damini/materiallab-website/test-results/lss-integration-LSS-Design-72fcb-ould-have-no-console-errors-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/damini/materiallab-website/tests/lss-integration.spec.js",
+                        "column": 49,
+                        "line": 159
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "95a8afbaad95ad7dc465-ec292fa1636f7b053a72",
+              "file": "lss-integration.spec.js",
+              "line": 150,
               "column": 3
             }
           ]
@@ -576,11 +788,11 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-08-22T18:40:39.267Z",
-    "duration": 21499.202,
-    "expected": 3,
+    "startTime": "2025-08-23T21:30:19.705Z",
+    "duration": 23302.079,
+    "expected": 5,
     "skipped": 0,
-    "unexpected": 1,
+    "unexpected": 5,
     "flaky": 0
   }
 }

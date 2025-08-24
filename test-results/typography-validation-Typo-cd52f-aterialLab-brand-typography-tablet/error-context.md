@@ -1,0 +1,292 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e4]:
+  - complementary [ref=e5]:
+    - heading "LSS Design System ←" [level=2] [ref=e7]:
+      - text: LSS Design System
+      - button "←" [ref=e8] [cursor=pointer]
+    - generic [ref=e9]:
+      - generic [ref=e10]:
+        - heading "Foundation" [level=3] [ref=e11]
+        - generic [ref=e12]:
+          - generic [ref=e13] [cursor=pointer]:
+            - generic [ref=e14] [cursor=pointer]: 🎨
+            - generic [ref=e15] [cursor=pointer]: Colors
+          - generic [ref=e16] [cursor=pointer]:
+            - generic [ref=e17] [cursor=pointer]: ✍️
+            - generic [ref=e18] [cursor=pointer]: Typography
+          - generic [ref=e19] [cursor=pointer]:
+            - generic [ref=e20] [cursor=pointer]: 🌈
+            - generic [ref=e21] [cursor=pointer]: Gradients
+          - generic [ref=e22] [cursor=pointer]:
+            - generic [ref=e23] [cursor=pointer]: ⚙️
+            - generic [ref=e24] [cursor=pointer]: Tokens
+      - generic [ref=e25]:
+        - heading "Themes" [level=3] [ref=e26]
+        - generic [ref=e28] [cursor=pointer]:
+          - generic [ref=e29] [cursor=pointer]: 🎭
+          - generic [ref=e30] [cursor=pointer]: Theme Modes
+          - generic [ref=e31] [cursor=pointer]: New
+      - generic [ref=e32]:
+        - heading "Tools" [level=3] [ref=e33]
+        - generic [ref=e34]:
+          - generic [ref=e35] [cursor=pointer]:
+            - generic [ref=e36] [cursor=pointer]: 🔍
+            - generic [ref=e37] [cursor=pointer]: Type Tester
+          - generic [ref=e38] [cursor=pointer]:
+            - generic [ref=e39] [cursor=pointer]: 📋
+            - generic [ref=e40] [cursor=pointer]: Mood Board
+          - generic [ref=e41] [cursor=pointer]:
+            - generic [ref=e42] [cursor=pointer]: 👁️
+            - generic [ref=e43] [cursor=pointer]: Live Preview
+      - generic [ref=e44]:
+        - heading "System" [level=3] [ref=e45]
+        - generic [ref=e47] [cursor=pointer]:
+          - generic [ref=e48] [cursor=pointer]: 📚
+          - generic [ref=e49] [cursor=pointer]: Documentation
+    - generic [ref=e50]:
+      - generic [ref=e51]:
+        - heading "V1 Original" [level=3] [ref=e52]
+        - generic [ref=e53]:
+          - button "Light" [ref=e54] [cursor=pointer]
+          - button "Dark" [ref=e55] [cursor=pointer]
+          - button "Minimal" [ref=e56] [cursor=pointer]
+          - button "Maximal" [ref=e57] [cursor=pointer]
+      - generic [ref=e58]:
+        - heading "Film InspiredExperimental" [level=3] [ref=e59]:
+          - text: Film Inspired
+          - generic [ref=e60]: Experimental
+        - generic [ref=e61]:
+          - button "Night Interior" [ref=e62] [cursor=pointer]
+          - button "Day Exterior" [ref=e63] [cursor=pointer]
+          - button "Golden Hour" [ref=e64] [cursor=pointer]
+          - button "Intimate" [ref=e65] [cursor=pointer]
+          - button "Dramatic" [ref=e66] [cursor=pointer]
+          - button "Memory" [ref=e67] [cursor=pointer]
+  - main [ref=e68]:
+    - generic [ref=e69]:
+      - generic [ref=e71]:
+        - heading "Long Story Short" [level=1] [ref=e72]
+        - paragraph [ref=e73]: Experimental Design System
+        - paragraph [ref=e74]: Your playground for testing new designs. When we approve something here, it gets copied to the main Material Lab website. Use the sidebar to switch between all 10 theme modes and explore components.
+      - main [ref=e77]:
+        - generic [ref=e78]:
+          - generic [ref=e79]:
+            - heading "Core Color Palette" [level=1] [ref=e80]
+            - paragraph [ref=e81]: Four foundational colors forming 80% of our visual language. Each color serves a specific purpose in creating emotional depth and visual hierarchy.
+          - generic [ref=e82]:
+            - generic [ref=e83] [cursor=pointer]:
+              - generic [ref=e86] [cursor=pointer]: Click to copy
+              - generic [ref=e87] [cursor=pointer]:
+                - heading "Sunset Coral" [level=3] [ref=e88] [cursor=pointer]
+                - generic [ref=e89] [cursor=pointer]:
+                  - generic [ref=e90] [cursor=pointer]:
+                    - generic [ref=e91] [cursor=pointer]: "HEX:"
+                    - generic [ref=e92] [cursor=pointer]: "#FF6B4A"
+                  - generic [ref=e93] [cursor=pointer]:
+                    - generic [ref=e94] [cursor=pointer]: "RGB:"
+                    - generic [ref=e95] [cursor=pointer]: rgb(255, 107, 74)
+                  - generic [ref=e96] [cursor=pointer]:
+                    - generic [ref=e97] [cursor=pointer]: "HSB:"
+                    - generic [ref=e98] [cursor=pointer]: hsb(11°, 71%, 100%)
+                  - generic [ref=e99] [cursor=pointer]:
+                    - generic [ref=e100] [cursor=pointer]: "Contrast:"
+                    - generic [ref=e101] [cursor=pointer]: 4.5:1
+                - paragraph [ref=e102] [cursor=pointer]: Primary brand color - 80% of color usage
+            - generic [ref=e103] [cursor=pointer]:
+              - generic [ref=e106] [cursor=pointer]: Click to copy
+              - generic [ref=e107] [cursor=pointer]:
+                - heading "Soft White" [level=3] [ref=e108] [cursor=pointer]
+                - generic [ref=e109] [cursor=pointer]:
+                  - generic [ref=e110] [cursor=pointer]:
+                    - generic [ref=e111] [cursor=pointer]: "HEX:"
+                    - generic [ref=e112] [cursor=pointer]: "#FAF9F6"
+                  - generic [ref=e113] [cursor=pointer]:
+                    - generic [ref=e114] [cursor=pointer]: "RGB:"
+                    - generic [ref=e115] [cursor=pointer]: rgb(250, 249, 246)
+                  - generic [ref=e116] [cursor=pointer]:
+                    - generic [ref=e117] [cursor=pointer]: "HSB:"
+                    - generic [ref=e118] [cursor=pointer]: hsb(40°, 3%, 98%)
+                - paragraph [ref=e119] [cursor=pointer]: Primary backgrounds, extensive whitespace
+            - generic [ref=e120] [cursor=pointer]:
+              - generic [ref=e123] [cursor=pointer]: Click to copy
+              - generic [ref=e124] [cursor=pointer]:
+                - heading "Rich Black" [level=3] [ref=e125] [cursor=pointer]
+                - generic [ref=e126] [cursor=pointer]:
+                  - generic [ref=e127] [cursor=pointer]:
+                    - generic [ref=e128] [cursor=pointer]: "HEX:"
+                    - generic [ref=e129] [cursor=pointer]: "#0A0A0A"
+                  - generic [ref=e130] [cursor=pointer]:
+                    - generic [ref=e131] [cursor=pointer]: "RGB:"
+                    - generic [ref=e132] [cursor=pointer]: rgb(10, 10, 10)
+                  - generic [ref=e133] [cursor=pointer]:
+                    - generic [ref=e134] [cursor=pointer]: "HSB:"
+                    - generic [ref=e135] [cursor=pointer]: hsb(0°, 0%, 4%)
+                  - generic [ref=e136] [cursor=pointer]:
+                    - generic [ref=e137] [cursor=pointer]: "Contrast:"
+                    - generic [ref=e138] [cursor=pointer]: 19:1
+                - paragraph [ref=e139] [cursor=pointer]: Primary text, high contrast elements
+            - generic [ref=e140] [cursor=pointer]:
+              - generic [ref=e143] [cursor=pointer]: Click to copy
+              - generic [ref=e144] [cursor=pointer]:
+                - heading "Warm Grey" [level=3] [ref=e145] [cursor=pointer]
+                - generic [ref=e146] [cursor=pointer]:
+                  - generic [ref=e147] [cursor=pointer]:
+                    - generic [ref=e148] [cursor=pointer]: "HEX:"
+                    - generic [ref=e149] [cursor=pointer]: "#7A756F"
+                  - generic [ref=e150] [cursor=pointer]:
+                    - generic [ref=e151] [cursor=pointer]: "RGB:"
+                    - generic [ref=e152] [cursor=pointer]: rgb(122, 117, 111)
+                  - generic [ref=e153] [cursor=pointer]:
+                    - generic [ref=e154] [cursor=pointer]: "HSB:"
+                    - generic [ref=e155] [cursor=pointer]: hsb(30°, 10%, 48%)
+                  - generic [ref=e156] [cursor=pointer]:
+                    - generic [ref=e157] [cursor=pointer]: "Contrast:"
+                    - generic [ref=e158] [cursor=pointer]: 2.8:1
+                - paragraph [ref=e159] [cursor=pointer]: Secondary text, subtle elements
+          - generic [ref=e160]:
+            - heading "80/20 Color Usage Rule" [level=3] [ref=e161]
+            - paragraph [ref=e162]: Core palette dominates the design, secondary colors provide strategic accents
+            - generic [ref=e163]:
+              - generic [ref=e164]: Core Colors - 80%
+              - generic [ref=e165]: Secondary - 20%
+            - generic [ref=e166]:
+              - generic [ref=e167]: Foundation & Structure
+              - generic [ref=e168]: Accents & Energy
+          - generic [ref=e169]:
+            - heading "Secondary Palette" [level=2] [ref=e170]
+            - paragraph [ref=e171]: Expressive accent colors for emotional moments, interactive feedback, and creative expression. Use sparingly for maximum impact.
+          - generic [ref=e172]:
+            - generic [ref=e173] [cursor=pointer]:
+              - generic [ref=e176] [cursor=pointer]: Click to copy
+              - generic [ref=e177] [cursor=pointer]:
+                - heading "Deep Teal" [level=3] [ref=e178] [cursor=pointer]
+                - generic [ref=e179] [cursor=pointer]:
+                  - generic [ref=e180] [cursor=pointer]:
+                    - generic [ref=e181] [cursor=pointer]: "HEX:"
+                    - generic [ref=e182] [cursor=pointer]: "#1A8B9D"
+                  - generic [ref=e183] [cursor=pointer]:
+                    - generic [ref=e184] [cursor=pointer]: "RGB:"
+                    - generic [ref=e185] [cursor=pointer]: rgb(26, 139, 157)
+                  - generic [ref=e186] [cursor=pointer]:
+                    - generic [ref=e187] [cursor=pointer]: "HSB:"
+                    - generic [ref=e188] [cursor=pointer]: hsb(188°, 83%, 62%)
+                  - generic [ref=e189] [cursor=pointer]:
+                    - generic [ref=e190] [cursor=pointer]: "Contrast:"
+                    - generic [ref=e191] [cursor=pointer]: 3.2:1
+                - paragraph [ref=e192] [cursor=pointer]: Accent color, interactive elements - 20% usage
+            - generic [ref=e193] [cursor=pointer]:
+              - generic [ref=e196] [cursor=pointer]: Click to copy
+              - generic [ref=e197] [cursor=pointer]:
+                - heading "Soft Lavender" [level=3] [ref=e198] [cursor=pointer]
+                - generic [ref=e199] [cursor=pointer]:
+                  - generic [ref=e200] [cursor=pointer]:
+                    - generic [ref=e201] [cursor=pointer]: "HEX:"
+                    - generic [ref=e202] [cursor=pointer]: "#B8A4E3"
+                  - generic [ref=e203] [cursor=pointer]:
+                    - generic [ref=e204] [cursor=pointer]: "RGB:"
+                    - generic [ref=e205] [cursor=pointer]: rgb(184, 164, 227)
+                  - generic [ref=e206] [cursor=pointer]:
+                    - generic [ref=e207] [cursor=pointer]: "HSB:"
+                    - generic [ref=e208] [cursor=pointer]: hsb(254°, 28%, 89%)
+                  - generic [ref=e209] [cursor=pointer]:
+                    - generic [ref=e210] [cursor=pointer]: "Contrast:"
+                    - generic [ref=e211] [cursor=pointer]: 2.1:1
+                - paragraph [ref=e212] [cursor=pointer]: Creative contexts, very limited use
+            - generic [ref=e213] [cursor=pointer]:
+              - generic [ref=e216] [cursor=pointer]: Click to copy
+              - generic [ref=e217] [cursor=pointer]:
+                - heading "Golden Hour" [level=3] [ref=e218] [cursor=pointer]
+                - generic [ref=e219] [cursor=pointer]:
+                  - generic [ref=e220] [cursor=pointer]:
+                    - generic [ref=e221] [cursor=pointer]: "HEX:"
+                    - generic [ref=e222] [cursor=pointer]: "#FFB84D"
+                  - generic [ref=e223] [cursor=pointer]:
+                    - generic [ref=e224] [cursor=pointer]: "RGB:"
+                    - generic [ref=e225] [cursor=pointer]: rgb(255, 184, 77)
+                  - generic [ref=e226] [cursor=pointer]:
+                    - generic [ref=e227] [cursor=pointer]: "HSB:"
+                    - generic [ref=e228] [cursor=pointer]: hsb(36°, 70%, 100%)
+                  - generic [ref=e229] [cursor=pointer]:
+                    - generic [ref=e230] [cursor=pointer]: "Contrast:"
+                    - generic [ref=e231] [cursor=pointer]: 1.8:1
+                - paragraph [ref=e232] [cursor=pointer]: Energetic accents, warning states
+          - generic [ref=e233]:
+            - heading "Approved Color Pairings" [level=2] [ref=e234]
+            - paragraph [ref=e235]: WCAG AA compliant combinations ensuring accessibility and visual clarity
+          - generic [ref=e236]:
+            - generic [ref=e237]:
+              - generic [ref=e238]:
+                - generic [ref=e239]: Aa
+                - generic [ref=e240]: ✓
+              - generic [ref=e241]:
+                - heading "Soft White + Rich Black" [level=4] [ref=e242]
+                - paragraph [ref=e243]: "Contrast: 19:1"
+                - paragraph [ref=e244]: WCAG AA Compliant
+            - generic [ref=e245]:
+              - generic [ref=e246]:
+                - generic [ref=e247]: Aa
+                - generic [ref=e248]: ✓
+              - generic [ref=e249]:
+                - heading "Sunset Coral + Soft White" [level=4] [ref=e250]
+                - paragraph [ref=e251]: "Contrast: 4.5:1"
+                - paragraph [ref=e252]: WCAG AA Compliant
+            - generic [ref=e253]:
+              - generic [ref=e254]:
+                - generic [ref=e255]: Aa
+                - generic [ref=e256]: ✓
+              - generic [ref=e257]:
+                - heading "Rich Black + Soft White" [level=4] [ref=e258]
+                - paragraph [ref=e259]: "Contrast: 19:1"
+                - paragraph [ref=e260]: WCAG AA Compliant
+            - generic [ref=e261]:
+              - generic [ref=e262]:
+                - generic [ref=e263]: Aa
+                - generic [ref=e264]: ✓
+              - generic [ref=e265]:
+                - heading "Deep Teal + Soft White" [level=4] [ref=e266]
+                - paragraph [ref=e267]: "Contrast: 5.2:1"
+                - paragraph [ref=e268]: WCAG AA Compliant
+          - generic [ref=e269]:
+            - heading "Pairings to Avoid" [level=2] [ref=e270]
+            - paragraph [ref=e271]: These combinations create accessibility issues or visual confusion
+          - generic [ref=e272]:
+            - generic [ref=e273]:
+              - generic [ref=e274]:
+                - generic [ref=e275]: Aa
+                - generic [ref=e276]: ✗
+              - generic [ref=e277]:
+                - heading "Color on Color" [level=4] [ref=e278]
+                - paragraph [ref=e279]: "Contrast: 1.2:1"
+                - paragraph [ref=e280]: Not Recommended
+            - generic [ref=e281]:
+              - generic [ref=e282]:
+                - generic [ref=e283]: Aa
+                - generic [ref=e284]: ✗
+              - generic [ref=e285]:
+                - heading "Light Color on White" [level=4] [ref=e286]
+                - paragraph [ref=e287]: "Contrast: 2.1:1"
+                - paragraph [ref=e288]: Not Recommended
+            - generic [ref=e289]:
+              - generic [ref=e290]:
+                - generic [ref=e291]: Aa
+                - generic [ref=e292]: ✗
+              - generic [ref=e293]:
+                - heading "Dark Color on Dark" [level=4] [ref=e294]
+                - paragraph [ref=e295]: "Contrast: 2.8:1"
+                - paragraph [ref=e296]: Not Recommended
+      - generic [ref=e298]:
+        - generic [ref=e299]:
+          - generic [ref=e300]: "10"
+          - generic [ref=e301]: Theme Modes
+        - generic [ref=e302]:
+          - generic [ref=e303]: "8"
+          - generic [ref=e304]: Components
+        - generic [ref=e305]:
+          - generic [ref=e306]: "3"
+          - generic [ref=e307]: Categories
+        - generic [ref=e308]:
+          - generic [ref=e309]: WCAG AA
+          - generic [ref=e310]: Accessibility
+```

@@ -31,11 +31,11 @@ export const Contact = () => {
               transition={{ duration: 0.8 }}
             >
               <MLHeading level={1} className="mb-6">
-                Let's Build Something Amazing Together
+                Let's explore if we're a good fit
               </MLHeading>
               <MLText variant="bodyL" color="weak" className="max-w-2xl mx-auto">
-                Ready to transform your ideas into AI-powered products? 
-                We're here to help you discover, design, and build solutions that drive real results.
+                We work with growing teams who need quality software built fast. 
+                Let's have a conversation—no pitch decks, no sales pressure.
               </MLText>
             </motion.div>
 
@@ -88,12 +88,45 @@ export const Contact = () => {
               </MLCard>
             </motion.div>
 
+            {/* Qualification Section */}
+            <motion.div
+              className="mt-20"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+            >
+              <div className="grid md:grid-cols-2 gap-12">
+                <div>
+                  <MLHeading level={3} className="mb-6 text-success">
+                    We're great for you if:
+                  </MLHeading>
+                  <div className="space-y-4">
+                    <MLText color="weak">• You know your customers and their problems deeply</MLText>
+                    <MLText color="weak">• You need working software, not presentations</MLText>
+                    <MLText color="weak">• You value quality and are willing to invest in it</MLText>
+                    <MLText color="weak">• You want a partner, not a vendor</MLText>
+                  </div>
+                </div>
+                <div>
+                  <MLHeading level={3} className="mb-6 text-text-weak">
+                    We're probably not right if:
+                  </MLHeading>
+                  <div className="space-y-4">
+                    <MLText color="weak">• You need extensive compliance documentation</MLText>
+                    <MLText color="weak">• You're looking for the cheapest option</MLText>
+                    <MLText color="weak">• You want lengthy discovery phases</MLText>
+                    <MLText color="weak">• You see technology as a necessary evil</MLText>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
             {/* FAQ Section */}
             <motion.div
               className="mt-20 text-center"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
             >
               <MLHeading level={3} className="mb-8">
                 Frequently Asked Questions

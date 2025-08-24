@@ -1,4 +1,7 @@
 @import './styles/tokens.css';
+@import './styles/lss-tokens.css';
+@import './styles/lss-system.css';
+@import './styles/lss-components.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -9,7 +12,11 @@
   }
   
   body {
-    @apply antialiased bg-background text-on-surface;
+    @apply antialiased;
+    background: var(--lss-bg, var(--background));
+    color: var(--lss-text-primary, var(--on-surface));
+    transition: background-color var(--lss-duration-normal, 200ms) var(--lss-ease-out, ease-out),
+                color var(--lss-duration-normal, 200ms) var(--lss-ease-out, ease-out);
   }
 
 }

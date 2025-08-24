@@ -18,10 +18,10 @@ export const About = () => {
             transition={{ duration: 0.8 }}
           >
             <MLHeading level={1} className="text-5xl md:text-6xl font-display font-bold mb-8">
-              About MaterialLab
+              About Material Lab
             </MLHeading>
             <MLText variant="bodyL" className="text-xl text-text-weak max-w-2xl mx-auto leading-relaxed">
-              We're a team of engineers, designers, and AI researchers building the next generation of intelligent products.
+              We're Material Lab. The name has dual meaning—we create tangible impact in the physical world through digital tools, and we only work on projects that matter.
             </MLText>
           </motion.div>
         </div>
@@ -41,13 +41,13 @@ export const About = () => {
                 Our Mission
               </MLHeading>
               <MLText variant="body" className="text-lg text-text-weak leading-relaxed mb-6">
-                We bridge the gap between AI research and practical product implementation. 
-                Our team combines decades of experience in machine learning, product design, 
-                and software engineering.
+                We started this studio because we believe every growing business deserves access to 
+                quality software without the enterprise price tag or timeline.
               </MLText>
               <MLText variant="body" className="text-lg text-text-weak leading-relaxed">
-                We've witnessed the evolution of AI from academic curiosity to business necessity, 
-                and we're here to help organizations navigate this transformation successfully.
+                We saw talented founders struggling with a broken system. You either burn through runway 
+                with expensive consultants who deliver PowerPoints, or you gamble on cheap developers 
+                who leave you with unmaintainable code. We built a third path.
               </MLText>
             </motion.div>
             <div className="bg-surface-2 rounded-xl p-8 h-64 flex items-center justify-center">
@@ -74,16 +74,16 @@ export const About = () => {
           <div className="grid md:grid-cols-3 gap-12">
             {[
               {
-                title: "Human-Centered AI",
-                description: "We believe AI should augment human capabilities, not replace human judgment. Our solutions prioritize user empowerment and transparency."
+                title: "Listen First",
+                description: "Every project starts with understanding your business, not pushing our assumptions. We're experts in technology. You're the expert in your domain."
               },
               {
-                title: "Ethical Development",
-                description: "We're committed to building AI products that are explainable, fair, and beneficial to society while driving business value."
+                title: "Build Together", 
+                description: "Working prototypes beat slide decks. You'll see progress regularly, not quarterly. The magic happens when we collaborate."
               },
               {
-                title: "Continuous Learning",
-                description: "We foster a culture where experimentation is encouraged and failure is treated as valuable learning. We invest in knowledge sharing."
+                title: "Quality Without Compromise",
+                description: "Senior engineers only—no junior teams learning on your dime. We say no to projects that don't align with our values."
               }
             ].map((value, index) => (
               <motion.div
@@ -110,10 +110,10 @@ export const About = () => {
       <section className="py-20 bg-surface-1">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <MLHeading level={2} className="text-4xl font-semibold mb-8">
-            Ready to work together?
+            Ready to explore if we're a good fit?
           </MLHeading>
           <MLText variant="bodyL" className="text-xl text-text-weak mb-12 max-w-2xl mx-auto">
-            Let's discuss how our team can help bring your AI vision to life.
+            Let's have a conversation. No pitch decks, no sales pressure. Just two parties exploring if we're aligned.
           </MLText>
           <VeoButton
             variant="primary"
