@@ -1,0 +1,612 @@
+{
+  "config": {
+    "configFile": "/Users/damini/materiallab-website/playwright.config.ts",
+    "rootDir": "/Users/damini/materiallab-website/tests",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": "/Users/damini/materiallab-website/tests/global-setup.ts",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 4
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "html",
+        {
+          "outputFolder": "playwright-report",
+          "open": "never"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results.json"
+        }
+      ],
+      [
+        "list",
+        null
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/Users/damini/materiallab-website/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "setup",
+        "name": "setup",
+        "testDir": "/Users/damini/materiallab-website/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "/.*setup\\.ts/"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/damini/materiallab-website/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "/Users/damini/materiallab-website/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/damini/materiallab-website/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "mobile-chrome",
+        "name": "mobile-chrome",
+        "testDir": "/Users/damini/materiallab-website/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/damini/materiallab-website/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "tablet",
+        "name": "tablet",
+        "testDir": "/Users/damini/materiallab-website/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/damini/materiallab-website/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "/Users/damini/materiallab-website/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/damini/materiallab-website/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "webkit",
+        "name": "webkit",
+        "testDir": "/Users/damini/materiallab-website/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/damini/materiallab-website/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "high-dpi",
+        "name": "high-dpi",
+        "testDir": "/Users/damini/materiallab-website/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/damini/materiallab-website/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "dark-theme",
+        "name": "dark-theme",
+        "testDir": "/Users/damini/materiallab-website/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "changed",
+    "updateSourceMethod": "patch",
+    "version": "1.55.0",
+    "workers": 4,
+    "webServer": {
+      "command": "npm run dev",
+      "url": "http://localhost:3000",
+      "reuseExistingServer": true,
+      "timeout": 120000
+    }
+  },
+  "suites": [
+    {
+      "title": "setup.ts",
+      "file": "setup.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "validate test environment",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "setup",
+              "projectName": "setup",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1225,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "🔍 Validating MaterialLab test environment...\n"
+                    },
+                    {
+                      "text": "✅ Environment validation complete\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-08-26T13:07:06.451Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c47772be3012d73a1974-76eeb08d04450b262578",
+          "file": "setup.ts",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "validate Veo page loads",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "setup",
+              "projectName": "setup",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1430,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "🎨 Validating Veo design system page...\n"
+                    },
+                    {
+                      "text": "✅ Veo page validation complete\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-08-26T13:07:06.453Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c47772be3012d73a1974-ed6f5afc609a01be729f",
+          "file": "setup.ts",
+          "line": 33,
+          "column": 1
+        },
+        {
+          "title": "validate navigation consistency",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "setup",
+              "projectName": "setup",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 2,
+                  "status": "passed",
+                  "duration": 4437,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "🧭 Validating navigation across pages...\n"
+                    },
+                    {
+                      "text": "   ✓ / loads successfully\n"
+                    },
+                    {
+                      "text": "   ✓ /veo loads successfully\n"
+                    },
+                    {
+                      "text": "   ✓ /services loads successfully\n"
+                    },
+                    {
+                      "text": "   ✓ /work loads successfully\n"
+                    },
+                    {
+                      "text": "   ✓ /about loads successfully\n"
+                    },
+                    {
+                      "text": "   ✓ /contact loads successfully\n"
+                    },
+                    {
+                      "text": "✅ Navigation validation complete\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-08-26T13:07:06.458Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c47772be3012d73a1974-46e334a237073c5e442b",
+          "file": "setup.ts",
+          "line": 52,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "design-system-visual.spec.ts",
+      "file": "design-system-visual.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "MaterialLab Design System Visual Tests",
+          "file": "design-system-visual.spec.ts",
+          "line": 3,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Landing page uses ML design tokens",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1563,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Button background: rgba(0, 0, 0, 0)\n"
+                        },
+                        {
+                          "text": "H1 font-size: 16px\n"
+                        },
+                        {
+                          "text": "H1 font-family: Geist, -apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-26T13:07:11.552Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "bb58b3ee157553804d4e-cc68bb6fde7e52ae1253",
+              "file": "design-system-visual.spec.ts",
+              "line": 10,
+              "column": 3
+            },
+            {
+              "title": "Check ML design tokens are loaded",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 1473,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "ML Design Tokens: {\n  space1: \u001b[32m'8px'\u001b[39m,\n  space2: \u001b[32m'16px'\u001b[39m,\n  brandCoral: \u001b[32m'#FF6F61'\u001b[39m,\n  brandBlue: \u001b[32m'#55C2FF'\u001b[39m,\n  textBase: \u001b[32m'clamp(1rem, 0.95rem + 0.25vw, 1.125rem)'\u001b[39m\n}\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-26T13:07:11.551Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "bb58b3ee157553804d4e-a3e1fce9b61af7b1c747",
+              "file": "design-system-visual.spec.ts",
+              "line": 43,
+              "column": 3
+            },
+            {
+              "title": "Visual snapshot of landing page",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 4243,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-26T13:07:11.538Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "bb58b3ee157553804d4e-9a8d04d0039620cd3afc",
+              "file": "design-system-visual.spec.ts",
+              "line": 65,
+              "column": 3
+            },
+            {
+              "title": "Visual snapshot of about page",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 3964,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-26T13:07:11.544Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "bb58b3ee157553804d4e-ffda28f6dee5f9f6cb1a",
+              "file": "design-system-visual.spec.ts",
+              "line": 78,
+              "column": 3
+            },
+            {
+              "title": "Visual snapshot of services page",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 3563,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-26T13:07:13.232Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "bb58b3ee157553804d4e-cb78780c037b3115fab5",
+              "file": "design-system-visual.spec.ts",
+              "line": 89,
+              "column": 3
+            },
+            {
+              "title": "Visual snapshot of sandbox documentation",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3665,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-26T13:07:13.342Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "bb58b3ee157553804d4e-48f547afdd61622a4f0e",
+              "file": "design-system-visual.spec.ts",
+              "line": 100,
+              "column": 3
+            },
+            {
+              "title": "Check responsive design tokens on mobile",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 803,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-26T13:07:15.650Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "bb58b3ee157553804d4e-dff0ef4f5da02319b55d",
+              "file": "design-system-visual.spec.ts",
+              "line": 111,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-08-26T13:07:00.774Z",
+    "duration": 16266.930999999999,
+    "expected": 10,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

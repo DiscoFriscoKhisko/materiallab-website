@@ -1,0 +1,147 @@
+{
+  "brand": {
+    "mission": "To synthesize human ingenuity and artificial intelligence, creating elegant and impactful products that solve meaningful problems.",
+    "vision": "To be a globally recognized leader in human-AI collaborative design, pioneering ethical and effective methodologies that set the standard for the industry.",
+    "values": {
+      "human_centricity": "Every technological endeavor must be grounded in a deep understanding of human needs, behaviors, and ethics.",
+      "radical_transparency": "Communicating with clarity, explaining technology in understandable terms, and being candid about capabilities and limitations.",
+      "intentional_innovation": "The pursuit of technology driven by purpose, not by trends, focusing on genuine value.",
+      "collaborative_intelligence": "The relationship between humans and AI is framed as a partnership."
+    },
+    "personality": {
+      "archetype_primary": "The Sage",
+      "archetype_secondary": "The Creator", 
+      "traits": ["Knowledgeable", "Visionary", "Meticulous", "Empowering"]
+    }
+  },
+  "voice": {
+    "description": "The brand's consistent personality expressed through words",
+    "core_attributes": {
+      "confident": {
+        "definition": "We speak with authority backed by expertise",
+        "we_are": "Confident",
+        "we_are_not": "Arrogant",
+        "example": "Our AI platform delivers measurable results",
+        "avoid": "Obviously, everyone knows our platform is the best"
+      },
+      "clear": {
+        "definition": "We explain complex concepts in accessible language",
+        "we_are": "Clear",
+        "we_are_not": "Academic",
+        "example": "AI analyzes your data to suggest the next best action",
+        "avoid": "Our machine learning algorithms utilize sophisticated neural networks to perform predictive analytics"
+      },
+      "human": {
+        "definition": "We speak like real people, not corporate machines",
+        "we_are": "Human",
+        "we_are_not": "Corporate",
+        "example": "This might take a moment while we process your request",
+        "avoid": "The system is currently optimizing operational parameters"
+      }
+    },
+    "principles": {
+      "clarity_over_complexity": {
+        "rule": "Complex AI concepts must be explained in simple, accessible language",
+        "application": "Avoid technical jargon in general communications; use precisely with explanation in technical contexts"
+      },
+      "benefit_oriented": {
+        "rule": "Focus on human value and outcomes, not just technical features",
+        "application": "Always center on how AI empowers people, solves problems, or enhances creativity"
+      },
+      "collaborative_not_replacement": {
+        "rule": "Position AI as a partner to humans, not a replacement",
+        "application": "Use language that emphasizes augmentation, collaboration, and human control"
+      }
+    }
+  },
+  "tone": {
+    "description": "How voice adapts to different contexts and user emotional states",
+    "spectrum": {
+      "thoughtful_expert": {
+        "when_to_use": "Technical explanations, complex problem-solving, detailed guidance",
+        "characteristics": ["Measured", "Thorough", "Evidence-based", "Patient"],
+        "example": "Based on your data patterns, we recommend implementing this approach. Here's why it works best for your specific use case..."
+      },
+      "compelling_presenter": {
+        "when_to_use": "Marketing content, product announcements, persuasive communications",
+        "characteristics": ["Dynamic", "Confident", "Inspiring", "Forward-looking"],
+        "example": "Transform your creative process with AI that understands your vision and amplifies your impact."
+      },
+      "supportive_guide": {
+        "when_to_use": "Onboarding, tutorials, help content, user support",
+        "characteristics": ["Encouraging", "Clear", "Helpful", "Reassuring"],
+        "example": "You're making great progress! Let's tackle the next step together."
+      },
+      "conversational_partner": {
+        "when_to_use": "Interactive features, casual communications, community engagement",
+        "characteristics": ["Friendly", "Approachable", "Genuine", "Collaborative"],
+        "example": "What kind of project are you working on? I'd love to help you explore some ideas."
+      }
+    },
+    "contextual_adaptation": {
+      "user_frustrated": {
+        "approach": "Calm, solution-focused, empathetic",
+        "language_patterns": ["I understand this is frustrating", "Let me help you solve this", "Here's what we can do"],
+        "avoid": ["Obviously", "Simply", "Just", "Easy"]
+      },
+      "user_exploring": {
+        "approach": "Encouraging, curious, collaborative",
+        "language_patterns": ["What if we tried", "You might explore", "This could work well"],
+        "avoid": ["You should", "The right way", "Best practice is"]
+      },
+      "user_uncertain": {
+        "approach": "Supportive, informative, confidence-building",
+        "language_patterns": ["Both options have merit", "Here's what to consider", "You're on the right track"],
+        "avoid": ["Obviously the answer is", "It's simple", "Everyone knows"]
+      }
+    }
+  },
+  "content_guidelines": {
+    "writing_style": {
+      "sentence_structure": {
+        "use_active_voice": true,
+        "vary_sentence_length": true,
+        "average_sentence_length": "15-20 words",
+        "use_contractions": true
+      },
+      "word_choice": {
+        "prefer_simple_words": true,
+        "use_industry_terms_sparingly": true,
+        "avoid_buzzwords": true,
+        "use_specific_examples": true
+      }
+    },
+    "content_types": {
+      "headings": {
+        "style": "Benefit-focused, action-oriented",
+        "length": "2-8 words",
+        "examples": ["Build AI Products That Work", "Design with Intelligence", "Transform Ideas into Reality"]
+      },
+      "body_text": {
+        "paragraph_length": "2-4 sentences",
+        "use_bullet_points": true,
+        "include_examples": true,
+        "scannable_format": true
+      },
+      "call_to_action": {
+        "style": "Clear, specific, benefit-oriented",
+        "length": "2-4 words",
+        "examples": ["Start Building", "Explore Solutions", "Get Started Today"]
+      }
+    }
+  },
+  "brand_voice_examples": {
+    "confident_not_arrogant": {
+      "good": "Our platform has helped over 200 companies streamline their AI workflows",
+      "bad": "Obviously, our platform is the industry leader that everyone tries to copy"
+    },
+    "clear_not_academic": {
+      "good": "AI analyzes your data and suggests the best next steps for your project",
+      "bad": "Our sophisticated neural networks implement advanced heuristic algorithms to optimize decision-making processes"
+    },
+    "human_not_corporate": {
+      "good": "We're excited to see what you'll create with these new tools",
+      "bad": "Our organization is pleased to announce the availability of enhanced functionality"
+    }
+  }
+}

@@ -1,0 +1,252 @@
+{
+  "cta_taxonomy": {
+    "primary": {
+      "description": "Main actions that drive user toward key goals",
+      "usage": "Use sparingly, only for most important actions",
+      "examples": {
+        "get_started": "Get Started",
+        "create_account": "Create Account",
+        "start_project": "Start Project",
+        "book_consultation": "Book Consultation",
+        "request_demo": "Request Demo"
+      }
+    },
+    "secondary": {
+      "description": "Supporting actions that provide additional options",
+      "usage": "Complement primary actions, provide alternatives",
+      "examples": {
+        "learn_more": "Learn More",
+        "view_examples": "View Examples",
+        "read_case_study": "Read Case Study",
+        "explore_features": "Explore Features",
+        "watch_demo": "Watch Demo"
+      }
+    },
+    "destructive": {
+      "description": "Actions that delete, remove, or permanently change data",
+      "usage": "Always confirm before executing",
+      "examples": {
+        "delete_project": "Delete Project",
+        "remove_member": "Remove Member",
+        "clear_data": "Clear Data",
+        "cancel_subscription": "Cancel Subscription",
+        "reset_settings": "Reset Settings"
+      }
+    },
+    "affirmative": {
+      "description": "Positive confirmations and approvals",
+      "usage": "For confirmations, agreements, and positive actions",
+      "examples": {
+        "confirm": "Confirm",
+        "save_changes": "Save Changes",
+        "approve": "Approve",
+        "accept": "Accept",
+        "continue": "Continue"
+      }
+    },
+    "negative": {
+      "description": "Cancellations, dismissals, and negative actions",
+      "usage": "For canceling, dismissing, or rejecting actions",
+      "examples": {
+        "cancel": "Cancel",
+        "dismiss": "Dismiss",
+        "skip": "Skip",
+        "not_now": "Not Now",
+        "decline": "Decline"
+      }
+    }
+  },
+  "component_library": {
+    "buttons": {
+      "loading_states": {
+        "generic": "Loading...",
+        "saving": "Saving...",
+        "processing": "Processing...",
+        "uploading": "Uploading...",
+        "generating": "Generating..."
+      },
+      "success_states": {
+        "saved": "Saved!",
+        "uploaded": "Uploaded!",
+        "sent": "Sent!",
+        "created": "Created!",
+        "updated": "Updated!"
+      }
+    },
+    "forms": {
+      "field_labels": {
+        "email": "Email Address",
+        "password": "Password",
+        "confirm_password": "Confirm Password",
+        "full_name": "Full Name",
+        "company": "Company",
+        "phone": "Phone Number",
+        "message": "Message"
+      },
+      "placeholders": {
+        "email": "Enter your email address",
+        "password": "Create a secure password",
+        "full_name": "Enter your full name",
+        "company": "Your company name",
+        "phone": "Your phone number",
+        "message": "Tell us about your project"
+      },
+      "helper_text": {
+        "password_requirements": "Password must be at least 8 characters long",
+        "email_format": "We'll use this to send you important updates",
+        "phone_format": "Include country code if outside the US",
+        "optional_field": "This field is optional"
+      },
+      "validation_messages": {
+        "required": "This field is required",
+        "email_invalid": "Please enter a valid email address",
+        "password_weak": "Password must be at least 8 characters",
+        "passwords_mismatch": "Passwords don't match",
+        "phone_invalid": "Please enter a valid phone number"
+      }
+    },
+    "errors": {
+      "generic": {
+        "title": "Something went wrong",
+        "message": "We're experiencing a temporary issue. Please try again in a moment.",
+        "action": "Try Again"
+      },
+      "network": {
+        "title": "Connection Error",
+        "message": "Please check your internet connection and try again.",
+        "action": "Retry"
+      },
+      "not_found": {
+        "title": "Page Not Found",
+        "message": "The page you're looking for doesn't exist or has been moved.",
+        "action": "Go Home"
+      },
+      "permission": {
+        "title": "Access Denied",
+        "message": "You don't have permission to access this resource.",
+        "action": "Contact Support"
+      },
+      "validation": {
+        "title": "Please Check Your Information",
+        "message": "Some fields need your attention before we can continue.",
+        "action": "Review Form"
+      }
+    },
+    "success_messages": {
+      "form_submitted": {
+        "title": "Message Sent Successfully",
+        "message": "Thanks for reaching out! We'll get back to you within 24 hours.",
+        "action": "Continue"
+      },
+      "account_created": {
+        "title": "Welcome to MaterialLab",
+        "message": "Your account has been created successfully. Check your email to verify your account.",
+        "action": "Get Started"
+      },
+      "profile_updated": {
+        "title": "Profile Updated",
+        "message": "Your changes have been saved successfully.",
+        "action": "Continue"
+      }
+    },
+    "empty_states": {
+      "no_projects": {
+        "title": "No Projects Yet",
+        "message": "Create your first AI project to get started with MaterialLab.",
+        "action": "Create Project"
+      },
+      "no_results": {
+        "title": "No Results Found",
+        "message": "Try adjusting your search criteria or filters.",
+        "action": "Clear Filters"
+      },
+      "no_notifications": {
+        "title": "All Caught Up",
+        "message": "You don't have any new notifications.",
+        "action": null
+      }
+    },
+    "notifications": {
+      "success": {
+        "project_created": "Project created successfully",
+        "settings_saved": "Settings saved",
+        "member_invited": "Team member invited",
+        "file_uploaded": "File uploaded successfully"
+      },
+      "warning": {
+        "unsaved_changes": "You have unsaved changes",
+        "storage_limit": "Approaching storage limit",
+        "session_expiring": "Your session will expire in 5 minutes"
+      },
+      "error": {
+        "upload_failed": "File upload failed",
+        "save_failed": "Failed to save changes",
+        "connection_lost": "Connection lost. Retrying..."
+      }
+    }
+  },
+  "voice_patterns": {
+    "contractions": {
+      "use": ["we'll", "you'll", "can't", "won't", "it's", "we're", "you're"],
+      "description": "Use contractions to sound more natural and conversational"
+    },
+    "active_voice": {
+      "good": [
+        "AI analyzes your data",
+        "You can customize the settings",
+        "We process your request"
+      ],
+      "avoid": [
+        "Your data is analyzed by AI",
+        "The settings can be customized",
+        "Your request is processed by our system"
+      ]
+    },
+    "positive_framing": {
+      "good": [
+        "Create your first project",
+        "Unlock advanced features",
+        "Ready to get started?"
+      ],
+      "avoid": [
+        "You haven't created any projects",
+        "You can't access advanced features",
+        "Don't want to start yet?"
+      ]
+    }
+  },
+  "accessibility": {
+    "aria_labels": {
+      "navigation": {
+        "main_menu": "Main navigation",
+        "breadcrumb": "Breadcrumb navigation",
+        "pagination": "Pagination navigation",
+        "skip_to_content": "Skip to main content"
+      },
+      "actions": {
+        "close": "Close dialog",
+        "expand": "Expand menu",
+        "collapse": "Collapse menu",
+        "sort": "Sort table",
+        "filter": "Filter results"
+      },
+      "status": {
+        "loading": "Content is loading",
+        "error": "Error occurred",
+        "success": "Action completed successfully",
+        "required": "Required field"
+      }
+    },
+    "screen_reader": {
+      "form_instructions": "Use tab to navigate between fields and enter to submit",
+      "table_instructions": "Use arrow keys to navigate table cells",
+      "modal_instructions": "Press escape to close this dialog"
+    },
+    "alt_text": {
+      "decorative": "",
+      "informative": "Include brief, descriptive text",
+      "functional": "Describe the action or purpose",
+      "complex": "Reference detailed description nearby"
+    }
+  }
+}

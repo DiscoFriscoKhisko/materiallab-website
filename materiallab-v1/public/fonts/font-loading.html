@@ -1,0 +1,94 @@
+<!-- Font Loading Strategy for Typography System V2 -->
+<!-- Include this in the <head> of your HTML document -->
+
+<!-- Preconnect to font sources for faster loading -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<!-- Preload critical fonts for immediate use -->
+<link rel="preload" href="/fonts/geist-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/cabinet-grotesk-variable.woff2" as="font" type="font/woff2" crossorigin>
+
+<!-- Font loading with fallbacks and performance optimization -->
+<style>
+  /* Font face declarations with font-display: swap for better performance */
+  @font-face {
+    font-family: 'Geist';
+    src: url('/fonts/geist-variable.woff2') format('woff2-variations');
+    font-weight: 100 900;
+    font-display: swap;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Cabinet Grotesk Variable';
+    src: url('/fonts/cabinet-grotesk-variable.woff2') format('woff2-variations');
+    font-weight: 100 900;
+    font-display: swap;
+    font-style: normal;
+  }
+
+  /* Font loading states for better UX */
+  .font-loading {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  .fonts-loaded .ml-typo-hero,
+  .fonts-loaded .ml-typo-display-1,
+  .fonts-loaded .ml-typo-display-2,
+  .fonts-loaded .ml-typo-display-3,
+  .fonts-loaded .ml-typo-h1,
+  .fonts-loaded .ml-typo-h2 {
+    font-family: var(--font-display);
+  }
+
+  .fonts-loaded .ml-typo-h3,
+  .fonts-loaded .ml-typo-h4,
+  .fonts-loaded .ml-typo-h5,
+  .fonts-loaded .ml-typo-h6,
+  .fonts-loaded .ml-typo-body,
+  .fonts-loaded .ml-typo-body-xl,
+  .fonts-loaded .ml-typo-body-lg,
+  .fonts-loaded .ml-typo-body-sm,
+  .fonts-loaded .ml-typo-caption,
+  .fonts-loaded .ml-typo-caption-lg,
+  .fonts-loaded .ml-typo-caption-sm {
+    font-family: var(--font-primary);
+  }
+
+  /* Fallback Google Fonts as backup (optional) */
+  /* Uncomment if you want Google Fonts fallbacks */
+  /*
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+  */
+</style>
+
+<!-- Font loading JavaScript for better control -->
+<script>
+  (function() {
+    // Add font loading class initially
+    document.documentElement.classList.add('font-loading');
+    
+    // Check if fonts are already loaded
+    if ('fonts' in document) {
+      // Use FontFace API if available
+      Promise.all([
+        document.fonts.load('400 1em Geist'),
+        document.fonts.load('600 1em "Cabinet Grotesk Variable"')
+      ]).then(function() {
+        document.documentElement.classList.remove('font-loading');
+        document.documentElement.classList.add('fonts-loaded');
+      }).catch(function() {
+        // Fallback if font loading fails
+        document.documentElement.classList.remove('font-loading');
+        document.documentElement.classList.add('fonts-failed');
+      });
+    } else {
+      // Fallback for older browsers
+      setTimeout(function() {
+        document.documentElement.classList.remove('font-loading');
+        document.documentElement.classList.add('fonts-loaded');
+      }, 3000);
+    }
+  })();
+</script>

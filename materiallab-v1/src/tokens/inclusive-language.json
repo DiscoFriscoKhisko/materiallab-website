@@ -1,0 +1,167 @@
+{
+  "principles": {
+    "person_first": {
+      "description": "Use person-first language when referring to people with disabilities",
+      "examples": {
+        "good": ["person with a disability", "user who is blind", "person using a wheelchair"],
+        "avoid": ["disabled person", "blind user", "wheelchair-bound person"]
+      }
+    },
+    "gender_neutral": {
+      "description": "Use inclusive language that doesn't assume gender",
+      "examples": {
+        "good": ["team", "everyone", "folks", "people", "users"],
+        "avoid": ["guys", "manpower", "chairman", "mankind"]
+      }
+    },
+    "avoid_assumptions": {
+      "description": "Don't assume user capabilities, situations, or demographics",
+      "examples": {
+        "good": ["if you prefer", "you might want to", "consider"],
+        "avoid": ["obviously", "simply", "just", "everyone knows"]
+      }
+    }
+  },
+  "word_replacements": {
+    "ableist_language": {
+      "crazy": {
+        "alternatives": ["surprising", "remarkable", "intense", "overwhelming"],
+        "context": "Use specific descriptors instead of mental health terms"
+      },
+      "insane": {
+        "alternatives": ["incredible", "amazing", "wild", "unexpected"],
+        "context": "Avoid mental health terminology as intensifiers"
+      },
+      "blind_spot": {
+        "alternatives": ["gap", "oversight", "missed area", "unknown area"],
+        "context": "Use neutral terms for areas of unawareness"
+      },
+      "turn_a_blind_eye": {
+        "alternatives": ["ignore", "overlook", "dismiss", "disregard"],
+        "context": "Use direct action words"
+      }
+    },
+    "gendered_language": {
+      "guys": {
+        "alternatives": ["team", "everyone", "folks", "people"],
+        "context": "Use when addressing mixed or unknown gender groups"
+      },
+      "manpower": {
+        "alternatives": ["workforce", "staff", "team members", "personnel"],
+        "context": "Use gender-neutral terms for human resources"
+      },
+      "chairman": {
+        "alternatives": ["chair", "chairperson", "leader", "head"],
+        "context": "Use neutral titles for leadership roles"
+      }
+    },
+    "cultural_assumptions": {
+      "native": {
+        "alternatives": ["built-in", "default", "original", "inherent"],
+        "context": "Avoid when referring to software/features; respect Indigenous peoples"
+      },
+      "blacklist": {
+        "alternatives": ["blocklist", "denylist", "restricted list"],
+        "context": "Use neutral terms for blocked items"
+      },
+      "whitelist": {
+        "alternatives": ["allowlist", "approved list", "permitted list"],
+        "context": "Use neutral terms for approved items"
+      }
+    }
+  },
+  "alt_text_guidelines": {
+    "decorative_images": {
+      "rule": "Use empty alt text (alt=\"\") for purely decorative images",
+      "examples": ["background patterns", "decorative icons", "visual separators"]
+    },
+    "informative_images": {
+      "rule": "Describe the essential information the image conveys",
+      "examples": {
+        "good": "Chart showing 40% increase in user engagement",
+        "avoid": "Chart with bars and numbers"
+      }
+    },
+    "functional_images": {
+      "rule": "Describe the action or purpose, not the appearance",
+      "examples": {
+        "good": "Search button",
+        "avoid": "Magnifying glass icon"
+      }
+    },
+    "complex_images": {
+      "rule": "Provide brief alt text and link to detailed description",
+      "examples": {
+        "good": "Organizational chart (detailed description follows)",
+        "process": "Include full description in nearby text or linked page"
+      }
+    }
+  },
+  "form_inclusivity": {
+    "gender_options": {
+      "recommended": [
+        "Woman",
+        "Man", 
+        "Non-binary",
+        "Prefer not to say",
+        "Prefer to self-describe"
+      ],
+      "include_optional": "Always make gender selection optional",
+      "self_describe": "Provide text field for self-description option"
+    },
+    "name_fields": {
+      "avoid_assumptions": {
+        "rule": "Don't assume name format or length",
+        "single_field": "Use single 'Full Name' field when possible",
+        "avoid": ["First/Last only", "Middle initial required", "Character limits"]
+      },
+      "international_support": {
+        "allow_unicode": "Support names in all languages and scripts",
+        "no_validation": "Don't validate name format or characters"
+      }
+    },
+    "address_fields": {
+      "international": {
+        "rule": "Support international address formats",
+        "flexible_fields": "Make state/province/postal code optional",
+        "country_first": "Ask for country before other address fields"
+      }
+    }
+  },
+  "content_review": {
+    "language_checklist": [
+      "Does this use person-first language?",
+      "Are pronouns inclusive or avoided?",
+      "Does this make assumptions about abilities?",
+      "Is technical jargon explained?",
+      "Are cultural references universal?",
+      "Does this respect all users equally?"
+    ],
+    "accessibility_checklist": [
+      "Is this scannable with short paragraphs?",
+      "Are headings descriptive and hierarchical?",
+      "Is important information conveyed in multiple ways?",
+      "Are instructions clear and specific?",
+      "Is error messaging helpful and non-judgmental?"
+    ],
+    "cultural_sensitivity": [
+      "Are examples diverse and inclusive?",
+      "Do images represent various demographics?",
+      "Are holidays and events culturally neutral?",
+      "Is humor appropriate for global audiences?",
+      "Are assumptions about technology access avoided?"
+    ]
+  },
+  "testing_guidelines": {
+    "user_testing": {
+      "diverse_participants": "Include users with diverse abilities and backgrounds",
+      "assistive_technology": "Test with screen readers and other assistive devices",
+      "cognitive_load": "Test with users who have attention or processing differences"
+    },
+    "content_review": {
+      "bias_detection": "Review for unconscious bias in language and examples",
+      "readability": "Test reading level and comprehension",
+      "translation_ready": "Ensure content works well when translated"
+    }
+  }
+}

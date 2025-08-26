@@ -1,0 +1,1027 @@
+@import './styles/design-tokens.css';
+@import './styles/spacing-system.css';
+@import './styles/grid-system.css';
+@import './styles/typography-system-v2.css';
+@import './styles/design-system-final.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: var(--font-primary);
+  }
+  
+  body {
+    @apply antialiased;
+    background: var(--ml-bg-primary, var(--background));
+    color: var(--ml-text-primary, var(--on-surface));
+    transition: background-color var(--ml-duration-normal, 200ms) var(--ml-ease-out, ease-out),
+                color var(--ml-duration-normal, 200ms) var(--ml-ease-out, ease-out);
+  }
+
+}
+
+/* Keyframes */
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Animation Classes */
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 4s ease-in-out infinite;
+}
+
+/* === VEO-STYLE SCROLLYTELLING & ANIMATIONS === */
+
+/* Background Media Layer */
+.background-media {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  object-fit: cover;
+}
+
+.background-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0.2));
+}
+
+/* Scroll-Triggered Fade Animations */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered Animations */
+.stagger-1 { transition-delay: 0.15s; }
+.stagger-2 { transition-delay: 0.3s; }
+.stagger-3 { transition-delay: 0.45s; }
+.stagger-4 { transition-delay: 0.6s; }
+.stagger-5 { transition-delay: 0.75s; }
+
+/* Button Lift and Glow Effects */
+.btn-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-lift:hover {
+  transform: translateY(-2px);
+}
+
+.btn-glow-primary:hover {
+  box-shadow: 0 4px 20px rgba(138, 99, 210, 0.3);
+}
+
+.btn-glow-secondary:hover {
+  box-shadow: 0 4px 20px rgba(85, 194, 255, 0.3);
+}
+
+/* Arrow Animation for Secondary Links */
+.link-arrow span {
+  transition: transform 0.2s ease;
+}
+
+.link-arrow:hover span {
+  transform: translateX(4px);
+}
+
+/* === ACCESSIBILITY IMPROVEMENTS === */
+
+/* Enhanced focus rings */
+.veo-focus-ring:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: var(--veo-radius-md);
+}
+
+/* Skip link for screen readers */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--primary);
+  color: var(--on-primary);
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: var(--veo-radius-md);
+  font-weight: 500;
+  z-index: 1000;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .veo-fade-in,
+  .fade-in {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+  
+  .veo-card,
+  .card {
+    border: 2px solid var(--outline) !important;
+  }
+}
+
+/* Reduced motion support enhanced */
+@media (prefers-reduced-motion: reduce) {
+  .veo-fade-in,
+  .veo-slide-up,
+  .fade-in,
+  .parallax,
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    transform: none !important;
+  }
+  
+  .veo-parallax {
+    transform: none !important;
+  }
+}
+
+/* Screen reader only content */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Focus trap for modals */
+.focus-trap {
+  position: relative;
+}
+
+.focus-trap::before,
+.focus-trap::after {
+  content: '';
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+
+/* === SOPHISTICATED SCROLL ANIMATIONS === */
+/* Elegant fade-in and slide-up animations with proper timing */
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(var(--scroll-offset));
+  transition: all var(--duration-scroll) var(--ease-scroll);
+}
+
+.animate-on-scroll.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === GOOGLE DEEPMIND-STYLE SCROLL ANIMATIONS === */
+.gemini-in-view-element {
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gemini-in-view-element--out-view-top {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.gemini-in-view-element--in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.gemini-in-view-element--out-view-bottom {
+  opacity: 0.3;
+  transform: translateY(-10px);
+}
+
+/* Staggered animations for lists and grids */
+.animate-stagger {
+  opacity: 0;
+  transform: translateY(var(--scroll-offset));
+  transition: all var(--duration-scroll) var(--ease-scroll);
+}
+
+.animate-stagger.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fade-in animation (no movement) */
+.animate-fade {
+  opacity: 0;
+  transition: opacity var(--duration-scroll) var(--ease-scroll);
+}
+
+.animate-fade.in-view {
+  opacity: 1;
+}
+
+/* Scale animation for images and cards */
+.animate-scale {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: all var(--duration-scroll) var(--ease-scroll);
+}
+
+.animate-scale.in-view {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* === SOPHISTICATED MICROINTERACTIONS === */
+/* Subtle interactions that provide delightful feedback */
+
+.interactive-hover {
+  transition: all var(--duration-base) var(--ease-standard);
+}
+
+.interactive-hover:hover {
+  transform: scale(var(--hover-scale)) translateY(var(--hover-lift));
+}
+
+.interactive-hover:active {
+  transform: scale(var(--active-scale));
+  transition-duration: var(--duration-fast);
+}
+
+/* Button glow effect on hover */
+.button-glow {
+  position: relative;
+  overflow: hidden;
+  transition: all var(--duration-base) var(--ease-standard);
+}
+
+.button-glow::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, var(--primary)/20, transparent 70%);
+  opacity: 0;
+  transition: opacity var(--duration-base) var(--ease-standard);
+}
+
+.button-glow:hover::before {
+  opacity: 1;
+}
+
+/* === GOOGLE VEO-STYLE SHARP GRADIENT GLOW SYSTEM === */
+/* Sharp, impactful internal glow effects matching Google Veo's design */
+
+.glow-gradient-primary {
+  background:
+    /* Primary focused glow - smaller, more intense */
+    radial-gradient(ellipse 60% 50% at 50% -5%, rgba(99, 102, 241, 0.22), transparent 45%),
+    /* Secondary ambient glow */
+    radial-gradient(ellipse 100% 80% at 50% 0%, rgba(99, 102, 241, 0.08), transparent 70%),
+    /* Base dark surface */
+    var(--surface-dark, #0a0a0a);
+  border: 1px solid rgba(99, 102, 241, 0.1);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glow-gradient-ion {
+  background:
+    /* Primary focused glow - smaller, more intense */
+    radial-gradient(ellipse 60% 50% at 50% -5%, rgba(85, 194, 255, 0.22), transparent 45%),
+    /* Secondary ambient glow */
+    radial-gradient(ellipse 100% 80% at 50% 0%, rgba(85, 194, 255, 0.08), transparent 70%),
+    /* Base dark surface */
+    var(--surface-dark, #0a0a0a);
+  border: 1px solid rgba(85, 194, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glow-gradient-primary {
+  background:
+    /* Primary focused glow - smaller, more intense */
+    radial-gradient(ellipse 60% 50% at 50% -5%, rgba(255, 111, 97, 0.22), transparent 45%),
+    /* Secondary ambient glow */
+    radial-gradient(ellipse 100% 80% at 50% 0%, rgba(255, 111, 97, 0.08), transparent 70%),
+    /* Base dark surface */
+    var(--surface-dark, #0a0a0a);
+  border: 1px solid rgba(255, 111, 97, 0.1);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glow-gradient-secondary {
+  background:
+    /* Primary focused glow - smaller, more intense */
+    radial-gradient(ellipse 60% 50% at 50% -5%, rgba(85, 194, 255, 0.22), transparent 45%),
+    /* Secondary ambient glow */
+    radial-gradient(ellipse 100% 80% at 50% 0%, rgba(85, 194, 255, 0.08), transparent 70%),
+    /* Base dark surface */
+    var(--surface-dark, #0a0a0a);
+  border: 1px solid rgba(85, 194, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Noise texture overlay for added depth */
+.glow-noise::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 600 600' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+  animation: noise 8s steps(10) infinite;
+}
+
+@keyframes noise {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -5%); }
+  20% { transform: translate(-10%, 5%); }
+  30% { transform: translate(5%, -10%); }
+  40% { transform: translate(-5%, 15%); }
+  50% { transform: translate(-10%, 5%); }
+  60% { transform: translate(15%, 0); }
+  70% { transform: translate(0, 10%); }
+  80% { transform: translate(-15%, 0); }
+  90% { transform: translate(10%, 5%); }
+}
+
+/* Enhanced hover states with sharper, more impactful glow */
+.glow-gradient-primary:hover {
+  transform: translateY(-6px);
+  background:
+    /* Enhanced primary glow */
+    radial-gradient(ellipse 65% 55% at 50% -5%, rgba(99, 102, 241, 0.28), transparent 48%),
+    /* Expanded ambient glow */
+    radial-gradient(ellipse 110% 90% at 50% 0%, rgba(99, 102, 241, 0.1), transparent 75%),
+    /* Base dark surface */
+    var(--surface-dark, #0a0a0a);
+  border-color: rgba(99, 102, 241, 0.15);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    0 0 60px rgba(99, 102, 241, 0.05);
+}
+
+.glow-gradient-ion:hover {
+  transform: translateY(-6px);
+  background:
+    /* Enhanced primary glow */
+    radial-gradient(ellipse 65% 55% at 50% -5%, rgba(85, 194, 255, 0.28), transparent 48%),
+    /* Expanded ambient glow */
+    radial-gradient(ellipse 110% 90% at 50% 0%, rgba(85, 194, 255, 0.1), transparent 75%),
+    /* Base dark surface */
+    var(--surface-dark, #0a0a0a);
+  border-color: rgba(85, 194, 255, 0.15);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    0 0 60px rgba(85, 194, 255, 0.05);
+}
+
+.glow-gradient-primary:hover {
+  transform: translateY(-6px);
+  background:
+    /* Enhanced primary glow */
+    radial-gradient(ellipse 65% 55% at 50% -5%, rgba(255, 111, 97, 0.28), transparent 48%),
+    /* Expanded ambient glow */
+    radial-gradient(ellipse 110% 90% at 50% 0%, rgba(255, 111, 97, 0.1), transparent 75%),
+    /* Base dark surface */
+    var(--surface-dark, #0a0a0a);
+  border-color: rgba(255, 111, 97, 0.15);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    0 0 60px rgba(255, 111, 97, 0.05);
+}
+
+.glow-gradient-secondary:hover {
+  transform: translateY(-6px);
+  background:
+    /* Enhanced primary glow */
+    radial-gradient(ellipse 65% 55% at 50% -5%, rgba(85, 194, 255, 0.28), transparent 48%),
+    /* Expanded ambient glow */
+    radial-gradient(ellipse 110% 90% at 50% 0%, rgba(85, 194, 255, 0.1), transparent 75%),
+    /* Base dark surface */
+    var(--surface-dark, #0a0a0a);
+  border-color: rgba(85, 194, 255, 0.15);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    0 0 60px rgba(85, 194, 255, 0.05);
+}
+
+/* Enhanced pulsing animation for active/selected states with sharper glow */
+.glow-animate {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    background:
+      radial-gradient(ellipse 60% 50% at 50% -5%, rgba(255, 111, 97, 0.22), transparent 45%),
+      radial-gradient(ellipse 100% 80% at 50% 0%, rgba(255, 111, 97, 0.08), transparent 70%),
+      var(--surface-dark, #0a0a0a);
+  }
+  50% {
+    background:
+      radial-gradient(ellipse 65% 55% at 50% -5%, rgba(255, 111, 97, 0.25), transparent 48%),
+      radial-gradient(ellipse 105% 85% at 50% 0%, rgba(255, 111, 97, 0.1), transparent 75%),
+      var(--surface-dark, #0a0a0a);
+  }
+}
+
+/* Magnetic effect for interactive elements */
+.magnetic {
+  transition: transform var(--duration-base) var(--ease-standard);
+}
+
+/* Card hover states */
+.card-interactive {
+  transition: all var(--duration-base) var(--ease-standard);
+}
+
+.card-interactive:hover {
+  transform: translateY(var(--hover-lift));
+  box-shadow: var(--elevation-3);
+}
+
+/* Glassmorphism Utilities */
+.glass {
+  backdrop-filter: blur(16px) saturate(200%);
+  background-color: var(--glass-medium);
+  border: 1px solid var(--outline-variant);
+}
+
+.glass-dark {
+  backdrop-filter: blur(24px) saturate(200%);
+  background-color: var(--glass-strong);
+  border: 1px solid var(--outline);
+}
+
+.glass-card {
+  backdrop-filter: blur(16px) saturate(120%);
+  background: linear-gradient(135deg, 
+    var(--glass-light) 0%, 
+    var(--glass-medium) 50%, 
+    var(--glass-strong) 100%);
+  border: 1px solid var(--outline-variant);
+  box-shadow: var(--elevation-2), inset 0 1px 0 rgba(255,255,255,0.1);
+  transition: all var(--duration-base) var(--ease-standard);
+}
+
+.glass-card:hover {
+  backdrop-filter: blur(20px) saturate(140%);
+  border-color: var(--primary);
+  box-shadow: var(--elevation-3), 
+              inset 0 1px 0 rgba(255,255,255,0.2),
+              0 0 24px var(--primary)/20;
+  transform: translateY(-2px);
+}
+
+/* 3D Transform Utilities */
+.transform-3d {
+  transform-style: preserve-3d;
+}
+
+.perspective {
+  perspective: 1000px;
+}
+
+/* Typography Utilities */
+.text-display { 
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-bold);
+}
+
+.text-headline { 
+  font-family: var(--font-headline);
+  font-weight: var(--font-weight-semibold);
+}
+
+.text-title { 
+  font-family: var(--font-headline);
+  font-weight: var(--font-weight-semibold);
+}
+
+.text-body { 
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-normal);
+}
+
+.text-label { 
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+/* === TYPOGRAPHY & READABILITY UTILITIES === */
+/* Enhanced readability and typographic refinement */
+
+.max-line-length {
+  max-width: 75ch; /* Optimal 75 characters max line length for readability */
+}
+
+.content-width {
+  max-width: 65ch; /* Narrower for focused content */
+}
+
+.wide-content {
+  max-width: 85ch; /* Wider for less dense content */
+}
+
+/* Refined spacing for typography hierarchy */
+.heading-spacing-tight {
+  margin-bottom: 0.5em;
+}
+
+.heading-spacing-normal {
+  margin-bottom: 0.75em;
+}
+
+.paragraph-spacing {
+  margin-bottom: 1.5em;
+}
+
+.prose-spacing {
+  margin-bottom: var(--space-4); /* 32px between prose elements */
+}
+
+/* Font weight utilities for refined typography */
+.font-weight-display {
+  font-weight: var(--text-h1-weight); /* 600 for display text */
+}
+
+.font-weight-heading {
+  font-weight: var(--text-h2-weight); /* 500 for headings */
+}
+
+.font-weight-body {
+  font-weight: var(--text-body-weight); /* 400 for body text */
+}
+
+.font-weight-button {
+  font-weight: var(--text-button-weight); /* 500 for buttons */
+}
+
+/* Letter spacing utilities */
+.tracking-tight {
+  letter-spacing: -0.02em;
+}
+
+.tracking-normal {
+  letter-spacing: 0;
+}
+
+.tracking-wide {
+  letter-spacing: 0.025em;
+}
+
+.tracking-button {
+  letter-spacing: var(--text-button-tracking); /* 0.5px for buttons */
+}
+
+/* === ACCESSIBILITY ENHANCEMENTS === */
+
+/* === ENHANCED ACCESSIBILITY FEATURES === */
+/* Superior focus states and keyboard navigation */
+
+.focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 0 0 4px rgba(138, 99, 210, 0.2); /* Subtle glow */
+}
+
+.focus-visible-inset {
+  box-shadow: inset 0 0 0 2px var(--primary), 0 0 0 4px rgba(138, 99, 210, 0.2);
+  outline: none;
+}
+
+/* Enhanced button focus states */
+.button-focus:focus-visible {
+  outline: 2px solid var(--on-primary);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--primary)/30;
+}
+
+/* Interactive element minimum touch targets (44px) */
+@media (pointer: coarse) {
+  button,
+  [role="button"],
+  input[type="button"],
+  input[type="submit"],
+  input[type="reset"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Screen reader only content */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Focus trap for modals */
+.focus-trap {
+  position: relative;
+}
+
+.focus-trap:focus {
+  outline: none;
+}
+
+/* High contrast mode enhancements */
+@media (prefers-contrast: high) {
+  .focus-visible,
+  .focus-visible-inset,
+  .button-focus:focus-visible {
+    outline-width: 3px;
+    outline-style: solid;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --outline: rgba(255, 255, 255, 0.6);
+    --outline-variant: rgba(255, 255, 255, 0.4);
+    --text-weaker: #A0A9BA;
+  }
+  
+  .light-theme {
+    --outline: rgba(0, 0, 0, 0.6);
+    --outline-variant: rgba(0, 0, 0, 0.4);
+    --text-weaker: #495057;
+  }
+}
+
+/* === MOTION ACCESSIBILITY === */
+/* Respect user preferences for reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  /* Disable specific animations */
+  .animate-gradient,
+  .animate-on-scroll,
+  .animate-stagger,
+  .animate-fade,
+  .animate-scale {
+    animation: none;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+  
+  /* Keep essential interactions but reduce motion */
+  .interactive-hover:hover,
+  .card-interactive:hover {
+    transform: none !important;
+  }
+  
+  .magnetic {
+    transform: none !important;
+  }
+}
+
+/* Progressive enhancement for motion */
+@media (prefers-reduced-motion: no-preference) {
+  /* All our animation classes work normally */
+  .animate-on-scroll {
+    /* Animation properties already defined above */
+  }
+}
+
+/* Skip to content link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--primary);
+  color: var(--on-primary);
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  z-index: 9999;
+  transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+  top: 6px;
+  outline: 2px solid var(--on-primary);
+  outline-offset: 2px;
+}
+
+/* Interactive element sizing for touch */
+@media (pointer: coarse) {
+  button,
+  [role="button"],
+  a,
+  input,
+  select,
+  textarea {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Enhanced keyboard navigation */
+.keyboard-navigation {
+  position: relative;
+}
+
+.keyboard-navigation::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border: 2px solid transparent;
+  border-radius: var(--radius-md);
+  transition: border-color var(--duration-fast) var(--ease-standard);
+  pointer-events: none;
+}
+
+.keyboard-navigation:focus-visible::after {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 1px var(--background);
+}
+
+/* Screen reader only content */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+
+/* === GOOGLE-STYLE SCENE MODULE ARCHITECTURE === */
+/* Consistent spacing system based on 8px grid */
+
+.scene-module {
+  padding: 64px 0; /* 8px * 8 = 64px sections */
+}
+
+@media (min-width: 768px) {
+  .scene-module {
+    padding: 96px 0; /* 8px * 12 = 96px on larger screens */
+  }
+}
+
+.module-gap {
+  margin-bottom: 48px; /* 8px * 6 = 48px between elements */
+}
+
+.content-block {
+  padding: 24px; /* 8px * 3 = 24px cards */
+}
+
+.inline-gap {
+  margin-bottom: 16px; /* 8px * 2 = 16px paragraphs */
+}
+
+/* 12-column content grid */
+.content-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Content block enhancements */
+.content-block {
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.block-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.block-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Example expander specific styles */
+.example-expander {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.example-expander:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* === VEO-INSPIRED ML DESIGN SYSTEM === */
+
+/* Keyframes */
+@keyframes ml-sparkle-sweep {
+  0%   { background-position: -40% 0; }
+  100% { background-position: 140% 0; }
+}
+
+@keyframes ml-gradient-shift {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* Patterns built from tokens */
+
+/* Gradient underline link (restrained) */
+.ml-link {
+  color: var(--ml-ink); 
+  text-decoration: none; 
+  position: relative;
+}
+
+.ml-link::after {
+  content:""; 
+  position:absolute; 
+  left:0; 
+  right:0; 
+  bottom:-2px; 
+  height:3px;
+  background: var(--ml-gradient-duo);
+  background-size: 100% 100%;
+}
+
+/* Optional sparkle on hover (respect reduced motion below) */
+.ml-link:hover::after {
+  background-image:
+    linear-gradient(var(--ml-sparkle-angle), transparent, var(--ml-sparkle-color), transparent),
+    var(--ml-gradient-duo);
+  background-size: var(--ml-sparkle-size) 100%, 100% 100%;
+  background-repeat: no-repeat, no-repeat;
+  animation: ml-sparkle-sweep var(--ml-sparkle-duration) var(--ml-sparkle-ease) 1;
+}
+
+/* Primary CTA (Warm Lab) with subtle gradient underline on hover */
+.ml-btn-primary {
+  background: var(--ml-primary) !important; 
+  color: var(--ml-on-primary) !important;
+  border-radius: 14px !important; 
+  padding: 14px 22px !important; 
+  border: none !important; 
+  cursor: pointer;
+  transition: transform var(--ml-dur-s) var(--ml-ease-enter) !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  min-height: 48px !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.ml-btn-primary:hover { 
+  transform: translateY(-2px) !important; 
+  box-shadow: 0 8px 25px rgba(255, 122, 89, 0.25) !important;
+}
+
+.ml-btn-primary:focus-visible {
+  outline: none !important;
+  box-shadow: 0 0 0 3px var(--ml-iris-indigo) !important;
+}
+
+.ml-btn-primary:active {
+  transform: translateY(0) !important;
+  box-shadow: 0 2px 10px rgba(255, 122, 89, 0.15) !important;
+}
+
+.ml-btn-primary:hover::after {
+  content:""; 
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px; 
+  border-radius: 0 0 14px 14px;
+  background: var(--ml-gradient-duo);
+  animation: ml-sparkle-sweep var(--ml-sparkle-duration) var(--ml-sparkle-ease) 1;
+}
+
+/* Secondary ML button variant */
+.ml-btn-secondary {
+  background: transparent !important;
+  color: var(--ml-veo-blue) !important;
+  border: 2px solid var(--ml-veo-blue) !important;
+  border-radius: 12px !important;
+  padding: 12px 20px !important;
+  cursor: pointer;
+  transition: all var(--ml-dur-m) var(--ml-ease-enter) !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  position: relative;
+}
+
+.ml-btn-secondary:hover {
+  background: var(--ml-veo-blue) !important;
+  color: white !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 6px 20px rgba(74, 144, 226, 0.2) !important;
+}
+
+/* Focus ring utility for inputs */
+.ml-focusable:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--ml-iris-indigo);
+}
+
+/* On-scroll reveal utility (add when element enters viewport) */
+.ml-reveal {
+  opacity: 0; 
+  transform: translateY(var(--ml-translate-md));
+  transition: opacity var(--ml-dur-l) var(--ml-ease-enter),
+              transform var(--ml-dur-l) var(--ml-ease-enter);
+}
+
+.ml-reveal.is-visible {
+  opacity: 1; 
+  transform: translateY(0);
+}
+
+/* Progress bar (tri-gradient only for the active fill) */
+.ml-progress {
+  height: 10px; 
+  background: #EEF2F6; 
+  border-radius: 6px; 
+  overflow: hidden;
+}
+
+.ml-progress__bar {
+  height: 100%; 
+  width: var(--value, 0%);
+  background: var(--ml-gradient-tri);
+  background-size: 200% 100%; /* supports optional gradient shift */
+}
+
+/* Optional subtle gradient drift (off by default) */
+.ml-progress__bar.is-animated {
+  animation: ml-gradient-shift var(--ml-gradient-shift-duration) var(--ml-gradient-shift-ease) infinite;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  * { 
+    animation-duration: 0.001ms !important; 
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important; 
+  }
+  
+  .ml-link:hover::after { 
+    animation: none; 
+    background-image: var(--ml-gradient-duo); 
+  }
+  
+  .ml-progress__bar.is-animated { 
+    animation: none; 
+  }
+}

@@ -1,0 +1,479 @@
+/* MaterialLab Typography System V2 - LSS Testing Playground */
+/* Based on 1.25 modular scale with Goldilocks line spacing approach */
+
+/* Font Loading with Performance Optimization */
+@font-face {
+  font-family: 'Geist';
+  src: url('/fonts/geist-variable.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cabinet Grotesk Variable';
+  src: url('/fonts/cabinet-grotesk-variable.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
+}
+
+/* Typography System CSS Custom Properties */
+:root {
+  /* Font Families - Flexible brand expression */
+  --font-primary: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Cabinet Grotesk Variable', 'Cabinet Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-code: 'JetBrains Mono', Monaco, 'Cascadia Code', Consolas, monospace;
+  
+  /* Responsive Type Scale - Using clamp() for fluid typography */
+  --font-size-hero: clamp(2.5rem, 6vw + 1rem, 5rem);           /* 80px → 40px */
+  --font-size-display-1: clamp(2rem, 5vw + 0.5rem, 4rem);      /* 64px → 32px */
+  --font-size-display-2: clamp(1.75rem, 4vw + 0.5rem, 3.2rem); /* 51px → 28px */
+  --font-size-display-3: clamp(1.5rem, 3vw + 0.5rem, 2.56rem); /* 41px → 24px */
+  --font-size-h1: clamp(1.25rem, 2.5vw + 0.25rem, 2.048rem);   /* 33px → 20px */
+  --font-size-h2: clamp(1.125rem, 2vw + 0.25rem, 1.638rem);    /* 26px → 18px */
+  --font-size-h3: clamp(1rem, 1.5vw + 0.25rem, 1.311rem);      /* 21px → 16px */
+  --font-size-h4: clamp(0.9rem, 1vw + 0.125rem, 1.049rem);     /* 17px → 14px */
+  --font-size-h5: clamp(0.85rem, 0.5vw + 0.125rem, 1rem);      /* 16px → 14px */
+  --font-size-h6: clamp(0.75rem, 0.5vw + 0.1rem, 0.875rem);    /* 14px → 12px */
+  
+  /* Body Text Sizes */
+  --font-size-body-xl: 1.25rem;    /* 20px */
+  --font-size-body-lg: 1.125rem;   /* 18px */
+  --font-size-body: 1rem;          /* 16px - WCAG base */
+  --font-size-body-sm: 0.9rem;     /* 14.4px */
+  --font-size-body-xs: 0.8rem;     /* 12.8px */
+  
+  /* Caption Sizes */
+  --font-size-caption-lg: 0.875rem; /* 14px */
+  --font-size-caption: 0.75rem;     /* 12px */
+  --font-size-caption-sm: 0.625rem; /* 10px */
+  
+  /* Font Weights */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  /* Line Heights - Goldilocks approach: bigger type = tighter spacing */
+  --line-height-hero: 1.0;          /* Very tight for massive text */
+  --line-height-display: 1.1;       /* Tight for large display text */
+  --line-height-heading-tight: 1.2; /* H1-H2 */
+  --line-height-heading-normal: 1.3; /* H3-H4 */
+  --line-height-heading-relaxed: 1.4; /* H5-H6 */
+  --line-height-body-tight: 1.4;    /* Dense information */
+  --line-height-body: 1.6;          /* Standard reading */
+  --line-height-body-relaxed: 1.75; /* Long-form content */
+  --line-height-caption: 1.5;       /* Small text needs breathing room */
+  
+  /* Letter Spacing - Inverse relationship: bigger type = tighter spacing */
+  --letter-spacing-hero: -0.04em;      /* Very tight for largest text */
+  --letter-spacing-display: -0.03em;   /* Tight for display text */
+  --letter-spacing-heading-lg: -0.02em; /* H1-H2 */
+  --letter-spacing-heading-md: -0.01em; /* H3-H4 */
+  --letter-spacing-heading-sm: 0;      /* H5-H6 */
+  --letter-spacing-body-tight: -0.01em; /* Large body text */
+  --letter-spacing-body: 0;            /* Standard body */
+  --letter-spacing-body-relaxed: 0.01em; /* Small body text */
+  --letter-spacing-caption: 0.02em;    /* Smallest text */
+  --letter-spacing-uppercase: 0.08em;  /* All caps tracking */
+}
+
+/* Typography Classes - New System */
+
+/* Hero & Display Typography - Cabinet Grotesk Variable */
+.ml-typo-hero {
+  font-family: var(--font-display);
+  font-size: var(--font-size-hero);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-hero);
+  letter-spacing: var(--letter-spacing-hero);
+  text-align: left;
+}
+
+.ml-typo-display-1 {
+  font-family: var(--font-display);
+  font-size: var(--font-size-display-1);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-display);
+  letter-spacing: var(--letter-spacing-display);
+  text-align: left;
+}
+
+.ml-typo-display-2 {
+  font-family: var(--font-display);
+  font-size: var(--font-size-display-2);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-display);
+  letter-spacing: var(--letter-spacing-display);
+  text-align: left;
+}
+
+.ml-typo-display-3 {
+  font-family: var(--font-display);
+  font-size: var(--font-size-display-3);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-display);
+  letter-spacing: var(--letter-spacing-heading-lg);
+  text-align: left;
+}
+
+/* Heading Typography - Mixed fonts for hierarchy */
+.ml-typo-h1 {
+  font-family: var(--font-display);
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-heading-tight);
+  letter-spacing: var(--letter-spacing-heading-lg);
+  text-align: left;
+}
+
+.ml-typo-h2 {
+  font-family: var(--font-display);
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-heading-tight);
+  letter-spacing: var(--letter-spacing-heading-lg);
+  text-align: left;
+}
+
+.ml-typo-h3 {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-heading-normal);
+  letter-spacing: var(--letter-spacing-heading-md);
+  text-align: left;
+}
+
+.ml-typo-h4 {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h4);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-heading-normal);
+  letter-spacing: var(--letter-spacing-heading-md);
+  text-align: left;
+}
+
+.ml-typo-h5 {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h5);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-heading-relaxed);
+  letter-spacing: var(--letter-spacing-heading-sm);
+  text-align: left;
+}
+
+.ml-typo-h6 {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h6);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-heading-relaxed);
+  letter-spacing: var(--letter-spacing-heading-sm);
+  text-align: left;
+}
+
+/* Body Typography - Geist for optimal readability */
+.ml-typo-body-xl {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-xl);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-body);
+  letter-spacing: var(--letter-spacing-body-tight);
+  text-align: left;
+}
+
+.ml-typo-body-lg {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-lg);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-body);
+  letter-spacing: var(--letter-spacing-body);
+  text-align: left;
+}
+
+.ml-typo-body {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-body);
+  letter-spacing: var(--letter-spacing-body);
+  text-align: left;
+}
+
+.ml-typo-body-sm {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-body-relaxed);
+  letter-spacing: var(--letter-spacing-body-relaxed);
+  text-align: left;
+}
+
+.ml-typo-body-xs {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-xs);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-body-relaxed);
+  letter-spacing: var(--letter-spacing-body-relaxed);
+  text-align: left;
+}
+
+/* Caption Typography */
+.ml-typo-caption-lg {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-caption-lg);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-caption);
+  letter-spacing: var(--letter-spacing-caption);
+  text-align: left;
+}
+
+.ml-typo-caption {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-caption);
+  letter-spacing: var(--letter-spacing-caption);
+  text-align: left;
+}
+
+.ml-typo-caption-sm {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-caption-sm);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-caption);
+  letter-spacing: var(--letter-spacing-caption);
+  text-align: left;
+}
+
+/* Special Typography */
+.ml-typo-code {
+  font-family: var(--font-code);
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-body);
+  letter-spacing: var(--letter-spacing-body);
+  background-color: rgba(var(--lss-text-rgb, 0, 0, 0), 0.05);
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+}
+
+.ml-typo-button {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.2;
+  letter-spacing: var(--letter-spacing-uppercase);
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.ml-typo-link {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: var(--font-weight-medium);
+  line-height: inherit;
+  letter-spacing: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.125em;
+  transition: all 0.2s ease;
+}
+
+.ml-typo-link:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* Brand Personality Modes */
+.typo-thoughtful-expert {
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: var(--letter-spacing-body);
+  line-height: var(--line-height-body);
+}
+
+.typo-compelling-presenter {
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-display);
+  line-height: var(--line-height-display);
+}
+
+/* Alignment Utilities */
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Never use these - included for education */
+.text-right {
+  text-align: right;
+  opacity: 0.3;
+  position: relative;
+}
+
+.text-right::after {
+  content: "❌ Never right-align branded content";
+  position: absolute;
+  top: -1.5rem;
+  left: 0;
+  font-size: 0.75rem;
+  color: #ff0000;
+  font-family: var(--font-primary);
+}
+
+.text-justify {
+  text-align: justify;
+  opacity: 0.3;
+  position: relative;
+}
+
+.text-justify::after {
+  content: "❌ Never force-justify headlines";
+  position: absolute;
+  top: -1.5rem;
+  left: 0;
+  font-size: 0.75rem;
+  color: #ff0000;
+  font-family: var(--font-primary);
+}
+
+/* Uppercase Utility */
+.text-uppercase {
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-uppercase);
+}
+
+/* WCAG Compliance Support */
+/* Text Resizing Support (WCAG 1.4.4) */
+@supports (font-size-adjust: 1) {
+  .ml-typo-body {
+    font-size-adjust: 0.5;
+  }
+}
+
+/* Text Spacing Support (WCAG 1.4.12) */
+* {
+  /* Allow user overrides for line height */
+  line-height: max(1.2, var(--user-line-height, inherit));
+}
+
+p, .ml-typo-body, .ml-typo-body-lg, .ml-typo-body-xl {
+  /* Support paragraph spacing overrides */
+  margin-bottom: max(1em, var(--user-paragraph-spacing, 1em));
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .ml-typo-hero,
+  .ml-typo-display-1,
+  .ml-typo-display-2,
+  .ml-typo-display-3,
+  .ml-typo-h1,
+  .ml-typo-h2,
+  .ml-typo-h3,
+  .ml-typo-h4,
+  .ml-typo-h5,
+  .ml-typo-h6 {
+    font-weight: var(--font-weight-bold);
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .ml-typo-link {
+    transition: none;
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  :root {
+    /* Increase line height slightly on mobile for better readability */
+    --line-height-body: 1.7;
+    --line-height-body-relaxed: 1.8;
+  }
+  
+  /* Ensure minimum touch targets for interactive text */
+  .ml-typo-button,
+  .ml-typo-link {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Further optimize for very small screens */
+  :root {
+    --line-height-body: 1.75;
+    --letter-spacing-body: 0.01em;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .ml-typo-hero,
+  .ml-typo-display-1,
+  .ml-typo-display-2,
+  .ml-typo-display-3 {
+    font-family: var(--font-primary); /* Fallback to more available font */
+    font-weight: var(--font-weight-bold);
+  }
+  
+  .ml-typo-body,
+  .ml-typo-body-lg,
+  .ml-typo-body-xl {
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+  
+  .ml-typo-h1 { font-size: 18pt; }
+  .ml-typo-h2 { font-size: 16pt; }
+  .ml-typo-h3 { font-size: 14pt; }
+  .ml-typo-h4 { font-size: 13pt; }
+  .ml-typo-h5 { font-size: 12pt; }
+  .ml-typo-h6 { font-size: 11pt; }
+}
+
+/* Typography Debugging Helper (Development Only) */
+.debug-typography {
+  position: relative;
+}
+
+.debug-typography::before {
+  content: attr(class);
+  position: absolute;
+  top: -1rem;
+  left: 0;
+  font-size: 0.625rem;
+  color: #666;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.125rem;
+  font-family: var(--font-code);
+  z-index: 1000;
+}
+
+/* Font Loading States */
+.font-loading .ml-typo-hero,
+.font-loading .ml-typo-display-1,
+.font-loading .ml-typo-display-2,
+.font-loading .ml-typo-display-3,
+.font-loading .ml-typo-h1,
+.font-loading .ml-typo-h2 {
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  visibility: hidden;
+}
+
+.fonts-loaded .ml-typo-hero,
+.fonts-loaded .ml-typo-display-1,
+.fonts-loaded .ml-typo-display-2,
+.fonts-loaded .ml-typo-display-3,
+.fonts-loaded .ml-typo-h1,
+.fonts-loaded .ml-typo-h2 {
+  visibility: visible;
+}
