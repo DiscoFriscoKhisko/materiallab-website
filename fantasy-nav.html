@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fantasy.co Style Navigation - Material Lab</title>
+    <style>
+        /* CSS Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --header-height-default: 88px;
+            --header-height-condensed: 56px;
+            --max-width: 1280px;
+            --padding-horizontal: 32px;
+            --padding-horizontal-mobile: 16px;
+            --menu-width-default: 90px;
+            --menu-height-default: 40px;
+            --menu-width-condensed: 60px;
+            --menu-height-condensed: 40px;
+            --border-radius-cat: 12px;
+            --easing: cubic-bezier(0.22, 0.61, 0.36, 1);
+            --duration-bar: 220ms;
+            --duration-icon: 180ms;
+            --duration-overlay: 280ms;
+            --duration-reduced: 50ms;
+            
+            /* Brand fonts */
+            --font-display: 'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            
+            /* Default theme colors */
+            --color-primary: #EC8B5E;
+            --color-secondary: #8BD8BD;
+            --color-ambient: #141A46;
+            --color-surface: rgba(255, 255, 255, 0.08);
+            --color-text-primary: #FFFFFF;
+            
+            /* Navigation colors */
+            --bg-header-default: rgba(20, 26, 70, 0.85);
+            --bg-header-condensed: rgba(20, 26, 70, 0.95);
+            --bg-overlay: rgba(0, 0, 0, 0.96);
+            --blur-default: 12px;
+            --blur-condensed: 16px;
+        }
+
+        html {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        body {
+            color: #ffffff;
+            background: linear-gradient(135deg, #0B0F1A 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 300vh;
+            transition: overflow var(--duration-overlay) var(--easing);
+        }
+
+        body.menu-open {
+            overflow: hidden;
+        }
+
+        /* Skip Link for Accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: #000;
+            color: #fff;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 10000;
+            border-radius: 4px;
+        }
+
+        .skip-link:focus {
+            top: 6px;
+        }
+
+        /* Header Styles - Transparent/Floating */
+        .header {
+            position: sticky;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: transparent;
+            height: var(--header-height-default);
+            transition: height var(--duration-bar) var(--easing);
+            will-change: height;
+        }
+
+        .header.condensed {
+            height: var(--header-height-condensed);
+        }
+
+        .header-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 var(--padding-horizontal);
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        @media (max-width: 1023px) {
+            .header-container {
+                padding: 0 var(--padding-horizontal-mobile);
+            }
+        }
+
+        /* Logo Styles */
+        .logo {
+            color: #ffffff;
+            text-decoration: none;
+            font-family: var(--font-display, 'Sora', -apple-system, BlinkMacSystemFont, sans-serif);
+            font-size: 26px;
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            display: inline-flex;
+            align-items: center;
+            height: var(--menu-height-default);
+            width: 140px;
+            overflow: hidden;
+            transition: width calc(var(--duration-icon) * 2) cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .logo-full {
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+        .logo-short {
+            display: none;
+        }
+
+        .header.condensed .logo {
+            width: 32px;
+        }
+
+        .header.condensed .logo-full {
+            display: none;
+        }
+
+        .header.condensed .logo-short {
+            display: inline-block;
+        }
+
+        .logo:hover {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Navigation Links */
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            margin: 0;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 8px 0;
+            position: relative;
+            transition: color 0.15s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #ffffff;
+            transform: scaleX(0);
+            transition: transform 0.2s ease;
+        }
+
+        .nav-links a:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* Hide nav links completely - pill button only */
+        .nav-links {
+            display: none;
+        }
+
+        /* Menu Button - Perfect Pill Shape */
+        .cat-button {
+            background: var(--color-surface);
+            border: none;
+            border-radius: 20px;
+            width: var(--menu-width-default);
+            height: var(--menu-height-default);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 
+                0 4px 16px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            font-family: var(--font-body);
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--color-text-primary);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+            transition: 
+                opacity var(--duration-icon) var(--easing),
+                transform var(--duration-icon) var(--easing),
+                width var(--duration-bar) var(--easing),
+                background-color 0.2s ease,
+                box-shadow 0.2s ease;
+            will-change: opacity, transform, width, background-color, box-shadow;
+        }
+
+        .cat-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, transparent 100%);
+            border-radius: 20px 20px 0 0;
+            pointer-events: none;
+        }
+
+        .cat-button:hover {
+            background: rgba(255, 255, 255, 0.12);
+            box-shadow: 
+                0 6px 20px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        }
+
+        .cat-button:hover .menu-text,
+        .cat-button:hover .cat-face {
+            transform: scale(1.05);
+        }
+
+        .cat-button:active {
+            transform: scale(0.98);
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: 
+                0 2px 8px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08);
+            transition-duration: 120ms;
+        }
+
+
+        .menu-text {
+            display: inline-block;
+            opacity: 1;
+            transition: opacity calc(var(--duration-icon) * 1.3) ease-in-out;
+        }
+
+        .cat-face {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            font-family: 'SF Mono', 'Monaco', 'Cascadia Code', 'Roboto Mono', 'Courier New', monospace;
+            font-size: 14px;
+            font-weight: 500;
+            transition: opacity calc(var(--duration-icon) * 1.3) ease-in-out;
+        }
+
+        .header.condensed .menu-text {
+            opacity: 0;
+        }
+
+        .header.condensed .cat-face {
+            opacity: 1;
+        }
+
+        .header.condensed .cat-button {
+            width: var(--menu-width-condensed);
+        }
+
+        /* Cat button always visible */
+        .cat-button {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+
+        /* Menu Overlay */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--color-ambient);
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: 
+                opacity var(--duration-overlay) var(--easing),
+                visibility var(--duration-overlay) var(--easing);
+            will-change: opacity, visibility;
+        }
+
+        .menu-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .menu-overlay::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
+            pointer-events: none;
+        }
+
+        .menu-content {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            transform: translateY(24px);
+            transition: transform var(--duration-overlay) var(--easing);
+            will-change: transform;
+        }
+
+        .menu-overlay.open .menu-content {
+            transform: translateY(0);
+        }
+
+        /* Close Button */
+        .close-button {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: 300;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            transition: background-color 0.15s ease;
+        }
+
+        .close-button:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        /* Menu Title (Screen Reader Only) */
+        .menu-title {
+            position: absolute;
+            left: -10000px;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+        }
+
+        /* Primary Menu Links */
+        .menu-links {
+            list-style: none;
+            margin: 0 0 64px 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        .menu-links li {
+            margin: 16px 0;
+        }
+
+        .menu-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 64px;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            transition: opacity 0.15s ease;
+            display: block;
+            padding: 8px 0;
+        }
+
+        .menu-links a:hover {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 767px) {
+            .menu-links a {
+                font-size: 40px;
+            }
+        }
+
+        /* Footer Menu Links */
+        .footer-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.15s ease;
+        }
+
+        .footer-links a:hover {
+            color: #ffffff;
+        }
+
+        @media (max-width: 767px) {
+            .footer-links {
+                gap: 24px;
+            }
+            
+            .footer-links a {
+                font-size: 16px;
+            }
+        }
+
+        /* Reduced Motion Support */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                transition-duration: var(--duration-reduced) !important;
+                transform: none !important;
+            }
+            
+            .menu-content {
+                transform: none !important;
+            }
+            
+            .header.condensed .logo {
+                transform: none !important;
+            }
+            
+            .cat-button {
+                transform: none !important;
+            }
+            
+            .header.condensed .cat-button {
+                transform: none !important;
+            }
+            
+            .header.condensed .nav-links {
+                transform: none !important;
+            }
+        }
+
+        /* Demo Content Styles */
+        .demo-section {
+            padding: 120px 0;
+            text-align: center;
+        }
+
+        .demo-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 var(--padding-horizontal);
+        }
+
+        .demo-section h2 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .demo-section p {
+            font-size: 20px;
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+        }
+
+        @media (max-width: 767px) {
+            .demo-container {
+                padding: 0 var(--padding-horizontal-mobile);
+            }
+            
+            .demo-section {
+                padding: 80px 0;
+            }
+            
+            .demo-section h2 {
+                font-size: 32px;
+            }
+            
+            .demo-section p {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip Link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="header-container">
+            <!-- Logo -->
+            <a href="#" class="logo">
+                <span class="logo-full">Material Lab</span>
+                <span class="logo-short">ML</span>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav aria-label="Main navigation">
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#work">Work</a></li>
+                    <li><a href="#insights">Insights</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+
+            <!-- Menu Button -->
+            <button 
+                class="cat-button" 
+                id="menu-toggle"
+                aria-controls="global-menu" 
+                aria-expanded="false" 
+                aria-label="Open menu"
+            >
+                <span class="menu-text">Menu</span>
+                <span class="cat-face" aria-hidden="true">&gt;^.^&lt;</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Menu Overlay -->
+    <div class="menu-overlay" id="global-menu" role="dialog" aria-modal="true" aria-labelledby="menu-title">
+        <h2 id="menu-title" class="menu-title">Site Menu</h2>
+        
+        <button class="close-button" id="menu-close" aria-label="Close menu">×</button>
+        
+        <div class="menu-content">
+            <!-- Primary Navigation Links -->
+            <ul class="menu-links">
+                <li><a href="#work">Work</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#insights">Insights</a></li>
+            </ul>
+            
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Demo Sections for Scrolling -->
+        <section class="demo-section">
+            <div class="demo-container">
+                <h2>Fantasy.co Style Navigation</h2>
+                <p>Scroll down to see the navigation transform from default state to condensed state. Click the cat menu button to open the fullscreen overlay.</p>
+            </div>
+        </section>
+
+        <section class="demo-section" id="services">
+            <div class="demo-container">
+                <h2>Services</h2>
+                <p>This section demonstrates how the navigation behaves during scroll. The header will condense and the cat button will appear.</p>
+            </div>
+        </section>
+
+        <section class="demo-section" id="about">
+            <div class="demo-container">
+                <h2>About Us</h2>
+                <p>Experience smooth, GPU-accelerated animations with perfect accessibility support and reduced motion compatibility.</p>
+            </div>
+        </section>
+
+        <section class="demo-section" id="work">
+            <div class="demo-container">
+                <h2>Our Work</h2>
+                <p>The navigation system includes focus trapping, keyboard support, and ARIA attributes for screen readers.</p>
+            </div>
+        </section>
+
+        <section class="demo-section" id="insights">
+            <div class="demo-container">
+                <h2>Insights</h2>
+                <p>Built with modern web technologies including backdrop-filter, CSS custom properties, and optimized JavaScript.</p>
+            </div>
+        </section>
+
+        <section class="demo-section" id="contact">
+            <div class="demo-container">
+                <h2>Contact</h2>
+                <p>The overlay menu features a dark background (rgba(0,0,0,0.96)) with large typography and smooth animations.</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Navigation State Management
+        class FantasyNavigation {
+            constructor() {
+                this.header = document.getElementById('header');
+                this.menuToggle = document.getElementById('menu-toggle');
+                this.menuClose = document.getElementById('menu-close');
+                this.menuOverlay = document.getElementById('global-menu');
+                this.body = document.body;
+                this.isMenuOpen = false;
+                this.lastScrollY = 0;
+                this.ticking = false;
+                this.condensedThreshold = 40;
+                
+                this.init();
+            }
+
+            init() {
+                // Scroll handling with requestAnimationFrame throttling
+                window.addEventListener('scroll', () => this.handleScroll(), { passive: true });
+                
+                // Menu toggle handlers
+                this.menuToggle.addEventListener('click', () => this.openMenu());
+                this.menuClose.addEventListener('click', () => this.closeMenu());
+                
+                // Keyboard handlers
+                document.addEventListener('keydown', (e) => this.handleKeydown(e));
+                
+                // Overlay click to close
+                this.menuOverlay.addEventListener('click', (e) => {
+                    if (e.target === this.menuOverlay) {
+                        this.closeMenu();
+                    }
+                });
+
+                // Initialize scroll state
+                this.updateScrollState();
+            }
+
+            handleScroll() {
+                if (!this.ticking) {
+                    requestAnimationFrame(() => {
+                        this.updateScrollState();
+                        this.ticking = false;
+                    });
+                    this.ticking = true;
+                }
+            }
+
+            updateScrollState() {
+                const scrollY = window.scrollY;
+                const isCondensed = scrollY >= this.condensedThreshold;
+                
+                // Toggle condensed class
+                this.header.classList.toggle('condensed', isCondensed);
+                
+                this.lastScrollY = scrollY;
+            }
+
+            openMenu() {
+                if (this.isMenuOpen) return;
+                
+                this.isMenuOpen = true;
+                this.body.classList.add('menu-open');
+                this.menuOverlay.classList.add('open');
+                
+                // Update ARIA attributes
+                this.menuToggle.setAttribute('aria-expanded', 'true');
+                this.menuToggle.setAttribute('aria-label', 'Close menu');
+                
+                // Focus trap setup
+                this.setupFocusTrap();
+                
+                // Focus the close button
+                requestAnimationFrame(() => {
+                    this.menuClose.focus();
+                });
+            }
+
+            closeMenu() {
+                if (!this.isMenuOpen) return;
+                
+                this.isMenuOpen = false;
+                this.body.classList.remove('menu-open');
+                this.menuOverlay.classList.remove('open');
+                
+                // Update ARIA attributes
+                this.menuToggle.setAttribute('aria-expanded', 'false');
+                this.menuToggle.setAttribute('aria-label', 'Open menu');
+                
+                // Return focus to menu toggle
+                requestAnimationFrame(() => {
+                    this.menuToggle.focus();
+                });
+            }
+
+            handleKeydown(e) {
+                if (e.key === 'Escape' && this.isMenuOpen) {
+                    this.closeMenu();
+                }
+                
+                // Focus trapping
+                if (this.isMenuOpen && e.key === 'Tab') {
+                    this.handleTabKeyPress(e);
+                }
+            }
+
+            setupFocusTrap() {
+                // Get all focusable elements in the menu
+                this.focusableElements = this.menuOverlay.querySelectorAll(
+                    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+                );
+                this.firstFocusableElement = this.focusableElements[0];
+                this.lastFocusableElement = this.focusableElements[this.focusableElements.length - 1];
+            }
+
+            handleTabKeyPress(e) {
+                if (e.shiftKey) {
+                    // Shift + Tab
+                    if (document.activeElement === this.firstFocusableElement) {
+                        this.lastFocusableElement.focus();
+                        e.preventDefault();
+                    }
+                } else {
+                    // Tab
+                    if (document.activeElement === this.lastFocusableElement) {
+                        this.firstFocusableElement.focus();
+                        e.preventDefault();
+                    }
+                }
+            }
+        }
+
+        // Initialize navigation when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new FantasyNavigation();
+        });
+
+        // Handle reduced motion preference
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            document.documentElement.style.setProperty('--duration-bar', 'var(--duration-reduced)');
+            document.documentElement.style.setProperty('--duration-icon', 'var(--duration-reduced)');
+            document.documentElement.style.setProperty('--duration-overlay', 'var(--duration-reduced)');
+        }
+    </script>
+</body>
+</html>

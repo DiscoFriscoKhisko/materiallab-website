@@ -1,134 +1,137 @@
 import { Link, useLocation } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { MLText, MLHeading } from '../ML';
-import { ThemeToggle } from '../ThemeToggle';
 import { Button } from '../UI';
 import { MaterialLabLogo } from '../Logo';
+import { EnhancedThemeSelector, LSS_THEME_ID } from './EnhancedThemeSelector';
 import { useState, useEffect } from 'react';
+import '../../styles/navigation-system.css';
 
 export const Navigation = () => {
   const location = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [currentTheme, setCurrentTheme] = useState<LSS_THEME_ID>('v1-original');
 
-  // Track scroll position for navigation state
+  // Track scroll position for glass morphism effect
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 10);
     };
     
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    // Throttle scroll events for performance
+    let ticking = false;
+    const throttledScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    
+    window.addEventListener('scroll', throttledScroll, { passive: true });
+    return () => window.removeEventListener('scroll', throttledScroll);
   }, []);
 
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location.pathname]);
+
   const navItems = [
+    { path: '/', label: 'Home' },
     { path: '/services', label: 'Services' },
-    { path: '/work', label: 'Work' },
-    { path: '/approach', label: 'Approach' },
     { path: '/about', label: 'About' },
-    { path: '/insights', label: 'Insights' }
+    { path: '/work', label: 'Work' },
+    { path: '/insights', label: 'Insights' },
+    { path: '/contact', label: 'Contact' }
   ];
+
+  const handleThemeChange = (themeId: LSS_THEME_ID) => {
+    setCurrentTheme(themeId);
+    document.documentElement.setAttribute('data-lss-theme', themeId);
+  };
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
 
 
   return (
-    <motion.nav 
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ease-out ${
-        isScrolled 
-          ? 'py-3' 
-          : 'py-4'
-      }`}
-      style={{
-        background: isScrolled 
-          ? 'rgba(var(--surface-rgb, 255, 255, 255), 0.95)' 
-          : 'rgba(var(--surface-rgb, 255, 255, 255), 0.85)',
-        backdropFilter: isScrolled 
-          ? 'blur(20px) saturate(180%)' 
-          : 'blur(20px) saturate(150%)',
-        borderBottom: isScrolled 
-          ? '1px solid var(--outline-variant)' 
-          : 'none',
-        boxShadow: isScrolled 
-          ? 'var(--elevation-1)' 
-          : 'none'
-      }}
-      role="navigation"
-      aria-label="Main navigation"
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ 
-        duration: 0.6, 
-        ease: [0.05, 0.7, 0.1, 1]
-      }}
-    >
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex items-center justify-between h-16">
+    <>
+      {/* Skip to content link for accessibility */}
+      <a 
+        href="#main-content" 
+        className="skip-link"
+        onFocus={() => console.log('Skip link focused')}
+      >
+        Skip to main content
+      </a>
+
+      <motion.nav 
+        className={`fantasy-nav ${
+          isScrolled ? 'fantasy-nav--scrolled' : ''
+        }`}
+        role="navigation"
+        aria-label="Main navigation"
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ 
+          duration: 0.8, 
+          ease: [0.4, 0, 0.2, 1],
+          opacity: { duration: 0.6 }
+        }}
+      >
+        <div className="fantasy-nav__container">
           
           {/* Logo */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
           >
             <Link 
               to="/" 
-              className="group"
+              className="fantasy-nav__logo"
+              onClick={closeMobileMenu}
             >
               <MaterialLabLogo 
                 size="md" 
                 showText={true}
                 animated={true}
-                className="group"
               />
             </Link>
           </motion.div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="fantasy-nav__links">
             {navItems.map((item, index) => (
               <motion.div
                 key={item.path}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.1 + 0.2 }}
+                transition={{ 
+                  duration: 0.6, 
+                  delay: index * 0.1 + 0.3,
+                  ease: [0.4, 0, 0.2, 1]
+                }}
               >
                 <Link 
                   to={item.path}
-                  className={`
-                    font-veo text-sm font-medium 
-                    px-3 py-2 rounded-lg
-                    transition-all duration-200 ease-out
-                    relative overflow-hidden
-                    ${location.pathname === item.path 
-                      ? 'text-primary' 
-                      : 'text-on-surface hover:text-primary'
-                    }
-                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/20
-                    active:scale-95
-                  `}
-                  style={{
-                    backgroundColor: location.pathname === item.path 
-                      ? 'var(--veo-hover-overlay, rgba(26, 115, 232, 0.04))' 
-                      : 'transparent',
-                    backdropFilter: location.pathname === item.path ? 'blur(8px)' : undefined
-                  }}
-                  onMouseEnter={(e) => {
-                    if (location.pathname !== item.path) {
-                      e.currentTarget.style.backgroundColor = 'var(--veo-hover-overlay, rgba(26, 115, 232, 0.04))';
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    if (location.pathname !== item.path) {
-                      e.currentTarget.style.backgroundColor = 'transparent';
-                    }
-                  }}
+                  className={`fantasy-nav__link ${
+                    location.pathname === item.path 
+                      ? 'fantasy-nav__link--active' 
+                      : ''
+                  }`}
+                  onClick={closeMobileMenu}
                 >
                   {item.label}
-                  {/* Google-style ripple effect container */}
-                  <span className="absolute inset-0 rounded-lg overflow-hidden">
-                    <span 
-                      className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-150"
-                      style={{ backgroundColor: 'rgba(26, 115, 232, 0.12)' }}
-                    />
-                  </span>
                 </Link>
               </motion.div>
             ))}
@@ -136,74 +139,123 @@ export const Navigation = () => {
 
           {/* Right Side Actions */}
           <motion.div 
-            className="flex items-center space-x-3"
+            className="fantasy-nav__actions"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
           >
-            {/* Try Demo CTA */}
-            <Link to="/veo">
-              <Button
-                variant="outlined"
-                size="sm"
-                className="
-                  border-blue-600 text-blue-600 
-                  hover:bg-blue-50 hover:shadow-lg
-                  font-veo font-medium px-4 py-2.5 
-                  transition-all duration-200 ease-out
-                  focus-visible:ring-2 focus-visible:ring-blue-500/20
-                  active:scale-95 active:bg-blue-100
-                  rounded-lg
-                "
-                style={{
-                  border: '1.5px solid #1a73e8'
-                }}
+            {/* CTA Buttons */}
+            <div className="fantasy-nav__cta">
+              <Link 
+                to="/veo" 
+                className="fantasy-nav__button fantasy-nav__button--outlined"
+                onClick={closeMobileMenu}
               >
                 Try Demo
-              </Button>
-            </Link>
-            
-            {/* Start Building CTA */}
-            <Link to="/contact">
-              <Button
-                variant="filled"
-                size="sm"
-                className="
-                  bg-blue-600 text-white 
-                  hover:shadow-lg
-                  font-veo font-medium px-5 py-2.5 
-                  transition-all duration-200 ease-out
-                  focus-visible:ring-2 focus-visible:ring-blue-500/20
-                  active:scale-95
-                  rounded-lg
-                  relative overflow-hidden
-                "
-                style={{
-                  background: '#1a73e8',
-                  boxShadow: '0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15)'
-                }}
+              </Link>
+              
+              <Link 
+                to="/contact" 
+                className="fantasy-nav__button fantasy-nav__button--filled"
+                onClick={closeMobileMenu}
               >
                 Start Building
-                {/* Button state layer */}
-                <span className="absolute inset-0 bg-white/0 hover:bg-white/8 active:bg-white/12 transition-colors duration-150" />
-              </Button>
-            </Link>
+              </Link>
+            </div>
             
-            {/* Theme Toggle */}
-            <ThemeToggle />
+            {/* Enhanced Theme Selector */}
+            <EnhancedThemeSelector
+              currentTheme={currentTheme}
+              onThemeChange={handleThemeChange}
+            />
           </motion.div>
 
-          {/* Mobile menu button - TODO: Implement mobile menu */}
-          <div className="md:hidden">
-            <button className="text-gray-700 hover:text-primary transition-colors">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
-          </div>
+          {/* Mobile Menu Toggle */}
+          <button 
+            className="fantasy-nav__mobile-toggle"
+            onClick={toggleMobileMenu}
+            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={isMobileMenuOpen}
+          >
+            <motion.div
+              animate={{ rotate: isMobileMenuOpen ? 90 : 0 }}
+              transition={{ duration: 0.2 }}
+            >
+              {isMobileMenuOpen ? (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M18 6 6 18M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
+            </motion.div>
+          </button>
 
         </div>
-      </div>
-    </motion.nav>
+
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              className="fantasy-nav__mobile-menu fantasy-nav__mobile-menu--open"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+            >
+              {/* Mobile Navigation Links */}
+              <div className="fantasy-nav__mobile-links">
+                {navItems.map((item, index) => (
+                  <motion.div
+                    key={item.path}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.05 }}
+                  >
+                    <Link 
+                      to={item.path}
+                      className={`fantasy-nav__mobile-link ${
+                        location.pathname === item.path 
+                          ? 'fantasy-nav__mobile-link--active' 
+                          : ''
+                      }`}
+                      onClick={closeMobileMenu}
+                    >
+                      {item.label}
+                    </Link>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Mobile CTA Buttons */}
+              <motion.div
+                className="flex flex-col gap-3"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+              >
+                <Link 
+                  to="/veo" 
+                  className="fantasy-nav__button fantasy-nav__button--outlined w-full justify-center"
+                  onClick={closeMobileMenu}
+                >
+                  Try Demo
+                </Link>
+                
+                <Link 
+                  to="/contact" 
+                  className="fantasy-nav__button fantasy-nav__button--filled w-full justify-center"
+                  onClick={closeMobileMenu}
+                >
+                  Start Building
+                </Link>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.nav>
+    </>
   );
 };

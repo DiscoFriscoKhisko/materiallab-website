@@ -3,6 +3,7 @@
 @import './styles/grid-system.css';
 @import './styles/typography-system-v2.css';
 @import './styles/design-system-final.css';
+@import './styles/navigation-system.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

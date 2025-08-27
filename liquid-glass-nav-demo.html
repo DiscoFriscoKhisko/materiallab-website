@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Material Lab - Liquid Glass Navigation Demo</title>
+    
+    <style>
+        /* Material Lab Brand Colors */
+        :root {
+            --ml-coral: #FF6B4A;
+            --ml-soft: #FAF9F6;
+            --ml-black: #0A0A0A;
+            --ml-teal: #1A8B9D;
+            --ml-lav: #B8A4E3;
+            --ml-gold: #FFB84D;
+            
+            /* Liquid Glass Effect Variables */
+            --distortion-intensity: 0.8;
+            --blur-amount: 12px;
+            --displacement-scale: 8;
+            --drift-speed: 0.5;
+            --ripple-decay: 1000ms;
+            --nav-height: 80px;
+            --nav-radius: 16px;
+        }
+        
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--ml-black);
+            overflow-x: hidden;
+        }
+        
+        /* Demo Page Background */
+        .demo-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, 
+                var(--ml-coral) 0%, 
+                var(--ml-teal) 25%, 
+                var(--ml-lav) 50%, 
+                var(--ml-gold) 75%, 
+                var(--ml-coral) 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 20s ease infinite;
+            z-index: -1;
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        /* Content Areas */
+        .content-section {
+            min-height: 100vh;
+            padding: 120px 2rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        
+        .content-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            padding: 3rem;
+            border-radius: 24px;
+            max-width: 800px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            margin: 2rem 0;
+        }
+        
+        .content-card h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--ml-coral), var(--ml-teal));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .content-card p {
+            font-size: 1.125rem;
+            opacity: 0.8;
+            line-height: 1.8;
+        }
+        
+        /* Liquid Glass Navigation */
+        .glass-nav {
+            position: fixed;
+            top: 16px;
+            left: 16px;
+            right: 16px;
+            height: var(--nav-height);
+            z-index: 1000;
+            border-radius: var(--nav-radius);
+            overflow: hidden;
+            
+            /* Base frosted glass effect */
+            background: rgba(250, 249, 246, 0.6);
+            backdrop-filter: blur(var(--blur-amount)) saturate(135%) contrast(108%);
+            
+            /* Subtle border and inner highlight */
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 
+                inset 0 1px 0 rgba(255, 107, 74, 0.15),
+                0 8px 32px rgba(0, 0, 0, 0.08);
+                
+            /* Smooth transitions */
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Background Duplication Layer for Distortion */
+        .glass-nav::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            
+            /* Duplicate the page background */
+            background: linear-gradient(135deg, 
+                var(--ml-coral) 0%, 
+                var(--ml-teal) 25%, 
+                var(--ml-lav) 50%, 
+                var(--ml-gold) 75%, 
+                var(--ml-coral) 100%);
+            background-size: 400% 400%;
+            background-attachment: fixed;
+            
+            /* Apply the liquid distortion filter */
+            filter: url(#nav-liquid);
+            
+            /* Clip to nav shape */
+            border-radius: var(--nav-radius);
+            overflow: hidden;
+        }
+        
+        /* Navigation Content */
+        .nav-content {
+            position: relative;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+            z-index: 10;
+        }
+        
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--ml-black);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-brand:hover {
+            color: var(--ml-coral);
+            transform: scale(1.02);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: var(--ml-black);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--ml-coral);
+            background: rgba(255, 107, 74, 0.1);
+            transform: translateY(-1px);
+        }
+        
+        .nav-links a.active {
+            color: var(--ml-coral);
+            background: rgba(255, 107, 74, 0.15);
+            font-weight: 600;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .glass-nav {
+                left: 8px;
+                right: 8px;
+                top: 8px;
+            }
+            
+            .nav-content {
+                padding: 0 1rem;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .nav-links a {
+                font-size: 0.85rem;
+                padding: 0.25rem 0.5rem;
+            }
+            
+            .content-section {
+                padding: 100px 1rem 2rem;
+            }
+            
+            .content-card {
+                padding: 2rem;
+            }
+            
+            .content-card h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        /* Reduced Motion Preference */
+        @media (prefers-reduced-motion: reduce) {
+            .glass-nav::before {
+                filter: none !important;
+            }
+            
+            .demo-background {
+                animation: none;
+            }
+            
+            * {
+                transition-duration: 0.01ms !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+            }
+        }
+        
+        /* Intensity Data Attribute Controls */
+        [data-intensity="low"] {
+            --distortion-intensity: 0.3;
+            --displacement-scale: 4;
+        }
+        
+        [data-intensity="high"] {
+            --distortion-intensity: 1.2;
+            --displacement-scale: 12;
+        }
+        
+        /* Fallback for unsupported browsers */
+        .no-backdrop-filter .glass-nav {
+            background: rgba(250, 249, 246, 0.95);
+        }
+        
+        .no-svg-filters .glass-nav::before {
+            filter: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Demo Background -->
+    <div class="demo-background"></div>
+    
+    <!-- Liquid Glass Navigation -->
+    <nav class="glass-nav" data-intensity="normal">
+        <div class="nav-content">
+            <a href="#" class="nav-brand">Material Lab</a>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#work">Work</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Content Sections for Demo -->
+    <section class="content-section" id="home">
+        <div class="content-card">
+            <h2>Liquid Glass Navigation</h2>
+            <p>Experience our surreal, physics-accurate liquid glass distortion effect. The navigation bar above features organic water-like distortions that respond naturally to your interactions while maintaining perfect text readability. Try moving your mouse over the navigation and clicking to see the ripple effects.</p>
+        </div>
+    </section>
+    
+    <section class="content-section" id="services">
+        <div class="content-card">
+            <h2>Scroll to See Effects</h2>
+            <p>As you scroll, notice how the liquid glass effect intensifies momentarily to mimic momentum, then settles back to its gentle drift. The background behind the navigation is perfectly synchronized to create realistic refraction effects that follow believable liquid motion principles.</p>
+        </div>
+    </section>
+    
+    <section class="content-section" id="about">
+        <div class="content-card">
+            <h2>Performance Optimized</h2>
+            <p>This effect runs at 60fps on modern devices while gracefully falling back to simple frosted glass on unsupported browsers. The distortion respects your system's motion preferences and can be adjusted for different performance levels.</p>
+        </div>
+    </section>
+    
+    <section class="content-section" id="work">
+        <div class="content-card">
+            <h2>Accessibility First</h2>
+            <p>The liquid glass effect never interferes with navigation functionality. Text remains crisp and undistorted, keyboard navigation is preserved, and the effect can be completely disabled for users who prefer reduced motion.</p>
+        </div>
+    </section>
+    
+    <section class="content-section" id="contact">
+        <div class="content-card">
+            <h2>Advanced CSS & SVG</h2>
+            <p>Built with zero external dependencies using vanilla HTML, CSS, and JavaScript. The effect combines CSS backdrop filters with advanced SVG filter primitives including feTurbulence and feDisplacementMap for organic, physics-based distortions.</p>
+        </div>
+    </section>
+    
+    <!-- SVG Filter Definitions -->
+    <svg style="position: absolute; width: 0; height: 0; pointer-events: none;" aria-hidden="true">
+        <defs>
+            <filter id="nav-liquid" x="0%" y="0%" width="100%" height="100%">
+                <!-- Organic noise generation -->
+                <feTurbulence 
+                    id="turbulence"
+                    type="fractalNoise"
+                    baseFrequency="0.008 0.012"
+                    numOctaves="4"
+                    result="noise"/>
+                
+                <!-- Soften the noise -->
+                <feGaussianBlur 
+                    in="noise" 
+                    stdDeviation="0.5" 
+                    result="softNoise"/>
+                
+                <!-- Create displacement map -->
+                <feDisplacementMap 
+                    id="displacement"
+                    in="SourceGraphic" 
+                    in2="softNoise" 
+                    scale="8" 
+                    xChannelSelector="R" 
+                    yChannelSelector="G"/>
+            </filter>
+        </defs>
+    </svg>
+    
+    <script>
+        class LiquidGlassController {
+            constructor() {
+                // Configuration
+                this.config = {
+                    driftSpeed: 0.5,
+                    maxDisplacement: 16,
+                    baseDisplacement: 8,
+                    velocityDecay: 0.85,
+                    scrollMomentumBoost: 1.5,
+                    rippleDecayTime: 1000,
+                    maxVelocity: 50
+                };
+                
+                // State
+                this.time = 0;
+                this.isAnimating = false;
+                this.pointerVelocity = { x: 0, y: 0 };
+                this.lastPointer = { x: 0, y: 0 };
+                this.ripples = [];
+                this.scrollMomentum = 0;
+                this.lastScrollTime = 0;
+                
+                // DOM references
+                this.nav = document.querySelector('.glass-nav');
+                this.navBefore = null;
+                this.turbulence = document.getElementById('turbulence');
+                this.displacement = document.getElementById('displacement');
+                
+                // Feature detection
+                this.supportsBackdropFilter = CSS.supports('backdrop-filter', 'blur(10px)');
+                this.supportsSVGFilters = this.turbulence && this.displacement;
+                
+                this.init();
+            }
+            
+            init() {
+                // Feature detection fallbacks
+                if (!this.supportsBackdropFilter) {
+                    document.body.classList.add('no-backdrop-filter');
+                }
+                
+                if (!this.supportsSVGFilters) {
+                    document.body.classList.add('no-svg-filters');
+                    return;
+                }
+                
+                this.setupEventListeners();
+                this.startAnimation();
+            }
+            
+            setupEventListeners() {
+                // Pointer tracking
+                this.nav.addEventListener('mousemove', this.handlePointerMove.bind(this));
+                this.nav.addEventListener('mouseleave', this.handlePointerLeave.bind(this));
+                
+                // Click ripples
+                this.nav.addEventListener('click', this.handleClick.bind(this));
+                this.nav.addEventListener('touchstart', this.handleClick.bind(this));
+                
+                // Scroll momentum
+                let scrollTimer;
+                window.addEventListener('scroll', () => {
+                    this.handleScrollStart();
+                    clearTimeout(scrollTimer);
+                    scrollTimer = setTimeout(() => this.handleScrollEnd(), 150);
+                }, { passive: true });
+                
+                // Background sync
+                window.addEventListener('scroll', this.syncBackground.bind(this), { passive: true });
+                
+                // Visibility API for performance
+                document.addEventListener('visibilitychange', () => {
+                    if (document.hidden) {
+                        this.stopAnimation();
+                    } else {
+                        this.startAnimation();
+                    }
+                });
+            }
+            
+            handlePointerMove(event) {
+                const rect = this.nav.getBoundingClientRect();
+                const x = (event.clientX - rect.left) / rect.width;
+                const y = (event.clientY - rect.top) / rect.height;
+                
+                // Calculate velocity
+                const deltaX = x - this.lastPointer.x;
+                const deltaY = y - this.lastPointer.y;
+                
+                this.pointerVelocity.x = Math.min(Math.abs(deltaX) * 100, this.config.maxVelocity);
+                this.pointerVelocity.y = Math.min(Math.abs(deltaY) * 100, this.config.maxVelocity);
+                
+                this.lastPointer = { x, y };
+            }
+            
+            handlePointerLeave() {
+                this.pointerVelocity = { x: 0, y: 0 };
+            }
+            
+            handleClick(event) {
+                const rect = this.nav.getBoundingClientRect();
+                const x = (event.clientX - rect.left) / rect.width;
+                const y = (event.clientY - rect.top) / rect.height;
+                
+                // Create ripple effect
+                this.ripples.push({
+                    x,
+                    y,
+                    intensity: 1,
+                    startTime: performance.now()
+                });
+            }
+            
+            handleScrollStart() {
+                this.scrollMomentum = this.config.scrollMomentumBoost;
+                this.lastScrollTime = performance.now();
+            }
+            
+            handleScrollEnd() {
+                this.scrollMomentum = 0;
+            }
+            
+            syncBackground() {
+                if (!this.nav) return;
+                
+                const scrollY = window.scrollY;
+                const backgroundPosition = `0px ${-scrollY}px`;
+                
+                // Update CSS custom property for background sync
+                this.nav.style.setProperty('--bg-sync-y', `${-scrollY}px`);
+            }
+            
+            startAnimation() {
+                if (this.isAnimating) return;
+                this.isAnimating = true;
+                this.animate();
+            }
+            
+            stopAnimation() {
+                this.isAnimating = false;
+            }
+            
+            animate() {
+                if (!this.isAnimating || !this.supportsSVGFilters) return;
+                
+                this.time += 0.016; // ~60fps
+                
+                // Organic drift animation
+                const driftX = 0.008 + Math.sin(this.time * this.config.driftSpeed) * 0.002;
+                const driftY = 0.012 + Math.cos(this.time * this.config.driftSpeed * 0.7) * 0.003;
+                
+                // Update turbulence for organic motion
+                this.turbulence.setAttribute('baseFrequency', `${driftX} ${driftY}`);
+                
+                // Calculate displacement scale
+                let displacementScale = this.config.baseDisplacement;
+                
+                // Add pointer velocity influence
+                const velocityMagnitude = Math.sqrt(
+                    this.pointerVelocity.x * this.pointerVelocity.x + 
+                    this.pointerVelocity.y * this.pointerVelocity.y
+                );
+                displacementScale += velocityMagnitude * 0.3;
+                
+                // Add scroll momentum
+                displacementScale += this.scrollMomentum * 4;
+                
+                // Process ripples
+                this.ripples = this.ripples.filter(ripple => {
+                    const elapsed = performance.now() - ripple.startTime;
+                    const progress = elapsed / this.config.rippleDecayTime;
+                    
+                    if (progress >= 1) return false;
+                    
+                    // Ripple decay curve
+                    const intensity = ripple.intensity * (1 - progress) * Math.exp(-progress * 2);
+                    displacementScale += intensity * 8;
+                    
+                    return true;
+                });
+                
+                // Apply momentum decay
+                this.pointerVelocity.x *= this.config.velocityDecay;
+                this.pointerVelocity.y *= this.config.velocityDecay;
+                
+                // Scroll momentum decay
+                if (performance.now() - this.lastScrollTime > 100) {
+                    this.scrollMomentum *= 0.9;
+                }
+                
+                // Clamp displacement scale
+                displacementScale = Math.min(displacementScale, this.config.maxDisplacement);
+                
+                // Apply intensity modifier from data attribute
+                const intensityAttr = this.nav.getAttribute('data-intensity');
+                const intensityMultiplier = {
+                    'low': 0.3,
+                    'normal': 1.0,
+                    'high': 1.5
+                }[intensityAttr] || 1.0;
+                
+                displacementScale *= intensityMultiplier;
+                
+                // Update SVG filter
+                this.displacement.setAttribute('scale', displacementScale.toString());
+                
+                // Continue animation
+                requestAnimationFrame(() => this.animate());
+            }
+        }
+        
+        // Initialize when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                new LiquidGlassController();
+            });
+        } else {
+            new LiquidGlassController();
+        }
+        
+        // Smooth scroll for demo navigation
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                const target = document.querySelector(targetId);
+                
+                if (target) {
+                    target.scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    // Update active state
+                    document.querySelectorAll('.nav-links a').forEach(l => l.classList.remove('active'));
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Performance monitoring (optional)
+        if (typeof performance !== 'undefined' && performance.mark) {
+            performance.mark('liquid-glass-init-start');
+            
+            window.addEventListener('load', () => {
+                performance.mark('liquid-glass-init-end');
+                performance.measure('liquid-glass-init', 'liquid-glass-init-start', 'liquid-glass-init-end');
+                
+                // Log performance metrics
+                const measure = performance.getEntriesByName('liquid-glass-init')[0];
+                if (measure && measure.duration > 100) {
+                    console.warn('Liquid glass initialization took', measure.duration.toFixed(2), 'ms');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="humanistic-light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Material Lab - Synthesizing Human Ingenuity and Artificial Intelligence</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         /* Skip Link for Accessibility */
@@ -41,33 +41,53 @@
             --soft-white: #FAF9F6;
             --warm-grey: #7A756F;
 
-            /* Typography */
-            --font-display: 'Space Grotesk', sans-serif;
-            --font-body: 'Inter', sans-serif;
-            --font-mono: 'JetBrains Mono', monospace;
+            /* Material Lab v1 Typography System */
+            --font-display: 'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; 
+            --font-mono: 'JetBrains Mono', 'SF Mono', Monaco, monospace;
 
-            /* Spacing System (8px base unit) */
+            /* Enhanced Spacing System (8px base unit) */
             --space-unit: 0.5rem;
             --space-0: 0;
-            --space-1: calc(var(--space-unit) * 0.5);  /* 4px */
-            --space-2: var(--space-unit);              /* 8px */
-            --space-3: calc(var(--space-unit) * 1.5);  /* 12px */
-            --space-4: calc(var(--space-unit) * 2);    /* 16px */
-            --space-5: calc(var(--space-unit) * 3);    /* 24px */
-            --space-6: calc(var(--space-unit) * 4);    /* 32px */
-            --space-7: calc(var(--space-unit) * 5);    /* 40px */
-            --space-8: calc(var(--space-unit) * 6);    /* 48px */
-            --space-9: calc(var(--space-unit) * 8);    /* 64px */
-            --space-10: calc(var(--space-unit) * 10);  /* 80px */
-            --space-11: calc(var(--space-unit) * 12);  /* 96px */
-            --space-12: calc(var(--space-unit) * 16);  /* 128px */
+            --space-0-5: 0.125rem;                     /* 2px - Micro spacing */
+            --space-1: 0.25rem;                        /* 4px - Extra small */
+            --space-1-5: 0.375rem;                     /* 6px - Subtle spacing */
+            --space-2: var(--space-unit);              /* 8px - Base unit */
+            --space-3: 0.75rem;                        /* 12px - Medium-small */
+            --space-4: 1rem;                           /* 16px - Medium */
+            --space-5: 1.5rem;                         /* 24px - Medium-large */
+            --space-6: 2rem;                           /* 32px - Large */
+            --space-7: 2.5rem;                         /* 40px - Extra large */
+            --space-8: 3rem;                           /* 48px - Double extra large */
+            --space-9: 4rem;                           /* 64px - Section spacing */
+            --space-10: 5rem;                          /* 80px - Large section */
+            --space-11: 6rem;                          /* 96px - Extra large section */
+            --space-12: 8rem;                          /* 128px - Major section */
+            --space-14: 10rem;                         /* 160px - Page section */
+            --space-16: 12rem;                         /* 192px - Hero section */
 
-            /* Responsive Breakpoints */
-            --breakpoint-sm: 576px;
-            --breakpoint-md: 768px;
-            --breakpoint-lg: 992px;
-            --breakpoint-xl: 1200px;
-            --breakpoint-xxl: 1400px;
+            /* Semantic Spacing Tokens */
+            --space-inline: var(--space-2);            /* Inline element gaps */
+            --space-stack: var(--space-4);             /* Vertical stacking */
+            --space-inset: var(--space-4);             /* Internal padding */
+            --space-section: var(--space-12);          /* Major sections */
+            --space-page: var(--space-16);             /* Page-level spacing */
+
+            /* Refined Responsive Breakpoints */
+            --breakpoint-xs: 0px;                      /* Mobile-first base */
+            --breakpoint-sm: 640px;                    /* Large mobile */
+            --breakpoint-md: 768px;                    /* Tablet */
+            --breakpoint-lg: 1024px;                   /* Desktop */
+            --breakpoint-xl: 1280px;                   /* Large desktop */
+            --breakpoint-2xl: 1536px;                  /* Extra large desktop */
+
+            /* Container Widths */
+            --container-sm: 640px;
+            --container-md: 768px;
+            --container-lg: 1024px;
+            --container-xl: 1280px;
+            --container-2xl: 1440px;
+            --container-full: 100%;
 
             /* Motion */
             --duration-instant: 150ms;
@@ -84,144 +104,84 @@
             --shadow-xl: 0 16px 40px rgba(0, 0, 0, 0.16), 0 8px 16px rgba(0, 0, 0, 0.08);
         }
 
-        /* Default Theme - Light */
+        /* Default Theme - Humanistic Intelligence Light */
         :root {
-            --color-primary: var(--sunset-coral);
-            --color-secondary: var(--deep-teal);
-            --color-accent: var(--sunset-coral);
-            --color-neutral: var(--warm-grey);
-            --color-ambient: var(--soft-white);
+            --color-primary: #EC8B5E; /* Orange */
+            --color-secondary: #8BD8BD; /* Teal */
+            --color-accent: #EC8B5E;
+            --color-neutral: #6B7280;
+            --color-ambient: #FEFDF8; /* Warm off-white */
+            --color-surface: rgba(254, 253, 248, 0.9);
+            --color-border: rgba(107, 114, 128, 0.2);
+            --color-text-primary: #141A46; /* Navy */
+            --color-text-secondary: #6B7280;
+            --gradient-start: #EC8B5E;
+            --gradient-end: rgba(236, 139, 94, 0.1);
+        }
+
+        /* Material Lab v1 Theme System */
+
+        /* Humanistic Intelligence - Light Mode */
+        [data-theme="humanistic-light"] {
+            --color-primary: #EC8B5E; /* Orange */
+            --color-secondary: #8BD8BD; /* Teal */
+            --color-accent: #EC8B5E;
+            --color-neutral: #6B7280;
+            --color-ambient: #FEFDF8; /* Warm off-white */
             --color-surface: rgba(255, 255, 255, 0.9);
-            --color-border: rgba(122, 117, 111, 0.2);
-            --color-text-primary: var(--rich-black);
-            --color-text-secondary: var(--warm-grey);
-            --gradient-start: var(--sunset-coral);
-            --gradient-end: rgba(255, 107, 74, 0.1);
+            --color-border: rgba(107, 114, 128, 0.2);
+            --color-text-primary: #141A46; /* Navy */
+            --color-text-secondary: #6B7280;
+            --gradient-start: #EC8B5E;
+            --gradient-end: rgba(236, 139, 94, 0.1);
         }
 
-        /* V1 Original Themes */
-
-        /* Light Theme - Gallery Clarity */
-        [data-theme="light"] {
-            --color-primary: var(--sunset-coral);
-            --color-secondary: var(--deep-teal);
-            --color-accent: var(--sunset-coral);
-            --color-neutral: var(--warm-grey);
-            --color-ambient: var(--soft-white);
-            --color-surface: rgba(255, 255, 255, 0.9);
-            --color-border: rgba(122, 117, 111, 0.2);
-            --color-text-primary: var(--rich-black);
-            --color-text-secondary: var(--warm-grey);
-            --gradient-start: var(--sunset-coral);
-            --gradient-end: rgba(255, 107, 74, 0.1);
+        /* Humanistic Intelligence - Dark Mode */
+        [data-theme="humanistic-dark"] {
+            --color-primary: #FF6F61; /* Brighter orange for dark */
+            --color-secondary: #55C2FF; /* Brighter teal for dark */
+            --color-accent: #FF6F61;
+            --color-neutral: #9CA3AF;
+            --color-ambient: #0B0F1A; /* Deep navy */
+            --color-surface: rgba(20, 26, 70, 0.9);
+            --color-border: rgba(156, 163, 175, 0.2);
+            --color-text-primary: #FEFDF8; /* Warm white */
+            --color-text-secondary: #9CA3AF;
+            --gradient-start: #FF6F61;
+            --gradient-end: rgba(255, 111, 97, 0.1);
         }
 
-        /* Dark Theme - Cinematic Depth */
-        [data-theme="dark"] {
-            --color-primary: var(--soft-lavender);
-            --color-secondary: var(--deep-teal);
-            --color-accent: var(--soft-lavender);
-            --color-neutral: #B8B8B8;
-            --color-ambient: var(--rich-black);
-            --color-surface: rgba(26, 26, 26, 0.9);
-            --color-border: rgba(184, 164, 227, 0.2);
-            --color-text-primary: var(--soft-white);
-            --color-text-secondary: #B8B8B8;
-            --gradient-start: var(--soft-lavender);
-            --gradient-end: rgba(184, 164, 227, 0.1);
+        /* Structured Dynamism - Light Mode */
+        [data-theme="structured-light"] {
+            --color-primary: #007BFF; /* Electric Blue */
+            --color-secondary: #00D4AA; /* Mint */
+            --color-accent: #007BFF;
+            --color-neutral: #64748B;
+            --color-ambient: #FFFFFF; /* Pure white */
+            --color-surface: rgba(255, 255, 255, 0.95);
+            --color-border: rgba(100, 116, 139, 0.2);
+            --color-text-primary: #2C2C2C; /* Charcoal */
+            --color-text-secondary: #64748B;
+            --gradient-start: #007BFF;
+            --gradient-end: rgba(0, 123, 255, 0.1);
         }
 
-        /* Minimal Theme - Zen Focus */
-        [data-theme="minimal"] {
-            --color-primary: var(--sunset-coral);
-            --color-secondary: var(--warm-grey);
-            --color-accent: var(--sunset-coral);
-            --color-neutral: var(--warm-grey);
-            --color-ambient: #FFFFFF;
-            --color-surface: rgba(255, 255, 255, 1);
-            --color-border: rgba(255, 107, 74, 0.15);
-            --color-text-primary: var(--rich-black);
-            --color-text-secondary: var(--warm-grey);
-            --gradient-start: var(--sunset-coral);
-            --gradient-end: rgba(255, 107, 74, 0.05);
-        }
-
-        /* Maximal Theme - Rich Abundance */
-        [data-theme="maximal"] {
-            --color-primary: var(--golden-hour);
-            --color-secondary: var(--sunset-coral);
-            --color-accent: var(--golden-hour);
-            --color-neutral: rgba(255, 255, 255, 0.8);
-            --color-ambient: var(--rich-black);
-            --color-surface: rgba(26, 26, 26, 0.8);
-            --color-border: rgba(255, 184, 77, 0.3);
-            --color-text-primary: var(--soft-white);
-            --color-text-secondary: rgba(255, 255, 255, 0.8);
-            --gradient-start: var(--golden-hour);
-            --gradient-end: rgba(255, 184, 77, 0.1);
+        /* Structured Dynamism - Dark Mode */
+        [data-theme="structured-dark"] {
+            --color-primary: #3B82F6; /* Lighter blue for dark */
+            --color-secondary: #06B6D4; /* Cyan for dark */
+            --color-accent: #3B82F6;
+            --color-neutral: #94A3B8;
+            --color-ambient: #0F172A; /* Dark slate */
+            --color-surface: rgba(30, 41, 59, 0.9);
+            --color-border: rgba(148, 163, 184, 0.2);
+            --color-text-primary: #F1F5F9; /* Light slate */
+            --color-text-secondary: #94A3B8;
+            --gradient-start: #3B82F6;
+            --gradient-end: rgba(59, 130, 246, 0.1);
         }
 
         /* Film-Inspired Themes */
-
-        /* Night Interior - Amber-lit Intimacy */
-        [data-theme="night-interior"] {
-            --color-primary: #FFA500;
-            --color-secondary: #8B4513;
-            --color-accent: #FFA500;
-            --color-neutral: #D2B48C;
-            --color-ambient: #2C1810;
-            --color-surface: rgba(44, 24, 16, 0.9);
-            --color-border: rgba(255, 165, 0, 0.2);
-            --color-text-primary: #F5DEB3;
-            --color-text-secondary: #D2B48C;
-            --gradient-start: #FFA500;
-            --gradient-end: rgba(255, 165, 0, 0.1);
-        }
-
-        /* Day Exterior - Natural Daylight */
-        [data-theme="day-exterior"] {
-            --color-primary: #87CEEB;
-            --color-secondary: #228B22;
-            --color-accent: #87CEEB;
-            --color-neutral: #708090;
-            --color-ambient: #F0F8FF;
-            --color-surface: rgba(240, 248, 255, 0.9);
-            --color-border: rgba(135, 206, 235, 0.3);
-            --color-text-primary: #2F4F4F;
-            --color-text-secondary: #708090;
-            --gradient-start: #87CEEB;
-            --gradient-end: rgba(135, 206, 235, 0.1);
-        }
-
-        /* Golden Hour - Sunset Warmth */
-        [data-theme="golden-hour"] {
-            --color-primary: #FF8E53;
-            --color-secondary: #FF6B4A;
-            --color-accent: #FF8E53;
-            --color-neutral: #D2691E;
-            --color-ambient: #FFF8DC;
-            --color-surface: rgba(255, 248, 220, 0.9);
-            --color-border: rgba(255, 142, 83, 0.3);
-            --color-text-primary: #8B4513;
-            --color-text-secondary: #D2691E;
-            --gradient-start: #FF8E53;
-            --gradient-end: rgba(255, 142, 83, 0.1);
-        }
-
-        /* Intimate - Cozy Interior */
-        [data-theme="intimate"] {
-            --color-primary: #D4A574;
-            --color-secondary: #A0522D;
-            --color-accent: #D4A574;
-            --color-neutral: #BC9A6A;
-            --color-ambient: #1A1612;
-            --color-surface: rgba(26, 22, 18, 0.9);
-            --color-border: rgba(212, 165, 116, 0.2);
-            --color-text-primary: #F5E6D3;
-            --color-text-secondary: #BC9A6A;
-            --gradient-start: #D4A574;
-            --gradient-end: rgba(212, 165, 116, 0.1);
-        }
 
         /* Dramatic - High Contrast */
         [data-theme="dramatic"] {
@@ -238,20 +198,141 @@
             --gradient-end: rgba(255, 68, 68, 0.1);
         }
 
-        /* Memory - Nostalgic Fade */
-        [data-theme="memory"] {
-            --color-primary: #C9A882;
-            --color-secondary: #8B7355;
-            --color-accent: #C9A882;
-            --color-neutral: #A0896B;
-            --color-ambient: #F5F5DC;
-            --color-surface: rgba(245, 245, 220, 0.9);
-            --color-border: rgba(201, 168, 130, 0.3);
-            --color-text-primary: #5D4E37;
-            --color-text-secondary: #A0896B;
-            --gradient-start: #C9A882;
-            --gradient-end: rgba(201, 168, 130, 0.1);
+        /* Film-Inspired: Cyberpunk */
+        [data-theme="cyberpunk"] {
+            --color-primary: #FF0080;
+            --color-secondary: #00FFFF;
+            --color-accent: #FF0080;
+            --color-neutral: #CCCCCC;
+            --color-ambient: #0A0A0A;
+            --color-surface: rgba(26, 26, 46, 0.95);
+            --color-border: rgba(255, 0, 128, 0.4);
+            --color-text-primary: #FFFFFF;
+            --color-text-secondary: #CCCCCC;
+            --gradient-start: #FF0080;
+            --gradient-end: rgba(0, 255, 255, 0.3);
         }
+
+        /* Film-Inspired: Blade Runner */
+        [data-theme="blade-runner"] {
+            --color-primary: #FFB84D;
+            --color-secondary: #FF6B4A;
+            --color-accent: #FFB84D;
+            --color-neutral: #CCCCCC;
+            --color-ambient: #0B0F1A;
+            --color-surface: rgba(30, 42, 74, 0.95);
+            --color-border: rgba(255, 184, 77, 0.4);
+            --color-text-primary: #FFFFFF;
+            --color-text-secondary: #CCCCCC;
+            --gradient-start: #FFB84D;
+            --gradient-end: rgba(255, 107, 74, 0.3);
+        }
+
+        /* Film-Inspired: Matrix */
+        [data-theme="matrix"] {
+            --color-primary: #00FF41;
+            --color-secondary: #008F11;
+            --color-accent: #00FF41;
+            --color-neutral: #CCCCCC;
+            --color-ambient: #000000;
+            --color-surface: rgba(0, 17, 0, 0.95);
+            --color-border: rgba(0, 255, 65, 0.4);
+            --color-text-primary: #00FF41;
+            --color-text-secondary: #008F11;
+            --gradient-start: #00FF41;
+            --gradient-end: rgba(0, 143, 17, 0.3);
+        }
+
+        /* Film-Inspired: Tron */
+        [data-theme="tron"] {
+            --color-primary: #00D4FF;
+            --color-secondary: #FFB84D;
+            --color-accent: #00D4FF;
+            --color-neutral: #CCCCCC;
+            --color-ambient: #000814;
+            --color-surface: rgba(0, 29, 61, 0.95);
+            --color-border: rgba(0, 212, 255, 0.4);
+            --color-text-primary: #FFFFFF;
+            --color-text-secondary: #CCCCCC;
+            --gradient-start: #00D4FF;
+            --gradient-end: rgba(255, 184, 77, 0.3);
+        }
+
+        /* Film-Inspired: Her */
+        [data-theme="her"] {
+            --color-primary: #FF6B6B;
+            --color-secondary: #FFB84D;
+            --color-accent: #FF6B6B;
+            --color-neutral: #666666;
+            --color-ambient: #FFF8F0;
+            --color-surface: rgba(255, 255, 255, 0.95);
+            --color-border: rgba(255, 107, 107, 0.4);
+            --color-text-primary: #333333;
+            --color-text-secondary: #666666;
+            --gradient-start: #FF6B6B;
+            --gradient-end: rgba(255, 184, 77, 0.3);
+        }
+
+        /* Film-Inspired: Ex Machina */
+        [data-theme="ex-machina"] {
+            --color-primary: #E0E0E0;
+            --color-secondary: #B0BEC5;
+            --color-accent: #E0E0E0;
+            --color-neutral: #666666;
+            --color-ambient: #F5F5F5;
+            --color-surface: rgba(255, 255, 255, 0.95);
+            --color-border: rgba(224, 224, 224, 0.4);
+            --color-text-primary: #333333;
+            --color-text-secondary: #666666;
+            --gradient-start: #E0E0E0;
+            --gradient-end: rgba(176, 190, 197, 0.3);
+        }
+
+        /* Film-Inspired: Interstellar */
+        [data-theme="interstellar"] {
+            --color-primary: #D4A574;
+            --color-secondary: #8B7355;
+            --color-accent: #D4A574;
+            --color-neutral: #CCCCCC;
+            --color-ambient: #1A1611;
+            --color-surface: rgba(42, 33, 22, 0.95);
+            --color-border: rgba(212, 165, 116, 0.4);
+            --color-text-primary: #FFFFFF;
+            --color-text-secondary: #CCCCCC;
+            --gradient-start: #D4A574;
+            --gradient-end: rgba(139, 115, 85, 0.3);
+        }
+
+        /* Film-Inspired: Arrival */
+        [data-theme="arrival"] {
+            --color-primary: #7A8471;
+            --color-secondary: #A8B4A5;
+            --color-accent: #7A8471;
+            --color-neutral: #CCCCCC;
+            --color-ambient: #2F3228;
+            --color-surface: rgba(58, 64, 49, 0.95);
+            --color-border: rgba(122, 132, 113, 0.4);
+            --color-text-primary: #FFFFFF;
+            --color-text-secondary: #CCCCCC;
+            --gradient-start: #7A8471;
+            --gradient-end: rgba(168, 180, 165, 0.3);
+        }
+
+        /* Film-Inspired: Minority Report */
+        [data-theme="minority-report"] {
+            --color-primary: #4DA6FF;
+            --color-secondary: #80BFFF;
+            --color-accent: #4DA6FF;
+            --color-neutral: #666666;
+            --color-ambient: #F0F4F7;
+            --color-surface: rgba(255, 255, 255, 0.95);
+            --color-border: rgba(77, 166, 255, 0.4);
+            --color-text-primary: #333333;
+            --color-text-secondary: #666666;
+            --gradient-start: #4DA6FF;
+            --gradient-end: rgba(128, 191, 255, 0.3);
+        }
+
 
         /* Gradients */
         .gradient-radial {
@@ -293,6 +374,35 @@
 
         html {
             scroll-behavior: smooth;
+        }
+        
+        /* Organic Noise Texture Overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10000;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.015'/%3E%3C/svg%3E");
+            mix-blend-mode: multiply;
+            opacity: var(--noise-opacity, 0.8);
+        }
+        
+        /* Theme-specific noise variations */
+        [data-theme="dark"] body::before {
+            --noise-opacity: 0.3;
+            mix-blend-mode: screen;
+        }
+        
+        [data-theme="minimal"] body::before {
+            --noise-opacity: 0.2;
+        }
+        
+        [data-theme="maximal"] body::before {
+            --noise-opacity: 1.2;
         }
 
         body {
@@ -371,29 +481,31 @@
             z-index: 1001;
         }
 
-        /* Navigation */
+        /* Clean Navigation Design */
         .main-nav {
-            position: sticky;
+            position: fixed;
             top: 0;
+            left: 0;
+            right: 0;
             z-index: 1000;
-            background: rgba(250, 249, 246, 0.8);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--color-border);
-            transition: all var(--duration-normal) var(--easing-standard);
+            /* Initial state: fully transparent */
+            background: transparent;
+            border-bottom: none;
+            box-shadow: none;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        [data-theme="dark"] .main-nav,
-        [data-theme="maximal"] .main-nav,
-        [data-theme="night-interior"] .main-nav,
-        [data-theme="intimate"] .main-nav,
-        [data-theme="dramatic"] .main-nav {
-            background: rgba(10, 10, 10, 0.8);
+        /* Scrolled state: solid background */
+        .main-nav.scrolled {
+            background: var(--color-ambient);
+            border-bottom: 1px solid var(--color-border);
+            box-shadow: var(--shadow-sm);
         }
 
         .nav-container {
             max-width: 1440px;
             margin: 0 auto;
-            padding: var(--space-4) var(--space-6);
+            padding: var(--space-5) var(--space-6);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -403,36 +515,111 @@
             font-family: var(--font-display);
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--color-primary);
+            color: var(--color-text-primary);
             text-decoration: none;
-            transition: color var(--duration-fast) var(--easing-standard);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            transform: translateY(-10px);
+            animation: fadeInDown 0.6s ease-out 0.1s forwards;
         }
 
         .logo:hover {
             color: var(--color-accent);
+            transform: scale(1.02);
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: var(--space-6);
+            gap: var(--space-1);
             align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+
+        /* Staggered animation for nav links */
+        .nav-links li:nth-child(1) { animation: fadeInDown 0.6s ease-out 0.2s forwards; }
+        .nav-links li:nth-child(2) { animation: fadeInDown 0.6s ease-out 0.3s forwards; }
+        .nav-links li:nth-child(3) { animation: fadeInDown 0.6s ease-out 0.4s forwards; }
+        .nav-links li:nth-child(4) { animation: fadeInDown 0.6s ease-out 0.5s forwards; }
+        .nav-links li:nth-child(5) { animation: fadeInDown 0.6s ease-out 0.6s forwards; }
+        .nav-links li:nth-child(6) { animation: fadeInDown 0.6s ease-out 0.7s forwards; }
+
+        @keyframes fadeInDown {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .nav-links a {
             color: var(--color-text-primary);
             text-decoration: none;
+            font-family: var(--font-body);
+            font-size: 0.9375rem; /* 15px */
             font-weight: 500;
-            padding: var(--space-2) var(--space-3);
-            border-radius: var(--space-2);
-            transition: all var(--duration-fast) var(--easing-standard);
+            letter-spacing: -0.01em;
+            padding: var(--space-3) var(--space-4);
+            border-radius: 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
+            display: flex;
+            align-items: center;
+            min-height: 44px; /* Accessibility touch target */
         }
 
-        .nav-links a:hover,
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--color-accent);
+            opacity: 0;
+            scale: 0;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-links a:hover {
+            color: var(--color-accent);
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .nav-links a:hover::after {
+            opacity: 0.6;
+            scale: 1;
+        }
+
         .nav-links a.active {
             color: var(--color-accent);
-            background: rgba(255, 107, 74, 0.1);
+            background: rgba(255, 255, 255, 0.12);
+            font-weight: 600;
+        }
+
+        .nav-links a.active::after {
+            opacity: 1;
+            scale: 1;
+        }
+
+        /* Dark theme nav link adjustments */
+        [data-theme="dark"] .nav-links a:hover,
+        [data-theme="maximal"] .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        [data-theme="dark"] .nav-links a.active,
+        [data-theme="maximal"] .nav-links a.active {
+            background: rgba(255, 255, 255, 0.08);
         }
 
         /* Mobile Menu */
@@ -444,6 +631,15 @@
             font-size: 1.5rem;
             cursor: pointer;
             padding: var(--space-2);
+            border-radius: 8px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            min-height: 44px;
+            min-width: 44px;
+        }
+
+        .mobile-menu-toggle:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: scale(1.05);
         }
 
         @media (max-width: 768px) {
@@ -453,19 +649,75 @@
                 top: 100%;
                 left: 0;
                 right: 0;
-                background: var(--color-surface);
-                backdrop-filter: blur(20px);
+                background: var(--color-ambient);
                 flex-direction: column;
                 padding: var(--space-4);
                 box-shadow: var(--shadow-lg);
+                border-top: 1px solid var(--color-border);
+                gap: var(--space-2);
+                animation: slideInDown 0.3s ease-out;
+            }
+
+            @keyframes slideInDown {
+                from {
+                    opacity: 0;
+                    transform: translateY(-20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
             }
 
             .nav-links.active {
                 display: flex;
             }
 
+            .nav-links li {
+                animation: none;
+                opacity: 1;
+                transform: none;
+                width: 100%;
+            }
+
+            .nav-links a {
+                width: 100%;
+                justify-content: center;
+                padding: var(--space-4);
+                font-size: 1rem;
+            }
+
             .mobile-menu-toggle {
                 display: block;
+                opacity: 0;
+                transform: translateY(-10px);
+                animation: fadeInDown 0.6s ease-out 0.8s forwards;
+            }
+        }
+
+        /* Reduced motion preference */
+        @media (prefers-reduced-motion: reduce) {
+            .main-nav,
+            .logo,
+            .nav-links a,
+            .mobile-menu-toggle {
+                transition: none;
+                animation: none;
+            }
+            
+            .nav-links li {
+                opacity: 1;
+                transform: none;
+            }
+            
+            .logo {
+                opacity: 1;
+                transform: none;
+            }
+            
+            .mobile-menu-toggle {
+                opacity: 1;
+                transform: none;
             }
         }
 
@@ -572,6 +824,23 @@
             gap: var(--space-2);
         }
 
+        /* Grid layout for Film-Inspired themes */
+        .theme-buttons.film-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-1);
+        }
+
+        /* Smaller buttons for Film-Inspired themes */
+        .film-grid .theme-btn {
+            padding: var(--space-2) var(--space-3);
+            font-size: 0.875rem;
+        }
+
+        .film-grid .theme-btn span {
+            font-size: 0.6875rem;
+        }
+
         .theme-btn {
             display: flex;
             flex-direction: column;
@@ -672,40 +941,255 @@
             }
         }
 
-        /* Grid System */
+        /* Enhanced 12-Column Grid System */
         .grid {
             display: grid;
             grid-template-columns: repeat(12, 1fr);
             gap: var(--space-5);
         }
 
-        .col-12 { grid-column: span 12; }
-        .col-6 { grid-column: span 6; }
-        .col-4 { grid-column: span 4; }
+        /* Full Column Set */
+        .col-1 { grid-column: span 1; }
+        .col-2 { grid-column: span 2; }
         .col-3 { grid-column: span 3; }
+        .col-4 { grid-column: span 4; }
+        .col-5 { grid-column: span 5; }
+        .col-6 { grid-column: span 6; }
+        .col-7 { grid-column: span 7; }
+        .col-8 { grid-column: span 8; }
+        .col-9 { grid-column: span 9; }
+        .col-10 { grid-column: span 10; }
+        .col-11 { grid-column: span 11; }
+        .col-12 { grid-column: span 12; }
 
-        @media (max-width: 768px) {
-            .col-12, .col-6, .col-4, .col-3 {
+        /* Grid Offsets */
+        .offset-1 { grid-column-start: 2; }
+        .offset-2 { grid-column-start: 3; }
+        .offset-3 { grid-column-start: 4; }
+        .offset-4 { grid-column-start: 5; }
+        .offset-5 { grid-column-start: 6; }
+        .offset-6 { grid-column-start: 7; }
+        .offset-7 { grid-column-start: 8; }
+        .offset-8 { grid-column-start: 9; }
+        .offset-9 { grid-column-start: 10; }
+        .offset-10 { grid-column-start: 11; }
+        .offset-11 { grid-column-start: 12; }
+
+        /* Responsive Grid - Small (640px+) */
+        @media (min-width: 640px) {
+            .sm\:col-1 { grid-column: span 1; }
+            .sm\:col-2 { grid-column: span 2; }
+            .sm\:col-3 { grid-column: span 3; }
+            .sm\:col-4 { grid-column: span 4; }
+            .sm\:col-5 { grid-column: span 5; }
+            .sm\:col-6 { grid-column: span 6; }
+            .sm\:col-7 { grid-column: span 7; }
+            .sm\:col-8 { grid-column: span 8; }
+            .sm\:col-9 { grid-column: span 9; }
+            .sm\:col-10 { grid-column: span 10; }
+            .sm\:col-11 { grid-column: span 11; }
+            .sm\:col-12 { grid-column: span 12; }
+        }
+
+        /* Responsive Grid - Medium (768px+) */
+        @media (min-width: 768px) {
+            .md\:col-1 { grid-column: span 1; }
+            .md\:col-2 { grid-column: span 2; }
+            .md\:col-3 { grid-column: span 3; }
+            .md\:col-4 { grid-column: span 4; }
+            .md\:col-5 { grid-column: span 5; }
+            .md\:col-6 { grid-column: span 6; }
+            .md\:col-7 { grid-column: span 7; }
+            .md\:col-8 { grid-column: span 8; }
+            .md\:col-9 { grid-column: span 9; }
+            .md\:col-10 { grid-column: span 10; }
+            .md\:col-11 { grid-column: span 11; }
+            .md\:col-12 { grid-column: span 12; }
+        }
+
+        /* Responsive Grid - Large (1024px+) */
+        @media (min-width: 1024px) {
+            .lg\:col-1 { grid-column: span 1; }
+            .lg\:col-2 { grid-column: span 2; }
+            .lg\:col-3 { grid-column: span 3; }
+            .lg\:col-4 { grid-column: span 4; }
+            .lg\:col-5 { grid-column: span 5; }
+            .lg\:col-6 { grid-column: span 6; }
+            .lg\:col-7 { grid-column: span 7; }
+            .lg\:col-8 { grid-column: span 8; }
+            .lg\:col-9 { grid-column: span 9; }
+            .lg\:col-10 { grid-column: span 10; }
+            .lg\:col-11 { grid-column: span 11; }
+            .lg\:col-12 { grid-column: span 12; }
+        }
+
+        /* WCAG 1.4.10 Reflow - Mobile First */
+        @media (max-width: 767px) {
+            .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, 
+            .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
                 grid-column: span 12;
             }
         }
 
-        /* Utility Classes */
-        .text-center { text-align: center; }
-        .text-left { text-align: left; }
-        .flex { display: flex; }
-        .flex-col { flex-direction: column; }
-        .items-center { align-items: center; }
-        .justify-center { justify-content: center; }
-        .justify-between { justify-content: space-between; }
-        .gap-4 { gap: var(--space-4); }
-        .gap-6 { gap: var(--space-6); }
-        .gap-8 { gap: var(--space-8); }
+        /* Container Variants */
+        .container { max-width: var(--container-2xl); margin: 0 auto; padding: 0 var(--space-6); }
+        .container-sm { max-width: var(--container-sm); margin: 0 auto; padding: 0 var(--space-6); }
+        .container-md { max-width: var(--container-md); margin: 0 auto; padding: 0 var(--space-6); }
+        .container-lg { max-width: var(--container-lg); margin: 0 auto; padding: 0 var(--space-6); }
+        .container-xl { max-width: var(--container-xl); margin: 0 auto; padding: 0 var(--space-6); }
+        .container-full { max-width: var(--container-full); margin: 0 auto; padding: 0 var(--space-6); }
+
+        /* Comprehensive Spacing Utilities */
+        
+        /* Margin Utilities */
+        .m-0 { margin: var(--space-0); }
+        .m-0-5 { margin: var(--space-0-5); }
+        .m-1 { margin: var(--space-1); }
+        .m-1-5 { margin: var(--space-1-5); }
+        .m-2 { margin: var(--space-2); }
+        .m-3 { margin: var(--space-3); }
+        .m-4 { margin: var(--space-4); }
+        .m-5 { margin: var(--space-5); }
+        .m-6 { margin: var(--space-6); }
+        .m-7 { margin: var(--space-7); }
+        .m-8 { margin: var(--space-8); }
+        .m-9 { margin: var(--space-9); }
+        .m-10 { margin: var(--space-10); }
+        .m-11 { margin: var(--space-11); }
+        .m-12 { margin: var(--space-12); }
+        .m-14 { margin: var(--space-14); }
+        .m-16 { margin: var(--space-16); }
+
+        /* Margin X-axis */
+        .mx-0 { margin-left: var(--space-0); margin-right: var(--space-0); }
+        .mx-0-5 { margin-left: var(--space-0-5); margin-right: var(--space-0-5); }
+        .mx-1 { margin-left: var(--space-1); margin-right: var(--space-1); }
+        .mx-2 { margin-left: var(--space-2); margin-right: var(--space-2); }
+        .mx-3 { margin-left: var(--space-3); margin-right: var(--space-3); }
+        .mx-4 { margin-left: var(--space-4); margin-right: var(--space-4); }
+        .mx-5 { margin-left: var(--space-5); margin-right: var(--space-5); }
+        .mx-6 { margin-left: var(--space-6); margin-right: var(--space-6); }
+        .mx-8 { margin-left: var(--space-8); margin-right: var(--space-8); }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+
+        /* Margin Y-axis */
+        .my-0 { margin-top: var(--space-0); margin-bottom: var(--space-0); }
+        .my-0-5 { margin-top: var(--space-0-5); margin-bottom: var(--space-0-5); }
+        .my-1 { margin-top: var(--space-1); margin-bottom: var(--space-1); }
+        .my-2 { margin-top: var(--space-2); margin-bottom: var(--space-2); }
+        .my-3 { margin-top: var(--space-3); margin-bottom: var(--space-3); }
+        .my-4 { margin-top: var(--space-4); margin-bottom: var(--space-4); }
+        .my-5 { margin-top: var(--space-5); margin-bottom: var(--space-5); }
+        .my-6 { margin-top: var(--space-6); margin-bottom: var(--space-6); }
+        .my-8 { margin-top: var(--space-8); margin-bottom: var(--space-8); }
+        .my-12 { margin-top: var(--space-12); margin-bottom: var(--space-12); }
+
+        /* Individual Margins */
+        .mt-0 { margin-top: var(--space-0); }
+        .mt-1 { margin-top: var(--space-1); }
+        .mt-2 { margin-top: var(--space-2); }
+        .mt-3 { margin-top: var(--space-3); }
+        .mt-4 { margin-top: var(--space-4); }
+        .mt-6 { margin-top: var(--space-6); }
+        .mt-8 { margin-top: var(--space-8); }
+        .mt-12 { margin-top: var(--space-12); }
+
+        .mb-0 { margin-bottom: var(--space-0); }
+        .mb-1 { margin-bottom: var(--space-1); }
+        .mb-2 { margin-bottom: var(--space-2); }
+        .mb-3 { margin-bottom: var(--space-3); }
         .mb-4 { margin-bottom: var(--space-4); }
         .mb-6 { margin-bottom: var(--space-6); }
         .mb-8 { margin-bottom: var(--space-8); }
-        .mt-4 { margin-top: var(--space-4); }
-        .mt-8 { margin-top: var(--space-8); }
+        .mb-12 { margin-bottom: var(--space-12); }
+
+        /* Padding Utilities */
+        .p-0 { padding: var(--space-0); }
+        .p-0-5 { padding: var(--space-0-5); }
+        .p-1 { padding: var(--space-1); }
+        .p-1-5 { padding: var(--space-1-5); }
+        .p-2 { padding: var(--space-2); }
+        .p-3 { padding: var(--space-3); }
+        .p-4 { padding: var(--space-4); }
+        .p-5 { padding: var(--space-5); }
+        .p-6 { padding: var(--space-6); }
+        .p-7 { padding: var(--space-7); }
+        .p-8 { padding: var(--space-8); }
+
+        /* Padding X-axis */
+        .px-0 { padding-left: var(--space-0); padding-right: var(--space-0); }
+        .px-1 { padding-left: var(--space-1); padding-right: var(--space-1); }
+        .px-2 { padding-left: var(--space-2); padding-right: var(--space-2); }
+        .px-3 { padding-left: var(--space-3); padding-right: var(--space-3); }
+        .px-4 { padding-left: var(--space-4); padding-right: var(--space-4); }
+        .px-5 { padding-left: var(--space-5); padding-right: var(--space-5); }
+        .px-6 { padding-left: var(--space-6); padding-right: var(--space-6); }
+        .px-8 { padding-left: var(--space-8); padding-right: var(--space-8); }
+
+        /* Padding Y-axis */
+        .py-0 { padding-top: var(--space-0); padding-bottom: var(--space-0); }
+        .py-1 { padding-top: var(--space-1); padding-bottom: var(--space-1); }
+        .py-2 { padding-top: var(--space-2); padding-bottom: var(--space-2); }
+        .py-3 { padding-top: var(--space-3); padding-bottom: var(--space-3); }
+        .py-4 { padding-top: var(--space-4); padding-bottom: var(--space-4); }
+        .py-5 { padding-top: var(--space-5); padding-bottom: var(--space-5); }
+        .py-6 { padding-top: var(--space-6); padding-bottom: var(--space-6); }
+        .py-8 { padding-top: var(--space-8); padding-bottom: var(--space-8); }
+
+        /* Gap Utilities */
+        .gap-0 { gap: var(--space-0); }
+        .gap-0-5 { gap: var(--space-0-5); }
+        .gap-1 { gap: var(--space-1); }
+        .gap-1-5 { gap: var(--space-1-5); }
+        .gap-2 { gap: var(--space-2); }
+        .gap-3 { gap: var(--space-3); }
+        .gap-4 { gap: var(--space-4); }
+        .gap-5 { gap: var(--space-5); }
+        .gap-6 { gap: var(--space-6); }
+        .gap-8 { gap: var(--space-8); }
+        .gap-10 { gap: var(--space-10); }
+        .gap-12 { gap: var(--space-12); }
+
+        /* Layout Utilities */
+        .w-full { width: 100%; }
+        .w-1\/2 { width: 50%; }
+        .w-1\/3 { width: 33.333333%; }
+        .w-2\/3 { width: 66.666667%; }
+        .w-1\/4 { width: 25%; }
+        .w-3\/4 { width: 75%; }
+        .w-auto { width: auto; }
+
+        .h-full { height: 100%; }
+        .h-screen { height: 100vh; }
+        .h-auto { height: auto; }
+
+        /* Flexbox Utilities */
+        .flex { display: flex; }
+        .flex-col { flex-direction: column; }
+        .flex-row { flex-direction: row; }
+        .flex-wrap { flex-wrap: wrap; }
+        .flex-nowrap { flex-wrap: nowrap; }
+        .items-start { align-items: flex-start; }
+        .items-center { align-items: center; }
+        .items-end { align-items: flex-end; }
+        .items-stretch { align-items: stretch; }
+        .justify-start { justify-content: flex-start; }
+        .justify-center { justify-content: center; }
+        .justify-end { justify-content: flex-end; }
+        .justify-between { justify-content: space-between; }
+        .justify-around { justify-content: space-around; }
+        .justify-evenly { justify-content: space-evenly; }
+
+        /* Text Utilities */
+        .text-left { text-align: left; }
+        .text-center { text-align: center; }
+        .text-right { text-align: right; }
+
+        /* Position Utilities */
+        .relative { position: relative; }
+        .absolute { position: absolute; }
+        .fixed { position: fixed; }
+        .sticky { position: sticky; }
 
         /* Section Specific Styles */
         #hero {
@@ -804,56 +1288,78 @@
                             <a href="#about" class="btn btn-secondary">Learn More</a>
                         </div>
                         
-                        <!-- Theme Switcher -->
+                        <!-- Material Lab v1 Theme Switcher -->
                         <div class="theme-switcher mt-8">
                             <div class="theme-group">
-                                <h4>V1 Original</h4>
+                                <h4>🧠 Humanistic Intelligence</h4>
                                 <div class="theme-buttons">
-                                    <button class="theme-btn active" data-theme-name="light" aria-label="Light theme">
-                                        <div class="theme-swatch" style="background: #FF6B4A;"></div>
+                                    <button class="theme-btn active" data-theme-name="humanistic-light" aria-label="Humanistic Light theme">
+                                        <div class="theme-swatch" style="background: #EC8B5E;"></div>
                                         <span>Light</span>
                                     </button>
-                                    <button class="theme-btn" data-theme-name="dark" aria-label="Dark theme">
-                                        <div class="theme-swatch" style="background: #B8A4E3;"></div>
+                                    <button class="theme-btn" data-theme-name="humanistic-dark" aria-label="Humanistic Dark theme">
+                                        <div class="theme-swatch" style="background: #FF6F61;"></div>
                                         <span>Dark</span>
-                                    </button>
-                                    <button class="theme-btn" data-theme-name="minimal" aria-label="Minimal theme">
-                                        <div class="theme-swatch" style="background: #FF6B4A;"></div>
-                                        <span>Minimal</span>
-                                    </button>
-                                    <button class="theme-btn" data-theme-name="maximal" aria-label="Maximal theme">
-                                        <div class="theme-swatch" style="background: #FFB84D;"></div>
-                                        <span>Maximal</span>
                                     </button>
                                 </div>
                             </div>
                             
                             <div class="theme-group">
-                                <h4>Film-Inspired</h4>
+                                <h4>⚡ Structured Dynamism</h4>
                                 <div class="theme-buttons">
-                                    <button class="theme-btn" data-theme-name="night-interior" aria-label="Night Interior theme">
-                                        <div class="theme-swatch" style="background: #FFA500;"></div>
-                                        <span>Night</span>
+                                    <button class="theme-btn" data-theme-name="structured-light" aria-label="Structured Light theme">
+                                        <div class="theme-swatch" style="background: #007BFF;"></div>
+                                        <span>Light</span>
                                     </button>
-                                    <button class="theme-btn" data-theme-name="day-exterior" aria-label="Day Exterior theme">
-                                        <div class="theme-swatch" style="background: #87CEEB;"></div>
-                                        <span>Day</span>
+                                    <button class="theme-btn" data-theme-name="structured-dark" aria-label="Structured Dark theme">
+                                        <div class="theme-swatch" style="background: #3B82F6;"></div>
+                                        <span>Dark</span>
                                     </button>
-                                    <button class="theme-btn" data-theme-name="golden-hour" aria-label="Golden Hour theme">
-                                        <div class="theme-swatch" style="background: #FF8E53;"></div>
-                                        <span>Golden</span>
-                                    </button>
-                                    <button class="theme-btn" data-theme-name="intimate" aria-label="Intimate theme">
-                                        <div class="theme-swatch" style="background: #D4A574;"></div>
-                                        <span>Intimate</span>
-                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="theme-group">
+                                <h4>🎬 Film-Inspired</h4>
+                                <div class="theme-buttons film-grid">
                                     <button class="theme-btn" data-theme-name="dramatic" aria-label="Dramatic theme">
                                         <div class="theme-swatch" style="background: #FF4444;"></div>
-                                        <span>Drama</span>
+                                        <span>Dramatic</span>
                                     </button>
-                                    <button class="theme-btn" data-theme-name="memory" aria-label="Memory theme">
-                                        <div class="theme-swatch" style="background: #C9A882;"></div>
-                                        <span>Memory</span>
+                                    <button class="theme-btn" data-theme-name="cyberpunk" aria-label="Cyberpunk theme">
+                                        <div class="theme-swatch" style="background: linear-gradient(135deg, #FF0080, #00FFFF);"></div>
+                                        <span>Cyberpunk</span>
+                                    </button>
+                                    <button class="theme-btn" data-theme-name="blade-runner" aria-label="Blade Runner theme">
+                                        <div class="theme-swatch" style="background: linear-gradient(135deg, #FFB84D, #FF6B4A);"></div>
+                                        <span>Blade Runner</span>
+                                    </button>
+                                    <button class="theme-btn" data-theme-name="matrix" aria-label="Matrix theme">
+                                        <div class="theme-swatch" style="background: linear-gradient(135deg, #00FF41, #008F11);"></div>
+                                        <span>Matrix</span>
+                                    </button>
+                                    <button class="theme-btn" data-theme-name="tron" aria-label="Tron theme">
+                                        <div class="theme-swatch" style="background: linear-gradient(135deg, #00D4FF, #FFB84D);"></div>
+                                        <span>Tron</span>
+                                    </button>
+                                    <button class="theme-btn" data-theme-name="her" aria-label="Her theme">
+                                        <div class="theme-swatch" style="background: linear-gradient(135deg, #FF6B6B, #FFB84D);"></div>
+                                        <span>Her</span>
+                                    </button>
+                                    <button class="theme-btn" data-theme-name="ex-machina" aria-label="Ex Machina theme">
+                                        <div class="theme-swatch" style="background: linear-gradient(135deg, #E0E0E0, #B0BEC5);"></div>
+                                        <span>Ex Machina</span>
+                                    </button>
+                                    <button class="theme-btn" data-theme-name="interstellar" aria-label="Interstellar theme">
+                                        <div class="theme-swatch" style="background: linear-gradient(135deg, #D4A574, #8B7355);"></div>
+                                        <span>Interstellar</span>
+                                    </button>
+                                    <button class="theme-btn" data-theme-name="arrival" aria-label="Arrival theme">
+                                        <div class="theme-swatch" style="background: linear-gradient(135deg, #7A8471, #A8B4A5);"></div>
+                                        <span>Arrival</span>
+                                    </button>
+                                    <button class="theme-btn" data-theme-name="minority-report" aria-label="Minority Report theme">
+                                        <div class="theme-swatch" style="background: linear-gradient(135deg, #4DA6FF, #80BFFF);"></div>
+                                        <span>Minority Report</span>
                                     </button>
                                 </div>
                             </div>
@@ -1096,6 +1602,31 @@
             }
             
             window.addEventListener('scroll', updateActiveSection);
+            
+            // Navigation scroll effect (fantasy.co-inspired)
+            let ticking = false;
+            
+            function updateNavScrollState() {
+                const nav = document.querySelector('.main-nav');
+                const scrolled = window.scrollY > 50;
+                
+                if (scrolled) {
+                    nav.classList.add('scrolled');
+                } else {
+                    nav.classList.remove('scrolled');
+                }
+                
+                ticking = false;
+            }
+            
+            function handleScroll() {
+                if (!ticking) {
+                    requestAnimationFrame(updateNavScrollState);
+                    ticking = true;
+                }
+            }
+            
+            window.addEventListener('scroll', handleScroll, { passive: true });
             
             // Mobile menu toggle
             const mobileToggle = document.querySelector('.mobile-menu-toggle');

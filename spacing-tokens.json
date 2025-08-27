@@ -1,0 +1,182 @@
+{
+  "spacing": {
+    "description": "Material Lab spacing system based on 8px (0.5rem) base unit",
+    "baseUnit": "0.5rem",
+    "baseUnitPx": "8px",
+    "tokens": {
+      "space-0": {
+        "value": "0",
+        "px": "0px",
+        "description": "No spacing"
+      },
+      "space-0.5": {
+        "value": "0.125rem",
+        "px": "2px",
+        "description": "Micro spacing for fine adjustments"
+      },
+      "space-1": {
+        "value": "0.25rem",
+        "px": "4px",
+        "description": "Extra small spacing"
+      },
+      "space-1.5": {
+        "value": "0.375rem",
+        "px": "6px",
+        "description": "Subtle spacing between closely related elements"
+      },
+      "space-2": {
+        "value": "0.5rem",
+        "px": "8px",
+        "description": "Small spacing - base unit"
+      },
+      "space-3": {
+        "value": "0.75rem",
+        "px": "12px",
+        "description": "Medium-small spacing"
+      },
+      "space-4": {
+        "value": "1rem",
+        "px": "16px",
+        "description": "Medium spacing - common for padding and gaps"
+      },
+      "space-5": {
+        "value": "1.5rem",
+        "px": "24px",
+        "description": "Medium-large spacing"
+      },
+      "space-6": {
+        "value": "2rem",
+        "px": "32px",
+        "description": "Large spacing - common for component separation"
+      },
+      "space-7": {
+        "value": "2.5rem",
+        "px": "40px",
+        "description": "Extra large spacing"
+      },
+      "space-8": {
+        "value": "3rem",
+        "px": "48px",
+        "description": "Double extra large spacing"
+      },
+      "space-9": {
+        "value": "4rem",
+        "px": "64px",
+        "description": "Section spacing"
+      },
+      "space-10": {
+        "value": "5rem",
+        "px": "80px",
+        "description": "Large section spacing"
+      },
+      "space-11": {
+        "value": "6rem",
+        "px": "96px",
+        "description": "Extra large section spacing"
+      },
+      "space-12": {
+        "value": "8rem",
+        "px": "128px",
+        "description": "Major section spacing"
+      },
+      "space-14": {
+        "value": "10rem",
+        "px": "160px",
+        "description": "Page section spacing"
+      },
+      "space-16": {
+        "value": "12rem",
+        "px": "192px",
+        "description": "Hero section spacing"
+      }
+    },
+    "semantic": {
+      "space-inline": {
+        "value": "var(--space-2)",
+        "description": "Inline element gaps (buttons, tags, breadcrumbs)"
+      },
+      "space-stack": {
+        "value": "var(--space-4)",
+        "description": "Vertical stacking of related elements"
+      },
+      "space-inset": {
+        "value": "var(--space-4)",
+        "description": "Internal padding for containers"
+      },
+      "space-section": {
+        "value": "var(--space-12)",
+        "description": "Major section separation"
+      },
+      "space-page": {
+        "value": "var(--space-16)",
+        "description": "Page-level spacing"
+      }
+    }
+  },
+  "breakpoints": {
+    "description": "Responsive breakpoints for consistent design across devices",
+    "tokens": {
+      "xs": {
+        "value": "0px",
+        "description": "Mobile-first base (no media query needed)"
+      },
+      "sm": {
+        "value": "640px",
+        "description": "Large mobile devices"
+      },
+      "md": {
+        "value": "768px",
+        "description": "Tablet devices"
+      },
+      "lg": {
+        "value": "1024px",
+        "description": "Desktop devices"
+      },
+      "xl": {
+        "value": "1280px",
+        "description": "Large desktop devices"
+      },
+      "2xl": {
+        "value": "1536px",
+        "description": "Extra large desktop devices"
+      }
+    }
+  },
+  "containers": {
+    "description": "Container max-widths for different breakpoints",
+    "tokens": {
+      "container-sm": {
+        "value": "640px",
+        "description": "Small container width"
+      },
+      "container-md": {
+        "value": "768px",
+        "description": "Medium container width"
+      },
+      "container-lg": {
+        "value": "1024px",
+        "description": "Large container width"
+      },
+      "container-xl": {
+        "value": "1280px",
+        "description": "Extra large container width"
+      },
+      "container-2xl": {
+        "value": "1440px",
+        "description": "Default maximum container width"
+      },
+      "container-full": {
+        "value": "100%",
+        "description": "Full width container"
+      }
+    }
+  },
+  "grid": {
+    "description": "CSS Grid system configuration",
+    "columns": 12,
+    "gutter": "var(--space-5)",
+    "gutterPx": "24px",
+    "fractionalColumns": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+    "offsets": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+  }
+}
