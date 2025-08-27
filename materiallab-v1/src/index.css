@@ -1,8 +1,8 @@
+/* Core Material Lab design system - Ex Machina focused */
 @import './styles/design-tokens.css';
 @import './styles/spacing-system.css';
 @import './styles/grid-system.css';
 @import './styles/typography-system-v2.css';
-@import './styles/design-system-final.css';
 @import './styles/navigation-system.css';
 @tailwind base;
 @tailwind components;
@@ -10,15 +10,62 @@
 
 @layer base {
   html {
-    font-family: var(--font-primary);
+    font-family: var(--font-body, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
   }
   
   body {
     @apply antialiased;
-    background: var(--ml-bg-primary, var(--background));
-    color: var(--ml-text-primary, var(--on-surface));
-    transition: background-color var(--ml-duration-normal, 200ms) var(--ml-ease-out, ease-out),
-                color var(--ml-duration-normal, 200ms) var(--ml-ease-out, ease-out);
+    font-family: var(--font-body, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color var(--duration-normal) var(--ease-out),
+                color var(--duration-normal) var(--ease-out);
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* Background Blob Animation */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 60vw;
+    height: 60vh;
+    background: var(--color-warm);
+    opacity: 0.03;
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    z-index: -1;
+    animation: blob-float 20s ease-in-out infinite;
+    filter: blur(40px);
+    pointer-events: none;
+  }
+
+  /* Theme-specific blob colors */
+  body.theme-sunset::before {
+    background: linear-gradient(135deg, #FF6B5D 0%, #FFB84D 100%);
+    opacity: 0.05;
+  }
+
+  body.theme-ocean::before {
+    background: linear-gradient(135deg, #4DA6FF 0%, #52E5B7 100%);
+    opacity: 0.04;
+  }
+
+  body.theme-aurora::before {
+    background: linear-gradient(135deg, #B8A4E3 0%, #FFE55C 50%, #52E5B7 100%);
+    opacity: 0.06;
+    animation: blob-float 25s ease-in-out infinite, theme-gradient-shift 30s ease-in-out infinite;
+  }
+
+  body.theme-dark::before {
+    background: linear-gradient(135deg, #343A40 0%, #212529 100%);
+    opacity: 0.1;
+  }
+
+  body.theme-light::before {
+    background: linear-gradient(135deg, #FF6B5D 0%, #4DA6FF 100%);
+    opacity: 0.02;
   }
 
 }
@@ -29,10 +76,61 @@
   50% { background-position: 100% 50%; }
 }
 
+@keyframes blob-float {
+  0%, 100% { 
+    transform: translateX(-50%) translateY(-50%) scale(1) rotate(0deg);
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  25% { 
+    transform: translateX(-50%) translateY(-55%) scale(1.05) rotate(90deg);
+    border-radius: 40% 60% 70% 30% / 40% 70% 30% 60%;
+  }
+  50% { 
+    transform: translateX(-55%) translateY(-50%) scale(0.95) rotate(180deg);
+    border-radius: 70% 30% 40% 60% / 70% 40% 60% 30%;
+  }
+  75% { 
+    transform: translateX(-50%) translateY(-45%) scale(1.02) rotate(270deg);
+    border-radius: 30% 70% 60% 40% / 30% 60% 40% 70%;
+  }
+}
+
+@keyframes blob-pulse {
+  0%, 100% { 
+    transform: scale(1);
+    opacity: 0.4;
+  }
+  50% { 
+    transform: scale(1.1);
+    opacity: 0.6;
+  }
+}
+
+@keyframes theme-gradient-shift {
+  0% { background-position: 0% 50%; }
+  25% { background-position: 100% 50%; }
+  50% { background-position: 100% 100%; }
+  75% { background-position: 0% 100%; }
+  100% { background-position: 0% 50%; }
+}
+
 /* Animation Classes */
 .animate-gradient {
   background-size: 200% 200%;
   animation: gradient-shift 4s ease-in-out infinite;
+}
+
+.animate-blob {
+  animation: blob-float 20s ease-in-out infinite;
+}
+
+.animate-blob-pulse {
+  animation: blob-pulse 8s ease-in-out infinite;
+}
+
+.animate-theme-gradient {
+  background-size: 400% 400%;
+  animation: theme-gradient-shift 15s ease-in-out infinite;
 }
 
 /* === VEO-STYLE SCROLLYTELLING & ANIMATIONS === */

@@ -1,7 +1,7 @@
 import { type ReactNode, useEffect } from 'react';
 import { Navigation } from '../Navigation/Navigation';
 import { useAccessibilityPreferences, useAnnouncer } from '../../hooks/useAccessibility';
-import { useLSSTheme } from '../../contexts/LSSThemeContext';
+import { useTheme } from '../../contexts/ThemeContext';
 
 interface LayoutProps {
   children: ReactNode;
@@ -14,7 +14,7 @@ export const Layout = ({
 }: LayoutProps) => {
   const { prefersReducedMotion, prefersHighContrast } = useAccessibilityPreferences();
   const { announce } = useAnnouncer();
-  const { themeMode } = useLSSTheme();
+  const { theme } = useTheme();
 
   // Apply accessibility classes to root element
   useEffect(() => {
@@ -33,7 +33,7 @@ export const Layout = ({
     }
   }, [prefersReducedMotion, prefersHighContrast]);
   return (
-    <div className={`lss-layout min-h-screen transition-all duration-500 ${themeMode}`}>
+    <div className={`lss-layout min-h-screen transition-all duration-500 ${theme}`}>
       {/* Skip to main content link for screen readers */}
       <a 
         href="#main-content" 

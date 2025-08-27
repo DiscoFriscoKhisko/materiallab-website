@@ -1,10 +1,10 @@
 // Organisms - Complete Functional Sections
 // Export all organism components from this central index
 
-// Re-export existing organisms (need refactoring for atomic compliance)
+// Re-export existing organisms (simplified after VEO cleanup)
 export { default as Navigation } from '../Navigation/Navigation';
-export { default as VeoHero } from '../VeoHero';
 export { default as ContactForm } from '../ContactForm/ContactForm';
+// VeoHero removed during VEO component cleanup
 
 // TODO: Create and export missing organisms
 // export { Header } from './Header';

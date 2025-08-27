@@ -1,261 +1,230 @@
 import { Link, useLocation } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import { MLText, MLHeading } from '../ML';
-import { Button } from '../UI';
+import { useState, useEffect, useRef } from 'react';
 import { MaterialLabLogo } from '../Logo';
-import { EnhancedThemeSelector, LSS_THEME_ID } from './EnhancedThemeSelector';
-import { useState, useEffect } from 'react';
+import { EnhancedThemeSelector } from './EnhancedThemeSelector';
 import '../../styles/navigation-system.css';
 
 export const Navigation = () => {
   const location = useLocation();
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [currentTheme, setCurrentTheme] = useState<LSS_THEME_ID>('v1-original');
+  const [isCondensed, setIsCondensed] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuToggleRef = useRef<HTMLButtonElement>(null);
+  const menuCloseRef = useRef<HTMLButtonElement>(null);
+  const menuOverlayRef = useRef<HTMLDivElement>(null);
+  const focusableElementsRef = useRef<NodeListOf<HTMLElement> | null>(null);
 
-  // Track scroll position for glass morphism effect
+  // Track scroll position for condensed state
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-    
-    // Throttle scroll events for performance
     let ticking = false;
-    const throttledScroll = () => {
+    const condensedThreshold = 40;
+
+    const handleScroll = () => {
       if (!ticking) {
         requestAnimationFrame(() => {
-          handleScroll();
+          const scrollY = window.scrollY;
+          setIsCondensed(scrollY >= condensedThreshold);
           ticking = false;
         });
         ticking = true;
       }
     };
-    
-    window.addEventListener('scroll', throttledScroll, { passive: true });
-    return () => window.removeEventListener('scroll', throttledScroll);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Initialize state
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu when route changes
+  // Handle body overflow when menu is open
   useEffect(() => {
-    setIsMobileMenuOpen(false);
+    document.body.classList.toggle('menu-open', isMenuOpen);
+    return () => document.body.classList.remove('menu-open');
+  }, [isMenuOpen]);
+
+  // Close menu when route changes
+  useEffect(() => {
+    setIsMenuOpen(false);
   }, [location.pathname]);
 
   const navItems = [
-    { path: '/', label: 'Home' },
+    { path: '/work', label: 'Work' },
     { path: '/services', label: 'Services' },
     { path: '/about', label: 'About' },
-    { path: '/work', label: 'Work' },
-    { path: '/insights', label: 'Insights' },
-    { path: '/contact', label: 'Contact' }
+    { path: '/insights', label: 'Insights' }
   ];
 
-  const handleThemeChange = (themeId: LSS_THEME_ID) => {
-    setCurrentTheme(themeId);
-    document.documentElement.setAttribute('data-lss-theme', themeId);
+  const openMenu = () => {
+    if (isMenuOpen) return;
+    
+    setIsMenuOpen(true);
+    
+    // Update ARIA attributes
+    if (menuToggleRef.current) {
+      menuToggleRef.current.setAttribute('aria-expanded', 'true');
+      menuToggleRef.current.setAttribute('aria-label', 'Close menu');
+    }
+    
+    // Setup focus trap
+    setupFocusTrap();
+    
+    // Focus the close button
+    requestAnimationFrame(() => {
+      menuCloseRef.current?.focus();
+    });
   };
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
+  const closeMenu = () => {
+    if (!isMenuOpen) return;
+    
+    setIsMenuOpen(false);
+    
+    // Update ARIA attributes
+    if (menuToggleRef.current) {
+      menuToggleRef.current.setAttribute('aria-expanded', 'false');
+      menuToggleRef.current.setAttribute('aria-label', 'Open menu');
+    }
+    
+    // Return focus to menu toggle
+    requestAnimationFrame(() => {
+      menuToggleRef.current?.focus();
+    });
   };
 
-  const closeMobileMenu = () => {
-    setIsMobileMenuOpen(false);
+  const setupFocusTrap = () => {
+    if (menuOverlayRef.current) {
+      focusableElementsRef.current = menuOverlayRef.current.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+    }
   };
+
+  const handleKeydown = (e: KeyboardEvent) => {
+    if (e.key === 'Escape' && isMenuOpen) {
+      closeMenu();
+    }
+    
+    // Focus trapping
+    if (isMenuOpen && e.key === 'Tab' && focusableElementsRef.current) {
+      const focusableElements = focusableElementsRef.current;
+      const firstFocusableElement = focusableElements[0];
+      const lastFocusableElement = focusableElements[focusableElements.length - 1];
+      
+      if (e.shiftKey) {
+        // Shift + Tab
+        if (document.activeElement === firstFocusableElement) {
+          lastFocusableElement.focus();
+          e.preventDefault();
+        }
+      } else {
+        // Tab
+        if (document.activeElement === lastFocusableElement) {
+          firstFocusableElement.focus();
+          e.preventDefault();
+        }
+      }
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeydown);
+    return () => document.removeEventListener('keydown', handleKeydown);
+  }, [isMenuOpen]);
+
+  const handleOverlayClick = (e: React.MouseEvent) => {
+    if (e.target === menuOverlayRef.current) {
+      closeMenu();
+    }
+  };
+
+  
 
 
   return (
     <>
-      {/* Skip to content link for accessibility */}
-      <a 
-        href="#main-content" 
-        className="skip-link"
-        onFocus={() => console.log('Skip link focused')}
-      >
+      {/* Skip Link for Accessibility */}
+      <a href="#main-content" className="skip-link">
         Skip to main content
       </a>
 
-      <motion.nav 
-        className={`fantasy-nav ${
-          isScrolled ? 'fantasy-nav--scrolled' : ''
-        }`}
-        role="navigation"
-        aria-label="Main navigation"
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ 
-          duration: 0.8, 
-          ease: [0.4, 0, 0.2, 1],
-          opacity: { duration: 0.6 }
-        }}
-      >
-        <div className="fantasy-nav__container">
-          
+      {/* Header */}
+      <header className={`header ${isCondensed ? 'condensed' : ''}`} id="header">
+        <div className="header-container">
           {/* Logo */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            <Link 
-              to="/" 
-              className="fantasy-nav__logo"
-              onClick={closeMobileMenu}
-            >
-              <MaterialLabLogo 
-                size="md" 
-                showText={true}
-                animated={true}
-              />
-            </Link>
-          </motion.div>
+          <Link to="/" className="logo">
+            <span className="logo-full">Material Lab</span>
+            <span className="logo-short">ML</span>
+          </Link>
 
-          {/* Desktop Navigation */}
-          <div className="fantasy-nav__links">
-            {navItems.map((item, index) => (
-              <motion.div
-                key={item.path}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ 
-                  duration: 0.6, 
-                  delay: index * 0.1 + 0.3,
-                  ease: [0.4, 0, 0.2, 1]
-                }}
-              >
-                <Link 
-                  to={item.path}
-                  className={`fantasy-nav__link ${
-                    location.pathname === item.path 
-                      ? 'fantasy-nav__link--active' 
-                      : ''
-                  }`}
-                  onClick={closeMobileMenu}
-                >
+          {/* Desktop Navigation Links (Hidden in Fantasy style) */}
+          <nav aria-label="Main navigation">
+            <ul className="nav-links">
+              {navItems.map((item) => (
+                <li key={item.path}>
+                  <Link 
+                    to={item.path}
+                    className={location.pathname === item.path ? 'active' : ''}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          {/* Actions Container */}
+          <div className="nav-actions">
+            {/* Enhanced Theme Selector */}
+            <EnhancedThemeSelector />
+            
+            {/* Menu Button */}
+            <button 
+              ref={menuToggleRef}
+              className="cat-button" 
+              onClick={openMenu}
+              aria-controls="global-menu" 
+              aria-expanded={isMenuOpen} 
+              aria-label="Open menu"
+            >
+              <span className="menu-text">Menu</span>
+              <span className="cat-face" aria-hidden="true">&gt;^.^&lt;</span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* Menu Overlay */}
+      <div 
+        ref={menuOverlayRef}
+        className={`menu-overlay ${isMenuOpen ? 'open' : ''}`} 
+        id="global-menu" 
+        role="dialog" 
+        aria-modal="true" 
+        aria-labelledby="menu-title"
+        onClick={handleOverlayClick}
+      >
+        <h2 id="menu-title" className="menu-title">Site Menu</h2>
+        
+        <button 
+          ref={menuCloseRef}
+          className="close-button" 
+          onClick={closeMenu}
+          aria-label="Close menu"
+        >
+          ×
+        </button>
+        
+        <div className="menu-content">
+          {/* Primary Navigation Links */}
+          <ul className="menu-links">
+            {navItems.map((item) => (
+              <li key={item.path}>
+                <Link to={item.path} onClick={closeMenu}>
                   {item.label}
                 </Link>
-              </motion.div>
+              </li>
             ))}
-          </div>
-
-          {/* Right Side Actions */}
-          <motion.div 
-            className="fantasy-nav__actions"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-          >
-            {/* CTA Buttons */}
-            <div className="fantasy-nav__cta">
-              <Link 
-                to="/veo" 
-                className="fantasy-nav__button fantasy-nav__button--outlined"
-                onClick={closeMobileMenu}
-              >
-                Try Demo
-              </Link>
-              
-              <Link 
-                to="/contact" 
-                className="fantasy-nav__button fantasy-nav__button--filled"
-                onClick={closeMobileMenu}
-              >
-                Start Building
-              </Link>
-            </div>
-            
-            {/* Enhanced Theme Selector */}
-            <EnhancedThemeSelector
-              currentTheme={currentTheme}
-              onThemeChange={handleThemeChange}
-            />
-          </motion.div>
-
-          {/* Mobile Menu Toggle */}
-          <button 
-            className="fantasy-nav__mobile-toggle"
-            onClick={toggleMobileMenu}
-            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={isMobileMenuOpen}
-          >
-            <motion.div
-              animate={{ rotate: isMobileMenuOpen ? 90 : 0 }}
-              transition={{ duration: 0.2 }}
-            >
-              {isMobileMenuOpen ? (
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M18 6 6 18M6 6l12 12" />
-                </svg>
-              ) : (
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              )}
-            </motion.div>
-          </button>
-
+          </ul>
         </div>
-
-        {/* Mobile Menu */}
-        <AnimatePresence>
-          {isMobileMenuOpen && (
-            <motion.div
-              className="fantasy-nav__mobile-menu fantasy-nav__mobile-menu--open"
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-            >
-              {/* Mobile Navigation Links */}
-              <div className="fantasy-nav__mobile-links">
-                {navItems.map((item, index) => (
-                  <motion.div
-                    key={item.path}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.05 }}
-                  >
-                    <Link 
-                      to={item.path}
-                      className={`fantasy-nav__mobile-link ${
-                        location.pathname === item.path 
-                          ? 'fantasy-nav__mobile-link--active' 
-                          : ''
-                      }`}
-                      onClick={closeMobileMenu}
-                    >
-                      {item.label}
-                    </Link>
-                  </motion.div>
-                ))}
-              </div>
-
-              {/* Mobile CTA Buttons */}
-              <motion.div
-                className="flex flex-col gap-3"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-              >
-                <Link 
-                  to="/veo" 
-                  className="fantasy-nav__button fantasy-nav__button--outlined w-full justify-center"
-                  onClick={closeMobileMenu}
-                >
-                  Try Demo
-                </Link>
-                
-                <Link 
-                  to="/contact" 
-                  className="fantasy-nav__button fantasy-nav__button--filled w-full justify-center"
-                  onClick={closeMobileMenu}
-                >
-                  Start Building
-                </Link>
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.nav>
+      </div>
     </>
   );
 };

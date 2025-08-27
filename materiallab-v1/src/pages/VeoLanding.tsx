@@ -1,9 +1,7 @@
 import { motion } from 'framer-motion';
 import { Layout } from '../components/Layout/Layout';
-import { VeoHero } from '../components/VeoHero';
-import { VeoFeatureGrid, materialLabFeatures } from '../components/VeoFeatureGrid';
-import { VeoServiceCard, ServiceIcons } from '../components/VeoServiceCard';
-import { VeoVideoCard } from '../components/VeoVideoCard';
+// VEO components removed - using basic components for VEO landing page
+import { MLCard, MLText, MLHeading } from '../components/ML';
 import { Button } from '../components/UI';
 import { useNavigate } from 'react-router-dom';
 

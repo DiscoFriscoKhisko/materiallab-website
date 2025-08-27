@@ -1,343 +1,119 @@
-/* ===================================================
-   MATERIAL LAB NAVIGATION DESIGN SYSTEM
-   Fantasy.co-Inspired Glass Morphism Navigation
-   =================================================== */
+/* Ex Machina Navigation System for Material Lab */
+/* Clinical Precision Meets Human Warmth */
 
-/* === NAVIGATION TOKENS === */
-:root {
-  /* Glass morphism colors */
-  --nav-glass-initial: rgba(255, 255, 255, 0.01);
-  --nav-glass-scrolled: rgba(255, 255, 255, 0.85);
-  --nav-glass-border-initial: rgba(255, 255, 255, 0.05);
-  --nav-glass-border-scrolled: rgba(255, 255, 255, 0.2);
-  
-  /* Backdrop blur levels */
-  --nav-blur-initial: 0px;
-  --nav-blur-scrolled: 24px;
-  --nav-blur-saturate-initial: 100%;
-  --nav-blur-saturate-scrolled: 180%;
-  
-  /* Shadow system */
-  --nav-shadow-initial: none;
-  --nav-shadow-scrolled: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08);
-  
-  /* Typography */
-  --nav-font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --nav-font-weight-normal: 400;
-  --nav-font-weight-medium: 500;
-  --nav-font-weight-semibold: 600;
-  --nav-font-size: 0.9375rem; /* 15px */
-  --nav-letter-spacing: -0.01em;
-  
-  /* Colors */
-  --nav-text-initial: rgba(0, 0, 0, 0.87);
-  --nav-text-scrolled: rgba(0, 0, 0, 0.87);
-  --nav-text-active: rgba(0, 0, 0, 0.95);
-  --nav-text-hover: rgba(0, 0, 0, 0.95);
-  
-  /* Link hover effects */
-  --nav-link-hover-bg: rgba(0, 0, 0, 0.04);
-  --nav-link-active-bg: rgba(0, 0, 0, 0.06);
-  --nav-link-glow: rgba(0, 123, 255, 0.1);
-  
-  /* Timing functions */
-  --nav-transition-scroll: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  --nav-transition-hover: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  --nav-transition-active: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-  
-  /* Dimensions */
-  --nav-height: 72px;
-  --nav-height-scrolled: 64px;
-  --nav-padding-x: 32px;
-  --nav-link-padding-x: 16px;
-  --nav-link-padding-y: 8px;
-  --nav-link-border-radius: 8px;
+/* Skip Link for Accessibility */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--color-charcoal);
+  color: var(--color-white);
+  padding: var(--space-sm);
+  text-decoration: none;
+  z-index: var(--z-tooltip);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-medium);
+  transition: all var(--duration-normal) var(--ease-out);
 }
 
-/* Dark theme overrides */
-[data-theme="dark"] {
-  --nav-glass-initial: rgba(0, 0, 0, 0.01);
-  --nav-glass-scrolled: rgba(0, 0, 0, 0.8);
-  --nav-glass-border-initial: rgba(255, 255, 255, 0.08);
-  --nav-glass-border-scrolled: rgba(255, 255, 255, 0.15);
-  
-  --nav-text-initial: rgba(255, 255, 255, 0.9);
-  --nav-text-scrolled: rgba(255, 255, 255, 0.9);
-  --nav-text-active: rgba(255, 255, 255, 0.95);
-  --nav-text-hover: rgba(255, 255, 255, 0.95);
-  
-  --nav-link-hover-bg: rgba(255, 255, 255, 0.06);
-  --nav-link-active-bg: rgba(255, 255, 255, 0.08);
-  --nav-shadow-scrolled: 0 8px 32px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(0, 0, 0, 0.2);
+.skip-link:focus {
+  top: 6px;
 }
 
-/* LSS Theme-specific colors */
-[data-lss-theme="light"] {
-  --nav-text-active: var(--lss-sunset-coral);
-  --nav-link-active-bg: rgba(255, 107, 74, 0.08);
-  --nav-link-glow: rgba(255, 107, 74, 0.15);
-}
-
-[data-lss-theme="dark"] {
-  --nav-text-active: var(--lss-soft-lavender);
-  --nav-link-active-bg: rgba(184, 164, 227, 0.12);
-  --nav-link-glow: rgba(184, 164, 227, 0.2);
-}
-
-[data-lss-theme="minimal"] {
-  --nav-text-active: var(--lss-sunset-coral);
-  --nav-link-active-bg: rgba(255, 107, 74, 0.05);
-  --nav-link-glow: rgba(255, 107, 74, 0.1);
-}
-
-[data-lss-theme="maximal"] {
-  --nav-text-active: var(--lss-golden-hour);
-  --nav-link-active-bg: rgba(255, 184, 77, 0.12);
-  --nav-link-glow: rgba(255, 184, 77, 0.2);
-}
-
-/* === MAIN NAVIGATION COMPONENT === */
-.fantasy-nav {
-  /* Layout */
-  position: fixed;
+/* Header Styles - Floating and Glass */
+.header {
+  position: sticky;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000;
-  
-  /* Initial state - completely transparent */
-  background: var(--nav-glass-initial);
-  backdrop-filter: blur(var(--nav-blur-initial)) saturate(var(--nav-blur-saturate-initial));
-  border-bottom: 1px solid var(--nav-glass-border-initial);
-  box-shadow: var(--nav-shadow-initial);
-  
-  /* Smooth transitions */
-  transition: 
-    background-color var(--nav-transition-scroll),
-    backdrop-filter var(--nav-transition-scroll),
-    border-color var(--nav-transition-scroll),
-    box-shadow var(--nav-transition-scroll),
-    height var(--nav-transition-scroll);
-  
-  /* Typography */
-  font-family: var(--nav-font-family);
-  font-size: var(--nav-font-size);
-  font-weight: var(--nav-font-weight-normal);
-  letter-spacing: var(--nav-letter-spacing);
+  z-index: var(--z-dropdown);
+  background: transparent;
+  height: var(--nav-height);
+  /* NO HEIGHT TRANSITIONS - Constant height */
+  will-change: transform;
 }
 
-/* Scrolled state - frosted glass */
-.fantasy-nav--scrolled {
-  background: var(--nav-glass-scrolled);
-  backdrop-filter: blur(var(--nav-blur-scrolled)) saturate(var(--nav-blur-saturate-scrolled));
-  border-bottom-color: var(--nav-glass-border-scrolled);
-  box-shadow: var(--nav-shadow-scrolled);
-}
-
-/* === NAVIGATION CONTAINER === */
-.fantasy-nav__container {
+.header-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--nav-padding-x);
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: var(--nav-height);
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 var(--nav-padding-x);
-  
-  transition: height var(--nav-transition-scroll);
+  gap: var(--nav-gap);
 }
 
-.fantasy-nav--scrolled .fantasy-nav__container {
-  height: var(--nav-height-scrolled);
+@media (max-width: 1023px) {
+  .header-container {
+    padding: 0 var(--space-lg);
+  }
 }
 
-/* === LOGO SECTION === */
-.fantasy-nav__logo {
-  display: flex;
-  align-items: center;
-  color: var(--nav-text-initial);
+/* Logo Styles - Ex Machina Typography */
+.logo {
+  color: var(--text-primary);
   text-decoration: none;
-  font-weight: var(--nav-font-weight-semibold);
-  font-size: 1.125rem;
-  
-  transition: color var(--nav-transition-hover);
-}
-
-.fantasy-nav__logo:hover {
-  color: var(--nav-text-hover);
-}
-
-/* === MAIN NAVIGATION LINKS === */
-.fantasy-nav__links {
-  display: none;
-  align-items: center;
-  gap: 4px;
-  
-  @media (min-width: 768px) {
-    display: flex;
-  }
-}
-
-.fantasy-nav__link {
-  position: relative;
-  display: flex;
-  align-items: center;
-  padding: var(--nav-link-padding-y) var(--nav-link-padding-x);
-  color: var(--nav-text-initial);
-  text-decoration: none;
-  border-radius: var(--nav-link-border-radius);
-  font-weight: var(--nav-font-weight-medium);
-  
-  /* Smooth transitions */
-  transition: 
-    color var(--nav-transition-hover),
-    background-color var(--nav-transition-hover),
-    transform var(--nav-transition-hover);
-  
-  /* Interactive states */
-  &:hover {
-    color: var(--nav-text-hover);
-    background-color: var(--nav-link-hover-bg);
-    transform: translateY(-1px);
-    
-    /* Soft glow effect */
-    &::before {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-  
-  &:active {
-    transform: translateY(0);
-    background-color: var(--nav-link-active-bg);
-    transition-duration: var(--nav-transition-active);
-  }
-  
-  /* Focus states for accessibility */
-  &:focus-visible {
-    outline: 2px solid var(--nav-text-active);
-    outline-offset: 2px;
-    border-radius: var(--nav-link-border-radius);
-  }
-  
-  /* Glow effect overlay */
-  &::before {
-    content: '';
-    position: absolute;
-    inset: -4px;
-    background: var(--nav-link-glow);
-    border-radius: calc(var(--nav-link-border-radius) + 4px);
-    opacity: 0;
-    transform: scale(0.95);
-    transition: opacity var(--nav-transition-hover), transform var(--nav-transition-hover);
-    z-index: -1;
-    pointer-events: none;
-  }
-}
-
-/* Active link state */
-.fantasy-nav__link--active {
-  color: var(--nav-text-active);
-  background-color: var(--nav-link-active-bg);
-  font-weight: var(--nav-font-weight-semibold);
-  
-  /* Subtle indicator dot */
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 4px;
-    height: 4px;
-    background: var(--nav-text-active);
-    border-radius: 50%;
-    opacity: 0.8;
-  }
-}
-
-/* === RIGHT SIDE ACTIONS === */
-.fantasy-nav__actions {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-/* === CTA BUTTONS === */
-.fantasy-nav__cta {
-  display: none;
-  align-items: center;
-  gap: 8px;
-  
-  @media (min-width: 1024px) {
-    display: flex;
-  }
-}
-
-.fantasy-nav__button {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-tight);
   display: inline-flex;
   align-items: center;
-  padding: 10px 20px;
-  font-size: 0.875rem;
-  font-weight: var(--nav-font-weight-medium);
-  border-radius: 8px;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
-  
-  transition: 
-    transform var(--nav-transition-hover),
-    box-shadow var(--nav-transition-hover),
-    background-color var(--nav-transition-hover);
-  
-  &:hover {
-    transform: translateY(-1px);
-  }
-  
-  &:active {
-    transform: translateY(0);
-  }
-  
-  &:focus-visible {
-    outline: 2px solid currentColor;
-    outline-offset: 2px;
-  }
+  height: var(--nav-button-height);
+  width: var(--nav-logo-width-expanded);
+  overflow: hidden;
+  transition: width var(--duration-slow) var(--ease-smooth);
+  will-change: width;
 }
 
-.fantasy-nav__button--outlined {
-  background: transparent;
-  color: var(--nav-text-initial);
-  border: 1.5px solid rgba(0, 0, 0, 0.15);
-  
-  &:hover {
-    background: rgba(0, 0, 0, 0.04);
-    border-color: rgba(0, 0, 0, 0.25);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
+.logo-full {
+  display: inline-block;
+  white-space: nowrap;
 }
 
-[data-theme="dark"] .fantasy-nav__button--outlined {
-  color: var(--nav-text-initial);
-  border-color: rgba(255, 255, 255, 0.2);
-  
-  &:hover {
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(255, 255, 255, 0.3);
-  }
+.logo-short {
+  display: none;
 }
 
-.fantasy-nav__button--filled {
-  background: #1a73e8;
-  color: white;
-  border: 1.5px solid transparent;
-  
-  &:hover {
-    background: #1557b0;
-    box-shadow: 0 6px 16px rgba(26, 115, 232, 0.3);
-  }
+.header.condensed .logo {
+  width: var(--nav-logo-width-condensed);
 }
 
-/* === ENHANCED THEME SELECTOR === */
+.header.condensed .logo-full {
+  display: none;
+}
+
+.header.condensed .logo-short {
+  display: inline-block;
+}
+
+.logo:hover {
+  color: var(--color-warm);
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.logo:focus-visible {
+  outline: 2px solid var(--color-cool);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Navigation Links (Hidden in Ex Machina style) */
+.nav-links {
+  display: none;
+}
+
+/* Navigation Actions Container */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+/* Enhanced Theme Selector - Ex Machina Glass Style */
 .fantasy-nav__theme-selector {
   position: relative;
 }
@@ -346,213 +122,447 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: var(--nav-button-height);
+  height: var(--nav-button-height);
   border: none;
-  background: transparent;
-  border-radius: 8px;
+  background: var(--glass-light);
+  backdrop-filter: var(--blur-xl);
+  border: 1px solid var(--glass-border-light);
+  border-radius: var(--nav-button-radius);
   cursor: pointer;
-  color: var(--nav-text-initial);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-glass);
   
-  transition: 
-    background-color var(--nav-transition-hover),
-    transform var(--nav-transition-hover);
-  
-  &:hover {
-    background: var(--nav-link-hover-bg);
-    transform: translateY(-1px);
-  }
-  
-  &:active {
-    transform: translateY(0);
-  }
-  
-  &:focus-visible {
-    outline: 2px solid var(--nav-text-active);
-    outline-offset: 2px;
-  }
-  
-  svg {
-    width: 20px;
-    height: 20px;
-    transition: transform var(--nav-transition-hover);
-  }
-  
-  &:hover svg {
-    transform: rotate(10deg);
-  }
+  transition: all var(--duration-normal) var(--ease-out);
+  will-change: background-color, transform, box-shadow;
 }
 
-/* Theme dropdown (hidden by default, shown on hover/focus) */
+.fantasy-nav__theme-toggle:hover {
+  background: var(--glass-medium);
+  border-color: var(--glass-border-medium);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-glass-strong);
+}
+
+.fantasy-nav__theme-toggle:active {
+  transform: translateY(0);
+  transition-duration: var(--duration-fast);
+}
+
+.fantasy-nav__theme-toggle:focus-visible {
+  outline: 2px solid var(--color-cool);
+  outline-offset: 2px;
+}
+
+.fantasy-nav__theme-toggle svg {
+  width: 20px;
+  height: 20px;
+  transition: transform var(--duration-normal) var(--ease-out);
+}
+
+.fantasy-nav__theme-toggle:hover svg {
+  transform: rotate(10deg);
+}
+
+/* Theme Dropdown - Ex Machina Glass */
 .fantasy-nav__theme-dropdown {
   position: absolute;
-  top: 100%;
+  top: calc(100% + var(--space-sm));
   right: 0;
-  margin-top: 8px;
-  min-width: 240px;
-  background: var(--nav-glass-scrolled);
-  backdrop-filter: blur(24px) saturate(180%);
-  border: 1px solid var(--nav-glass-border-scrolled);
-  border-radius: 12px;
-  padding: 8px;
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  min-width: 320px;
+  background: var(--glass-white);
+  backdrop-filter: var(--blur-2xl);
+  border: 1px solid var(--glass-border-light);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-xl);
   
   opacity: 0;
   visibility: hidden;
   transform: translateY(-8px) scale(0.95);
   transition: 
-    opacity var(--nav-transition-hover),
-    visibility var(--nav-transition-hover),
-    transform var(--nav-transition-hover);
+    opacity var(--duration-slow) var(--ease-smooth),
+    visibility var(--duration-slow) var(--ease-smooth),
+    transform var(--duration-slow) var(--ease-smooth);
   
-  z-index: 1001;
+  z-index: var(--z-dropdown);
 }
 
-.fantasy-nav__theme-selector:hover .fantasy-nav__theme-dropdown,
-.fantasy-nav__theme-selector:focus-within .fantasy-nav__theme-dropdown {
+.fantasy-nav__theme-selector:hover .fantasy-nav__theme-dropdown {
   opacity: 1;
   visibility: visible;
   transform: translateY(0) scale(1);
 }
 
-/* === MOBILE MENU === */
-.fantasy-nav__mobile-toggle {
+.theme-category {
+  margin-bottom: var(--space-lg);
+}
+
+.theme-category:last-child {
+  margin-bottom: 0;
+}
+
+.theme-category-title {
+  font-family: var(--font-display);
+  font-size: var(--font-size-micro);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+  margin-bottom: var(--space-sm);
+  padding-left: var(--space-sm);
+}
+
+.theme-option {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: var(--space-sm);
+  border: none;
+  background: transparent;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  text-align: left;
+  margin-bottom: var(--space-xs);
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.theme-option:hover {
+  background: var(--glass-subtle);
+  transform: translateX(2px);
+}
+
+.theme-option.active {
+  background: var(--glass-light);
+  border: 1px solid var(--glass-border-light);
+}
+
+.theme-color-preview {
+  width: 20px;
+  height: 20px;
+  border-radius: var(--radius-sm);
+  margin-right: var(--space-md);
+  border: 1px solid var(--glass-border-light);
+  flex-shrink: 0;
+}
+
+.theme-info {
+  flex: 1;
+}
+
+.theme-name {
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: 2px;
+}
+
+.theme-description {
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-size: var(--font-size-micro);
+  line-height: var(--line-height-normal);
+}
+
+/* Menu Button - Ex Machina Glass Pill */
+.cat-button {
+  background: var(--glass-light);
+  backdrop-filter: var(--blur-xl);
+  border: 1px solid var(--glass-border-light);
+  border-radius: var(--nav-button-radius);
+  width: var(--nav-button-width-expanded);
+  height: var(--nav-button-height);
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  border: none;
-  background: transparent;
-  border-radius: 8px;
+  gap: var(--space-sm);
   cursor: pointer;
-  color: var(--nav-text-initial);
+  box-shadow: var(--shadow-glass);
+  position: relative;
+  overflow: hidden;
+  font-family: var(--font-body);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-primary);
   
-  @media (min-width: 768px) {
-    display: none;
-  }
-  
-  &:hover {
-    background: var(--nav-link-hover-bg);
-  }
-  
-  &:focus-visible {
-    outline: 2px solid var(--nav-text-active);
-    outline-offset: 2px;
-  }
+  transition: 
+    width var(--duration-slow) var(--ease-smooth),
+    background-color var(--duration-normal) var(--ease-out),
+    border-color var(--duration-normal) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-normal) var(--ease-out);
+    
+  will-change: width, background-color, transform, box-shadow;
 }
 
-.fantasy-nav__mobile-menu {
+.cat-button::before {
+  content: '';
   position: absolute;
-  top: 100%;
+  top: 0;
   left: 0;
   right: 0;
-  background: var(--nav-glass-scrolled);
-  backdrop-filter: blur(24px) saturate(180%);
-  border-bottom: 1px solid var(--nav-glass-border-scrolled);
-  padding: 24px var(--nav-padding-x);
-  
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-16px);
-  transition: 
-    opacity var(--nav-transition-scroll),
-    visibility var(--nav-transition-scroll),
-    transform var(--nav-transition-scroll);
+  height: 50%;
+  background: linear-gradient(180deg, var(--glass-subtle) 0%, transparent 100%);
+  border-radius: var(--nav-button-radius) var(--nav-button-radius) 0 0;
+  pointer-events: none;
 }
 
-.fantasy-nav__mobile-menu--open {
+.cat-button:hover {
+  background: var(--glass-medium);
+  border-color: var(--glass-border-medium);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-glass-strong);
+}
+
+.cat-button:hover .menu-text,
+.cat-button:hover .cat-face {
+  transform: scale(1.05);
+}
+
+.cat-button:active {
+  transform: scale(0.98);
+  background: var(--glass-light);
+  box-shadow: var(--shadow-sm);
+  transition-duration: var(--duration-fast);
+}
+
+.cat-button:focus-visible {
+  outline: 2px solid var(--color-cool);
+  outline-offset: 2px;
+}
+
+.menu-text {
+  display: inline-block;
+  opacity: 1;
+  transition: opacity var(--duration-slow) var(--ease-smooth);
+  font-family: var(--font-body);
+  font-weight: var(--font-weight-medium);
+}
+
+.cat-face {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  font-family: var(--font-code);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-medium);
+  transition: opacity var(--duration-slow) var(--ease-smooth);
+}
+
+.header.condensed .menu-text {
+  opacity: 0;
+}
+
+.header.condensed .cat-face {
+  opacity: 1;
+}
+
+.header.condensed .cat-button {
+  width: var(--nav-button-width-condensed);
+}
+
+/* Menu Overlay - Ex Machina Dark Laboratory */
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--color-charcoal);
+  z-index: var(--z-modal);
+  opacity: 0;
+  visibility: hidden;
+  transition: 
+    opacity var(--duration-slower) var(--ease-smooth),
+    visibility var(--duration-slower) var(--ease-smooth);
+  will-change: opacity, visibility;
+}
+
+.menu-overlay.open {
   opacity: 1;
   visibility: visible;
+}
+
+.menu-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.2) 100%);
+  pointer-events: none;
+}
+
+.menu-content {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-4xl);
+  transform: translateY(24px);
+  transition: transform var(--duration-slower) var(--ease-smooth);
+  will-change: transform;
+}
+
+.menu-overlay.open .menu-content {
   transform: translateY(0);
 }
 
-.fantasy-nav__mobile-links {
+/* Close Button - Ex Machina Glass */
+.close-button {
+  position: absolute;
+  top: var(--space-lg);
+  right: var(--space-lg);
+  background: var(--glass-light);
+  backdrop-filter: var(--blur-lg);
+  border: 1px solid var(--glass-border-light);
+  border-radius: var(--radius-pill);
+  width: 48px;
+  height: 48px;
   display: flex;
-  flex-direction: column;
-  gap: 4px;
-  margin-bottom: 24px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-inverse);
+  font-size: var(--font-size-large);
+  font-weight: var(--font-weight-light);
+  box-shadow: var(--shadow-glass);
+  transition: all var(--duration-normal) var(--ease-out);
 }
 
-.fantasy-nav__mobile-link {
-  padding: 12px 16px;
-  color: var(--nav-text-initial);
+.close-button:hover {
+  background: var(--glass-medium);
+  border-color: var(--glass-border-medium);
+  transform: scale(1.05);
+  box-shadow: var(--shadow-glass-strong);
+}
+
+.close-button:active {
+  transform: scale(0.95);
+}
+
+.close-button:focus-visible {
+  outline: 2px solid var(--color-cool);
+  outline-offset: 2px;
+}
+
+/* Menu Title (Screen Reader Only) */
+.menu-title {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Primary Menu Links - Ex Machina Typography */
+.menu-links {
+  list-style: none;
+  margin: 0 0 var(--space-4xl) 0;
+  padding: 0;
+  text-align: center;
+}
+
+.menu-links li {
+  margin: var(--space-lg) 0;
+}
+
+.menu-links a {
+  color: var(--text-inverse);
   text-decoration: none;
-  border-radius: var(--nav-link-border-radius);
-  font-weight: var(--nav-font-weight-medium);
-  
-  &:hover {
-    background: var(--nav-link-hover-bg);
-  }
-  
-  &--active {
-    color: var(--nav-text-active);
-    background: var(--nav-link-active-bg);
-    font-weight: var(--nav-font-weight-semibold);
-  }
+  font-family: var(--font-display);
+  font-size: var(--font-size-display-2);
+  font-weight: var(--font-weight-light);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+  transition: all var(--duration-normal) var(--ease-out);
+  display: block;
+  padding: var(--space-sm) 0;
 }
 
-/* === STAGGERED ANIMATION FOR PAGE LOAD === */
-.fantasy-nav__link {
-  opacity: 0;
-  transform: translateY(-20px);
-  animation: navLinkFadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+.menu-links a:hover {
+  color: var(--color-warm);
+  transform: translateY(-2px);
 }
 
-.fantasy-nav__link:nth-child(1) { animation-delay: 0.1s; }
-.fantasy-nav__link:nth-child(2) { animation-delay: 0.2s; }
-.fantasy-nav__link:nth-child(3) { animation-delay: 0.3s; }
-.fantasy-nav__link:nth-child(4) { animation-delay: 0.4s; }
-.fantasy-nav__link:nth-child(5) { animation-delay: 0.5s; }
+.menu-links a:focus-visible {
+  outline: 2px solid var(--color-cool);
+  outline-offset: 4px;
+  border-radius: var(--radius-sm);
+}
 
-@keyframes navLinkFadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
+@media (max-width: 767px) {
+  .menu-links a {
+    font-size: var(--font-size-h1);
   }
 }
 
-/* === ACCESSIBILITY ENHANCEMENTS === */
+/* Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
-  .fantasy-nav,
-  .fantasy-nav__link,
-  .fantasy-nav__button,
-  .fantasy-nav__theme-toggle {
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
+  * {
+    transition-duration: var(--duration-instant) !important;
+    transform: none !important;
   }
   
-  .fantasy-nav__link {
-    animation: none;
-    opacity: 1;
-    transform: none;
+  .menu-content {
+    transform: none !important;
+  }
+  
+  .cat-button:hover .menu-text,
+  .cat-button:hover .cat-face {
+    transform: none !important;
+  }
+  
+  .fantasy-nav__theme-toggle:hover svg {
+    transform: none !important;
   }
 }
 
-/* High contrast support */
+/* High Contrast Support */
 @media (prefers-contrast: high) {
-  .fantasy-nav {
-    border-bottom-width: 2px;
+  .header {
+    border-bottom: 2px solid var(--border-strong);
   }
   
-  .fantasy-nav__link:focus-visible {
+  .cat-button,
+  .fantasy-nav__theme-toggle {
+    border-width: 2px;
+  }
+  
+  .logo:focus-visible,
+  .cat-button:focus-visible,
+  .fantasy-nav__theme-toggle:focus-visible {
     outline-width: 3px;
   }
 }
 
-/* === RESPONSIVE BREAKPOINTS === */
-@media (max-width: 767px) {
-  .fantasy-nav__container {
-    padding: 0 20px;
+/* Dark Theme Overrides */
+[data-theme="dark"] {
+  .menu-overlay {
+    background: var(--color-black);
   }
   
-  .fantasy-nav__cta {
-    display: none;
+  .close-button {
+    color: var(--color-white);
   }
 }
 
-@media (max-width: 1023px) {
-  .fantasy-nav__button--outlined {
-    display: none;
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .header-container {
+    padding: 0 var(--space-lg);
+  }
+  
+  :root {
+    --nav-logo-width-expanded: 140px;
+    --nav-logo-width-condensed: 36px;
+    --nav-button-width-expanded: 90px;
+    --nav-button-width-condensed: 44px;
+  }
+  
+  .fantasy-nav__theme-dropdown {
+    min-width: 280px;
+    right: 0;
   }
 }
